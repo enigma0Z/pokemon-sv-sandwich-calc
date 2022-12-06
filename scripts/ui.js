@@ -1,47 +1,60 @@
 import {
   SandwichData, 
-  lookupIngredientByName, lookupSeasoningByName, sumComponents, maxComponents,
-  sortValueName, addFlavorResult, combineComponents, sortValueType
-} from './data.js'
+  lookupIngredientByName, lookupSeasoningByName, sumComponents,
+  sortValueName, addFlavorResult, combineComponents, sortValueType, calculateSandwich, sortValuePower, sortValueTaste
+} from './calc.js'
 
 const SandwichUiContainer = document.getElementById('sandwich')
 
-function calculateLevel(level) {
-  if (level < 100) {
-    return 1
-  } else if (level < 2000 ) {
-    return 2
-  } else {
-    return 3
-  }
+function getIngredientSelects() {
+  return document.getElementById('ingredients').getElementsByTagName('select')
 }
 
-function renderResult(result) {
-  let monotype = undefined;
-  const SortedTaste = Object.keys(result.taste)
-    .map( (key) => { return {name: key, value: result.taste[key]} })
-    .sort(sortValueName)
+function getSeasoningSelects() {
+  return document.getElementById('seasonings').getElementsByTagName('select')
+}
 
-  const SortedPower = Object.keys(result.power)
-    .map( (key) => { return {name: key, value: result.power[key]} })
-    .sort(sortValueName)
-
-  const SortedType = Object.keys(result.type)
-    .map( (key) => { return {name: key, value: result.type[key]} })
-    .sort(sortValueType)
-
-  // Check sorted type index 1, 2, 3 for values that are different
-  // Check for a monotype sandwich
-  if (SortedType.length > 4) {
-    monotype = SortedType[0].name
-    for (let i = 2; i < SortedType.length; i++) {
-      if (SortedType[1].value !== SortedType[i].value) monotype = undefined;
+function getIngredients() {
+  let ingredients = []
+  // Get ingredients from select boxes
+  for (let element of getIngredientSelects()) {
+    if (element.value !== '') {
+      ingredients.push(element.value)
     }
   }
 
-  // TODO: Check if type index 1, 2 are the same but 3+ is different is that monotype or reg type
-  // TODO: Check if values are added up per type or just per power
+  return ingredients
+}
 
+function getSeasonings() {
+  let seasonings = []
+  // Get seasonings from select boxes
+  for (let element of getSeasoningSelects()) {
+    if (element.value !== '') {
+      seasonings.push(element.value)
+    }
+  }
+
+  return seasonings
+}
+
+function setIngredients(ingredients) {
+  const selects = getIngredientSelects()
+  for (let i=0; i<ingredients.length; i++) {
+    selects[i].value = ingredients[i]
+    selects[i].oninput()
+  }
+}
+
+function setSeasonings(seasonings) {
+  const selects = getSeasoningSelects()
+  for (let i=0; i<seasonings.length; i++) {
+    selects[i].value = seasonings[i]
+    selects[i].oninput()
+  }
+}
+
+function renderSandwichResult(result) {
   const Ul = document.createElement('ul')
   const Li = [ 
     document.createElement('li'),
@@ -52,36 +65,26 @@ function renderResult(result) {
   Ul.appendChild(Li[1])
   Ul.appendChild(Li[2])
 
-  if (monotype !== undefined) {
-    let level = SortedPower[0].value
-    level += SortedPower[1].value
-    level += SortedPower[2].value
-    console.log(`${SortedPower[0].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`)
-    Li[0].innerText = `${SortedPower[0].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`
-    console.log(`${SortedPower[1].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`)
-    Li[1].innerText = `${SortedPower[1].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`
-    console.log(`${SortedPower[2].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`)
-    Li[2].innerText = `${SortedPower[2].name} Power: ${monotype}, Lv. ${calculateLevel(level)}`
-  } else { // TODO: Fix or confirm assumption
-    for (let i = 0; i < 3; i++) {
-      if (SortedPower[i].name === 'Egg') {
-        Li[i].innerText = `Egg Power Lv. ${calculateLevel(SortedPower[i].value)}`
-      } else {
-        Li[i].innerText = `${SortedPower[i].name} Power: ${SortedType[i].name}, Lv. ${calculateLevel(SortedPower[i].value)}`
-      }
+  for (let i=0; i<3; i++) {
+    Li[i].innerText = `${result.powers[i].name} Power`
+    if (result.powers[i].name !== 'Egg') {
+      Li[i].innerText += `: ${result.powers[i].type}`
     }
+
+    Li[i].innerText += `, Lv. ${result.powers[i].level}`
   }
 
   return Ul
 }
 
 function renderAttribute(object, quantity, sortingKind = sortValueName) {
-  console.log('renderAttribute', object, quantity)
+  console.debug('renderAttribute', object, quantity)
   const Table = document.createElement('table')
   for (let item of Object.keys(object)
     .map( (key) => {return { name: key, value: object[key]}} )
     .sort(sortingKind)
   ) {
+    if (item.value === 0) continue;
     const Tr = document.createElement('tr')
     Table.appendChild(Tr)
 
@@ -97,7 +100,7 @@ function renderAttribute(object, quantity, sortingKind = sortValueName) {
 }
 
 function renderAttributes(object) {
-  console.log('renderAttributes', object)
+  console.debug('renderAttributes', object)
   const Quantity = object.max !== undefined ? object.max : 1
 
   const AttributeDiv = document.createElement('div')
@@ -109,7 +112,7 @@ function renderAttributes(object) {
   const TasteLabel = document.createElement('p')
   TasteLabel.innerText = 'Taste'
   TasteDiv.appendChild(TasteLabel)
-  TasteDiv.appendChild(renderAttribute(object.taste, Quantity))
+  TasteDiv.appendChild(renderAttribute(object.taste, Quantity, sortValueTaste))
 
   const PowerDiv = document.createElement('div')
   AttributeDiv.appendChild(PowerDiv)
@@ -117,7 +120,7 @@ function renderAttributes(object) {
   const PowerLabel = document.createElement('p')
   PowerLabel.innerText = 'Power'
   PowerDiv.appendChild(PowerLabel)
-  PowerDiv.appendChild(renderAttribute(object.power, Quantity))
+  PowerDiv.appendChild(renderAttribute(object.power, Quantity, sortValuePower))
 
   const TypeDiv = document.createElement('div')
   AttributeDiv.appendChild(TypeDiv)
@@ -150,6 +153,9 @@ function ingredientSelect() {
       const attribute = lookupIngredientByName(SelectElement.value)
       ElementAttributesDiv.appendChild(renderAttributes(attribute))
     }
+
+    updateUri()
+    renderSandwich()
   }
 
   for (let ingredient of SandwichData.ingredients) {
@@ -183,6 +189,9 @@ function seasoningSelect() {
       const attribute = lookupSeasoningByName(SelectElement.value)
       ElementAttributesDiv.appendChild(renderAttributes(attribute))
     }
+    
+    updateUri()
+    renderSandwich()
   }
 
   for (let seasoning of SandwichData.seasonings) {
@@ -196,80 +205,49 @@ function seasoningSelect() {
 }
 
 // Calculate sandwich values
-function calculateSandwich() {
+function renderSandwich() {
   const ResultsDiv = document.getElementById('results')
+  const ingredients = getIngredients()
+  const seasonings = getSeasonings()
 
-  const ingredients = []
-  const seasonings = []
-
-  // Get ingredients from select boxes
-  for (let element of document.getElementById('ingredients').getElementsByTagName('select')) {
-    if (element.value !== '') {
-      ingredients.push(element.value)
-    }
-  }
-
-  // Get seasonings from select boxes
-  for (let element of document.getElementById('seasonings').getElementsByTagName('select')) {
-    if (element.value !== '') {
-      seasonings.push(element.value)
-    }
+  if (ingredients.legnth === 0 || seasonings.length === 0) {
+    ResultsDiv.innerHTML = ''
+    return
   }
 
   const IngredientSum = sumComponents(ingredients, lookupIngredientByName)
   const SeasoningSum = sumComponents(seasonings, lookupSeasoningByName)
-  // const FinalResult = sumComponentData([IngredientSum, SeasoningSum])
-  const FinalResult = combineComponents(IngredientSum, SeasoningSum)
-  const TotalSum = JSON.parse(JSON.stringify(FinalResult))
-  addFlavorResult(FinalResult)
+  const SandwichSum = combineComponents(IngredientSum, SeasoningSum)
+  addFlavorResult(SandwichSum)
 
   ResultsDiv.innerHTML = ''
-  ResultsDiv.appendChild(renderResult(FinalResult))
+  ResultsDiv.appendChild(renderSandwichResult(calculateSandwich(ingredients, seasonings)))
 
-  console.log(IngredientSum)
-  const IngredientDiv = document.createElement('div')
-  IngredientDiv.setAttribute('class', 'sum')
-  const IngredientTitle = document.createElement('div')
-  IngredientTitle.innerText = 'Ingredients Sum'
-  IngredientDiv.appendChild(IngredientTitle)
-  IngredientDiv.appendChild(renderAttributes(IngredientSum))
-  ResultsDiv.appendChild(IngredientDiv)
+  console.debug(SandwichSum)
+  const SandwichDiv = document.createElement('div')
+  SandwichDiv.setAttribute('class', 'sum')
+  const SandwichTitle = document.createElement('div')
+  SandwichTitle.innerText = 'Sandwich Sum'
+  SandwichDiv.appendChild(SandwichTitle)
+  SandwichDiv.appendChild(renderAttributes(SandwichSum))
+  ResultsDiv.appendChild(SandwichDiv)
+}
 
-  console.log(SeasoningSum)
-  const SeasoningDiv = document.createElement('div')
-  SeasoningDiv.setAttribute('class', 'sum')
-  const SeasoningTitle = document.createElement('div')
-  SeasoningTitle.innerText = 'Seasonings Sum'
-  SeasoningDiv.appendChild(SeasoningTitle)
-  SeasoningDiv.appendChild(renderAttributes(SeasoningSum))
-  ResultsDiv.appendChild(SeasoningDiv)
+function updateUri() {
+  let ingredients = getIngredients()
+  let seasonings = getSeasonings()
+  let queryString = []
+  if (ingredients.length > 0) {
+    queryString.push(`ingredients=${ingredients.join(',')}`)
+  }
+  if (seasonings.length > 0) {
+    queryString.push(`seasonings=${seasonings.join(',')}`)
+  }
 
-  console.log(TotalSum)
-  const TotalDiv = document.createElement('div')
-  TotalDiv.setAttribute('class', 'sum')
-  const TotalTitle = document.createElement('div')
-  TotalTitle.innerText = 'Sandwich Total Sum'
-  TotalDiv.appendChild(TotalTitle)
-  TotalDiv.appendChild(renderAttributes(TotalSum))
-  ResultsDiv.appendChild(TotalDiv)
+  const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${queryString.join('&')}`
+  const title = window.location.title
+  window.history.replaceState('', title, url)
 
-  console.log(FinalResult)
-  const FinalResultDiv = document.createElement('div')
-  FinalResultDiv.setAttribute('class', 'sum')
-  const FinalResultTitle = document.createElement('div')
-  FinalResultTitle.innerText = 'Sandwich Final Result (inc. flavor bonus)'
-  FinalResultDiv.appendChild(FinalResultTitle)
-  FinalResultDiv.appendChild(renderAttributes(FinalResult))
-  ResultsDiv.appendChild(FinalResultDiv)
-
-  // console.log(TotalResult)
-  // const TotalResultDiv = document.createElement('div')
-  // TotalResultDiv.setAttribute('class', 'sum')
-  // const TotalResultTitle = document.createElement('div')
-  // TotalResultTitle.innerText = 'Sandwich Total Result'
-  // TotalResultDiv.appendChild(TotalResultTitle)
-  // TotalResultDiv.appendChild(renderAttributes(TotalResult))
-  // ResultsDiv.appendChild(TotalResultDiv)
 }
 
 // Draw the UI
@@ -322,14 +300,24 @@ function renderUi() {
   }
   ButtonDiv.appendChild(ResetButton)
 
-  const CalculateButton = document.createElement('button')
-  CalculateButton.innerText = 'Calculate'
-  CalculateButton.onclick = calculateSandwich
-  ButtonDiv.appendChild(CalculateButton)
-  
   const ResultsDiv = document.createElement('div')
   ResultsDiv.setAttribute('id', 'results')
   SandwichUiContainer.appendChild(ResultsDiv)
+
+  // Load URI
+  if (window.location.search !== '') {
+    const QueryString = window.location.search.slice(1)
+    for (let entry of QueryString.split('&')) {
+      let [name, valuesStr] = entry.split('=')
+      let values = decodeURIComponent(valuesStr).split(',')
+      console.log('seturl', values)
+      if (name === 'ingredients') {
+        setIngredients(values)
+      } else if (name === 'seasonings') {
+        setSeasonings(values)
+      }
+    }
+  }
 }
 
 renderUi()

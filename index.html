@@ -8,12 +8,38 @@
   <body>
     <div class="background-color"></div>
     <div class="background-image"></div>
-    <div>
-      <a id="liveMsg" href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">
-        <img class="header" src="img/enigma.png"/>
-      </a>
+  <div class="section"><h1>
+    Sandwich Calculator
+  </h1></div>
+    <div id="sandwich"></div>
+    <div id="todo">
+      <h2>Todo</h2>
+      <ul><li>
+        Multiplayer mode
+      </li><li>
+        Option for less than perfection in ingredients placed
+      </li><li>
+        Penalty for sandwich failure
+      </li><li>
+        Penalty for too many ingredients (>13 in Single Player)
+      </li><li>
+        Add known recipes
+      </li></ul>
     </div>
-    <div>
+    <div id="notes">
+      <h2>Notes</h2>
+      <ul><li>
+      </li></ul>
+    </div>
+    <div id="known issues">
+      <h2>Known Issues</h2>
+      <ul><li>
+        Defined (in-game) recpies are goofy and don't calc correctly
+      </li><li>
+        Flavor bonuses only occur or get calculated sometimes.  Unknown why / when.
+      </li></ul>
+    </div>
+    <div class="section">
       <span class="caption">
         <a href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">YouTube</a> | 
         <a href="https://twitter.com/enigma_0z">Twitter</a> | 
@@ -22,33 +48,8 @@
         <a href="https://enigma-plays-live.myspreadshop.com/">Merch</a>
       </span>
     </div>
-  <div><h1>
-    Sandwich Calculator
-  </h1></div>
-    <div id="sandwich"></div>
-    <div id="notes">
-      <h2>Notes</h2>
-      <ul><li>
-        Flavor bonuses only occur sometimes.  Unknown why / when.  Theories: If it would be a two part flavor (like sweet & sour)
-        but the 2nd flavor has more than one option (e.g. sweet, then salty or sour) then the result is that no flavor power
-        is applied, or some alternative calc is made.
-      </li></ul>
-    </div>
-    <div id="known issues">
-      <h2>Known Issues</h2>
-      <ul><li>
-        <b>HERBA MYSTICA RECIPES ARE ALL INCORRECT CURRENTLY, DON'T WASTE YOUR SPECIAL HERBS</b>
-      </li><li>
-        Calcs for sparkling / title are incorrect still. These are a goofy special case that I need to write the code for still.
-      </li><li>
-        The types aren't exactly landing correctly -- They're usually <i>almost</i> correct but some things just aren't sorting as expected
-      </li><li>
-        Flavor bonuses aren't correct
-      </li><li>
-        Defined (in-game) recpies are goofy and don't calc correctly
-      </li><li>
-        There is supposedly a debuff for "too many" ingredients. It's unclear if that's multiplayer only or also single player
-      </li></ul>
+    <div class="section">
+      <img class="header" src="img/enigma.png"/>
     </div>
   </body>
 </html>

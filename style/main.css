@@ -1,0 +1,170 @@
+@font-face {
+    font-family: 'Futura';
+    src: local('Futura Bold'), local('Futura-Bold'),
+        url('../fonts/FuturaLT-Bold.woff2') format('woff2'),
+        url('../fonts/FuturaLT-Bold.woff') format('woff'),
+        url('../fonts/FuturaLT-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: local('Futura Regular'), local('Futura-Regular'),
+        url('../fonts/FuturaLT.woff2') format('woff2'),
+        url('../fonts/FuturaLT.woff') format('woff'),
+        url('../fonts/FuturaLT.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: local('Futura Condensed Light'), local('Futura-Condensed-Light'),
+        url('../fonts/FuturaLT-CondensedLight.woff2') format('woff2'),
+        url('../fonts/FuturaLT-CondensedLight.woff') format('woff'),
+        url('../fonts/FuturaLT-CondensedLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+.edit {
+    display: none;
+}
+
+h1 {
+    color: white;
+    justify-content: center;
+    font-family: 'Futura';
+    font-weight: bold;
+    font-size: 24pt;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        2px 2px 2px black;
+}
+
+a:visited { color: white; }
+a:hover { color: lightgreen; }
+a:active { color: white; }
+a { color: white; }
+
+/* p {
+    color: white;
+    justify-content: center;
+    font-size: 18pt;
+} */
+
+ul {
+    list-style: none
+}
+
+span.caption {
+    justify-content: center;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    color: white;
+    font-family: 'Futura';
+    font-size: 12pt;
+    text-shadow: 2px 2px 2px black;
+}
+
+div.background-color {
+    background: linear-gradient(0deg, #101010FF 0%, #300000FF 100%);
+    z-index: -101;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+div.background-image {
+    background: url(../img/background-repeat.png);
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 15%;
+}
+
+@media screen and (orientation: portrait) {
+    img.background {
+        height: 100%;
+        width: auto;
+    }
+}
+
+body div {
+    width: 100%;
+    text-align: center;
+}
+
+body div img.header {
+    width: 700px;
+    image-rendering: pixelated;
+}
+
+iframe {
+    border: 5px solid #500000;
+}
+
+div#sandwich {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+}
+
+div#sandwich div {
+    display: flex;
+    flex-direction: row;
+    flex-basis: content;
+}
+
+div#sandwich div div.field {
+    display: flex;
+    flex-direction: column;
+}
+
+div#sandwich div div.attributes {
+    display: flex;
+    font-size: 10pt;
+}
+
+div#sandwich div div.attributes div {
+    display: flex;
+    flex-direction: column
+}
+
+div#sandwich div#results div.attributes {
+    margin-left: 1em;
+}
+
+div#sandwich div#results div.sum {
+    flex-direction: column;
+}
+
+table {
+    font-family: 'Futura';
+    font-weight: 300;
+    font-size: 10pt;
+}
+
+select, button {
+    margin: .5em;
+    padding: .25em;
+}
+
+span.label {
+    margin-right: 1em;
+}

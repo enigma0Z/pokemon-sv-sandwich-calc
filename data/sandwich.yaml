@@ -521,7 +521,7 @@ seasonings:
       Bug: 	2
       Ghost: 	2
   - name: chili sauce
-    type:
+    taste:
       Sweet: 	8
       Salty: 	12
       Sour: 	8
@@ -530,7 +530,7 @@ seasonings:
       Egg: 	-3
       Exp.: 	12
       Raid: 	21
-    taste:
+    type:
       Water: 	2
       Grass: 	2
   - name: cream cheese
@@ -546,8 +546,8 @@ seasonings:
     type:
       Bug: 	4
       Steel: 	4
-      Water: 	4
-  - name: curry powder
+      Water: 	4`
+  - name: curry powde`
     taste:
       Sweet: 	4
       Salty: 	4

@@ -38,24 +38,12 @@ h1 {
     font-family: 'Futura';
     font-weight: bold;
     font-size: 24pt;
-    text-shadow: 
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        2px 2px 2px black;
 }
 
 a:visited { color: white; }
-a:hover { color: lightgreen; }
+a:hover { color: darkgreen; }
 a:active { color: white; }
 a { color: white; }
-
-/* p {
-    color: white;
-    justify-content: center;
-    font-size: 18pt;
-} */
 
 ul {
     list-style: none
@@ -72,9 +60,9 @@ body {
     margin: 0;
     position: absolute;
     color: white;
+    background-color: black;
     font-family: 'Futura';
     font-size: 12pt;
-    text-shadow: 2px 2px 2px black;
 }
 
 div.background-color {
@@ -107,6 +95,9 @@ div.background-image {
 
 body div {
     width: 100%;
+}
+    
+body div.section {
     text-align: center;
 }
 
@@ -155,9 +146,9 @@ div#sandwich div#results div.sum {
 }
 
 table {
-    font-family: 'Futura';
+    font-family: monospace;
     font-weight: 300;
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 select, button {

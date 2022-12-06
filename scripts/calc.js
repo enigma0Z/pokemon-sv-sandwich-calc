@@ -38,6 +38,14 @@ const MealPowers = [
   'Encounter',
 ]
 
+const Tastes = [
+  'Sweet',
+  'Salty',
+  'Sour',
+  'Bitter',
+  'Hot',
+]
+
 function templateResult() {
   return {
     taste: {
@@ -86,6 +94,10 @@ export function sortValueName(a, b) {
   return (b.value - a.value) + (a.name < b.name ? -1 : 1)
 }
 
+export function sortValueTaste(a, b) {
+  return (b.value - a.value) + (Tastes.indexOf(a.name) < Tastes.indexOf(b.name) ? -1 : 1)
+}
+
 export function sortValueType(a, b) {
   return (b.value - a.value) + (PokemonTypes.indexOf(a.name) < PokemonTypes.indexOf(b.name) ? -1 : 1)
 }
@@ -108,6 +120,15 @@ export function lookupSeasoningByName(name) {
   return SandwichData.seasonings.find((seasoning) => seasoning.name === name)
 }
 
+export function calculateLevel(power, type) {
+  if (power.value >= 100 && power.value < 2000 && type.value > 180) {
+    return 2
+  } else {
+    return 1
+  }
+}
+
+
 export function sumComponents(components, lookupFunction) {
   const Result = templateResult()
   // Add everything together
@@ -122,31 +143,6 @@ export function sumComponents(components, lookupFunction) {
     }
     for (let key of Object.keys(ComponentData.type)) {
       Result.type[key] += ComponentData.type[key] * Multiplier
-    }
-  }
-
-  return Result
-}
-
-export function maxComponents(components, lookupFunction) {
-  const Result = templateResult()
-  // Find the highest values
-  for (let component of components) {
-    const ComponentData = lookupFunction(component)
-    for (let key of Object.keys(ComponentData.taste)) {
-      if (Result.taste[key] < ComponentData.taste[key]) {
-        Result.taste[key] = ComponentData.taste[key]
-      }
-    }
-    for (let key of Object.keys(ComponentData.power)) {
-      if (Result.power[key] < ComponentData.power[key]) {
-        Result.power[key] = ComponentData.power[key]
-      }
-    }
-    for (let key of Object.keys(ComponentData.type)) {
-      if (Result.type[key] < ComponentData.type[key]) {
-        Result.type[key] = ComponentData.type[key]
-      }
     }
   }
 
@@ -173,7 +169,7 @@ export function sumComponentData(components) {
 
 export function addFlavorResult(sandwich) {
   // Taste Powers
-  const SortedTastes = sortAttributes(sandwich.taste)
+  const SortedTastes = sortAttributes(sandwich.taste, sortValueTaste)
   console.log(SortedTastes[0], SortedTastes[1])
 
   let bonus = 100;
@@ -266,4 +262,72 @@ export function combineComponents(ingredients, seasonings) {
   }
 
   return Result
+}
+
+export function calculateSandwich(ingredients, seasonings) {
+  const Sandwich = {
+    powers: [ ]
+  }
+
+  const IngredientSum = sumComponents(ingredients, lookupIngredientByName)
+  const SeasoningSum = sumComponents(seasonings, lookupSeasoningByName)
+  const SandwichSum = combineComponents(IngredientSum, SeasoningSum)
+
+  addFlavorResult(SandwichSum)
+
+  const SortedTaste = Object.keys(SandwichSum.taste)
+    .map( (key) => { return {name: key, value: SandwichSum.taste[key]} })
+    .sort(sortValueTaste)
+
+  const SortedPower = Object.keys(SandwichSum.power)
+    .map( (key) => { return {name: key, value: SandwichSum.power[key]} })
+    .sort(sortValuePower)
+
+  const SortedType = Object.keys(SandwichSum.type)
+    .map( (key) => { return {name: key, value: SandwichSum.type[key]} })
+    .sort(sortValueType)
+
+  let type = []
+
+  // Do type sorting and check for monotype
+  console.log('top type', SortedType[0].value)
+  if (SortedType[0].value < 280) {
+    type = [0, 2, 1]
+  } else if (SortedType.value < 480) {
+    type = [0, 0, 2]
+  } else {
+    console.log('monotype sandwich')
+    type = [0, 0, 0]
+  }
+
+  // Calculate initial levels
+  let levels = [
+    calculateLevel(SortedPower[0], SortedType[type[0]]),
+    calculateLevel(SortedPower[1], SortedType[type[1]]),
+    calculateLevel(SortedPower[2], SortedType[type[2]]),
+  ]
+
+  // Do Herba Mystica overrides for level
+  let herbaMysticaTotal = 0;
+  for (let seasoning of seasonings) {
+    if (seasoning.endsWith('herba mystica')) herbaMysticaTotal += 1
+  }
+
+  if (herbaMysticaTotal == 1) {
+    if (levels[0] < 2) levels[0] = 2 
+    if (levels[1] < 2) levels[1] = 2 
+  } else if (herbaMysticaTotal > 1) {
+    if (levels[0] < 3) levels[0] = 3 
+    if (levels[1] < 3) levels[1] = 3 
+    if (levels[2] < 3) levels[2] = 3 
+  }
+
+  // Types 2 and 3 are switched vs power order
+  Sandwich.powers.push(
+    {name: SortedPower[0].name, type: SortedType[type[0]].name, level: levels[0]},
+    {name: SortedPower[1].name, type: SortedType[type[1]].name, level: levels[1]},
+    {name: SortedPower[2].name, type: SortedType[type[2]].name, level: levels[2]},
+  )
+
+  return Sandwich
 }

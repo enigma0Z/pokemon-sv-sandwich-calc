@@ -110,7 +110,7 @@ iframe {
     border: 5px solid #500000;
 }
 
-div#sandwich {
+div.content {
     display: flex;
     flex-direction: column;
     margin-left: 1em;
@@ -139,6 +139,11 @@ div#sandwich div div.attributes div {
 
 div#sandwich div#results div.attributes {
     margin-left: 1em;
+}
+
+div#sandwich div#results {
+    flex-direction: column;
+    font-weight: bold;
 }
 
 div#sandwich div#results div.sum {

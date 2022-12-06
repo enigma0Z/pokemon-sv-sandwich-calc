@@ -1,7 +1,7 @@
 import {
   SandwichData, 
   lookupIngredientByName, lookupSeasoningByName, sumComponents, maxComponents,
-  sortValueName, addFlavorResult, combineComponents
+  sortValueName, addFlavorResult, combineComponents, sortValueType
 } from './data.js'
 
 const SandwichUiContainer = document.getElementById('sandwich')
@@ -25,11 +25,10 @@ function renderResult(result) {
   const SortedPower = Object.keys(result.power)
     .map( (key) => { return {name: key, value: result.power[key]} })
     .sort(sortValueName)
-    // .sort(sortValuePower)
 
   const SortedType = Object.keys(result.type)
     .map( (key) => { return {name: key, value: result.type[key]} })
-    .sort(sortValueName)
+    .sort(sortValueType)
 
   // Check sorted type index 1, 2, 3 for values that are different
   // Check for a monotype sandwich
@@ -126,7 +125,7 @@ function renderAttributes(object) {
   const TypeLabel = document.createElement('p')
   TypeLabel.innerText = 'Type'
   TypeDiv.appendChild(TypeLabel)
-  TypeDiv.appendChild(renderAttribute(object.type, Quantity))
+  TypeDiv.appendChild(renderAttribute(object.type, Quantity, sortValueType))
 
   return AttributeDiv
 }

@@ -1,5 +1,5 @@
 const xmlHttpReq = new XMLHttpRequest();
-xmlHttpReq.open("GET", '../data/sandwich.json', false);
+xmlHttpReq.open("GET", 'data/sandwich.json', false);
 xmlHttpReq.send(null);
 
 export const SandwichData = JSON.parse(xmlHttpReq.responseText);

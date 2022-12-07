@@ -1,0 +1,3408 @@
+recipes:
+- description: A sandwich with just ham and butter in it. So simple that there's no
+    way to fake it.
+  ingredients:
+  - Ham
+  location: Start
+  name: Jambon-Beurre
+  number: 1
+  powers:
+  - level: 1
+    name: Encounter
+    type: Ground
+  - level: 1
+    name: Raid
+    type: Ghost
+  - level: 1
+    name: Catching
+    type: Bug
+  seasonings:
+  - Butter
+- description: A Jambon-Beurre with a bitter twist. If you love a touch of bitterness,
+    you'll want to eat this.
+  ingredients:
+  - Ham
+  location: From man in Sandwich Shop if you have Bitter Herba Mystica
+  name: Bitter Jambon-Beurre
+  number: 2
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Exp.
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Bug
+  seasonings:
+  - Butter
+  - Bitter Herba Mystica
+- description: A Jambon-Beurre with a sweet twist. Seeking the finest sweetness around?
+    Look no further.
+  ingredients:
+  - Ham
+  location: From man in Sandwich Shop if you have Sweet Herba Mystica
+  name: Sweet Jambon-Beurre
+  number: 3
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Encounter
+    type: Bug
+  seasonings:
+  - Butter
+  - Sweet Herba Mystica
+- description: A Jambon-Beurre with a salty twist. Packs a delicious salty punch.
+  ingredients:
+  - Ham
+  location: From man in Sandwich Shop if you have Salty Herba Mystica
+  name: Salty Jambon-Beurre
+  number: 4
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Encounter
+    type: Ghost
+  - level: 2
+    name: Raid
+    type: Bug
+  seasonings:
+  - Butter
+  - Salty Herba Mystica
+- description: A Jambon-Beurre with a sour twist. Its vivid acidic notes will leave
+    you wanting another.
+  ingredients:
+  - Ham
+  location: From man in Sandwich Shop if you have Sour Herba Mystica
+  name: Sour Jambon-Beurre
+  number: 5
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Teensy
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Bug
+  seasonings:
+  - Butter
+  - Sour Herba Mystica
+- description: A Jambon-Beurre with a spicy twist. If you like a sandwich with some
+    kick to it, don't miss this.
+  ingredients:
+  - Ham
+  location: From man in Sandwich Shop if you have Spicy Herba Mystica
+  name: Spicy Jambon-Beurre
+  number: 6
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Humungo
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Bug
+  seasonings:
+  - Butter
+  - Spicy Herba Mystica
+- description: A sandwich known as the ultimate in bitter taste. The herbs should
+    be laid on thick.
+  ingredients:
+  - Lettuce
+  - Bacon
+  location: From man in Sandwich Shop if you have Bitter Herba Mystica
+  name: Legendary Bitter Sandwich
+  number: 7
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Exp.
+    type: Ice
+  - level: 2
+    name: Encounter
+    type: Grass
+  seasonings:
+  - Bitter Herba Mystica
+  - Pepper
+- description: A sandwich for the true salt aficionado. When eating this, make absolutely
+    certain to have a drink at hand.
+  ingredients:
+  - Lettuce
+  - Bacon
+  location: From man in Sandwich Shop if you have Sweet Herba Mystica
+  name: Legendary Salty Sandwich
+  number: 8
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Exp.
+    type: Ice
+  - level: 2
+    name: Encounter
+    type: Grass
+  seasonings:
+  - Salty Herba Mystica
+  - Pepper
+- description: A sandwich so sweet it's downright frightening. The trick is to really
+    pile on the herbs.
+  ingredients:
+  - Lettuce
+  - Bacon
+  location: From man in Sandwich Shop if you have Salty Herba Mystica
+  name: Legendary Sweet Sandwich
+  number: 9
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Encounter
+    type: Grass
+  seasonings:
+  - Sweet Herba Mystica
+  - Pepper
+- description: A sandwich devoted to true fans of sour flavors. The fresher the herbs,
+    the more potent the sourness.
+  ingredients:
+  - Lettuce
+  - Bacon
+  location: From man in Sandwich Shop if you have Sour Herba Mystica
+  name: Legendary Sour Sandwich
+  number: 10
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Teensy
+    type: Ice
+  - level: 2
+    name: Encounter
+    type: Grass
+  seasonings:
+  - Sour Herba Mystica
+  - Pepper
+- description: A sandwich so spicy it practically assaults the tongue. Dislikers of
+    spicy food, beware.
+  ingredients:
+  - Lettuce
+  - Bacon
+  location: From man in Sandwich Shop if you have Spicy Herba Mystica
+  name: Legendary Spicy Sandwich
+  number: 11
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Humungo
+    type: Ice
+  - level: 2
+    name: Encounter
+    type: Grass
+  seasonings:
+  - Spicy Herba Mystica
+  - Pepper
+- description: A sandwich made with only jam and slices of strawberry. The simplicity
+    of this dish is what makes it so appetizing.
+  ingredients:
+  - Strawberry
+  location: From man in Sandwich shop
+  name: Jam Sandwich
+  number: 12
+  powers:
+  - level: 1
+    name: Catching
+    type: Fighting
+  - level: 1
+    name: Item
+    type: Psychic
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Jam
+- description: The addition of yogurt has heightened the sweetness and deepened the
+    richness of this sandwich.
+  ingredients:
+  - Strawberry
+  location: From man in Sandwich shop
+  name: Great Jam Sandwich
+  number: 13
+  powers:
+  - level: 2
+    name: Catching
+    type: Fighting
+  - level: 1
+    name: Item
+    type: Psychic
+  - level: 1
+    name: Raid
+    type: Ghost
+  seasonings:
+  - Jam
+  - Yogurt
+- description: Filling enough to be a meal, tasty enough to be a snack. It's best
+    when you choose the sweetest pineapples.
+  ingredients:
+  - Strawberry
+  - Pineapple
+  location: From man in Sandwich shop
+  name: Ultra Jam Sandwich
+  number: 14
+  powers:
+  - level: 2
+    name: Catching
+    type: Dark
+  - level: 2
+    name: Item
+    type: Ground
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Jam
+  - Yogurt
+- description: A truly perfected sandwich, with the addition of the herbs elevating
+    all the other fillings.
+  ingredients:
+  - Strawberry
+  - Pineapple
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Jam Sandwich
+  number: 15
+  powers:
+  - level: 2
+    name: Title
+    type: Dark
+  - level: 2
+    name: Catching
+    type: Ground
+  - level: 2
+    name: Item
+    type: Fighting
+  seasonings:
+  - Jam
+  - Yogurt
+  - Sweet Herba Mystica
+- description: Peanut butter and bananas make a surprisingly nice pair. They leave
+    you feeling full and satisfied.
+  ingredients:
+  - Banana
+  location: From man in Sandwich shop
+  name: Peanut Butter Sandwich
+  number: 16
+  powers:
+  - level: 1
+    name: Egg
+    type: null
+  - level: 1
+    name: Item
+    type: Electric
+  - level: 1
+    name: Raid
+    type: Bug
+  seasonings:
+  - Peanut Butter
+- description: Adding butter into the mix has contributed yet more substance, making
+    this one robust sandwich.
+  ingredients:
+  - Banana
+  location: From man in Sandwich shop
+  name: Great Peanut Butter Sandwich
+  number: 17
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 1
+    name: Raid
+    type: Electric
+  - level: 1
+    name: Exp.
+    type: Normal
+  seasonings:
+  - Peanut Butter
+  - Butter
+- description: The jam adds a new note of sweetness, making this sandwich yet more
+    filling.
+  ingredients:
+  - Banana
+  location: From man in Sandwich shop
+  name: Ultra Peanut Butter Sandwich
+  number: 18
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Raid
+    type: Normal
+  - level: 1
+    name: Item
+    type: Bug
+  seasonings:
+  - Peanut Butter
+  - Butter
+  - Jam
+- description: The daring addition of bold spice has made this sandwich strangely
+    addicting.
+  ingredients:
+  - Banana
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Peanut Butter Sandwich
+  number: 19
+  powers:
+  - level: 2
+    name: Title
+    type: Electric
+  - level: 2
+    name: Raid
+    type: Normal
+  - level: 2
+    name: Item
+    type: Bug
+  seasonings:
+  - Peanut Butter
+  - Butter
+  - Jam
+  - Spicy Herba Mystica
+- description: This sandwich keeps it profoundly simple. It's best when you don't
+    skimp on the olive oil.
+  ingredients:
+  - Pickle
+  location: From man in Sandwich shop
+  name: Pickle Sandwich
+  number: 20
+  powers:
+  - level: 1
+    name: Teensy
+    type: Fighting
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Catching
+    type: Ghost
+  seasonings:
+  - Olive Oil
+- description: The sourness of the pickles pairs with the fresh taste of the watercress
+    for a sandwich as refreshing as a light breeze.
+  ingredients:
+  - Pickle
+  - Watercress
+  location: From man in Sandwich shop
+  name: Great Pickle Sandwich
+  number: 21
+  powers:
+  - level: 2
+    name: Item
+    type: Fighting
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Catching
+    type: Ghost
+  seasonings:
+  - Olive Oil
+- description: The fragrant basil draws out new depths of flavor from this sandwich's
+    fillings.
+  ingredients:
+  - Pickle
+  - Watercress
+  - Basil
+  location: From man in Sandwich shop
+  name: Ultra Pickle Sandwich
+  number: 22
+  powers:
+  - level: 2
+    name: Item
+    type: Fighting
+  - level: 2
+    name: Egg
+    type: null
+  - level: 1
+    name: Catching
+    type: Fire
+  seasonings:
+  - Olive Oil
+- description: The hit of sourness from the added herbs will leave you wanting more
+    of this simple yet satisfying sandwich.
+  ingredients:
+  - Pickle
+  - Watercress
+  - Basil
+  location: From man in Sandwich shop if you have Sour Herba Mystica
+  name: Master Pickle Sandwich
+  number: 23
+  powers:
+  - level: 2
+    name: Title
+    type: Fighting
+  - level: 2
+    name: Teensy
+    type: Grass
+  - level: 2
+    name: Egg
+    type: null
+  seasonings:
+  - Olive Oil
+  - Sour Herba Mystica
+- description: A simple, economical, and tasty sandwich. Toasting it for extra flavor
+    is also good.
+  ingredients:
+  - Cheese
+  location: From man in Sandwich shop
+  name: Marmalade Sandwich
+  number: 24
+  powers:
+  - level: 1
+    name: Item
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Rock
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Marmalade
+- description: The sweetness of the butter highlights the sourness. But add too much
+    butter, and you'll spoil the overall flavor.
+  ingredients:
+  - Cheese
+  location: From man in Sandwich shop
+  name: Great Marmalade Sandwich
+  number: 25
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 1
+    name: Raid
+    type: Rock
+  - level: 1
+    name: Item
+    type: Poison
+  seasonings:
+  - Marmalade
+  - Butter
+- description: The stronger the marmalade's sourness, the better. This sandwich is
+    particularly appealing.
+  ingredients:
+  - Cheese
+  location: From man in Sandwich shop
+  name: Ultra Marmalade Sandwich
+  number: 26
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Item
+    type: Poison
+  - level: 1
+    name: Raid
+    type: Fighting
+  seasonings:
+  - Marmalade
+  - Butter
+  - Cream Cheese
+- description: The finishing touch of saltiness is the clincher. This sandwich's exquisite
+    balance of flavor brings it to life.
+  ingredients:
+  - Cheese
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Marmalade Sandwich
+  number: 27
+  powers:
+  - level: 2
+    name: Title
+    type: Bug
+  - level: 2
+    name: Encounter
+    type: Poison
+  - level: 2
+    name: Item
+    type: Fighting
+  seasonings:
+  - Marmalade
+  - Butter
+  - Cream Cheese
+  - Salty Herba Mystica
+- description: Sausage with fragrant herbs meets ketchup in this sandwich.
+  ingredients:
+  - Herbed Sausage
+  location: From man in Sandwich shop
+  name: Herbed-Sausage Sandwich
+  number: 28
+  powers:
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Exp.
+    type: Ghost
+  - level: 1
+    name: Raid
+    type: Ground
+  seasonings:
+  - Ketchup
+- description: The sour bite and spiciness of the mustard takes this sandwich to the
+    next level.
+  ingredients:
+  - Herbed Sausage
+  location: From man in Sandwich shop
+  name: Great Herbed-Sausage Sandwich
+  number: 29
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ground
+  - level: 1
+    name: Exp.
+    type: Ghost
+  - level: 1
+    name: Raid
+    type: Fighting
+  seasonings:
+  - Ketchup
+  - Mustard
+- description: "This sandwich boasts fresh vegetables and sausage\u2014 a faultless\
+    \ combo."
+  ingredients:
+  - Herbed Sausage
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Ultra Herbed-Sausage Sandwich
+  number: 30
+  powers:
+  - level: 2
+    name: Exp.
+    type: Ground
+  - level: 2
+    name: Raid
+    type: Ghost
+  - level: 1
+    name: Encounter
+    type: Fighting
+  seasonings:
+  - Ketchup
+  - Mustard
+- description: A sandwich with a tried-and-true type of tastiness. The bitter flavor
+    really ties all the fillings together.
+  ingredients:
+  - Herbed Sausage
+  - Lettuce
+  location: From man in Sandwich shop if you have Bitter Herba Mystica
+  name: Master Herbed-Sausage Sandwich
+  number: 31
+  powers:
+  - level: 2
+    name: Title
+    type: Ground
+  - level: 2
+    name: Exp.
+    type: Fighting
+  - level: 2
+    name: Raid
+    type: Normal
+  seasonings:
+  - Ketchup
+  - Mustard
+  - Bitter Herba Mystica
+- description: A tricky proposition of a sandwich. You might try lightly toasting
+    the curry powder.
+  ingredients:
+  - Rice
+  location: From man in Sandwich shop
+  name: Curry-and-Rice-Style Sandwich
+  number: 32
+  powers:
+  - level: 1
+    name: Humungo
+    type: Normal
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Raid
+    type: Fighting
+  seasonings:
+  - Curry Powder
+  - Mayonnaise
+- description: The spicy addition has made this sandwich a bit more palatable, but
+    still, it's not necessarily for everyone.
+  ingredients:
+  - Rice
+  - Jalapeno
+  location: From man in Sandwich shop
+  name: Great Curry-and-Rice-Style Sandwich
+  number: 33
+  powers:
+  - level: 2
+    name: Humungo
+    type: Grass
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Item
+    type: Normal
+  seasonings:
+  - Curry Powder
+  - Mayonnaise
+- description: "With tasty tomatoes, this sandwich is more approachable than ever\u2014\
+    and yet it remains an acquired taste."
+  ingredients:
+  - Rice
+  - Jalapeno
+  - Tomato
+  location: From man in Sandwich shop
+  name: Ultra Curry-and-Rice-Style Sandwich
+  number: 34
+  powers:
+  - level: 2
+    name: Humungo
+    type: Grass
+  - level: 2
+    name: Encounter
+    type: Normal
+  - level: 1
+    name: Item
+    type: Fairy
+  seasonings:
+  - Curry Powder
+  - Mayonnaise
+- description: A sandwich of intense, provocative spiciness. For all the added ingredients,
+    it remains an adventurous choice.
+  ingredients:
+  - Rice
+  - Jalapeno
+  - Tomato
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Curry-and-Rice-Style Sandwich
+  number: 35
+  powers:
+  - level: 2
+    name: Title
+    type: Grass
+  - level: 2
+    name: Humungo
+    type: Fairy
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Curry Powder
+  - Mayonnaise
+  - Spicy Herba Mystica
+- description: This sandwich is just the thing for dessert time. The yogurt is on
+    the sweeter side.
+  ingredients:
+  - Apple
+  - Apple
+  location: From man in Sandwich shop
+  name: Dessert Sandwich
+  number: 36
+  powers:
+  - level: 1
+    name: Catching
+    type: Flying
+  - level: 1
+    name: Item
+    type: Ice
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Yogurt
+  - Whipped Cream
+- description: The addition of vibrant green kiwi makes this sandwich as pleasing
+    to the eye as to the palate.
+  ingredients:
+  - Apple
+  - Apple
+  - Kiwi
+  location: From man in Sandwich shop
+  name: Great Dessert Sandwich
+  number: 37
+  powers:
+  - level: 2
+    name: Catching
+    type: Flying
+  - level: 1
+    name: Item
+    type: Ice
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Yogurt
+  - Whipped Cream
+- description: A sandwich with a lovely trio of fruits. It's a winner when served
+    slightly chilled.
+  ingredients:
+  - Apple
+  - Apple
+  - Kiwi
+  - Strawberry
+  location: From man in Sandwich shop
+  name: Ultra Dessert Sandwich
+  number: 38
+  powers:
+  - level: 2
+    name: Item
+    type: Flying
+  - level: 2
+    name: Catching
+    type: Ice
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Yogurt
+  - Whipped Cream
+- description: The Dessert Sandwich's ultimate form. Just a hint of herbs will do
+    the trick.
+  ingredients:
+  - Apple
+  - Apple
+  - Kiwi
+  - Strawberry
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Dessert Sandwich
+  number: 39
+  powers:
+  - level: 2
+    name: Title
+    type: Flying
+  - level: 2
+    name: Item
+    type: Poison
+  - level: 2
+    name: Catching
+    type: Fighting
+  seasonings:
+  - Yogurt
+  - Whipped Cream
+  - Sweet Herba Mystica
+- description: The balance of acidity and umami is key. A touch of extra marmalade
+    is the trick to making it special.
+  ingredients:
+  - Klawf Stick
+  - Avocado
+  location: From man in Sandwich shop
+  name: Tropical Sandwich
+  number: 40
+  powers:
+  - level: 1
+    name: Egg
+    type: null
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Dragon
+  seasonings:
+  - Marmalade
+- description: The pineapple unlocks the tropical atmosphere. The more the sourness
+    comes through, the tastier the sandwich.
+  ingredients:
+  - Klawf Stick
+  - Avocado
+  - Pineapple
+  location: From man in Sandwich shop
+  name: Great Tropical Sandwich
+  number: 41
+  powers:
+  - level: 2
+    name: Catching
+    type: Ground
+  - level: 1
+    name: Encounter
+    type: Dark
+  - level: 1
+    name: Item
+    type: Water
+  seasonings:
+  - Marmalade
+- description: A sandwich with an unfamiliar twist. The added spiciness brings depth
+    to the flavors.
+  ingredients:
+  - Klawf Stick
+  - Avocado
+  - Pineapple
+  - Jalapeno
+  location: From man in Sandwich shop
+  name: Ultra Tropical Sandwich
+  number: 42
+  powers:
+  - level: 2
+    name: Catching
+    type: Rock
+  - level: 2
+    name: Item
+    type: Water
+  - level: 1
+    name: Encounter
+    type: Ground
+  seasonings:
+  - Marmalade
+- description: "A sandwich befitting the \u201Ctropical\u201D label. The herbs bring\
+    \ the flavors into tight unison."
+  ingredients:
+  - Klawf Stick
+  - Avocado
+  - Pineapple
+  - Jalapeno
+  location: From man in Sandwich shop if you have Sour Herba Mystica
+  name: Master Tropical Sandwich
+  number: 43
+  powers:
+  - level: 2
+    name: Tite
+    type: Rock
+  - level: 2
+    name: Catching
+    type: Water
+  - level: 2
+    name: Item
+    type: Ground
+  seasonings:
+  - Marmalade
+  - Sour Herba Mystica
+- description: The flavor of this sandwich changes depending on the ripeness of the
+    avocado. One never tires of eating this one.
+  ingredients:
+  - Avocado
+  - Smoked Fillet
+  location: From man in Sandwich shop
+  name: Avocado Sandwich
+  number: 44
+  powers:
+  - level: 1
+    name: Exp.
+    type: Dragon
+  - level: 1
+    name: Encounter
+    type: Electric
+  - level: 1
+    name: Catching
+    type: Dark
+  seasonings:
+  - Salt
+- description: A sandwich with a firm flavor profile. With fillings so widely beloved,
+    it's a sure hit.
+  ingredients:
+  - Avocado
+  - Smoked Fillet
+  - Tomato
+  location: From man in Sandwich shop
+  name: Great Avocado Sandwich
+  number: 45
+  powers:
+  - level: 2
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Catching
+    type: Fairy
+  - level: 1
+    name: Exp.
+    type: Dark
+  seasonings:
+  - Salt
+- description: "A solidly delicious sandwich. It's impossible to go wrong with these\
+    \ fillings\u2014this is flavor you can depend on."
+  ingredients:
+  - Avocado
+  - Smoked Fillet
+  - Tomato
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Ultra Avocado Sandwich
+  number: 46
+  powers:
+  - level: 2
+    name: Exp.
+    type: Grass
+  - level: 2
+    name: Encounter
+    type: Dark
+  - level: 1
+    name: Catching
+    type: Dragon
+  seasonings:
+  - Salt
+- description: The steadfast sandwich in its ultimate form. The salt works its magic,
+    making for a profoundly tasty sandwich.
+  ingredients:
+  - Avocado
+  - Smoked Fillet
+  - Tomato
+  - Lettuce
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Avocado Sandwich
+  number: 47
+  powers:
+  - level: 2
+    name: Title
+    type: Grass
+  - level: 2
+    name: Exp.
+    type: Dark
+  - level: 2
+    name: Encounter
+    type: Dragon
+  seasonings:
+  - Salt
+  - Salty Herba Mystica
+- description: When exactly did this sandwich rise to fame? Where did the recipe even
+    come from? Mysteries abound.
+  ingredients:
+  - Noodles
+  location: From man in Sandwich shop
+  name: Noodle Sandwich
+  number: 48
+  powers:
+  - level: 1
+    name: Encounter
+    type: Poison
+  - level: 1
+    name: Raid
+    type: Rock
+  - level: 1
+    name: Humungo
+    type: Ground
+  seasonings:
+  - Olive Oil
+  - Ketchup
+- description: A nice, filling sandwich. The addition of lettuce makes it more approachable.
+  ingredients:
+  - Noodles
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Great Noodle Sandwich
+  number: 49
+  powers:
+  - level: 2
+    name: Encounter
+    type: Poison
+  - level: 1
+    name: Humungo
+    type: Rock
+  - level: 1
+    name: Raid
+    type: Ground
+  seasonings:
+  - Olive Oil
+  - Ketchup
+- description: This sandwich will fill you up like few others do. The richness of
+    the chorizo works wonders.
+  ingredients:
+  - Noodles
+  - Lettuce
+  - Chorizo
+  location: From man in Sandwich shop
+  name: Ultra Noodle Sandwich
+  number: 50
+  powers:
+  - level: 2
+    name: Encounter
+    type: Poison
+  - level: 2
+    name: Exp.
+    type: Fire
+  - level: 1
+    name: Humungo
+    type: Electric
+  seasonings:
+  - Olive Oil
+  - Ketchup
+- description: The touch of bitterness tugs at the appetite. This is one solid, substantial
+    sandwich.
+  ingredients:
+  - Noodles
+  - Lettuce
+  - Chorizo
+  location: From man in Sandwich shop if you have Bitty Herba Mystica
+  name: Master Noodle Sandwich
+  number: 51
+  powers:
+  - level: 2
+    name: Title
+    type: Poison
+  - level: 2
+    name: Exp.
+    type: Electric
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Olive Oil
+  - Ketchup
+  - Bitter Herba Mystica
+- description: A veggie-forward, filling sandwich. How tasty it ends up being depends
+    entirely on the quality of the potato salad.
+  ingredients:
+  - Potato Salad
+  - Cucumber
+  - Red Bell Pepper
+  location: From man in Sandwich shop
+  name: Potato Salad Sandwich
+  number: 52
+  powers:
+  - level: 1
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Encounter
+    type: Steel
+  - level: 1
+    name: Catching
+    type: Ghost
+  seasonings:
+  - Mayonnaise
+- description: The veggies are the star players of this satisfying sandwich. Tasty
+    even if the avocado is still a tad firm.
+  ingredients:
+  - Potato Salad
+  - Cucumber
+  - Red Bell Pepper
+  - Avocado
+  location: From man in Sandwich shop
+  name: Great Potato Salad Sandwich
+  number: 53
+  powers:
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 1
+    name: Encounter
+    type: Ghost
+  - level: 1
+    name: Humungo
+    type: Bug
+  seasonings:
+  - Mayonnaise
+- description: A sandwich boasting a plethora of different vegetables. Connoisseurs
+    prefer generous amounts of seasoning.
+  ingredients:
+  - Potato Salad
+  - Cucumber
+  - Red Bell Pepper
+  - Avocado
+  - Red Onion
+  location: From man in Sandwich shop
+  name: Ultra Potato Salad Sandwich
+  number: 54
+  powers:
+  - level: 2
+    name: Catching
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Bug
+  - level: 1
+    name: Humungo
+    type: Dragon
+  seasonings:
+  - Mayonnaise
+- description: The ultimate form of the Potato Salad Sandwich. The sweetness of the
+    herbs is what will decide its success.
+  ingredients:
+  - Potato Salad
+  - Cucumber
+  - Red Bell Pepper
+  - Avocado
+  - Red Onion
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Potato Salad Sandwich
+  number: 55
+  powers:
+  - level: 2
+    name: Title
+    type: Ghost
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Mayonnaise
+  - Sweet Herba Mystica
+- description: The spiciness of the sauce brings the sweetness of the veggies to life
+    in this sandwich.
+  ingredients:
+  - Jalapeno
+  - Onion
+  - Herbed Sausage
+  location: From man in Sandwich shop
+  name: Zesty Sandwich
+  number: 56
+  powers:
+  - level: 1
+    name: Humungo
+    type: Psychic
+  - level: 1
+    name: Exp.
+    type: Fighting
+  - level: 1
+    name: Encounter
+    type: Water
+  seasonings:
+  - Chili Sauce
+- description: The bitterness of this sandwich's green bell peppers goes perfectly
+    with the spicy sauce.
+  ingredients:
+  - Jalapeno
+  - Onion
+  - Herbed Sausage
+  - Sliced Green Pepper
+  location: From man in Sandwich shop
+  name: Great Zesty Sandwich
+  number: 57
+  powers:
+  - level: 2
+    name: Humungo
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Exp.
+    type: Water
+  seasonings:
+  - Chili Sauce
+- description: A sandwich packing a nice dose of veggies, whose savory sides are brought
+    out by the spicy sauce.
+  ingredients:
+  - Jalapeno
+  - Onion
+  - Herbed Sausage
+  - Sliced Green Pepper
+  - Watercress
+  location: From man in Sandwich shop
+  name: Ultra Zesty Sandwich
+  number: 58
+  powers:
+  - level: 2
+    name: Humungo
+    type: Psychic
+  - level: 2
+    name: Encounter
+    type: Ground
+  - level: 1
+    name: Exp.
+    type: Fighting
+  seasonings:
+  - Chili Sauce
+- description: A sandwich with such a fine ratio of spiciness to sourness that you'll
+    just keep reaching for more.
+  ingredients:
+  - Jalapeno
+  - Onion
+  - Herbed Sausage
+  - Sliced Green Pepper
+  - Watercress
+  location: From man in Sandwich shop if you have Sour Herba Mystica
+  name: Master Zesty Sandwich
+  number: 59
+  powers:
+  - level: 2
+    name: Title
+    type: Psychic
+  - level: 2
+    name: Teensy
+    type: Fighting
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Chili Sauce
+  - Sour Herba Mystica
+- description: A sandwich with pleasingly straightforward flavors. The fundamental
+    taste of the egg gets to shine.
+  ingredients:
+  - Egg
+  - Cucumber
+  location: From man in Sandwich shop
+  name: Egg Sandwich
+  number: 60
+  powers:
+  - level: 1
+    name: Encounter
+    type: Flying
+  - level: 1
+    name: Exp.
+    type: Steel
+  - level: 1
+    name: Raid
+    type: Rock
+  seasonings:
+  - Salt
+  - Mayonnaise
+- description: The crunch and sweetness of the onion brings out the richness of the
+    egg.
+  ingredients:
+  - Egg
+  - Cucumber
+  - Red Onion
+  location: From man in Sandwich shop
+  name: Great Egg Sandwich
+  number: 61
+  powers:
+  - level: 2
+    name: Encounter
+    type: Flying
+  - level: 1
+    name: Exp.
+    type: Steel
+  - level: 1
+    name: Raid
+    type: Rock
+  seasonings:
+  - Salt
+  - Mayonnaise
+- description: For those who've gotten tired of the plain and simple Egg Sandwich.
+    The egg and the cheese pair beautifully.
+  ingredients:
+  - Egg
+  - Cucumber
+  - Red Onion
+  - Cheese
+  location: From man in Sandwich shop
+  name: Ultra Egg Sandwich
+  number: 62
+  powers:
+  - level: 2
+    name: Encounter
+    type: Flying
+  - level: 2
+    name: Exp.
+    type: Steel
+  - level: 1
+    name: Raid
+    type: Rock
+  seasonings:
+  - Salt
+  - Mayonnaise
+- description: The fully realized Egg Sandwich. Robust saltiness is its standout feature.
+  ingredients:
+  - Egg
+  - Cucumber
+  - Red Onion
+  - Cheese
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Egg Sandwich
+  number: 63
+  powers:
+  - level: 2
+    name: Title
+    type: Flying
+  - level: 2
+    name: Encounter
+    type: Rock
+  - level: 2
+    name: Exp.
+    type: Normal
+  seasonings:
+  - Salt
+  - Mayonnaise
+  - Salty Herba Mystica
+- description: A sandwich with potent fillings. Young people in particular appreciate
+    how substantial it is.
+  ingredients:
+  - Prosciutto
+  - Cheese
+  - Potato Tortilla
+  location: From man in Sandwich shop
+  name: Classic Bocadillo
+  number: 64
+  powers:
+  - level: 1
+    name: Encounter
+    type: Ghost
+  - level: 1
+    name: Catching
+    type: Grass
+  - level: 1
+    name: Item
+    type: Fire
+  seasonings:
+  - Olive Oil
+- description: The spicy flavor gives this sandwich a comforting feel. Especially
+    tasty when the potato tortilla is piping hot.
+  ingredients:
+  - Prosciutto
+  - Cheese
+  - Potato Tortilla
+  location: From man in Sandwich shop
+  name: Great Classic Bocadillo
+  number: 65
+  powers:
+  - level: 2
+    name: Humungo
+    type: Ghost
+  - level: 1
+    name: Catching
+    type: Grass
+  - level: 1
+    name: Encounter
+    type: Fire
+  seasonings:
+  - Olive Oil
+  - Curry Powder
+- description: A sandwich that won't leave you hungry. Well-ripened avocados are better
+    for this one.
+  ingredients:
+  - Prosciutto
+  - Cheese
+  - Potato Tortilla
+  - Avocado
+  location: From man in Sandwich shop
+  name: Ultra Classic Bocadillo
+  number: 66
+  powers:
+  - level: 2
+    name: Humungo
+    type: Dragon
+  - level: 2
+    name: Catching
+    type: Fire
+  - level: 1
+    name: Encounter
+    type: Ghost
+  seasonings:
+  - Olive Oil
+  - Curry Powder
+- description: A deeply substantial sandwich. The bitterness brings harmony to the
+    flavors.
+  ingredients:
+  - Prosciutto
+  - Cheese
+  - Potato Tortilla
+  - Avocado
+  location: From man in Sandwich shop if you have Bitter Herba Mystica
+  name: Master Classic Bocadillo
+  number: 67
+  powers:
+  - level: 2
+    name: Title
+    type: Dragon
+  - level: 2
+    name: Item
+    type: Ghost
+  - level: 2
+    name: Catching
+    type: Normal
+  seasonings:
+  - Olive Oil
+  - Curry Powder
+  - Bitter Herba Mystica
+- description: This sandwich feels like a cousin to a salad. The more tomatoes, the
+    better.
+  ingredients:
+  - Cherry Tomatoes
+  - Avocado
+  location: From man in Sandwich shop
+  name: Refreshing Sandwich
+  number: 68
+  powers:
+  - level: 1
+    name: Catching
+    type: Bug
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Raid
+    type: Dragon
+  seasonings:
+  - Marmalade
+  - Salt
+- description: A fruit-forward sandwich. The kiwi's sourness does it plenty of favors.
+  ingredients:
+  - Cherry Tomatoes
+  - Avocado
+  - Kiwi
+  location: From man in Sandwich shop
+  name: Great Refreshing Sandwich
+  number: 69
+  powers:
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Item
+    type: Poison
+  seasonings:
+  - Marmalade
+  - Salt
+- description: "This sandwich may only have fruits and veggies in it, but it's tasty\
+    \ no matter how into veggies you are\u2014or aren't."
+  ingredients:
+  - Cherry Tomatoes
+  - Avocado
+  - Kiwi
+  - Pickle
+  location: From man in Sandwich shop
+  name: Ultra Refreshing Sandwich
+  number: 70
+  powers:
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 2
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Item
+    type: Poison
+  seasonings:
+  - Marmalade
+  - Salt
+- description: The spicy addition to the sandwich's mostly sour fillings and condiments
+    creates a tantalizing flavor.
+  ingredients:
+  - Cherry Tomatoes
+  - Avocado
+  - Kiwi
+  - Pickle
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Refreshing Sandwich
+  number: 71
+  powers:
+  - level: 2
+    name: Title
+    type: Dragon
+  - level: 2
+    name: Humungo
+    type: Poison
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Marmalade
+  - Salt
+  - Spicy Herba Mystica
+- description: A tried and true sandwich. You can't go wrong with these classic, ordinary
+    flavors.
+  ingredients:
+  - Bacon
+  - Lettuce
+  - Tomato
+  location: From man in Sandwich shop
+  name: BLT Sandwich
+  number: 72
+  powers:
+  - level: 1
+    name: Teensy
+    type: Rock
+  - level: 1
+    name: Encounter
+    type: Fairy
+  - level: 1
+    name: Catching
+    type: Grass
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: Adding basil lends a bit of a rich air to this BLT Sandwich.
+  ingredients:
+  - Bacon
+  - Lettuce
+  - Tomato
+  - Basil
+  location: From man in Sandwich shop
+  name: Great BLT Sandwich
+  number: 73
+  powers:
+  - level: 2
+    name: Teensy
+    type: Grass
+  - level: 1
+    name: Encounter
+    type: Rock
+  - level: 1
+    name: Raid
+    type: Fairy
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: The cheese makes for a more filling experience. The flavors of this
+    sandwich are in perfect balance.
+  ingredients:
+  - Bacon
+  - Lettuce
+  - Tomato
+  - Basil
+  - Cheese
+  location: From man in Sandwich shop
+  name: Ultra BLT Sandwich
+  number: 74
+  powers:
+  - level: 2
+    name: Teensy
+    type: Grass
+  - level: 2
+    name: Encounter
+    type: Rock
+  - level: 1
+    name: Catching
+    type: Fairy
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: The hint of sweetness manages to preserve the harmony between all the
+    fillings of this miraculous sandwich.
+  ingredients:
+  - Bacon
+  - Lettuce
+  - Tomato
+  - Basil
+  - Cheese
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master BLT Sandwich
+  number: 75
+  powers:
+  - level: 2
+    name: Title
+    type: Grass
+  - level: 2
+    name: Catching
+    type: Fairy
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Mayonnaise
+  - Mustard
+  - Sweet Herba Mystica
+- description: The potato salad plays an important part in counteracting the oiliness
+    of the fried fillet.
+  ingredients:
+  - Fried Fillet
+  - Potato Salad
+  location: From man in Sandwich shop
+  name: Fried Fillet Sandwich
+  number: 76
+  powers:
+  - level: 1
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Raid
+    type: Dark
+  - level: 1
+    name: Exp.
+    type: Steel
+  seasonings:
+  - Mayonnaise
+  - Ketchup
+- description: The fresh crunch of the lettuce matches exceptionally well with this
+    sandwich's fried fillet.
+  ingredients:
+  - Fried Fillet
+  - Potato Salad
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Great Fried Fillet Sandwich
+  number: 77
+  powers:
+  - level: 2
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Raid
+    type: Dark
+  - level: 1
+    name: Catching
+    type: Steel
+  seasonings:
+  - Mayonnaise
+  - Ketchup
+- description: The horseradish's invigorating spiciness helps make this a very inviting
+    sandwich.
+  ingredients:
+  - Fried Fillet
+  - Potato Salad
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Ultra Fried Fillet Sandwich
+  number: 78
+  powers:
+  - level: 2
+    name: Teensy
+    type: Bug
+  - level: 2
+    name: Raid
+    type: Dark
+  - level: 1
+    name: Encounter
+    type: Steel
+  seasonings:
+  - Mayonnaise
+  - Ketchup
+  - Horseradish
+- description: This is the ultimate expression of the Fried Fillet Sandwich. The spicy
+    kick makes it an absolute pleasure.
+  ingredients:
+  - Fried Fillet
+  - Potato Salad
+  - Lettuce
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Fried Fillet Sandwich
+  number: 79
+  powers:
+  - level: 2
+    name: Title
+    type: Bug
+  - level: 2
+    name: Humungo
+    type: Steel
+  - level: 2
+    name: Raid
+    type: Normal
+  seasonings:
+  - Mayonnaise
+  - Ketchup
+  - Horseradish
+  - Spicy Herba Mystica
+- description: This sandwich is the embodiment of cheap and tasty. It tastes best
+    when mayonnaise is applied generously.
+  ingredients:
+  - Pickle
+  - Ham
+  location: From man in Sandwich shop
+  name: Ham Sandwich
+  number: 80
+  powers:
+  - level: 1
+    name: Teensy
+    type: Fighting
+  - level: 1
+    name: Encounter
+    type: Normal
+  - level: 1
+    name: Raid
+    type: Ground
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: A sandwich boasting two different types of ham. A little rich, perhaps,
+    but plenty tasty.
+  ingredients:
+  - Pickle
+  - Ham
+  - Prosciutto
+  location: From man in Sandwich shop
+  name: Great Ham Sandwich
+  number: 81
+  powers:
+  - level: 2
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Flying
+  - level: 1
+    name: Raid
+    type: Ground
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: "The stimulating spiciness of the jalape\xF1o draws out the savoriness\
+    \ of the ham."
+  ingredients:
+  - Pickle
+  - Ham
+  - Prosciutto
+  - Jalapeno
+  location: From man in Sandwich shop
+  name: Ultra Ham Sandwich
+  number: 82
+  powers:
+  - level: 2
+    name: Teensy
+    type: Rock
+  - level: 2
+    name: Encounter
+    type: Fairy
+  - level: 1
+    name: Catching
+    type: Grass
+  seasonings:
+  - Mayonnaise
+  - Mustard
+- description: The ultimate Ham Sandwich, with a saltiness that caresses the taste
+    buds. More ham, more happy.
+  ingredients:
+  - Pickle
+  - Ham
+  - Prosciutto
+  - Jalapeno
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Ham Sandwich
+  number: 83
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Encounter
+    type: Fairy
+  - level: 2
+    name: Catching
+    type: Grass
+  seasonings:
+  - Mayonnaise
+  - Mustard
+  - Salty Herba Mystica
+- description: A sandwich for the cheese lover. The simple seasonings make this a
+    welcoming bite.
+  ingredients:
+  - Cheese
+  location: From man in Sandwich shop
+  name: Cheese Sandwich
+  number: 84
+  powers:
+  - level: 1
+    name: Encounter
+    type: Bug
+  - level: 1
+    name: Raid
+    type: Water
+  - level: 1
+    name: Exp.
+    type: Steel
+  seasonings:
+  - Cream Cheese
+  - Pepper
+  - Salt
+- description: A sandwich that will certainly fill you up. It's tastiest when the
+    avocado is just a tad firm.
+  ingredients:
+  - Cheese
+  - Avocado
+  location: From man in Sandwich shop
+  name: Great Cheese Sandwich
+  number: 85
+  powers:
+  - level: 2
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Raid
+    type: Steel
+  - level: 1
+    name: Exp.
+    type: Bug
+  seasonings:
+  - Cream Cheese
+  - Pepper
+  - Salt
+- description: The fragrance of the basil in this sandwich activates the appetite.
+    Using plenty of pepper balances the flavors well.
+  ingredients:
+  - Cheese
+  - Avocado
+  - Basil
+  location: From man in Sandwich shop
+  name: Ultra Cheese Sandwich
+  number: 86
+  powers:
+  - level: 2
+    name: Exp.
+    type: Dragon
+  - level: 2
+    name: Raid
+    type: Electric
+  - level: 1
+    name: Catching
+    type: Water
+  seasonings:
+  - Cream Cheese
+  - Pepper
+  - Salt
+- description: The strong note of salt in this sandwich makes the richness and savoriness
+    of the cheese shine through.
+  ingredients:
+  - Cheese
+  - Avocado
+  - Basil
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Cheese Sandwich
+  number: 87
+  powers:
+  - level: 2
+    name: Title
+    type: Dragon
+  - level: 2
+    name: Exp.
+    type: Electric
+  - level: 2
+    name: Raid
+    type: Water
+  seasonings:
+  - Cream Cheese
+  - Pepper
+  - Salt
+  - Salty Herba Mystica
+- description: The hamburger patty is the heart and soul of this sandwich, but the
+    vinegar's acidic note is what sets it apart.
+  ingredients:
+  - Hamburger
+  - Onion
+  location: From man in Sandwich shop
+  name: Hamburger Patty Sandwich
+  number: 88
+  powers:
+  - level: 1
+    name: Humungo
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Catching
+    type: Steel
+  seasonings:
+  - Vinegar
+  - Pepper
+- description: The hamburger patty is the heart and soul of this sandwich, but the
+    horseradish's spicy kick is what sets it apart.
+  ingredients:
+  - Hamburger
+  - Onion
+  location: From man in Sandwich shop
+  name: Great Hamburger Patty Sandwich
+  number: 89
+  powers:
+  - level: 2
+    name: Humungo
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Catching
+    type: Steel
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Horseradish
+- description: The hamburger patty is the heart and soul of this sandwich, but the
+    watercress's bitter taste is what sets it apart.
+  ingredients:
+  - Hamburger
+  - Onion
+  - Watercress
+  location: From man in Sandwich shop
+  name: Ultra Hamburger Patty Sandwich
+  number: 90
+  powers:
+  - level: 2
+    name: Humungo
+    type: Psychic
+  - level: 2
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Catching
+    type: Steel
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Horseradish
+- description: The hamburger patty is the heart and soul of this sandwich, but the
+    herbs' sweetness is what sets it apart.
+  ingredients:
+  - Hamburger
+  - Onion
+  - Watercress
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Hamburger Patty Sandwich
+  number: 91
+  powers:
+  - level: 2
+    name: Title
+    type: Psychic
+  - level: 2
+    name: Raid
+    type: Dragon
+  - level: 2
+    name: Encounter
+    type: Steel
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Horseradish
+  - Sweet Herba Mystica
+- description: A sandwich with a sophisticated flavor. Nailing the balance between
+    the condiments is crucial.
+  ingredients:
+  - Smoked Fillet
+  - Watercress
+  location: From man in Sandwich shop
+  name: Smoky Sandwich
+  number: 92
+  powers:
+  - level: 1
+    name: Exp.
+    type: Dark
+  - level: 1
+    name: Raid
+    type: Dragon
+  - level: 1
+    name: Encounter
+    type: Psychic
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Salt
+- description: A sandwich with a refreshing flavor. It's tastier if you don't go overboard
+    on the vegetables.
+  ingredients:
+  - Smoked Fillet
+  - Watercress
+  - Red Onion
+  location: From man in Sandwich shop
+  name: Great Smoky Sandwich
+  number: 93
+  powers:
+  - level: 2
+    name: Exp.
+    type: Ghost
+  - level: 1
+    name: Raid
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Dark
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Salt
+- description: A sandwich with a refined flavor. The fragrant basil goes well with
+    the smoked fillet.
+  ingredients:
+  - Smoked Fillet
+  - Watercress
+  - Red Onion
+  - Basil
+  location: From man in Sandwich shop
+  name: Ultra Smoky Sandwich
+  number: 94
+  powers:
+  - level: 2
+    name: Exp.
+    type: Dark
+  - level: 2
+    name: Raid
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Ghost
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Salt
+- description: This sandwich is rumored in some circles to unequivocally be the best
+    way to eat smoked fillet.
+  ingredients:
+  - Smoked Fillet
+  - Watercress
+  - Red Onion
+  - Basil
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Smoky Sandwich
+  number: 95
+  powers:
+  - level: 2
+    name: Title
+    type: Dark
+  - level: 2
+    name: Exp.
+    type: Psychic
+  - level: 2
+    name: Raid
+    type: Ghost
+  seasonings:
+  - Vinegar
+  - Pepper
+  - Salt
+  - Salty Herba Mystica
+- description: Full of fruit. The sophisticated approach is to go easy on the cream
+    and let the ingredients speak for themselves.
+  ingredients:
+  - Banana
+  - Apple
+  - Pineapple
+  - Kiwi
+  location: From man in Sandwich shop
+  name: Fruit Sandwich
+  number: 96
+  powers:
+  - level: 1
+    name: Item
+    type: Normal
+  - level: 1
+    name: Catching
+    type: Ground
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Whipped Cream
+- description: This sandwich feels akin to a treat. Just a hint of marmalade is ideal.
+  ingredients:
+  - Banana
+  - Apple
+  - Pineapple
+  - Kiwi
+  location: From man in Sandwich shop
+  name: Great Fruit Sandwich
+  number: 97
+  powers:
+  - level: 2
+    name: Item
+    type: Normal
+  - level: 1
+    name: Catching
+    type: Poison
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Whipped Cream
+  - Marmalade
+- description: This sandwich feels quite dessert-like. It's best when you don't go
+    overboard on the yogurt.
+  ingredients:
+  - Banana
+  - Apple
+  - Pineapple
+  - Kiwi
+  location: From man in Sandwich shop
+  name: Ultra Fruit Sandwich
+  number: 98
+  powers:
+  - level: 2
+    name: Item
+    type: Normal
+  - level: 2
+    name: Catching
+    type: Poison
+  - level: 1
+    name: Egg
+    type: null
+  seasonings:
+  - Whipped Cream
+  - Marmalade
+  - Yogurt
+- description: A sandwich whose flavors positively sing. It's best when you don't
+    go overboard on the herbs.
+  ingredients:
+  - Banana
+  - Apple
+  - Pineapple
+  - Kiwi
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Fruit Sandwich
+  number: 99
+  powers:
+  - level: 2
+    name: Title
+    type: Normal
+  - level: 2
+    name: Item
+    type: Poison
+  - level: 2
+    name: Catching
+    type: Flying
+  seasonings:
+  - Whipped Cream
+  - Marmalade
+  - Yogurt
+  - Sweet Herba Mystica
+- description: A sandwich with a range of flavors to enjoy. The fillings can be in
+    whatever proportions you like.
+  ingredients:
+  - Prosciutto
+  - Cherry Tomatoes
+  - Smoked Fillet
+  location: From man in Sandwich shop
+  name: Variety Sandwich
+  number: 100
+  powers:
+  - level: 1
+    name: Teensy
+    type: Fighting
+  - level: 1
+    name: Encounter
+    type: Dark
+  - level: 1
+    name: Catching
+    type: Bug
+  seasonings:
+  - Salt
+  - Vinegar
+- description: A sandwich popular with younger folks. The potato salad leaves you
+    pleasantly full.
+  ingredients:
+  - Prosciutto
+  - Cherry Tomatoes
+  - Smoked Fillet
+  - Potato Salad
+  location: From man in Sandwich shop
+  name: Great Variety Sandwich
+  number: 101
+  powers:
+  - level: 2
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Encounter
+    type: Dragon
+  - level: 1
+    name: Catching
+    type: Dark
+  seasonings:
+  - Salt
+  - Vinegar
+- description: The addition of hamburger brings more heft. Younger folks tend to like
+    this with plenty of condiments.
+  ingredients:
+  - Prosciutto
+  - Cherry Tomatoes
+  - Smoked Fillet
+  - Potato Salad
+  - Hamburger
+  location: From man in Sandwich shop
+  name: Ultra Variety Sandwich
+  number: 102
+  powers:
+  - level: 2
+    name: Encounter
+    type: Bug
+  - level: 2
+    name: Catching
+    type: Dark
+  - level: 1
+    name: Humungo
+    type: Steel
+  seasonings:
+  - Salt
+  - Vinegar
+- description: A connoisseur's sandwich, with the fillings tied together by a supreme
+    note of bitterness.
+  ingredients:
+  - Prosciutto
+  - Cherry Tomatoes
+  - Smoked Fillet
+  - Potato Salad
+  - Hamburger
+  location: From man in Sandwich shop if you have Bitter Herba Mystica
+  name: Master Variety Sandwich
+  number: 103
+  powers:
+  - level: 2
+    name: Title
+    type: Bug
+  - level: 2
+    name: Exp.
+    type: Steel
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Salt
+  - Vinegar
+  - Bitter Herba Mystica
+- description: A sandwich that fills you up well without being too heavy. Ideal for
+    those in search of a light meal.
+  ingredients:
+  - Klawf Stick
+  - Tomato
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Klawf Claw Sandwich
+  number: 104
+  powers:
+  - level: 1
+    name: Encounter
+    type: Grass
+  - level: 1
+    name: Catching
+    type: Fairy
+  - level: 1
+    name: Item
+    type: Ice
+  seasonings:
+  - Salt
+  - Olive Oil
+- description: A sandwich for the somewhat mature palate, with an addictively spicy
+    note from the sauce.
+  ingredients:
+  - Klawf Stick
+  - Tomato
+  - Lettuce
+  location: From man in Sandwich shop
+  name: Great Klawf Claw Sandwich
+  number: 105
+  powers:
+  - level: 2
+    name: Encounter
+    type: Grass
+  - level: 1
+    name: Catching
+    type: Fairy
+  - level: 1
+    name: Item
+    type: Ice
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Wasabi
+- description: A sandwich that spares no detail. The crunch of the bell pepper provides
+    a lovely accent.
+  ingredients:
+  - Klawf Stick
+  - Tomato
+  - Lettuce
+  - Yellow Bell Pepper
+  location: From man in Sandwich shop
+  name: Ultra Klawf Claw Sandwich
+  number: 106
+  powers:
+  - level: 2
+    name: Encounter
+    type: Grass
+  - level: 2
+    name: Catching
+    type: Ice
+  - level: 1
+    name: Item
+    type: Electric
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Wasabi
+- description: This sandwich's savory flavors stand out even more boldly thanks to
+    the boost of spiciness.
+  ingredients:
+  - Klawf Stick
+  - Tomato
+  - Lettuce
+  - Yellow Bell Pepper
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Klawf Claw Sandwich
+  number: 107
+  powers:
+  - level: 2
+    name: Title
+    type: Grass
+  - level: 2
+    name: Humungo
+    type: Ice
+  - level: 2
+    name: Encounter
+    type: Electric
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Wasabi
+  - Spicy Herba Mystica
+- description: It's a close cousin to the Fruit Sandwich, but the butter sets this
+    one apart.
+  ingredients:
+  - Banana
+  - Apple
+  - Cheese
+  location: From man in Sandwich shop
+  name: Sweet Sandwich
+  number: 108
+  powers:
+  - level: 1
+    name: Egg
+    type: null
+  - level: 1
+    name: Item
+    type: Bug
+  - level: 1
+    name: Raid
+    type: Flying
+  seasonings:
+  - Whipped Cream
+  - Butter
+- description: The pinch of salt serves to tease out the sweetness of this sandwich's
+    fillings.
+  ingredients:
+  - Banana
+  - Apple
+  - Cheese
+  location: From man in Sandwich shop
+  name: Great Sweet Sandwich
+  number: 109
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 1
+    name: Item
+    type: Bug
+  - level: 1
+    name: Raid
+    type: Flying
+  seasonings:
+  - Whipped Cream
+  - Butter
+  - Salt
+- description: The basil's light touch of bitter flavor helps bring this sandwich's
+    other fillings to life.
+  ingredients:
+  - Banana
+  - Apple
+  - Cheese
+  - Basil
+  location: From man in Sandwich shop
+  name: Ultra Sweet Sandwich
+  number: 110
+  powers:
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Item
+    type: Flying
+  - level: 1
+    name: Raid
+    type: Normal
+  seasonings:
+  - Whipped Cream
+  - Butter
+  - Salt
+- description: A sandwich with a subtle note of sourness. The slightest amount of
+    herbs is all that's needed.
+  ingredients:
+  - Banana
+  - Apple
+  - Cheese
+  - Basil
+  location: From man in Sandwich shop if you have Sour Herba Mystica
+  name: Master Sweet Sandwich
+  number: 111
+  powers:
+  - level: 2
+    name: Title
+    type: Electric
+  - level: 2
+    name: Catching
+    type: Normal
+  - level: 2
+    name: Item
+    type: Fighting
+  seasonings:
+  - Whipped Cream
+  - Butter
+  - Salt
+  - Sour Herba Mystica
+- description: A juicy, vegetable-laden sandwich. The fresher the veggies, the tastier
+    the dish.
+  ingredients:
+  - Sliced Green Pepper
+  - Cherry Tomatoes
+  - Cucumber
+  location: From your mother in Cabo Poco
+  name: Vegetable Sandwich
+  number: 112
+  powers:
+  - level: 1
+    name: Teensy
+    type: Poison
+  - level: 1
+    name: Encounter
+    type: Water
+  - level: 1
+    name: Catching
+    type: Bug
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Vinegar
+- description: A sandwich featuring an all-veggie lineup of fillings. The condiments
+    play a major role in the overall flavor.
+  ingredients:
+  - Sliced Green Pepper
+  - Cherry Tomatoes
+  - Cucumber
+  - Red Onion
+  location: From your mother in Cabo Poco
+  name: Great Vegetable Sandwich
+  number: 113
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ghost
+  - level: 1
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Catching
+    type: Poison
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Vinegar
+- description: Veggies are this sandwich's bread and butter, so to speak. Adding plenty
+    of watercress firms up the flavor.
+  ingredients:
+  - Sliced Green Pepper
+  - Cherry Tomatoes
+  - Cucumber
+  - Red Onion
+  - Watercress
+  location: From your mother in Cabo Poco
+  name: Ultra Vegetable Sandwich
+  number: 114
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ghost
+  - level: 2
+    name: Teensy
+    type: Bug
+  - level: 1
+    name: Catching
+    type: Poison
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Vinegar
+- description: The fully realized all-veggie sandwich. The overall quality depends
+    hugely on how thickly you lay on the herbs.
+  ingredients:
+  - Sliced Green Pepper
+  - Cherry Tomatoes
+  - Cucumber
+  - Red Onion
+  - Watercress
+  location: From your mother in Cabo Poco if you have Salty Herba Mystica
+  name: Master Vegetable Sandwich
+  number: 115
+  powers:
+  - level: 2
+    name: Title
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Bug
+  - level: 2
+    name: Catching
+    type: Poison
+  seasonings:
+  - Salt
+  - Olive Oil
+  - Vinegar
+  - Salty Herba Mystica
+- description: A sandwich that only has time for the ingredients that'll fill you
+    up the best.
+  ingredients:
+  - Potato Tortilla
+  - Fried Fillet
+  - Prosciutto
+  - Potato Salad
+  location: From man in Sandwich shop
+  name: Hefty Sandwich
+  number: 116
+  powers:
+  - level: 1
+    name: Encounter
+    type: Steel
+  - level: 1
+    name: Raid
+    type: Ghost
+  - level: 1
+    name: Catching
+    type: Bug
+  seasonings:
+  - Salt
+  - Peanut Butter
+- description: A sandwich whose main goal is filling up the tummy. Flavor is nice,
+    but quantity is the main concern.
+  ingredients:
+  - Potato Tortilla
+  - Fried Fillet
+  - Prosciutto
+  - Potato Salad
+  - Herbed Sausage
+  location: From man in Sandwich shop
+  name: Great Hefty Sandwich
+  number: 117
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ghost
+  - level: 1
+    name: Raid
+    type: Psychic
+  - level: 1
+    name: Catching
+    type: Dark
+  seasonings:
+  - Salt
+  - Peanut Butter
+- description: A sandwich devoted to the cause of filling up the tummy. Eaters should
+    know what they're getting into.
+  ingredients:
+  - Potato Tortilla
+  - Fried Fillet
+  - Prosciutto
+  - Potato Salad
+  - Herbed Sausage
+  - Hamburger
+  location: From man in Sandwich shop
+  name: Ultra Hefty Sandwich
+  number: 118
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ghost
+  - level: 2
+    name: Catching
+    type: Steel
+  - level: 1
+    name: Raid
+    type: Dark
+  seasonings:
+  - Salt
+  - Peanut Butter
+- description: A bright acidic note makes this sandwich a pleasure to eat, though
+    it doesn't change the impact of the sheer volume.
+  ingredients:
+  - Potato Tortilla
+  - Fried Fillet
+  - Prosciutto
+  - Potato Salad
+  - Herbed Sausage
+  - Hamburger
+  location: From man in Sandwich shop if you have Sour Herba Mystica
+  name: Master Hefty Sandwich
+  number: 119
+  powers:
+  - level: 2
+    name: Title
+    type: Ghost
+  - level: 2
+    name: Teensy
+    type: Dark
+  - level: 2
+    name: Catching
+    type: Normal
+  seasonings:
+  - Salt
+  - Peanut Butter
+  - Sour Herba Mystica
+- description: As the name suggests, this sandwich packs a bit of heat. Enjoying these
+    veggies is a mark of grown-up taste.
+  ingredients:
+  - Chorizo
+  - Onion
+  - Sliced Green Pepper
+  location: From man in Sandwich shop
+  name: Five-Alarm Sandwich
+  number: 120
+  powers:
+  - level: 1
+    name: Humungo
+    type: Poison
+  - level: 1
+    name: Exp.
+    type: Normal
+  - level: 1
+    name: Raid
+    type: Dragon
+  seasonings:
+  - Mustard
+  - Chili Sauce
+  - Pepper
+- description: Achieving proper balance between the condiments is delicate work. The
+    fragrance of basil whets the appetite.
+  ingredients:
+  - Chorizo
+  - Onion
+  - Sliced Green Pepper
+  - Basil
+  location: From man in Sandwich shop
+  name: Great Five-Alarm Sandwich
+  number: 121
+  powers:
+  - level: 2
+    name: Humungo
+    type: Poison
+  - level: 1
+    name: Raid
+    type: Fire
+  - level: 1
+    name: Exp.
+    type: Dragon
+  seasonings:
+  - Mustard
+  - Chili Sauce
+  - Pepper
+- description: This sandwich has become yet spicier and more appealing to grown-up
+    tastes. It's not necessarily for everyone.
+  ingredients:
+  - Chorizo
+  - Onion
+  - Sliced Green Pepper
+  - Basil
+  - Jalapeno
+  location: From man in Sandwich shop
+  name: Ultra Five-Alarm Sandwich
+  number: 122
+  powers:
+  - level: 2
+    name: Humungo
+    type: Poison
+  - level: 2
+    name: Raid
+    type: Fire
+  - level: 1
+    name: Exp.
+    type: Dragon
+  seasonings:
+  - Mustard
+  - Chili Sauce
+  - Pepper
+- description: This sandwich is spicy to the core. If you're not seeking such stimulation,
+    it may not be for you.
+  ingredients:
+  - Chorizo
+  - Onion
+  - Sliced Green Pepper
+  - Basil
+  - Jalapeno
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Five-Alarm Sandwich
+  number: 123
+  powers:
+  - level: 2
+    name: Title
+    type: Poison
+  - level: 2
+    name: Humungo
+    type: Dragon
+  - level: 2
+    name: Raid
+    type: Normal
+  seasonings:
+  - Mustard
+  - Chili Sauce
+  - Pepper
+  - Spicy Herba Mystica
+- description: A vegetable-centric sandwich whose sauce delivers a particular shocking
+    kick.
+  ingredients:
+  - Watercress
+  - Yellow Bell Pepper
+  - Onion
+  - Tomato
+  location: From man in Sandwich shop
+  name: Nouveau Veggie Sandwich
+  number: 124
+  powers:
+  - level: 1
+    name: Item
+    type: Electric
+  - level: 1
+    name: Encounter
+    type: Fairy
+  - level: 1
+    name: Catching
+    type: Psychic
+  seasonings:
+  - Olive Oil
+  - Wasabi
+- description: This sandwich boasts an all-star vegetable cast. It's best to eat it
+    immediately after the cucumber has been added.
+  ingredients:
+  - Watercress
+  - Yellow Bell Pepper
+  - Onion
+  - Tomato
+  - Cucumber
+  location: From your mother in Cabo Poco
+  name: Great Nouveau Veggie Sandwich
+  number: 125
+  powers:
+  - level: 2
+    name: Item
+    type: Electric
+  - level: 1
+    name: Encounter
+    type: Fairy
+  - level: 1
+    name: Catching
+    type: Psychic
+  seasonings:
+  - Olive Oil
+  - Wasabi
+- description: A sandwich one can proudly offer to a veggie lover. Use just enough
+    mayonnaise to provide a little flavor accent.
+  ingredients:
+  - Watercress
+  - Yellow Bell Pepper
+  - Onion
+  - Tomato
+  - Cucumber
+  location: From your mother in Cabo Poco
+  name: Ultra Nouveau Veggie Sandwich
+  number: 126
+  powers:
+  - level: 2
+    name: Teensy
+    type: Electric
+  - level: 2
+    name: Encounter
+    type: Fairy
+  - level: 1
+    name: Catching
+    type: Psychic
+  seasonings:
+  - Olive Oil
+  - Wasabi
+  - Mayonnaise
+- description: Veggies are this sandwich's sole purpose. Adding a touch of sweet makes
+    the veggies' natural savoriness stand out.
+  ingredients:
+  - Watercress
+  - Yellow Bell Pepper
+  - Onion
+  - Tomato
+  - Cucumber
+  location: From your mother in Cabo Poco if you have Sweet Herba Mystica
+  name: Master Nouveau Veggie Sandwich
+  number: 127
+  powers:
+  - level: 2
+    name: Title
+    type: Electric
+  - level: 2
+    name: Catching
+    type: Fairy
+  - level: 2
+    name: Encounter
+    type: Psychic
+  seasonings:
+  - Olive Oil
+  - Wasabi
+  - Mayonnaise
+  - Sweet Herba Mystica
+- description: A sandwich that pairs the sweetness of butter with the spicy kick of
+    horseradish.
+  ingredients:
+  - Hamburger
+  - Tomato
+  - Kiwi
+  - Pineapple
+  location: From man in Sandwich shop
+  name: Spicy-Sweet Sandwich
+  number: 128
+  powers:
+  - level: 1
+    name: Catching
+    type: Poison
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Item
+    type: Ground
+  seasonings:
+  - Butter
+  - Horseradish
+- description: The richness of the avocado shines in this sandwich. The balance between
+    the fruits is key to making it tasty.
+  ingredients:
+  - Hamburger
+  - Tomato
+  - Kiwi
+  - Pineapple
+  - Avocado
+  location: From man in Sandwich shop
+  name: Great Spicy-Sweet Sandwich
+  number: 129
+  powers:
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 1
+    name: Encounter
+    type: Ground
+  - level: 1
+    name: Item
+    type: Poison
+  seasonings:
+  - Butter
+  - Horseradish
+- description: This sandwich walks a tightrope between sweet and spicy. Tastiest when
+    the cheese is abundant.
+  ingredients:
+  - Hamburger
+  - Tomato
+  - Kiwi
+  - Pineapple
+  - Avocado
+  - Cheese
+  location: From man in Sandwich shop
+  name: Ultra Spicy-Sweet Sandwich
+  number: 130
+  powers:
+  - level: 2
+    name: Catching
+    type: Dragon
+  - level: 2
+    name: Encounter
+    type: Ground
+  - level: 1
+    name: Item
+    type: Poison
+  seasonings:
+  - Butter
+  - Horseradish
+- description: The hint of bitterness in this sandwich creates a new harmony between
+    the spicy and sweet flavors.
+  ingredients:
+  - Hamburger
+  - Tomato
+  - Kiwi
+  - Pineapple
+  - Avocado
+  - Cheese
+  location: From man in Sandwich shop if you have Bitter Herba Mystica
+  name: Master Spicy-Sweet Sandwich
+  number: 131
+  powers:
+  - level: 2
+    name: Title
+    type: Dragon
+  - level: 2
+    name: Item
+    type: Poison
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Butter
+  - Horseradish
+  - Bitter Herba Mystica
+- description: "This sandwich's fillings speak for themselves\u2014loudly\u2014 so\
+    \ it's tastiest when you go light on the condiments."
+  ingredients:
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  - Basil
+  location: From man in Sandwich shop
+  name: Decadent Sandwich
+  number: 132
+  powers:
+  - level: 1
+    name: Exp.
+    type: Ice
+  - level: 1
+    name: Raid
+    type: Psychic
+  - level: 1
+    name: Encounter
+    type: Dark
+  seasonings:
+  - Vinegar
+  - Olive Oil
+  - Salt
+- description: This sandwich uses truly precious and fine ingredients. The tofu lends
+    it more substance.
+  ingredients:
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  - Basil
+  - Tofu
+  location: From man in Sandwich shop
+  name: Great Decadent Sandwich
+  number: 133
+  powers:
+  - level: 2
+    name: Exp.
+    type: Ice
+  - level: 1
+    name: Encounter
+    type: Normal
+  - level: 1
+    name: Catching
+    type: Dark
+  seasonings:
+  - Vinegar
+  - Olive Oil
+  - Salt
+- description: Achieving balance between these ingredients is no easy feat. Tastiest
+    when the seasonings are piled on a bit.
+  ingredients:
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  - Basil
+  - Tofu
+  - Red Onion
+  location: From man in Sandwich shop
+  name: Ultra Decadent Sandwich
+  number: 134
+  powers:
+  - level: 2
+    name: Exp.
+    type: Ghost
+  - level: 2
+    name: Encounter
+    type: Dark
+  - level: 1
+    name: Catching
+    type: Ice
+  seasonings:
+  - Vinegar
+  - Olive Oil
+  - Salt
+- description: Adding the ultimate in spiciness makes this sandwich of distinct, vibrant
+    ingredients into a unified masterpiece.
+  ingredients:
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  - Basil
+  - Tofu
+  - Red Onion
+  location: From man in Sandwich shop if you have Spicy Herba Mystica
+  name: Master Decadent Sandwich
+  number: 135
+  powers:
+  - level: 2
+    name: Title
+    type: Ghost
+  - level: 2
+    name: Humungo
+    type: Dark
+  - level: 2
+    name: Encounter
+    type: Ice
+  seasonings:
+  - Vinegar
+  - Olive Oil
+  - Salt
+  - Spicy Herba Mystica
+- description: A sandwich designed by and for tofu lovers. It will never leave you
+    hungry.
+  ingredients:
+  - Tofu
+  - Tofu
+  - Rice
+  - Lettuce
+  - Avocado
+  location: From man in Sandwich shop
+  name: Tofu Sandwich
+  number: 136
+  powers:
+  - level: 1
+    name: Encounter
+    type: Normal
+  - level: 1
+    name: Egg
+    type: null
+  - level: 1
+    name: Catching
+    type: Grass
+  seasonings:
+  - Wasabi
+  - Salt
+- description: This sandwich is not the easiest to pull off. Be sure to drain the
+    tofu thoroughly.
+  ingredients:
+  - Tofu
+  - Tofu
+  - Rice
+  - Lettuce
+  - Avocado
+  location: From man in Sandwich shop
+  name: Great Tofu Sandwich
+  number: 137
+  powers:
+  - level: 2
+    name: Encounter
+    type: Normal
+  - level: 1
+    name: Raid
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Grass
+  seasonings:
+  - Wasabi
+  - Salt
+  - Horseradish
+- description: The simple flavor of the tofu and the bitterness of the watercress
+    make for a strangely appealing match.
+  ingredients:
+  - Tofu
+  - Tofu
+  - Rice
+  - Lettuce
+  - Avocado
+  - Watercress
+  location: From man in Sandwich shop
+  name: Ultra Tofu Sandwich
+  number: 138
+  powers:
+  - level: 2
+    name: Raid
+    type: Normal
+  - level: 2
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Grass
+  seasonings:
+  - Wasabi
+  - Salt
+  - Horseradish
+- description: The precious herbs' saltiness makes the tofu's savory notes shine through.
+  ingredients:
+  - Tofu
+  - Tofu
+  - Rice
+  - Lettuce
+  - Avocado
+  - Watercress
+  location: From man in Sandwich shop if you have Salty Herba Mystica
+  name: Master Tofu Sandwich
+  number: 139
+  powers:
+  - level: 2
+    name: Title
+    type: Normal
+  - level: 2
+    name: Encounter
+    type: Grass
+  - level: 2
+    name: Catching
+    type: Fighting
+  seasonings:
+  - Wasabi
+  - Salt
+  - Horseradish
+  - Salty Herba Mystica
+- description: "While others ask \u201Cwhy?,\u201D this sandwich asks, \u201Cwhy not?\u201D\
+    \ It's best when the curry powder is lightly toasted."
+  ingredients:
+  - Noodles
+  - Red Bell Pepper
+  - Bacon
+  - Yellow Bell Pepper
+  location: From man in Sandwich shop
+  name: Curry-and-Noodle Sandwich
+  number: 140
+  powers:
+  - level: 1
+    name: Exp.
+    type: Electric
+  - level: 1
+    name: Encounter
+    type: Psychic
+  - level: 1
+    name: Catching
+    type: Rock
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: "The eye-widening spiciness of the jalape\xF1o heightens the curry\
+    \ flavor."
+  ingredients:
+  - Noodles
+  - Red Bell Pepper
+  - Bacon
+  - Yellow Bell Pepper
+  - Jalapeno
+  location: From man in Sandwich shop
+  name: Great Curry-and-Noodle Sandwich
+  number: 141
+  powers:
+  - level: 2
+    name: Item
+    type: Rock
+  - level: 1
+    name: Encounter
+    type: Psychic
+  - level: 1
+    name: Catching
+    type: Electric
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: The eggs provide a mellow coating over the spicy flavors beneath.
+  ingredients:
+  - Noodles
+  - Red Bell Pepper
+  - Bacon
+  - Yellow Bell Pepper
+  - Jalapeno
+  - Egg
+  location: From man in Sandwich shop
+  name: Ultra Curry-and-Noodle Sandwich
+  number: 142
+  powers:
+  - level: 2
+    name: Exp.
+    type: Rock
+  - level: 2
+    name: Encounter
+    type: Grass
+  - level: 1
+    name: Catching
+    type: Ice
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: The faint sweetness perfects the taste, bringing new depth and richness
+    to the sandwich.
+  ingredients:
+  - Noodles
+  - Red Bell Pepper
+  - Bacon
+  - Yellow Bell Pepper
+  - Jalapeno
+  - Egg
+  location: From man in Sandwich shop if you have Sweet Herba Mystica
+  name: Master Curry-and-Noodle Sandwich
+  number: 143
+  powers:
+  - level: 2
+    name: Title
+    type: Rock
+  - level: 2
+    name: Egg
+    type: null
+  - level: 2
+    name: Encounter
+    type: Normal
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+  - Sweet Herba Mystica
+- description: To this sandwich, the righteous path lies in sheer quantity. It's downright
+    aggressive in its effort to fill you up.
+  ingredients:
+  - Hamburger
+  - Noodles
+  - Potato Salad
+  - Rice
+  location: From man in Sandwich shop
+  name: Tower Sandwich
+  number: 144
+  powers:
+  - level: 1
+    name: Exp.
+    type: Steel
+  - level: 1
+    name: Encounter
+    type: Fire
+  - level: 1
+    name: Humungo
+    type: Ghost
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: This sandwich prioritizes filling you up first and foremost. It's not
+    particularly concerned with flavor.
+  ingredients:
+  - Hamburger
+  - Noodles
+  - Potato Salad
+  - Rice
+  - Klawf Stick
+  location: From man in Sandwich shop
+  name: Great Tower Sandwich
+  number: 145
+  powers:
+  - level: 2
+    name: Exp.
+    type: Steel
+  - level: 1
+    name: Encounter
+    type: Ghost
+  - level: 1
+    name: Humungo
+    type: Ice
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: A sandwich concerned only with volume. It can be tasty, too, depending
+    on the seasonings.
+  ingredients:
+  - Hamburger
+  - Noodles
+  - Potato Salad
+  - Rice
+  - Klawf Stick
+  - Tofu
+  location: From man in Sandwich shop
+  name: Ultra Tower Sandwich
+  number: 146
+  powers:
+  - level: 2
+    name: Encounter
+    type: Steel
+  - level: 2
+    name: Humungo
+    type: Ice
+  - level: 2
+    name: Catching
+    type: Normal
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+- description: Thanks to the magic of spice, this ultra-voluminous sandwich even manages
+    to taste rather good.
+  ingredients:
+  - Hamburger
+  - Noodles
+  - Potato Salad
+  - Rice
+  - Klawf Stick
+  - Tofu
+  location: From man in Sandwich shop if you have Bitter Herba Mystica
+  name: Master Tower Sandwich
+  number: 147
+  powers:
+  - level: 2
+    name: Title
+    type: Steel
+  - level: 2
+    name: Encounter
+    type: Normal
+  - level: 2
+    name: Exp.
+    type: Fighting
+  seasonings:
+  - Olive Oil
+  - Salt
+  - Curry Powder
+  - Bitter Herba Mystica
+- description: "A sandwich that aspires to be sushi. Are you surprised at how tasty\
+    \ it is? Good\u2014that's the idea."
+  ingredients:
+  - Rice
+  - Smoked Fillet
+  - Smoked Fillet
+  - Klawf Stick
+  location: From Sushi Oficianado in Casseroya Lake
+  name: Sushi Sandwich
+  number: 148
+  powers:
+  - level: 1
+    name: Encounter
+    type: Dark
+  - level: 1
+    name: Catching
+    type: Fighting
+  - level: 1
+    name: Humungo
+    type: Normal
+  seasonings:
+  - Salt
+  - Vinegar
+  - Wasabi
+- description: A sandwich made with a love of sushi foremost in the mind. The bitterness
+    of the watercress works well here.
+  ingredients:
+  - Rice
+  - Smoked Fillet
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  location: From Sushi Oficianado in Casseroya Lake
+  name: Great Sushi Sandwich
+  number: 149
+  powers:
+  - level: 2
+    name: Exp.
+    type: Dark
+  - level: 1
+    name: Encounter
+    type: Fighting
+  - level: 1
+    name: Catching
+    type: Normal
+  seasonings:
+  - Salt
+  - Vinegar
+  - Wasabi
+- description: A sandwich dreamed up by a sushi aficionado. The sheer amount of sandwich
+    going on here is part of the appeal.
+  ingredients:
+  - Rice
+  - Smoked Fillet
+  - Smoked Fillet
+  - Klawf Stick
+  - Watercress
+  - Klawf Stick
+  location: From Sushi Oficianado in Casseroya Lake
+  name: Ultra Sushi Sandwich
+  number: 150
+  powers:
+  - level: 2
+    name: Encounter
+    type: Ice
+  - level: 2
+    name: Catching
+    type: Normal
+  - level: 1
+    name: Humungo
+    type: Dark
+  seasonings:
+  - Salt
+  - Vinegar
+  - Wasabi
+

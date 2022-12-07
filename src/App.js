@@ -2,6 +2,7 @@ import './App.css';
 import './style/main.css';
 import { renderUi } from './scripts/ui.js'
 import { useEffect } from 'react';
+import { default as img } from './res/img/all.js'
 
 function App() {
   useEffect(() => {
@@ -87,7 +88,7 @@ function App() {
         </span>
       </div>
       <div class="section">
-        <img class="header" src="img/enigma.png" />
+        <img class="header" src={img.enigma} />
       </div>
     </div>
   );

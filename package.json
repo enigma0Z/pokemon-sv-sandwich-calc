@@ -13,11 +13,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "start": "nodemon -w . -e 'js css html svg png jpg' --exec npm run build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "images": "node scripts/images.js"
   },
   "eslintConfig": {
     "extends": [

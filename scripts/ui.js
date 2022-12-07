@@ -1,5 +1,5 @@
 import {
-  SandwichData, 
+  SandwichData,
   lookupIngredientByName, lookupSeasoningByName, sumComponents,
   sortValueName, addFlavorResult, combineComponents, sortValueType, calculateSandwich, sortValuePower, sortValueTaste
 } from './calc.js'
@@ -40,7 +40,7 @@ function getSeasonings() {
 
 function setIngredients(ingredients) {
   const selects = getIngredientSelects()
-  for (let i=0; i<ingredients.length; i++) {
+  for (let i = 0; i < ingredients.length; i++) {
     selects[i].value = ingredients[i]
     selects[i].oninput()
   }
@@ -48,7 +48,7 @@ function setIngredients(ingredients) {
 
 function setSeasonings(seasonings) {
   const selects = getSeasoningSelects()
-  for (let i=0; i<seasonings.length; i++) {
+  for (let i = 0; i < seasonings.length; i++) {
     selects[i].value = seasonings[i]
     selects[i].oninput()
   }
@@ -56,7 +56,7 @@ function setSeasonings(seasonings) {
 
 function renderSandwichResult(result) {
   const Ul = document.createElement('ul')
-  const Li = [ 
+  const Li = [
     document.createElement('li'),
     document.createElement('li'),
     document.createElement('li')
@@ -65,7 +65,7 @@ function renderSandwichResult(result) {
   Ul.appendChild(Li[1])
   Ul.appendChild(Li[2])
 
-  for (let i=0; i<3; i++) {
+  for (let i = 0; i < 3; i++) {
     Li[i].innerText = `${result.powers[i].name} Power`
     if (result.powers[i].name !== 'Egg') {
       Li[i].innerText += `: ${result.powers[i].type}`
@@ -81,7 +81,7 @@ function renderAttribute(object, quantity, sortingKind = sortValueName) {
   console.debug('renderAttribute', object, quantity)
   const Table = document.createElement('table')
   for (let item of Object.keys(object)
-    .map( (key) => {return { name: key, value: object[key]}} )
+    .map((key) => { return { name: key, value: object[key] } })
     .sort(sortingKind)
   ) {
     if (item.value === 0) continue;
@@ -164,7 +164,7 @@ function ingredientSelect() {
     OptionElement.innerText = ingredient.name
     SelectElement.appendChild(OptionElement)
   }
-  
+
   return SelectDiv
 }
 
@@ -189,7 +189,7 @@ function seasoningSelect() {
       const attribute = lookupSeasoningByName(SelectElement.value)
       ElementAttributesDiv.appendChild(renderAttributes(attribute))
     }
-    
+
     updateUri()
     renderSandwich()
   }
@@ -200,7 +200,7 @@ function seasoningSelect() {
     OptionElement.innerText = seasoning.name
     SelectElement.appendChild(OptionElement)
   }
-  
+
   return SelectDiv
 }
 

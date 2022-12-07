@@ -1,873 +1,874 @@
-ingredients: 
-  - name: apple
-    max: 3
-    taste: 
-      Sweet: 4
-      Sour: 3
-      Bitter: 1
-    power:
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Flying: 7
-      Steel: 7
-      Ice: 7
-  - name: avocado
-    max: 3
-    taste:
-      Sweet: 3
-      Sour: 1
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Dragon: 6
-  - name: bacon
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 5
-      Sour: 1
-      Bitter: 4
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Rock: 6
-  - name: banana
-    max: 3
-    taste:
-      Sweet: 4
-      Sour: 1
-    power:
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Normal: 7
-      Bug: 7
-      Electric: 7
-  - name: basil
-    max: 1
-    taste:
-      Salty: 1
-      Sour: 1
-      Bitter: 4
-    power:
-      Egg: 2
-      Raid: 2
-      Encounter: -2
-    type:
-      Fire: 1
-      Water: 1
-      Grass: 1
-      Electric: 1
-      Psychic: 1
-      Ice: 1
-      Dragon: 1
-      Dark: 1
-      Fairy: 1
-  - name: cheese
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 3
-    power:
-      Catching: 2
-      Exp.: 2
-      Item Drop: 2
-      Encounter: -2
-    type:
-      Normal: 5
-      Fighting: 5
-      Flying: 5
-      Poison: 5
-      Ground: 5
-      Rock: 5
-      Bug: 5
-      Ghost: 5
-      Steel: 5
-      Fire: 5
-      Water: 5
-      Grass: 5
-      Electric: 5
-      Psychic: 5
-      Ice: 5
-      Dragon: 5
-      Dark: 5
-      Fairy: 5
-  - name: cherry tomatoes
-    max: 3
-    taste:
-      Sweet: 3
-      Sour: 5
-      Bitter: 1
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      bug: 6
-  - name: chorizo
-    max: 3
-    taste:
-      Salty: 4
-      Bitter: 2
-      Hot: 4
-    power:
-      Exp.: 7
-      Item Drop: -1
-      Encounter: 4
-    type:
-      Normal: 12
-      Poison: 12
-      Bug: 12
-      Fire: 12
-      Electric: 12
-      Dragon: 12
-  - name: cucumber
-    max: 3
-    taste:
-      Sour: 1
-      Bitter: 1
-    power:  
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:    
-      Water: 6
-  - name: egg
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 2
-      Bitter: 1
-    power:
-      Exp.: 7
-      Item Drop: -1
-      Encounter: 4
-    type:
-      Flying: 12
-      Rock: 12
-      Steel: 12
-      Grass: 12
-      Ice: 12
-      Fairy: 12
-  - name: fried fillet
-    max: 1
-    taste:
-      Sweet: 2
-      Salty: 3
-      Bitter: 3
-    power:    
-      Catching: 21
-      Raid: 12
-      Encounter: -3
-    type:    
-      Normal: 20
-      Flying: 20
-      Ground: 20
-      Bug: 20
-      Steel: 20
-      Water: 20
-      Electric: 20
-      Ice: 20
-      Dark: 20
-  - name: green bell pepper
-    max: 3
-    taste:
-      Sweet: 1
-      Sour: 1
-      Bitter: 5
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Poison: 6
-  - name: ham
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 5
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Ground: 6
-  - name: hamburger
-    max: 1
-    taste:
-      Sweet: 6
-      Salty: 12
-      Bitter: 9
-    power:
-      Catching: 12
-      Raid: -3
-      Encounter: 21
-    type:
-      Steel: 18
-  - name: herbed sausage
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 4
-      Bitter: 4
-    power:
-      Exp.: 7
-      Item Drop: -1
-      Encounter: 4
-    type:
-      Fighting: 12
-      Ground: 12
-      Ghost: 12
-      Water: 12
-      Psychic: 12
-      Dark: 12
-  - name: jalapeno
-    max: 3
-    taste:
-      Sour: 2
-      Hot: 5
-    power:    
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Rock: 7
-      Grass: 7
-      Fairy: 7
-  - name: kiwi
-    max: 3
-    taste:
-      Sweet: 2
-      Sour: 5
-      Bitter: 1
-    power:
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Poison: 7
-      Fire: 7
-      Dragon: 7
-  - name: klawf stick
-    max: 3
-    taste:
-      Sweet: 4
-      Salty: 4
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Ice: 6
-  - name: lettuce
-    max: 3
-    taste:
-      Sweet: 1
-      Bitter: 2
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Grass: 6
-  - name: noodles
-    max: 1
-    taste:
-      Salty: 4
-    power:
-      Humungo: 21
-      Teensy: -3
-      Encounter: 12
-    type:
-      Poison: 30
-      Ground: 30
-      Rock: 30
-      Electric: 30
-      Psychic: 30
-      Ice: 30
-  - name: onion
-    max: 3
-    taste:
-      Sweet: 2
-      Bitter: 1
-      Hot: 3
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Psychic: 6
-  - name: pickle
-    max: 3
-    taste:
-      Sweet: 1
-      Sour: 4
-      Bitter: 2
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Fighting: 6
-  - name: pineapple
-    max: 3
-    taste:
-      Sweet: 3
-      Sour: 5
-      Bitter: 1
-    power:
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Ground: 7
-      Water: 7
-      Dark: 7
-  - name: potato salad
-    max: 1
-    taste:
-      Sweet: 2
-      Salty: 3
-      Sour: 4
-      Bitter: 1
-    power:
-      Humungo: 21
-      Teensy: -3
-      Encounter: 12
-    type:
-      Bug: 30
-      Ghost: 30
-      Steel: 30
-      Dragon: 30
-      Dark: 30
-      Fairy: 30
-  - name: potato torilla
-    max: 3
-    taste:
-      Sweet: 3
-      Salty: 4
-      Sour: 1
-      Bitter: 3
-      Hot: 1
-    power:
-      Catching: 21
-      Raid: 12
-      Encounter: -3
-    type:
-      Fighting: 20
-      Poison: 20
-      Rock: 20
-      Ghost: 20
-      Fire: 20
-      Grass: 20
-      Psychic: 20
-      Dragon: 20
-      Fairy: 20
-  - name: prosciutto
-    max: 3
-    taste:
-      Sweet: 2
-      Salty: 4
-      Sour: 1
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Flying: 6
-  - name: red bell pepper
-    max: 3
-    taste:
-      Sweet: 1
-      Sour: 1
-      Bitter: 3
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Fire: 6
-  - name: red onion
-    max: 3
-    taste:
-      Sweet: 3
-      Bitter: 1
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Ghost: 6
-  - name: rice
-    max: 1
-    taste:
-      Sweet: 3
-      Sour: 1
-    power:
-      Humungo: 21
-      Teensy: -3
-      Encounter: 12
-    type:
-      Normal: 30
-      Fighting: 30
-      Flying: 30
-      Fire: 30
-      Water: 30
-      Grass: 30
-  - name: smoked fillet
-    max: 3
-    taste:
-      Sweet: 1
-      Salty: 3
-      Sour: 2
-      Bitter: 3
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Dark: 6
-  - name: strawberry
-    max: 3
-    taste:
-      Sweet: 4
-      Sour: 4
-    power:
-      Egg: 4
-      Catching: -1
-      Item Drop: 7
-      Humungo: -5
-    type:
-      Fighting: 7
-      Ghost: 7
-      Psychic: 7
-  - name: tofu
-    max: 3
-    taste:
-      Sweet: 3
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Normal: 6
-  - name: tomato
-    max: 3
-    taste:
-      Sweet: 2
-      Sour: 4
-      Bitter: 1
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Fairy: 6
-  - name: watercress
-    max: 3
-    taste:
-      Salty: 1
-      Sour: 2
-      Bitter: 5
-      Hot: 1
-    power:
-      Egg: 2
-      Raid: 2
-      Encounter: -2
-    type:
-      Normal: 1
-      Fighting: 1
-      Flying: 1
-      Poison: 1
-      Ground: 1
-      Rock: 1
-      Bug: 1
-      Ghost: 1
-      Steel: 1
-  - name: yellow bell pepper
-    max: 3
-    taste:
-      Sweet: 1
-      Sour: 1
-      Bitter: 3
-    power:
-      Catching: 4
-      Raid: -1
-      Encounter: 7
-    type:
-      Electric: 6
+ingredients:
+- max: 3
+  name: Apple
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Bitter: 1
+    Sour: 3
+    Sweet: 4
+  type:
+    Flying: 7
+    Ice: 7
+    Steel: 7
+- max: 3
+  name: Avocado
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Sour: 1
+    Sweet: 3
+  type:
+    Dragon: 6
+- max: 3
+  name: Bacon
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 4
+    Salty: 5
+    Sour: 1
+    Sweet: 1
+  type:
+    Rock: 6
+- max: 3
+  name: Banana
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Sour: 1
+    Sweet: 4
+  type:
+    Bug: 7
+    Electric: 7
+    Normal: 7
+- max: 1
+  name: Basil
+  power:
+    Egg: 2
+    Encounter: -2
+    Raid: 2
+  taste:
+    Bitter: 4
+    Salty: 1
+    Sour: 1
+  type:
+    Dark: 1
+    Dragon: 1
+    Electric: 1
+    Fairy: 1
+    Fire: 1
+    Grass: 1
+    Ice: 1
+    Psychic: 1
+    Water: 1
+- max: 3
+  name: Cheese
+  power:
+    Catching: 2
+    Encounter: -2
+    Exp.: 2
+    Item Drop: 2
+  taste:
+    Salty: 3
+    Sweet: 1
+  type:
+    Bug: 5
+    Dark: 5
+    Dragon: 5
+    Electric: 5
+    Fairy: 5
+    Fighting: 5
+    Fire: 5
+    Flying: 5
+    Ghost: 5
+    Grass: 5
+    Ground: 5
+    Ice: 5
+    Normal: 5
+    Poison: 5
+    Psychic: 5
+    Rock: 5
+    Steel: 5
+    Water: 5
+- max: 3
+  name: Cherry Tomatoes
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 1
+    Sour: 5
+    Sweet: 3
+  type:
+    bug: 6
+- max: 3
+  name: Chorizo
+  power:
+    Encounter: 4
+    Exp.: 7
+    Item Drop: -1
+  taste:
+    Bitter: 2
+    Hot: 4
+    Salty: 4
+  type:
+    Bug: 12
+    Dragon: 12
+    Electric: 12
+    Fire: 12
+    Normal: 12
+    Poison: 12
+- max: 3
+  name: Cucumber
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 1
+    Sour: 1
+  type:
+    Water: 6
+- max: 3
+  name: Egg
+  power:
+    Encounter: 4
+    Exp.: 7
+    Item Drop: -1
+  taste:
+    Bitter: 1
+    Salty: 2
+    Sweet: 1
+  type:
+    Fairy: 12
+    Flying: 12
+    Grass: 12
+    Ice: 12
+    Rock: 12
+    Steel: 12
+- max: 1
+  name: Fried Fillet
+  power:
+    Catching: 21
+    Encounter: -3
+    Raid: 12
+  taste:
+    Bitter: 3
+    Salty: 3
+    Sweet: 2
+  type:
+    Bug: 20
+    Dark: 20
+    Electric: 20
+    Flying: 20
+    Ground: 20
+    Ice: 20
+    Normal: 20
+    Steel: 20
+    Water: 20
+- max: 3
+  name: Green Bell Pepper
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 5
+    Sour: 1
+    Sweet: 1
+  type:
+    Poison: 6
+- max: 3
+  name: Ham
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Salty: 5
+    Sweet: 1
+  type:
+    Ground: 6
+- max: 1
+  name: Hamburger
+  power:
+    Catching: 12
+    Encounter: 21
+    Raid: -3
+  taste:
+    Bitter: 9
+    Salty: 12
+    Sweet: 6
+  type:
+    Steel: 18
+- max: 3
+  name: Herbed Sausage
+  power:
+    Encounter: 4
+    Exp.: 7
+    Item Drop: -1
+  taste:
+    Bitter: 4
+    Salty: 4
+    Sweet: 1
+  type:
+    Dark: 12
+    Fighting: 12
+    Ghost: 12
+    Ground: 12
+    Psychic: 12
+    Water: 12
+- max: 3
+  name: Jalapeno
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Hot: 5
+    Sour: 2
+  type:
+    Fairy: 7
+    Grass: 7
+    Rock: 7
+- max: 3
+  name: Kiwi
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Bitter: 1
+    Sour: 5
+    Sweet: 2
+  type:
+    Dragon: 7
+    Fire: 7
+    Poison: 7
+- max: 3
+  name: Klawf Stick
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Salty: 4
+    Sweet: 4
+  type:
+    Ice: 6
+- max: 3
+  name: Lettuce
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 2
+    Sweet: 1
+  type:
+    Grass: 6
+- max: 1
+  name: Noodles
+  power:
+    Encounter: 12
+    Humungo: 21
+    Teensy: -3
+  taste:
+    Salty: 4
+  type:
+    Electric: 30
+    Ground: 30
+    Ice: 30
+    Poison: 30
+    Psychic: 30
+    Rock: 30
+- max: 3
+  name: Onion
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 1
+    Hot: 3
+    Sweet: 2
+  type:
+    Psychic: 6
+- max: 3
+  name: Pickle
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 2
+    Sour: 4
+    Sweet: 1
+  type:
+    Fighting: 6
+- max: 3
+  name: Pineapple
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Bitter: 1
+    Sour: 5
+    Sweet: 3
+  type:
+    Dark: 7
+    Ground: 7
+    Water: 7
+- max: 1
+  name: Potato Salad
+  power:
+    Encounter: 12
+    Humungo: 21
+    Teensy: -3
+  taste:
+    Bitter: 1
+    Salty: 3
+    Sour: 4
+    Sweet: 2
+  type:
+    Bug: 30
+    Dark: 30
+    Dragon: 30
+    Fairy: 30
+    Ghost: 30
+    Steel: 30
+- max: 3
+  name: Potato Torilla
+  power:
+    Catching: 21
+    Encounter: -3
+    Raid: 12
+  taste:
+    Bitter: 3
+    Hot: 1
+    Salty: 4
+    Sour: 1
+    Sweet: 3
+  type:
+    Dragon: 20
+    Fairy: 20
+    Fighting: 20
+    Fire: 20
+    Ghost: 20
+    Grass: 20
+    Poison: 20
+    Psychic: 20
+    Rock: 20
+- max: 3
+  name: Prosciutto
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Salty: 4
+    Sour: 1
+    Sweet: 2
+  type:
+    Flying: 6
+- max: 3
+  name: Red Bell Pepper
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 3
+    Sour: 1
+    Sweet: 1
+  type:
+    Fire: 6
+- max: 3
+  name: Red Onion
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 1
+    Sweet: 3
+  type:
+    Ghost: 6
+- max: 1
+  name: Rice
+  power:
+    Encounter: 12
+    Humungo: 21
+    Teensy: -3
+  taste:
+    Sour: 1
+    Sweet: 3
+  type:
+    Fighting: 30
+    Fire: 30
+    Flying: 30
+    Grass: 30
+    Normal: 30
+    Water: 30
+- max: 3
+  name: Smoked Fillet
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 3
+    Salty: 3
+    Sour: 2
+    Sweet: 1
+  type:
+    Dark: 6
+- max: 3
+  name: Strawberry
+  power:
+    Catching: -1
+    Egg: 4
+    Humungo: -5
+    Item Drop: 7
+  taste:
+    Sour: 4
+    Sweet: 4
+  type:
+    Fighting: 7
+    Ghost: 7
+    Psychic: 7
+- max: 3
+  name: Tofu
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Sweet: 3
+  type:
+    Normal: 6
+- max: 3
+  name: Tomato
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 1
+    Sour: 4
+    Sweet: 2
+  type:
+    Fairy: 6
+- max: 3
+  name: Watercress
+  power:
+    Egg: 2
+    Encounter: -2
+    Raid: 2
+  taste:
+    Bitter: 5
+    Hot: 1
+    Salty: 1
+    Sour: 2
+  type:
+    Bug: 1
+    Fighting: 1
+    Flying: 1
+    Ghost: 1
+    Ground: 1
+    Normal: 1
+    Poison: 1
+    Rock: 1
+    Steel: 1
+- max: 3
+  name: Yellow Bell Pepper
+  power:
+    Catching: 4
+    Encounter: 7
+    Raid: -1
+  taste:
+    Bitter: 3
+    Sour: 1
+    Sweet: 1
+  type:
+    Electric: 6
 seasonings:
-  - name: butter
-    taste:
-      Sweet: 12
-      Salty: 12
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Bug: 2
-      Ghost: 2
-  - name: chili sauce
-    taste:
-      Sweet: 8
-      Salty: 12
-      Sour: 8
-      Hot: 20
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Water: 2
-      Grass: 2
-  - name: cream cheese
-    taste:
-      Sweet: 12
-      Salty: 12
-      Sour: 12
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Bug: 4
-      Steel: 4
-      Water: 4`
-  - name: curry powder
-    taste:
-      Sweet: 4
-      Salty: 4
-      Sour: 4
-      Bitter: 12
-      Hot: 30
-    power:
-      Humungo: -3
-      Teensy: 21
-      Encounter: 12
-    type:
-      Bug: 2
-      Ghost: 2
-      Steel: 2
-      Fire: 2
-      Water: 2
-      Grass: 2
-  - name: horseradish
-    taste:
-      Sweet: 4
-      Hot: 16
-    power:
-      Humungo: -3
-      Teensy: 21
-      Encounter: 12
-    type:
-      Normal: 2
-      Fighting: 2
-      Flying: 2
-      Poison: 2
-      Ground: 2
-      Rock: 2
-  - name: jam
-    taste:
-      Sweet: 16
-      Salty: 4
-      Sour: 16
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Electric: 4
-      Ice: 4
-      Dark: 4
-  - name: ketchup
-    taste:
-      Sweet: 8
-      Salty: 16
-      Sour: 16
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Flying: 2
-      Poison: 2
-  - name: marmalade
-    taste:
-      Sweet: 12
-      Salty: 4
-      Sour: 16
-      Bitter: 20
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Fighting: 4
-      Poison: 4
-      Rock: 4
-  - name: mayonnaise
-    taste:
-      Salty: 8
-      Sour: 20
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Normal: 2
-      Fighting: 2
-  - name: mustard
-    taste:
-      Sweet: 4
-      Salty: 8
-      Sour: 8
-      Bitter: 8
-      Hot: 16
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Ground: 2
-      Rock: 2
-  - name: olive oil
-    taste:
-      Sour: 4
-      Bitter: 4
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Ghost: 4
-      Fire: 4
-      Grass: 4
-  - name: peanut butter
-    taste:
-      Sweet: 16
-      Salty: 12
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Steel: 2
-      Fire: 2
-  - name: pepper
-    taste:
-      Salty: 4
-      Bitter: 8
-      Hot: 16
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Ice: 2
-      Dragon: 2
-  - name: salt
-    taste:
-      Salty: 20
-      Bitter: 4
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Electric: 2
-      Psychic: 2
-  - name: vinegar
-    taste:
-      Sweet: 4
-      Sour: 20
-      Bitter: 4
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Psychic: 4
-      Dragon: 4
-      Fairy: 4
-  - name: wasabi
-    taste:
-      Sweet: 4
-      Salty: 4
-      Hot: 20
-    power:
-      Humungo: -3
-      Teensy: 21
-      Encounter: 12
-    type:
-      Electric: 2
-      Psychic: 2
-      Ice: 2
-      Dragon: 2
-      Dark: 2
-      Fairy: 2
-  - name: whipped cream
-    taste:
-      Sweet: 20
-    power:
-      Egg: 5
-      Exp.: -3
-      Item Drop: 12
-      Teensy: -15
-    type:
-      Normal: 4
-      Flying: 4
-      Ground: 4
-  - name: yogurt
-    taste:
-      Sweet: 16
-      Sour: 16
-    power:
-      Egg: -3
-      Exp.: 12
-      Raid: 21
-    type:
-      Dark: 2
-      Fairy: 2
-  - name: bitter herba mystica
-    taste:
-      Bitter: 500
-    power:
-      Title: 1000
-      Sparkling: 1000
-    type:
-      Normal: 250
-      Fighting: 250
-      Flying: 250
-      Poison: 250
-      Ground: 250
-      Rock: 250
-      Bug: 250
-      Ghost: 250
-      Steel: 250
-      Fire: 250
-      Water: 250
-      Grass: 250
-      Electric: 250
-      Psychic: 250
-      Ice: 250
-      Dragon: 250
-      Dark: 250
-      Fairy: 250
-  - name: spicy herba mystica
-    taste:
-      Hot: 500
-    power:
-      Title: 1000
-      Sparkling: 1000
-    type:
-      Normal: 250
-      Fighting: 250
-      Flying: 250
-      Poison: 250
-      Ground: 250
-      Rock: 250
-      Bug: 250
-      Ghost: 250
-      Steel: 250
-      Fire: 250
-      Water: 250
-      Grass: 250
-      Electric: 250
-      Psychic: 250
-      Ice: 250
-      Dragon: 250
-      Dark: 250
-      Fairy: 250
-  - name: salty herba mystica
-    taste:
-      Salty: 500
-    power:
-      Title: 1000
-      Sparkling: 1000
-    type:
-      Normal: 250
-      Fighting: 250
-      Flying: 250
-      Poison: 250
-      Ground: 250
-      Rock: 250
-      Bug: 250
-      Ghost: 250
-      Steel: 250
-      Fire: 250
-      Water: 250
-      Grass: 250
-      Electric: 250
-      Psychic: 250
-      Ice: 250
-      Dragon: 250
-      Dark: 250
-      Fairy: 250
-  - name: sour herba mystica
-    taste:
-      Sour: 500
-    power:
-      Title: 1000
-      Sparkling: 1000
-    type:
-      Normal: 250
-      Fighting: 250
-      Flying: 250
-      Poison: 250
-      Ground: 250
-      Rock: 250
-      Bug: 250
-      Ghost: 250
-      Steel: 250
-      Fire: 250
-      Water: 250
-      Grass: 250
-      Electric: 250
-      Psychic: 250
-      Ice: 250
-      Dragon: 250
-      Dark: 250
-      Fairy: 250
-  - name: sweet herba mystica
-    taste:
-      Sweet: 500
-    power:
-      Title: 1000
-      Sparkling: 1000
-    type:
-      Normal: 250
-      Fighting: 250
-      Flying: 250
-      Poison: 250
-      Ground: 250
-      Rock: 250
-      Bug: 250
-      Ghost: 250
-      Steel: 250
-      Fire: 250
-      Water: 250
-      Grass: 250
-      Electric: 250
-      Psychic: 250
-      Ice: 250
-      Dragon: 250
-      Dark: 250
-      Fairy: 250
+- name: Butter
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Salty: 12
+    Sweet: 12
+  type:
+    Bug: 2
+    Ghost: 2
+- name: Chili Sauce
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Hot: 20
+    Salty: 12
+    Sour: 8
+    Sweet: 8
+  type:
+    Grass: 2
+    Water: 2
+- name: Cream Cheese
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Salty: 12
+    Sour: 12
+    Sweet: 12
+  type:
+    Bug: 4
+    Steel: 4
+    Water: 4`
+- name: Curry Powder
+  power:
+    Encounter: 12
+    Humungo: -3
+    Teensy: 21
+  taste:
+    Bitter: 12
+    Hot: 30
+    Salty: 4
+    Sour: 4
+    Sweet: 4
+  type:
+    Bug: 2
+    Fire: 2
+    Ghost: 2
+    Grass: 2
+    Steel: 2
+    Water: 2
+- name: Horseradish
+  power:
+    Encounter: 12
+    Humungo: -3
+    Teensy: 21
+  taste:
+    Hot: 16
+    Sweet: 4
+  type:
+    Fighting: 2
+    Flying: 2
+    Ground: 2
+    Normal: 2
+    Poison: 2
+    Rock: 2
+- name: Jam
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Salty: 4
+    Sour: 16
+    Sweet: 16
+  type:
+    Dark: 4
+    Electric: 4
+    Ice: 4
+- name: Ketchup
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Salty: 16
+    Sour: 16
+    Sweet: 8
+  type:
+    Flying: 2
+    Poison: 2
+- name: Marmalade
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Bitter: 20
+    Salty: 4
+    Sour: 16
+    Sweet: 12
+  type:
+    Fighting: 4
+    Poison: 4
+    Rock: 4
+- name: Mayonnaise
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Salty: 8
+    Sour: 20
+  type:
+    Fighting: 2
+    Normal: 2
+- name: Mustard
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Bitter: 8
+    Hot: 16
+    Salty: 8
+    Sour: 8
+    Sweet: 4
+  type:
+    Ground: 2
+    Rock: 2
+- name: Olive Oil
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Bitter: 4
+    Sour: 4
+  type:
+    Fire: 4
+    Ghost: 4
+    Grass: 4
+- name: Peanut Butter
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Salty: 12
+    Sweet: 16
+  type:
+    Fire: 2
+    Steel: 2
+- name: Pepper
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Bitter: 8
+    Hot: 16
+    Salty: 4
+  type:
+    Dragon: 2
+    Ice: 2
+- name: Salt
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Bitter: 4
+    Salty: 20
+  type:
+    Electric: 2
+    Psychic: 2
+- name: Vinegar
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Bitter: 4
+    Sour: 20
+    Sweet: 4
+  type:
+    Dragon: 4
+    Fairy: 4
+    Psychic: 4
+- name: Wasabi
+  power:
+    Encounter: 12
+    Humungo: -3
+    Teensy: 21
+  taste:
+    Hot: 20
+    Salty: 4
+    Sweet: 4
+  type:
+    Dark: 2
+    Dragon: 2
+    Electric: 2
+    Fairy: 2
+    Ice: 2
+    Psychic: 2
+- name: Whipped Cream
+  power:
+    Egg: 5
+    Exp.: -3
+    Item Drop: 12
+    Teensy: -15
+  taste:
+    Sweet: 20
+  type:
+    Flying: 4
+    Ground: 4
+    Normal: 4
+- name: Yogurt
+  power:
+    Egg: -3
+    Exp.: 12
+    Raid: 21
+  taste:
+    Sour: 16
+    Sweet: 16
+  type:
+    Dark: 2
+    Fairy: 2
+- name: Bitter Herba Mystica
+  power:
+    Sparkling: 1000
+    Title: 1000
+  taste:
+    Bitter: 500
+  type:
+    Bug: 250
+    Dark: 250
+    Dragon: 250
+    Electric: 250
+    Fairy: 250
+    Fighting: 250
+    Fire: 250
+    Flying: 250
+    Ghost: 250
+    Grass: 250
+    Ground: 250
+    Ice: 250
+    Normal: 250
+    Poison: 250
+    Psychic: 250
+    Rock: 250
+    Steel: 250
+    Water: 250
+- name: Spicy Herba Mystica
+  power:
+    Sparkling: 1000
+    Title: 1000
+  taste:
+    Hot: 500
+  type:
+    Bug: 250
+    Dark: 250
+    Dragon: 250
+    Electric: 250
+    Fairy: 250
+    Fighting: 250
+    Fire: 250
+    Flying: 250
+    Ghost: 250
+    Grass: 250
+    Ground: 250
+    Ice: 250
+    Normal: 250
+    Poison: 250
+    Psychic: 250
+    Rock: 250
+    Steel: 250
+    Water: 250
+- name: Salty Herba Mystica
+  power:
+    Sparkling: 1000
+    Title: 1000
+  taste:
+    Salty: 500
+  type:
+    Bug: 250
+    Dark: 250
+    Dragon: 250
+    Electric: 250
+    Fairy: 250
+    Fighting: 250
+    Fire: 250
+    Flying: 250
+    Ghost: 250
+    Grass: 250
+    Ground: 250
+    Ice: 250
+    Normal: 250
+    Poison: 250
+    Psychic: 250
+    Rock: 250
+    Steel: 250
+    Water: 250
+- name: Sour Herba Mystica
+  power:
+    Sparkling: 1000
+    Title: 1000
+  taste:
+    Sour: 500
+  type:
+    Bug: 250
+    Dark: 250
+    Dragon: 250
+    Electric: 250
+    Fairy: 250
+    Fighting: 250
+    Fire: 250
+    Flying: 250
+    Ghost: 250
+    Grass: 250
+    Ground: 250
+    Ice: 250
+    Normal: 250
+    Poison: 250
+    Psychic: 250
+    Rock: 250
+    Steel: 250
+    Water: 250
+- name: Sweet Herba Mystica
+  power:
+    Sparkling: 1000
+    Title: 1000
+  taste:
+    Sweet: 500
+  type:
+    Bug: 250
+    Dark: 250
+    Dragon: 250
+    Electric: 250
+    Fairy: 250
+    Fighting: 250
+    Fire: 250
+    Flying: 250
+    Ghost: 250
+    Grass: 250
+    Ground: 250
+    Ice: 250
+    Normal: 250
+    Poison: 250
+    Psychic: 250
+    Rock: 250
+    Steel: 250
+    Water: 250
+

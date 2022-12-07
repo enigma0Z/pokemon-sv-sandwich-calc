@@ -41,7 +41,7 @@ function getSeasonings() {
 function setIngredients(ingredients) {
   const selects = getIngredientSelects()
   for (let i = 0; i < ingredients.length; i++) {
-    selects[i].value = ingredients[i]
+    selects[i].value = lookupIngredientByName(ingredients[i]).name
     selects[i].oninput()
   }
 }
@@ -49,7 +49,7 @@ function setIngredients(ingredients) {
 function setSeasonings(seasonings) {
   const selects = getSeasoningSelects()
   for (let i = 0; i < seasonings.length; i++) {
-    selects[i].value = seasonings[i]
+    selects[i].value = lookupSeasoningByName(seasonings[i]).name
     selects[i].oninput()
   }
 }

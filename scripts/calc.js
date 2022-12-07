@@ -118,11 +118,11 @@ export function sortAttributes(object, sortFn = sortValueName) {
 }
 
 export function lookupIngredientByName(name) {
-  return SandwichData.ingredients.find((ingredient) => ingredient.name === name)
+  return SandwichData.ingredients.find((ingredient) => ingredient.name.toLowerCase() === name.toLowerCase())
 }
 
 export function lookupSeasoningByName(name) {
-  return SandwichData.seasonings.find((seasoning) => seasoning.name === name)
+  return SandwichData.seasonings.find((seasoning) => seasoning.name.toLowerCase() === name.toLowerCase())
 }
 
 export function calculateLevel(power, type) {
@@ -315,7 +315,7 @@ export function calculateSandwich(ingredients, seasonings) {
   // Do Herba Mystica overrides for level
   let herbaMysticaTotal = 0;
   for (let seasoning of seasonings) {
-    if (seasoning.endsWith('herba mystica')) herbaMysticaTotal += 1
+    if (seasoning.toLowerCase().endsWith('herba mystica')) herbaMysticaTotal += 1
   }
 
   if (herbaMysticaTotal == 1) {

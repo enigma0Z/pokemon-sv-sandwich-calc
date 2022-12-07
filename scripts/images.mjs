@@ -1,6 +1,6 @@
 import { readdirSync, writeFileSync } from 'fs'
 
-const basedir = 'src/res'
+const basedir = 'ts/src/res'
 
 const directories = [
   'img', 'img/ingredients', 'img/sandwiches', 'img/seasonings'
@@ -20,23 +20,28 @@ const generate = () => {
 
     const lines = []
 
+    const imports = imageFileNames(dir).map((name) => {
+      return `import _${name.split('.')[0]} from './${name}'`
+    })
+
+    lines.push(...imports)
+
     lines.push(
       'const images = {'
     )
 
-    const images = imageFileNames(dir).map((name) => {
-      return `  ${name.split('.')[0]}: require('./${name}'),`
+    const declarations = imageFileNames(dir).map((name) => {
+      return `  ${name.split('.')[0]}: _${name.split('.')[0]},`
     })
 
-    lines.push(...images)
+    lines.push(...declarations)
 
     lines.push(
       '}',
-      '',
       'export default images'
     )
 
-    writeFileSync([basedir, dir, 'images.js'].join('/'), lines.join('\n'), 'utf8')
+    writeFileSync([basedir, dir, 'index.ts'].join('/'), lines.join('\n'), 'utf8')
   }
 }
 

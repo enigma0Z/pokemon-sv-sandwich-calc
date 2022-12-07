@@ -70,10 +70,6 @@ body {
     font-size: 12pt;
 }
 
-body div.App {
-    padding: .5em;
-}
-
 div.background-color {
     background: linear-gradient(0deg, #101010FF 0%, #300000FF 100%);
     z-index: -101;

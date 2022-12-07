@@ -36,7 +36,6 @@ jobs:
           node-version: 18.x
           cache: 'npm'
       - name: npm build
-        working-directory: ./react
         run: |
           #!/bin/bash
           set -xe

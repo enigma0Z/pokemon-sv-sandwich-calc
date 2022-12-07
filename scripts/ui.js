@@ -300,6 +300,23 @@ function renderUi() {
   }
   ButtonDiv.appendChild(ResetButton)
 
+  const DetailsButton = document.createElement('button')
+  DetailsButton.innerText = 'Show Details'
+  DetailsButton.onclick = () => {
+    // Get the root element
+    const Root = document.querySelector(':root')
+    const AttributeDisplay = getComputedStyle(Root).getPropertyValue('--attribute-display');
+
+    if (AttributeDisplay == 'none') {
+      Root.style.setProperty('--attribute-display', 'flex');
+      DetailsButton.innerText = 'Hide Details'
+    } else if (AttributeDisplay == 'flex') {
+      Root.style.setProperty('--attribute-display', 'none');
+      DetailsButton.innerText = 'Show Details'
+    }
+  }
+  ButtonDiv.appendChild(DetailsButton)
+
   const ResultsDiv = document.createElement('div')
   ResultsDiv.setAttribute('id', 'results')
   SandwichUiContainer.appendChild(ResultsDiv)

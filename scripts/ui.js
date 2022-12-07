@@ -252,30 +252,30 @@ function updateUri() {
 
 // Draw the UI
 function renderUi() {
+  const IngredientLabel = document.createElement('div')
+  IngredientLabel.setAttribute('class', 'label')
+  IngredientLabel.innerText = 'Ingredients'
+  SandwichUiContainer.appendChild(IngredientLabel)
+
   const IngredientDiv = document.createElement('div')
   IngredientDiv.setAttribute('id', 'ingredients')
   SandwichUiContainer.appendChild(IngredientDiv)
 
-  const IngredientLabel = document.createElement('span')
-  IngredientLabel.setAttribute('class', 'label')
-  IngredientLabel.innerText = 'Ingredients:'
-  IngredientDiv.appendChild(IngredientLabel)
+  IngredientDiv.appendChild(ingredientSelect())
+  IngredientDiv.appendChild(ingredientSelect())
+  IngredientDiv.appendChild(ingredientSelect())
+  IngredientDiv.appendChild(ingredientSelect())
+  IngredientDiv.appendChild(ingredientSelect())
+  IngredientDiv.appendChild(ingredientSelect())
 
-  IngredientDiv.appendChild(ingredientSelect())
-  IngredientDiv.appendChild(ingredientSelect())
-  IngredientDiv.appendChild(ingredientSelect())
-  IngredientDiv.appendChild(ingredientSelect())
-  IngredientDiv.appendChild(ingredientSelect())
-  IngredientDiv.appendChild(ingredientSelect())
+  const SeasoningLabel = document.createElement('div')
+  SeasoningLabel.setAttribute('class', 'label')
+  SeasoningLabel.innerText = 'Seasonings'
+  SandwichUiContainer.appendChild(SeasoningLabel)
 
   const SeasoningDiv = document.createElement('div')
   SeasoningDiv.setAttribute('id', 'seasonings')
   SandwichUiContainer.appendChild(SeasoningDiv)
-
-  const SeasoningLabel = document.createElement('span')
-  SeasoningLabel.setAttribute('class', 'label')
-  SeasoningLabel.innerText = 'Seasonings:'
-  SeasoningDiv.appendChild(SeasoningLabel)
 
   SeasoningDiv.appendChild(seasoningSelect())
   SeasoningDiv.appendChild(seasoningSelect())

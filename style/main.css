@@ -46,7 +46,8 @@ a:active { color: white; }
 a { color: white; }
 
 ul {
-    list-style: none
+    list-style: none;
+    padding-left: 0px;
 }
 
 span.caption {
@@ -63,6 +64,10 @@ body {
     background-color: black;
     font-family: 'Futura';
     font-size: 12pt;
+}
+
+body div.container {
+    padding: .5em;
 }
 
 div.background-color {
@@ -86,23 +91,12 @@ div.background-image {
     opacity: 15%;
 }
 
-@media screen and (orientation: portrait) {
-    img.background {
-        height: 100%;
-        width: auto;
-    }
-}
-
-body div {
-    width: 100%;
-}
-    
 body div.section {
     text-align: center;
 }
 
 body div img.header {
-    width: 700px;
+    width: 80%;
     image-rendering: pixelated;
 }
 
@@ -113,13 +107,20 @@ iframe {
 div.content {
     display: flex;
     flex-direction: column;
-    margin-left: 1em;
 }
 
 div#sandwich div {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     flex-basis: content;
+}
+
+div#sandwich div.label {
+    text-align: left;
+    font-size: 20pt;
+    font-weight: bold;
+    display: block;
 }
 
 div#sandwich div div.field {
@@ -137,13 +138,10 @@ div#sandwich div div.attributes div {
     flex-direction: column
 }
 
-div#sandwich div#results div.attributes {
-    margin-left: 1em;
-}
-
 div#sandwich div#results {
     flex-direction: column;
     font-weight: bold;
+    font-size: 20pt;
 }
 
 div#sandwich div#results div.sum {
@@ -163,4 +161,40 @@ select, button {
 
 span.label {
     margin-right: 1em;
+}
+
+@media only screen and (max-width: 1000px) {
+    h1 {
+        font-size: 48pt;
+    }
+
+    body {
+        font-size: 24pt;
+    }
+
+    div#sandwich div div.attributes {
+        font-size: 20pt;
+    }
+
+    table {
+        font-size: 16pt;
+    }
+
+    select, button {
+        font-size: 24pt;
+    }
+
+    div#sandwich div.label {
+        font-size: 36pt;
+        text-align: center;
+    }
+
+    div#sandwich div div.field {
+        flex: 1;
+        flex-basis: 50%;
+    }
+
+    div#sandwich div#results {
+        font-size: 36pt;
+    }
 }

@@ -147,7 +147,7 @@ function ingredientSelect() {
   SelectElement.oninput = () => {
     ElementAttributesDiv.innerHTML = ''
 
-    if (SelectElement.value != '') {
+    if (SelectElement.value !== '') {
       const attribute = lookupIngredientByName(SelectElement.value)
       ElementAttributesDiv.appendChild(renderAttributes(attribute))
     }
@@ -183,7 +183,7 @@ function seasoningSelect() {
   SelectElement.oninput = () => {
     ElementAttributesDiv.innerHTML = ''
 
-    if (SelectElement.value != '') {
+    if (SelectElement.value !== '') {
       const attribute = lookupSeasoningByName(SelectElement.value)
       ElementAttributesDiv.appendChild(renderAttributes(attribute))
     }
@@ -312,10 +312,10 @@ export function renderUi() {
     const Root = document.querySelector(':root')
     const AttributeDisplay = getComputedStyle(Root).getPropertyValue('--attribute-display');
 
-    if (AttributeDisplay == 'none') {
+    if (AttributeDisplay === 'none') {
       Root.style.setProperty('--attribute-display', 'flex');
       DetailsButton.innerText = 'Hide Details'
-    } else if (AttributeDisplay == 'flex') {
+    } else if (AttributeDisplay === 'flex') {
       Root.style.setProperty('--attribute-display', 'none');
       DetailsButton.innerText = 'Show Details'
     }

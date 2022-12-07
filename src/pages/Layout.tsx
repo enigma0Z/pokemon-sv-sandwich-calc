@@ -3,17 +3,7 @@ import res from '../res';
 import './Layout.css';
 
 export default function Layout() {
-  const { pathname, search } = useLocation()
-  const SubtitleMap: {[index: string]: string} = {
-    '/': 'Home',
-    '/explore': 'Ingredient Explorer',
-    '/recipes': 'Cookbook',
-  }
-
-  let subtitle = pathname
-  if (pathname in SubtitleMap) {
-    subtitle = SubtitleMap[pathname]
-  }
+  const { search } = useLocation()
 
   return (
     <>

@@ -179,18 +179,18 @@ export function addFlavorResult(sandwich) {
 
   let bonus = 100;
   if (
-    SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet'
-    || SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour'
+    (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
+    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')
   ) {
     sandwich.power['Catching'] += bonus
   } else if (
-    SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty'
-    || SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter'
+    (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
+    || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
   ) {
     sandwich.power['Exp'] += bonus
   } else if (
-    SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet'
-    || SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot'
+    (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
+    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')
   ) {
     sandwich.power['Raid'] += bonus
   } else if (SortedTastes[0].name === 'Sweet') {
@@ -280,10 +280,6 @@ export function calculateSandwich(ingredients, seasonings) {
 
   addFlavorResult(SandwichSum)
 
-  const SortedTaste = Object.keys(SandwichSum.taste)
-    .map( (key) => { return {name: key, value: SandwichSum.taste[key]} })
-    .sort(sortValueTaste)
-
   const SortedPower = Object.keys(SandwichSum.power)
     .map( (key) => { return {name: key, value: SandwichSum.power[key]} })
     .sort(sortValuePower)
@@ -318,7 +314,7 @@ export function calculateSandwich(ingredients, seasonings) {
     if (seasoning.toLowerCase().endsWith('herba mystica')) herbaMysticaTotal += 1
   }
 
-  if (herbaMysticaTotal == 1) {
+  if (herbaMysticaTotal === 1) {
     if (levels[0] < 2) levels[0] = 2 
     if (levels[1] < 2) levels[1] = 2 
   } else if (herbaMysticaTotal > 1) {

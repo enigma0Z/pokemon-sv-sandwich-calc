@@ -1,5 +1,7 @@
 import img from './img'
 
-export default {
+const resources = {
   img: img 
 }
+
+export default resources

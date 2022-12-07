@@ -1,11 +1,6 @@
-import React from 'react';
-
-import './App.css';
-import './style/main.css';
-import { renderUi } from './scripts/ui.js'
+import './index.css';
+import { renderUi } from '../../scripts/ui.js'
 import { useEffect } from 'react';
-
-import res from './res'
 
 function App() {
   useEffect(() => {
@@ -18,27 +13,16 @@ function App() {
       adsense.setAttribute('crossorigin', 'anonymous')
       head.appendChild(adsense);
 
-      // const oldui = document.createElement("script");
-      // oldui.setAttribute("src", "/v2/scripts/ui.js");
-      // oldui.setAttribute('type', 'module')
-      // head.appendChild(oldui);
-
       console.log('useEffect()')
       renderUi()
 
       return () => {
         head.removeChild(adsense);
-        // head.removeChild(oldui);
       };
     }
   })
   return (
     <div className="App">
-      <div className="background-color"></div>
-      <div className="background-image"></div>
-      <div className="section"><h1>
-        Sandwich Calculator
-      </h1></div>
       <div id="sandwich" className="content"></div>
       <div id="todo" className="content">
         <h2>Todo</h2>
@@ -81,18 +65,6 @@ function App() {
         </li><li>
             Flavor bonuses only occur or get calculated sometimes.  Unknown why / when.
           </li></ul>
-      </div>
-      <div className="section">
-        <span className="caption">
-          <a href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">YouTube</a> |&nbsp;
-          <a href="https://twitter.com/enigma_0z">Twitter</a> |&nbsp;
-          <a href="https://discord.gg/Wyemk6G28z">Discord</a> |&nbsp;
-          <a href="https://www.patreon.com/enigmaplaysgames">Patreon</a> |&nbsp;
-          <a href="https://enigma-plays-live.myspreadshop.com/">Merch</a>
-        </span>
-      </div>
-      <div className="section">
-        <img className="header" src={res.img.logo} />
       </div>
     </div>
   );

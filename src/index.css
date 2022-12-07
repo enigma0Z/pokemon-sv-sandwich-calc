@@ -59,7 +59,7 @@ h1 {
 }
 
 a:visited { color: white; }
-a:hover { color: darkgreen; }
+a:hover { color: lightgreen; }
 a:active { color: white; }
 a { color: white; }
 

@@ -1,8 +1,13 @@
 const xmlHttpReq = new XMLHttpRequest();
+
 xmlHttpReq.open("GET", 'data/sandwich.json', false);
 xmlHttpReq.send(null);
-
 export const SandwichData = JSON.parse(xmlHttpReq.responseText);
+
+xmlHttpReq.open("GET", 'data/recipe.json', false);
+xmlHttpReq.send(null);
+export const RecipeData = JSON.parse(xmlHttpReq.responseText);
+
 
 const PokemonTypes = [
   'Normal',

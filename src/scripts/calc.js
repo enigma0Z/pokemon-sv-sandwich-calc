@@ -320,6 +320,16 @@ export function calculateSandwich(ingredients, seasonings) {
     if (levels[0] < 3) levels[0] = 3 
     if (levels[1] < 3) levels[1] = 3 
     if (levels[2] < 3) levels[2] = 3 
+  } else if (
+    // TODO This is hardcoded for sp, needs a var
+    ingredients.length = 6 // If there's six ingredients
+    && ingredients.filter((ingredient) => ingredient !== ingredients[0]).length === 0 // And they're all the same
+    && lookupIngredientByName(ingredients[0]).max === 1 // And each one is a big ingredient
+    && levels[0] > 1 // And there's enough  to have made the first power lv. 2
+  ) { // ... Then elevate poer 2 by one level
+    if (levels[1] === 1) {
+      levels[1] += 1
+    }
   }
 
   // Types 2 and 3 are switched vs power order

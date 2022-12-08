@@ -1,13 +1,14 @@
-const xmlHttpReq = new XMLHttpRequest();
+import SandwichData from './sandwich.json'
+import RecipeData from './recipe.json'
+// const xmlHttpReq = new XMLHttpRequest();
 
-xmlHttpReq.open("GET", 'data/sandwich.json', false);
-xmlHttpReq.send(null);
-export const SandwichData = JSON.parse(xmlHttpReq.responseText);
+// xmlHttpReq.open("GET", 'data/sandwich.json', false);
+// xmlHttpReq.send(null);
+// export const SandwichData = JSON.parse(xmlHttpReq.responseText);
 
-xmlHttpReq.open("GET", 'data/recipe.json', false);
-xmlHttpReq.send(null);
-export const RecipeData = JSON.parse(xmlHttpReq.responseText);
-
+// xmlHttpReq.open("GET", 'data/recipe.json', false);
+// xmlHttpReq.send(null);
+// export const RecipeData = JSON.parse(xmlHttpReq.responseText);
 
 const PokemonTypes = [
   'Normal',

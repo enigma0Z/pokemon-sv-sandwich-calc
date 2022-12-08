@@ -1,8 +1,9 @@
 import {
-  SandwichData,
   lookupIngredientByName, lookupSeasoningByName, sumComponents,
   sortValueName, addFlavorResult, combineComponents, sortValueType, calculateSandwich, sortValuePower, sortValueTaste
-} from './calc.js'
+} from '../data'
+
+import SandwichData from '../data/sandwich.json'
 
 function getIngredientSelects() {
   return document.getElementById('ingredients').getElementsByTagName('select')

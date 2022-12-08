@@ -177,6 +177,7 @@ export function addFlavorResult(sandwich) {
   console.log(SortedTastes[0], SortedTastes[1])
 
   let bonus = 100;
+
   if (
     (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
     || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')

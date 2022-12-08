@@ -292,8 +292,8 @@ export function calculateSandwich(ingredients, seasonings) {
   // Do type sorting and check for monotype
   console.log('top type', SortedType[0].value)
   if (SortedType[0].value < 280) {
-    type = [0, 2, 1]
-  } else if (SortedType.value < 480) {
+    type = [0, 2, 1] // Most sandwiches are 0, 2, 1
+  } else if (SortedType[0].value < 480) {
     type = [0, 0, 2]
   } else {
     console.log('monotype sandwich')

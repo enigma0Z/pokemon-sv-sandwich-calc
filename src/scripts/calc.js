@@ -126,7 +126,7 @@ export function lookupSeasoningByName(name) {
 }
 
 export function calculateLevel(power, type) {
-  if (power.value >= 100 && power.value < 2000 && type.value > 180) {
+  if (power.value >= 100 && power.value < 2000 && type.value >= 180) {
     return 2
   } else {
     return 1

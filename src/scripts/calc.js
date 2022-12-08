@@ -133,7 +133,6 @@ export function calculateLevel(power, type) {
   }
 }
 
-
 export function sumComponents(components, lookupFunction) {
   const Result = templateResult()
   // Add everything together

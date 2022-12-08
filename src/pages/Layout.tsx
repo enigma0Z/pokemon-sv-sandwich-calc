@@ -19,7 +19,8 @@ export default function Layout() {
           <li>
             <Link to={`/${search}`}>Home</Link> |&nbsp;
             <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
-            <Link to={`/recipes${search}`}>Recipes & Cookbook</Link>
+            <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
+            <a href="https://www.reddit.com/user/enigma_0Z/comments/zfk3bz/pokemon_scarlet_violet_sandwich_calculator_bug/" target='_blank' rel="noreferrer">Report A Bug</a>
           </li>
         </ul>
       </nav>

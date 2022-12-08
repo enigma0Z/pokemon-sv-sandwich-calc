@@ -22,6 +22,14 @@ BUT in game the result is 2-2-1 (egg 2).  This seems to be true for any of the o
 
 http://localhost:3000/?ingredients=Hamburger,Hamburger,Hamburger,Hamburger,Hamburger,Hamburger&seasonings=Mayonnaise
 
-Expected:
+Expected [0, 2, 1] types:
 
-* 
+* Encounter Power: Steel, Lv. 1
+* Exp. Power: Fighting, Lv. 1
+* Catching Power: Normal, Lv. 1
+
+Actual [0, 0, 1] types:
+
+* Encounter Power: Steel, Lv. 1
+* Exp. Power: Steel, Lv. 1
+* Catching Power: Normal, Lv. 1

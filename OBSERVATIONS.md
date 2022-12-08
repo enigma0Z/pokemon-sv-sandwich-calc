@@ -17,3 +17,11 @@ BUT in game the result is 2-2-1 (egg 2).  This seems to be true for any of the o
 * Noodles
 * Rice
 * Potato Salad
+
+### Some sandwich typings dobule the first and defy normal rules
+
+http://localhost:3000/?ingredients=Hamburger,Hamburger,Hamburger,Hamburger,Hamburger,Hamburger&seasonings=Mayonnaise
+
+Expected:
+
+* 

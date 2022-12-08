@@ -186,7 +186,7 @@ export function addFlavorResult(sandwich) {
     (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
     || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
   ) {
-    sandwich.power['Exp'] += bonus
+    sandwich.power['Exp.'] += bonus
   } else if (
     (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
     || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')

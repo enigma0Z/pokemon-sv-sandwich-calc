@@ -1,6 +1,6 @@
-# Bugs
+# Observations
 
-## Calculations
+## Sandwich Calculations
 
 ### Single ingredient big ingredient sandwiches
 
@@ -33,3 +33,40 @@ Actual [0, 0, 1] types:
 * Encounter Power: Steel, Lv. 1
 * Exp. Power: Steel, Lv. 1
 * Catching Power: Normal, Lv. 1
+
+## Sandwich Powers
+
+### Raid Power
+
+#### 3* Dragon Raid (electric fighting pokmeon)
+
+##### No buffs
+
+* Exp Candy S x1
+* Exp Candy M x2
+* Pawmi Fur x3
+* Swift Feather x2
+* Dragon Tera Shard x1
+* Dragon Tera Shard x1
+* Lum berry x1
+* Exp Candy M x2
+* Tiny Mushroom
+* Swift Feather
+* Tiny Mushroom
+* Mago Berry
+
+##### Exp Power Dragon 2
+
+* Exp Candy S x1
+* Exp Candy M x2
+* Pawmi Fur x3
+* Swift Feather x2
+* Dragon Tera Shard x1
+* Dragon Tera Shard x1
+* Lum Berry x1
+* Exp Candy M x2
+* Tiny Mushroom
+* Swift Feather
+* Tiny Mushroom
+* Mago berry
+* Exp Candy S

@@ -2,6 +2,7 @@ import { Box, Tooltip } from '@mui/material';
 import Ingredient from './Ingredient';
 import Seasoning from './Seasoning';
 import './Sandwich.css'
+import { Link } from 'react-router-dom';
 
 export default function sandwich(props: { 
   name?: string; 
@@ -36,7 +37,7 @@ export default function sandwich(props: {
         <p>Seasonings: {props.seasonings.join(', ')}</p>
       </>}>
       <Box className='sandwich'>
-        <a href={uri}>
+        <Link to={uri}>
           <Box className='title' display={"flex"} flexDirection={"row"}>
             <h3>{props.number ? `#${props.number}` : ''} {props.name || 'A Tasty Original (custom sandwich)'}</h3>
           </Box>
@@ -44,7 +45,7 @@ export default function sandwich(props: {
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>
           <Box display={"flex"} flexDirection={"row"}> {ingredients} </Box>
           <Box display={"flex"} flexDirection={"row"}> {seasonings} </Box>
-        </a>
+        </Link>
       </Box>
     </Tooltip>
   )

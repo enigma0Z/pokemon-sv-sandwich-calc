@@ -1745,7 +1745,7 @@
         "Jalapeno",
         "Onion",
         "Herbed Sausage",
-        "Sliced Green Pepper"
+        "Green Bell Pepper"
       ],
       "location": "From man in Sandwich shop",
       "name": "Great Zesty Sandwich",
@@ -1777,7 +1777,7 @@
         "Jalapeno",
         "Onion",
         "Herbed Sausage",
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Watercress"
       ],
       "location": "From man in Sandwich shop",
@@ -1810,7 +1810,7 @@
         "Jalapeno",
         "Onion",
         "Herbed Sausage",
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Watercress"
       ],
       "location": "From man in Sandwich shop if you have Sour Herba Mystica",
@@ -3555,7 +3555,7 @@
     {
       "description": "A juicy, vegetable-laden sandwich. The fresher the veggies, the tastier the dish.",
       "ingredients": [
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Cherry Tomatoes",
         "Cucumber"
       ],
@@ -3588,7 +3588,7 @@
     {
       "description": "A sandwich featuring an all-veggie lineup of fillings. The condiments play a major role in the overall flavor.",
       "ingredients": [
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Cherry Tomatoes",
         "Cucumber",
         "Red Onion"
@@ -3622,7 +3622,7 @@
     {
       "description": "Veggies are this sandwich's bread and butter, so to speak. Adding plenty of watercress firms up the flavor.",
       "ingredients": [
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Cherry Tomatoes",
         "Cucumber",
         "Red Onion",
@@ -3657,7 +3657,7 @@
     {
       "description": "The fully realized all-veggie sandwich. The overall quality depends hugely on how thickly you lay on the herbs.",
       "ingredients": [
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Cherry Tomatoes",
         "Cucumber",
         "Red Onion",
@@ -3833,7 +3833,7 @@
       "ingredients": [
         "Chorizo",
         "Onion",
-        "Sliced Green Pepper"
+        "Green Bell Pepper"
       ],
       "location": "From man in Sandwich shop",
       "name": "Five-Alarm Sandwich",
@@ -3866,7 +3866,7 @@
       "ingredients": [
         "Chorizo",
         "Onion",
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Basil"
       ],
       "location": "From man in Sandwich shop",
@@ -3900,7 +3900,7 @@
       "ingredients": [
         "Chorizo",
         "Onion",
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Basil",
         "Jalapeno"
       ],
@@ -3935,7 +3935,7 @@
       "ingredients": [
         "Chorizo",
         "Onion",
-        "Sliced Green Pepper",
+        "Green Bell Pepper",
         "Basil",
         "Jalapeno"
       ],

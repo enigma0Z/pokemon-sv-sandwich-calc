@@ -1,7 +1,7 @@
 import SandwichData from './sandwich.json'
 // import RecipeData from './recipe.json'
 
-const PokemonTypes = [
+export const PokemonTypes = [
   'Normal',
   'Fighting',
   'Flying',
@@ -22,11 +22,11 @@ const PokemonTypes = [
   'Fairy',
 ]
 
-const MealPowers = [
+export const MealPowers = [
   'Egg',
   'Catching',
   'Exp.',
-  'Item Drop',
+  'Item',
   'Raid',
   'Title',
   'Sparkling',
@@ -35,7 +35,7 @@ const MealPowers = [
   'Encounter',
 ]
 
-const Tastes = [
+export const Tastes = [
   'Sweet',
   'Salty',
   'Sour',

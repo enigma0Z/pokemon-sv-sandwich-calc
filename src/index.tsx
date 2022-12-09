@@ -14,15 +14,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="explore" element={<Explore />} />
-          <Route path="recipes" element={<Recipes />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="explore" element={<Explore />} />
+            <Route path="recipes" element={<Recipes />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
   </React.StrictMode>
 );
 

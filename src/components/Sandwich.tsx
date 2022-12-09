@@ -7,7 +7,7 @@ export default function sandwich(props: {
   name?: string; 
   description?: string;
   location?: string;
-  number?: number | null;
+  number?: number;
   ingredients: string[]; 
   seasonings: string[]; 
   powers: {name: string; type: string | null; level: number}[];

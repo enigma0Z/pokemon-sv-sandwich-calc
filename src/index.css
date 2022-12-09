@@ -180,27 +180,27 @@ span.label {
 
 @media only screen and (max-width: 1000px) {
   h1 {
-      font-size: 48pt;
+      font-size: 24;
   }
 
   body {
-      font-size: 24pt;
+      font-size: 18;
   }
 
   div#sandwich div div.attributes {
-      font-size: 20pt;
+      font-size: 12pt;
   }
 
   table {
-      font-size: 16pt;
+      font-size: 6pt;
   }
 
   select, button {
-      font-size: 24pt;
+      font-size: 10pt;
   }
 
   div#sandwich div.label {
-      font-size: 36pt;
+      font-size: 18pt;
       text-align: center;
   }
 
@@ -210,6 +210,6 @@ span.label {
   }
 
   div#sandwich div#results {
-      font-size: 36pt;
+      font-size: 18pt;
   }
 }

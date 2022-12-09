@@ -20,7 +20,6 @@ export default function Recipes() {
   const [filterLevelValue, setFilterLevelValue] = useState('')
 
   const filterSandwiches = (recipes: Recipe[], power?: string, type?: string, level?: string) => { 
-    console.log('filterSandwiches', recipes, power, type, level)
     return recipes.filter((recepie) => { 
       if (power === undefined || power === '') {
         return true
@@ -28,21 +27,17 @@ export default function Recipes() {
 
       const foundPower = recepie.powers.find(x => x.name === power)
       if (foundPower !== undefined) { // if we found a power
-        console.log('Found Power', foundPower)
 
         // If the found power is not egg (typeless), we specified a type, and the types don't match, skip it
         if (foundPower.name !== 'Egg' && type !== undefined && type !== '' && foundPower.type !== type) { 
-          console.log('type mismatch')
           return false
         }
 
         // At this point either we have egg, type wasn't specified, or type matched
-        if (level !== undefined && level !== '' && foundPower.level !== parseInt(level)) {
-          console.log('level mismatch')
+        if (level !== undefined && level !== '' && foundPower.level < parseInt(level)) {
           return false;
         }
         
-        console.log('recipe match')
         return true
       } else {
         return false
@@ -55,21 +50,28 @@ export default function Recipes() {
     <Box>
       <Box display='flex' flexDirection='row'>
         <Autocomplete 
-          autoHighlight
           id="Power"
+          autoHighlight
+          autoSelect
           options={MealPowers}
           value={filterPowerValue}
           sx={{ width: '10em', margin: '.5em' }}
           onChange={(event: any, value: string | null) => {
+            console.log('onChange', value)
             if (value) {
               setFilterPower(value)
+              setFilterPowerValue(value)
             } else {
               setFilterPower('')
+              setFilterPowerValue('')
               value = ''
             }
 
             setCustomSandwiches(filterSandwiches(CustomCookbook.recipes, value, filterType, filterLevel))
             setInGameSandwiches(filterSandwiches(InGameCookbook.recipes, value, filterType, filterLevel))
+          }}
+          isOptionEqualToValue={(option, value) => {
+            return value === undefined || value === null || value === '' || value === option
           }}
           renderInput={(params) => (
             <TextField 
@@ -88,13 +90,18 @@ export default function Recipes() {
           onChange={(event: any, value: string | null) => {
             if (value) {
               setFilterType(value)
+              setFilterTypeValue(value)
             } else {
               setFilterType('')
+              setFilterTypeValue('')
               value = ''
             }
 
             setCustomSandwiches(filterSandwiches(CustomCookbook.recipes, filterPower, value, filterLevel))
             setInGameSandwiches(filterSandwiches(InGameCookbook.recipes, filterPower, value, filterLevel))
+          }}
+          isOptionEqualToValue={(option, value) => {
+            return value === undefined || value === null || value === '' || value === option
           }}
           renderInput={(params) => (
             <TextField 
@@ -113,13 +120,18 @@ export default function Recipes() {
           onChange={(event: any, value: string | null) => {
             if (value) {
               setFilterLevel(value)
+              setFilterLevelValue(value)
             } else {
               setFilterLevel('')
+              setFilterLevelValue('')
               value = ''
             }
 
             setCustomSandwiches(filterSandwiches(CustomCookbook.recipes, filterPower, filterType, value))
             setInGameSandwiches(filterSandwiches(InGameCookbook.recipes, filterPower, filterType, value))
+          }}
+          isOptionEqualToValue={(option, value) => {
+            return value === undefined || value === null || value === '' || value === option
           }}
           renderInput={(params) => (
             <TextField 
@@ -141,7 +153,6 @@ export default function Recipes() {
             setCustomSandwiches(CustomCookbook.recipes)
             setInGameSandwiches(InGameCookbook.recipes)
           }}
-          variant="outlined"
         >
           Reset
         </Button>

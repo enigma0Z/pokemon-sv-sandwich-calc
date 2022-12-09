@@ -22,7 +22,7 @@ import _onion from './onion.png'
 import _pickle from './pickle.png'
 import _pineapple from './pineapple.png'
 import _potatosalad from './potatosalad.png'
-import _potatotorilla from './potatotorilla.png'
+import _potatotortilla from './potatotortilla.png'
 import _prosciutto from './prosciutto.png'
 import _redbellpepper from './redbellpepper.png'
 import _redonion from './redonion.png'
@@ -58,7 +58,7 @@ const images: {[index: string]: string} = {
   pickle: _pickle,
   pineapple: _pineapple,
   potatosalad: _potatosalad,
-  potatotorilla: _potatotorilla,
+  potatotortilla: _potatotortilla,
   prosciutto: _prosciutto,
   redbellpepper: _redbellpepper,
   redonion: _redonion,

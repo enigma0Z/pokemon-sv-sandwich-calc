@@ -22,9 +22,7 @@ function App() {
     }
   })
   return (
-    <div className="App">
-      <div id="sandwich" className="content"></div>
-    </div>
+    <div id="sandwich" className="content"></div>
   );
 }
 

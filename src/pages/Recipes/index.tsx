@@ -62,7 +62,7 @@ export default function Recipes() {
   }
 
   return (
-    <Box>
+    <>
       <Box display='flex' flexDirection='row' flexWrap={'wrap'}>
         <Autocomplete 
           id="Power"
@@ -178,6 +178,6 @@ export default function Recipes() {
         {/* {inGameSandwiches.map((recipe) => <Sandwich {...recipe} />)} */}
         {inGameSandwiches.filter(sandwich => sandwich.visible).map(sandwich => sandwich.element)}
       </Box>
-    </Box>
+    </>
   )
 }

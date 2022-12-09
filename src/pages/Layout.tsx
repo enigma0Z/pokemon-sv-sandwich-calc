@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
-import { createTheme } from '@mui/material';
+import { Box, createTheme } from '@mui/material';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import { themeOptions } from '../res/theme';
@@ -18,20 +18,19 @@ export default function Layout() {
         <div className="section">
           <h1>Sandwich Calculator</h1>
         </div>
-        <nav style={{
-          // display: 'none'
-        }}>
-          <ul>
-            <li>
-              <Link to={`/${search}`}>Home</Link> |&nbsp;
-              <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
-              <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
-              <Link to={`/Bugs${search}`}>Report A Bug</Link>
-            </li>
-          </ul>
+        <nav>
+          <Box>
+            <Link to={`/${search}`}>Home</Link> |&nbsp;
+            <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
+            <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
+            <Link to={`/Bugs${search}`}>Report A Bug</Link>
+          </Box>
         </nav>
 
-        <Outlet />
+
+        <Box className="App">
+          <Outlet />
+        </Box>
 
         <div className="section">
           <span className="caption">

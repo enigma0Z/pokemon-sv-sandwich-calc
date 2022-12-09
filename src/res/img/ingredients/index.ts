@@ -33,7 +33,7 @@ import _tofu from './tofu.png'
 import _tomato from './tomato.png'
 import _watercress from './watercress.png'
 import _yellowbellpepper from './yellowbellpepper.png'
-const images = {
+const images: {[index: string]: string} = {
   apple: _apple,
   avocado: _avocado,
   bacon: _bacon,

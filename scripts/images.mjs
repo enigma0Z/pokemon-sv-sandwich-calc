@@ -1,6 +1,6 @@
 import { readdirSync, writeFileSync } from 'fs'
 
-const basedir = 'ts/src/res'
+const basedir = 'src/res'
 
 const directories = [
   'img', 'img/ingredients', 'img/sandwiches', 'img/seasonings'
@@ -27,7 +27,7 @@ const generate = () => {
     lines.push(...imports)
 
     lines.push(
-      'const images = {'
+      'const images: {[index: string]: string} = {'
     )
 
     const declarations = imageFileNames(dir).map((name) => {

@@ -148,7 +148,7 @@ import _96 from './96.jpg'
 import _97 from './97.jpg'
 import _98 from './98.jpg'
 import _99 from './99.jpg'
-const images = {
+const images: {[index: string]: string} = {
   1: _1,
   10: _10,
   100: _100,

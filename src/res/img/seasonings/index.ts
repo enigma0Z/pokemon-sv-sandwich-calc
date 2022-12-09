@@ -21,7 +21,7 @@ import _vinegar from './vinegar.png'
 import _wasabi from './wasabi.png'
 import _whippedcream from './whippedcream.png'
 import _yogurt from './yogurt.png'
-const images = {
+const images: {[index: string]: string} = {
   bitterherbamystica: _bitterherbamystica,
   butter: _butter,
   chilisauce: _chilisauce,

@@ -1,7 +1,16 @@
 import img from './img'
+import _sandwiches from './img/sandwiches'
+import _ingredients from './img/ingredients'
+import _seasonings from './img/seasonings'
 
 const resources = {
-  img: img 
+  img: {
+    background: img.background,
+    logo: img.logo,
+    sandwiches: _sandwiches,
+    ingredients: _ingredients,
+    seasonings: _seasonings,
+  }
 }
 
 export default resources

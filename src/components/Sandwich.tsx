@@ -13,7 +13,6 @@ export default function sandwich(props: {
   seasonings: string[]; 
   powers: {name: string; type: string | null; level: number}[];
 }) {
-
   const ingredients = props.ingredients.map((x) => <Ingredient name={x} />)
   const seasonings = props.seasonings.map((x) => <Seasoning name={x} />)
   const powers = props.powers.map((x) => { 

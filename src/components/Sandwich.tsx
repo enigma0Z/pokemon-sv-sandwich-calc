@@ -4,7 +4,7 @@ import Seasoning from './Seasoning';
 import './Sandwich.css'
 import { Link } from 'react-router-dom';
 
-export default function sandwich(props: { 
+export default function Sandwich(props: { 
   name?: string; 
   description?: string;
   location?: string;
@@ -38,7 +38,7 @@ export default function sandwich(props: {
       <Box className='sandwich'>
         <Link to={uri}>
           <Box className='title' display={"flex"} flexDirection={"row"}>
-            <h3>{props.number ? `#${props.number}` : ''} {props.name || 'A Tasty Original (custom sandwich)'}</h3>
+            <h3>{props.number ? `#${props.number}` : ''} {props.name || 'A Tasty Original'}</h3>
           </Box>
           {description}
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>

@@ -1,13 +1,13 @@
 import { ThemeProvider } from '@emotion/react';
-import { Box, createTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
-import { themeOptions } from '../res/theme';
 import './Layout.css';
+import { theme } from '../res/theme';
+
 
 export default function Layout() {
 
-  const theme = createTheme(themeOptions)
   const { search } = useLocation()
 
   return (

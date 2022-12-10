@@ -68,7 +68,7 @@ export default function HomeV2() {
     } else if (name === 'seasonings') {
       for (let value of values) {
         let foundSeasoning = Seasonings.find(seasoning => seasoning.name.toLowerCase() === value.toLowerCase())
-        if (foundSeasoning != undefined) {
+        if (foundSeasoning !== undefined) {
           uriSeasonings.push(foundSeasoning.name)
         }
       }

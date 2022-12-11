@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import { useEffect } from 'react'
 
-export default class Explore extends Component {
-  render() {
-    return (
-      <>
-        <div className="section">
-          <h2>COMING SOON</h2>
-        </div>
-      </>
-    )
-  }
+export default function Explore() {
+  useEffect(() => {
+    document.window.title = "Sandwich Calculator: Explore"
+  }, [])
+  return (
+    <>
+      <div className="section">
+        <h2>COMING SOON</h2>
+      </div>
+    </>
+  )
 }

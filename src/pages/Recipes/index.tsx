@@ -1,5 +1,5 @@
 import { Autocomplete, Box, Button, TextField } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Sandwich from '../../components/Sandwich'
 import './index.css'
 
@@ -8,6 +8,9 @@ import { CustomCookbook, InGameCookbook } from '../../data/Cookbooks'
 import { Recipe } from '../../data/Cookbook'
 
 export default function Recipes() {
+  useEffect(() => {
+    document.window.title = "Sandwich Calculator: Recipes"
+  }, [])
   const [customSandwiches, setCustomSandwiches] = useState(CustomCookbook.recipes.map((recipe) => { return { visible: true, recipe: recipe, element: <Sandwich {...recipe} /> } }))
   const [inGameSandwiches, setInGameSandwiches] = useState(InGameCookbook.recipes.map((recipe) => { return { visible: true, recipe: recipe, element: <Sandwich {...recipe} /> } }))
 

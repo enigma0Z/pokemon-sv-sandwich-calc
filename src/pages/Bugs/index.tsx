@@ -1,6 +1,10 @@
+import { useEffect } from 'react'
 import { Box } from '@mui/material'
 
 export default function Bugs() {
+  useEffect(() => {
+    document.window.title = "Sandwich Calculator: Help & About"
+  }, [])
   return (
     <>
       <div id="todo" className="content">

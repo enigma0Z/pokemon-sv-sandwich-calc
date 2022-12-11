@@ -1,5 +1,5 @@
 import './index.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, useTheme } from '@mui/material';
 import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
@@ -12,6 +12,10 @@ const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
 export default function HomeV2() {
+
+  useEffect(() => {
+    document.window.title = "Sandwich Calculator: Home"
+  }, [])
 
   const location = useLocation()
   const theme = useTheme()

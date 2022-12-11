@@ -23,7 +23,7 @@ export default function Layout() {
             <Link to={`/${search}`}>Home</Link> |&nbsp;
             <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
             <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
-            <Link to={`/Bugs${search}`}>Report A Bug</Link>
+            <Link to={`/Bugs${search}`}>Help & About</Link>
           </Box>
         </nav>
 

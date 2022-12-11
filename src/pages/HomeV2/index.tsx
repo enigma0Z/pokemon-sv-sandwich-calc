@@ -14,7 +14,7 @@ const SEASONINGS_PER_PLAYER = 4
 export default function HomeV2() {
 
   useEffect(() => {
-    document.window.title = "Sandwich Calculator: Home"
+    document.title = "Sandwich Calculator: Home"
   }, [])
 
   const location = useLocation()

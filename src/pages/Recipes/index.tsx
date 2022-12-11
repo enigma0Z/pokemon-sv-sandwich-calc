@@ -9,7 +9,7 @@ import { Recipe } from '../../data/Cookbook'
 
 export default function Recipes() {
   useEffect(() => {
-    document.window.title = "Sandwich Calculator: Recipes"
+    document.title = "Sandwich Calculator: Recipes"
   }, [])
   const [customSandwiches, setCustomSandwiches] = useState(CustomCookbook.recipes.map((recipe) => { return { visible: true, recipe: recipe, element: <Sandwich {...recipe} /> } }))
   const [inGameSandwiches, setInGameSandwiches] = useState(InGameCookbook.recipes.map((recipe) => { return { visible: true, recipe: recipe, element: <Sandwich {...recipe} /> } }))

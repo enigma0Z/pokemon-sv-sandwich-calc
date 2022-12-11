@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 
 export default function Bugs() {
   useEffect(() => {
-    document.window.title = "Sandwich Calculator: Help & About"
+    document.title = "Sandwich Calculator: Help & About"
   }, [])
   return (
     <>

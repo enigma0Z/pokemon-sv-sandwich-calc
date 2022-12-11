@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 export default function Explore() {
   useEffect(() => {
-    document.window.title = "Sandwich Calculator: Explore"
+    document.title = "Sandwich Calculator: Explore"
   }, [])
   return (
     <>

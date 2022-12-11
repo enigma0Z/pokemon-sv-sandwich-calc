@@ -10,7 +10,7 @@ export default function Bugs() {
       <div id="todo" className="content">
         <h2>Sandwich FAQ</h2>
         <ul><li>
-          <h3>How are sandwich powers calculated?</h3></p>
+          <h3>How are sandwich powers calculated?</h3>
           <p>
             If you make a known in-game sandwich, that sandwich's powers are used. Known in-game sandwiches don't follow the rules.
           </p><p>

@@ -1,4 +1,5 @@
 import { Box, Theme, useTheme } from "@mui/material"
+import { sortAttributes, sortValuePower, sortValueTaste, sortValueType } from "../data/calc"
 import { Ingredient } from "../data/Cookbook"
 
 export default function StatBubbles(props: {taste?: Ingredient['taste'], power?: Ingredient['power'], type?: Ingredient['type'], amount?: number}) {
@@ -32,6 +33,7 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
       paddingTop: '.1em',
       paddingBottom: '.1em',
       backgroundColor: 'black',
+      color: 'white',
       borderRadius: '.5em',
       border: 'solid 1px darkgrey'
     }
@@ -50,8 +52,8 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
   if (props.taste !== undefined) {
     elements.push(<Box>Taste</Box>)
     const bubbles = []
-    for (let key of Object.keys(props.taste)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{key}: {props.taste[key] * amount}</Box>)
+    for (let obj of sortAttributes(props.taste, sortValueTaste)) {
+      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
     }
     elements.push(
       <Box sx={classes.DetailRow}>
@@ -61,10 +63,10 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
   }
 
   if (props.power !== undefined) {
-    elements.push(<Box>power</Box>)
+    elements.push(<Box>Power</Box>)
     const bubbles = []
-    for (let key of Object.keys(props.power)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{key}: {props.power[key] * amount}</Box>)
+    for (let obj of sortAttributes(props.power, sortValuePower)) {
+      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
     }
     elements.push(
       <Box sx={classes.DetailRow}>
@@ -74,10 +76,10 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
   }
 
   if (props.type !== undefined) {
-    elements.push(<Box>type</Box>)
+    elements.push(<Box>Type</Box>)
     const bubbles = []
-    for (let key of Object.keys(props.type)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{key}: {props.type[key] * amount}</Box>)
+    for (let obj of sortAttributes(props.type, sortValueType)) {
+      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
     }
     elements.push(
       <Box sx={classes.DetailRow}>

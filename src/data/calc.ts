@@ -292,6 +292,15 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
 
   calcSandwich.stats = SandwichSum
 
+  let herbaMysticaTotal = 0;
+  for (let seasoning of calcSandwich.seasonings) {
+    if (seasoning.name.toLowerCase().endsWith('herba mystica')) herbaMysticaTotal += 1
+  }
+
+  if (herbaMysticaTotal === 1) { // Sparkling power only activates on two herba
+    SandwichSum.power.Sparkling = 0
+  }
+
   const SortedPower = Object.keys(SandwichSum.power)
     .map( (key) => { return {name: key, value: SandwichSum.power[key]} })
     .sort(sortValuePower)
@@ -319,14 +328,10 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
   ]
 
   // Do Herba Mystica overrides for level
-  let herbaMysticaTotal = 0;
-  for (let seasoning of calcSandwich.seasonings) {
-    if (seasoning.name.toLowerCase().endsWith('herba mystica')) herbaMysticaTotal += 1
-  }
-
   if (herbaMysticaTotal === 1) {
     if (levels[0] < 2) levels[0] = 2 
     if (levels[1] < 2) levels[1] = 2 
+
   } else if (herbaMysticaTotal > 1) {
     if (levels[0] < 3) levels[0] = 3 
     if (levels[1] < 3) levels[1] = 3 

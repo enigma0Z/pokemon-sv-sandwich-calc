@@ -48,7 +48,6 @@ export default function IngredientDetail(props: { name: string, kind: "ingredien
     } else if (props.kind === 'seasoning') {
       img = <img src={res.img.seasonings[imageName(ingredient.name)]}/>
     }
-    console.log(imageName(ingredient.name))
     return (
       <Box sx={classes.IngredientBox}>
         <Box sx={classes.IngredientTitle}>

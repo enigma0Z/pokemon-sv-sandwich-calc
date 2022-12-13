@@ -61,9 +61,7 @@ export default function Sandwich(props: {
     return (<Box>{desc}</Box>) 
   })
 
-  let details 
   if (props.stats !== undefined) {
-    details = 
       <Box sx={classes.DetailBox}>
         <Box>Taste</Box>
         <Box sx={classes.DetailRow}>

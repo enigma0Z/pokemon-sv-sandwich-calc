@@ -44,9 +44,9 @@ export default function IngredientDetail(props: { name: string, kind: "ingredien
 
   if (ingredient !== undefined) {
     if (props.kind === 'ingredient') {
-      img = <img src={res.img.ingredients[imageName(ingredient.name)]}/>
+      img = <img src={res.img.ingredients[imageName(ingredient.name)]} alt={ingredient.name}/>
     } else if (props.kind === 'seasoning') {
-      img = <img src={res.img.seasonings[imageName(ingredient.name)]}/>
+      img = <img src={res.img.seasonings[imageName(ingredient.name)]} alt={ingredient.name}/>
     }
     return (
       <Box sx={classes.IngredientBox}>

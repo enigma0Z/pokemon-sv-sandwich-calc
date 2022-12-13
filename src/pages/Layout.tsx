@@ -24,7 +24,8 @@ export default function Layout() {
             <Link to={`/${search}`}>Home</Link> |&nbsp;
             <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
             <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
-            <Link to={`/Bugs${search}`}>Help & About</Link>
+            <Link to={`/FAQ${search}`}>FAQ</Link> |&nbsp;
+            <Link to={`/About${search}`}>Help & About</Link>
           </Box>
         </nav>
 
@@ -32,6 +33,10 @@ export default function Layout() {
           <Outlet context={[setSearch]}/>
         </Box>
 
+        <div className='section' style={{marginBottom: '3em'}}>
+          <h2>Reporting A Bug</h2>
+          If you found a bug or have a suggestion, report it in the <a href="https://www.reddit.com/user/enigma_0Z/comments/zfk3bz/pokemon_scarlet_violet_sandwich_calculator_bug/" target='_blank' rel="noreferrer">official reddit thread</a>
+        </div>
         <div className="section">
           <span className="caption">
             <a href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">YouTube</a> |&nbsp;

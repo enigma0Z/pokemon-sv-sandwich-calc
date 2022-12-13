@@ -7,9 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Explore from './pages/Explore';
 import Recipes from './pages/Recipes';
-import Bugs from './pages/Bugs';
 import HomeV2 from './pages/HomeV2'
 import './res/theme'
+import About from './pages/About';
+import FAQ from './pages/FAQ';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +24,8 @@ root.render(
             <Route index element={<HomeV2 />} />
             <Route path="explore" element={<Explore />} />
             <Route path="recipes" element={<Recipes />} />
-            <Route path="bugs" element={<Bugs />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="about" element={<About />} />
             <Route path="old" element={<Home />} />
           </Route>
         </Routes>

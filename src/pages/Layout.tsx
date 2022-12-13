@@ -4,11 +4,12 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { theme } from '../res/theme';
+import { useState } from 'react';
 
 
 export default function Layout() {
 
-  const { search } = useLocation()
+  const [search, setSearch] = useState(useLocation().search)
 
   return (
     <>
@@ -27,9 +28,8 @@ export default function Layout() {
           </Box>
         </nav>
 
-
         <Box className="App">
-          <Outlet />
+          <Outlet context={[setSearch]}/>
         </Box>
 
         <div className="section">

@@ -13,7 +13,6 @@ function App() {
       adsense.setAttribute('crossorigin', 'anonymous')
       head.appendChild(adsense);
 
-      console.log('useEffect()')
       renderUi()
 
       return () => {

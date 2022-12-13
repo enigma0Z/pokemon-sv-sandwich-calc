@@ -4,6 +4,7 @@ import SeasoningElement from './Seasoning';
 import './Sandwich.css'
 import { Link } from 'react-router-dom';
 import { Ingredient, SandwichStats } from '../data/Cookbook';
+import StatBubbles from './StatBubbles';
 
 export default function Sandwich(props: { 
   name?: string; 
@@ -60,9 +61,7 @@ export default function Sandwich(props: {
     return (<Box>{desc}</Box>) 
   })
 
-  let details 
   if (props.stats !== undefined) {
-    details = 
       <Box sx={classes.DetailBox}>
         <Box>Taste</Box>
         <Box sx={classes.DetailRow}>
@@ -117,7 +116,9 @@ export default function Sandwich(props: {
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>
           <Box display={"flex"} flexDirection={"row"}> {ingredients} </Box>
           <Box display={"flex"} flexDirection={"row"}> {seasonings} </Box>
-          <Box display={props.stats !== undefined && props.showDetails ? "flex" : "none"} flexDirection={"row"}>{details}</Box>
+          <Box display={props.stats !== undefined && props.showDetails ? "flex" : "none"} flexDirection={"row"}>
+            <StatBubbles taste={props.stats?.taste} power={props.stats?.power} type={props.stats?.type} />
+          </Box>
         </Link>
       </Box>
     </Tooltip>

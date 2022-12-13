@@ -7,6 +7,7 @@ import { calculateSandwich } from '../../data/calc';
 import Sandwich from '../../components/SandwichV2';
 import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
+import StatBubbles from '../../components/StatBubbles';
 
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
@@ -106,32 +107,6 @@ export default function HomeV2() {
     sandwich.push(<Sandwich showDetails={showDetails} {...calculateSandwich(actualIngredients, actualSeasonings) }></Sandwich>)
   }
 
-  const renderDetails = (ingredient: Ingredient | undefined) => {
-    if (ingredient === undefined) return null
-    return (
-      <Box sx={classes.DetailBox}>
-        <Box>Taste</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(ingredient.taste).map(key => {
-            return <Box sx={classes.DetailItem}>{key}: {ingredient.taste[key]}</Box>
-          })}
-        </Box>
-        <Box>Power</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(ingredient.power).map(key => {
-            return <Box sx={classes.DetailItem}>{key}: {ingredient.power[key]}</Box>
-          })}
-        </Box>
-        <Box>Type</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(ingredient.type).map(key => {
-            return <Box sx={classes.DetailItem}>{key}: {ingredient.type[key]}</Box>
-          })}
-        </Box>
-      </Box>
-    )
-  }
-
   const setUri = (ingredients: string[], seasonings: string[]) => {
     const actualIngredients: Ingredient[] = []
     for (let ingredient of ingredients) {
@@ -164,6 +139,7 @@ export default function HomeV2() {
 
   const ingredientSelects: JSX.Element[] = []
   for (let i = 0; i<INGREDIENTS_PER_PLAYER*players; i++) {
+    let ingredient = Ingredients.find(x => x.name === ingredients[i])
     ingredientSelects.push(
       <Box sx={classes.IngredientSelect} >
         <Select
@@ -197,7 +173,7 @@ export default function HomeV2() {
           key={i + 'detail'}
           display={ingredients[i] !== null && showDetails ? 'flex' : 'none'}
         >
-          {renderDetails(Ingredients.find(x => x.name ===ingredients[i]))}
+          <StatBubbles taste={ingredient?.taste} power={ingredient?.power} type={ingredient?.type} amount={ingredient?.max} />
         </Box>
       </Box>
     )
@@ -205,6 +181,7 @@ export default function HomeV2() {
 
   const seasoningSelects: JSX.Element[] = []
   for (let i = 0; i<SEASONINGS_PER_PLAYER*players; i++) {
+    let seasoning = Seasonings.find(x => x.name === seasonings[i])
     seasoningSelects.push(
       <Box sx={classes.IngredientSelect} >
         <Select
@@ -235,9 +212,9 @@ export default function HomeV2() {
         </Select>
         <Box 
           key={i + 'detail'}
-          display={seasonings[i] !== null && showDetails ? 'flex' : 'none'}
+          display={seasoning !== undefined && showDetails ? 'flex' : 'none'}
         >
-          {renderDetails(Seasonings.find(x => x.name === seasonings[i]))}
+          <StatBubbles taste={seasoning?.taste} power={seasoning?.power} type={seasoning?.type} />
         </Box>
       </Box>
     )

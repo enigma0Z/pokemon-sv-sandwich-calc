@@ -39,7 +39,7 @@ export default function Bugs() {
         </li></ul>
         <h2>Todo</h2>
           <ul><li>
-            Rewrite the main sandwich builder page in React & make it prettier
+            Add sandwich construction notes/comments as an additional detail
           </li><li>
             Show if a built recipe matches a known one (in game or on this site)
           </li><li>

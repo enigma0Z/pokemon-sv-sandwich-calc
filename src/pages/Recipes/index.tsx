@@ -32,19 +32,16 @@ export default function Recipes() {
   }
 
   const filterSandwiches = (state: { visible: boolean, recipe: Recipe, element: JSX.Element }[], power?: string, type?: string, level?: string) => { 
-    console.log('filter', power, type, level)
     for (let sandwich of state) { 
       sandwich.visible = false // Start off setting everything hidden
 
       if (power !== undefined && power !== null && power !== '') {
         let foundPower = sandwich.recipe.powers.find(x => x.name === power)
         if (foundPower !== undefined) {
-        console.log('found power', foundPower)
           if (
             foundPower.name === 'Egg' 
             || (type !== undefined && type !== null && type !== '' && type === foundPower.type)
           ) { 
-            console.log('found type', type)
             if (level !== undefined && level !== null && level !== '' && parseInt(level) === foundPower.level) { 
               // Power, type, and level are all specified and match
               sandwich.visible = true
@@ -75,7 +72,6 @@ export default function Recipes() {
           value={filterPowerValue}
           sx={{ width: '10em', margin: '.5em' }}
           onChange={(event: any, value: string | null) => {
-            console.log('onChange', value)
             if (value) {
               setFilterPower(value)
               setFilterPowerValue(value)

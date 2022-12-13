@@ -5,7 +5,7 @@ import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
 import { calculateSandwich } from '../../data/calc';
 import Sandwich from '../../components/SandwichV2';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import StatBubbles from '../../components/StatBubbles';
 
@@ -13,6 +13,8 @@ const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
 export default function HomeV2() {
+
+  const [setSearch] = useOutletContext<[(v: string) => {}]>();
 
   useEffect(() => {
     document.title = "Sandwich Calculator: Home"
@@ -131,10 +133,12 @@ export default function HomeV2() {
     let url
     if (queryString.length > 0) {
       url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${queryString.join('&')}`
+      setSearch(`?${queryString.join('&')}`)
     } else {
       url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+      setSearch(``)
     }
-    window.history.replaceState('', '', url)
+    window.history.pushState('', '', url)
   }
 
   const ingredientSelects: JSX.Element[] = []

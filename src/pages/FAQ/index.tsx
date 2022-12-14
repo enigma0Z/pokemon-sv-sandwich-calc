@@ -1,5 +1,7 @@
+import './index.css'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 export default function FAQ() {
   useEffect(() => {
@@ -7,19 +9,21 @@ export default function FAQ() {
   }, [])
 
   return (
-    <>
+    <Box sx={{maxWidth: '60em', marginLeft: 'auto', marginRight: 'auto'}}>
       <div id="todo" className="content">
         <ul><li>
           <h2>How are sandwich powers calculated?</h2>
           <p>
-            If you make a known in-game sandwich, that sandwich's powers are used. Known in-game sandwiches don't follow the rules.
-          </p><p>
+            If you make a known in-game sandwich, that sandwich's powers are used. Known in-game sandwiches don't follow the rules.  Don't ask me why.
             If you've got a custom sandwich, the basics (with a few exceptions like herba mystica powers) go like this:
-            <ol>
-              <li>Add all ingredients and seasonings together, every infredient piece coints (e.g. avocados have three pieces per serving, so they give 18 dragon)</li>
-              <li>Calculate flavor bonuses -- the top flavor (or top two for sweet & salty, sweet & hot, and bitter & salty) adds an additional 100 points to a specific power if the top type is 180 or higher</li>
+          </p><ol>
+              <li>
+                Add everything together -- all tastes, types, and powers of all ingredients and seasonings<br/>
+                Note that ingredient pieces count, so three avocado is 18 dragon since it's 6 <em>per piece</em>.
+              </li>
+              <li>Calculate <a href="#flavor-bonuses">flavor bonuses</a> for the top flavor or top two flavors in some situations</li>
               <li>Assign powers & levels -- if a power is less than 100 its level 1, if a power is less than 280 its level 2, otherwise its level 3. The top power is given the top type, the second power is given the third type, and the third power is given the second type. Idk why it was done this way, ask Game Freak.</li>
-            </ol>
+          </ol><p>
             Sandwiches with herba mystica (HM) have some additional considerations: one HM always gets you title power. Two HMs always gets you title and sparling power.    
           </p><p>
             If there's a tie in types, powers, or flavors, they're sorted in in-game order not alphabetical, so Normal will take prioroty over Flying, for instance.
@@ -46,10 +50,10 @@ export default function FAQ() {
           </p>
           <hr/>
         </li><li>
-          <h2>What are flavor bonuses?</h2>
+          <h2 id='flavor-bonuses'>What are flavor bonuses?</h2>
           <p>
             Every flavor, and some flavor combinations, have an assocated power bonus.  This bonus gives you +100 points to that power when the associated type is 180 points or greater.  The following flavors give bonuses, in this order.
-            <ol><li>
+          </p><ol><li>
               Sweet & Sour: +100 Catching Power
             </li><li>
               Sweet & Hot: +100 Raid Power
@@ -66,10 +70,9 @@ export default function FAQ() {
             </li><li>
               Hot: +100 Humungo Power
             </li></ol>
-          </p>
           <hr/>
         </li></ul>
       </div>
-    </>
+    </Box>
   )
 }

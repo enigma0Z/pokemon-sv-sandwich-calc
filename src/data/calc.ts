@@ -109,8 +109,14 @@ export function sortAttributes(object: Ingredient['taste'] | Ingredient['power']
 }
 
 export function calculateLevel(power: {name: string, value: number}, type: {name: string, value: number}) {
-  if (power.value >= 100 && power.value < 2000 && type.value >= 180) {
-    return 2
+  if (type.value >= 180 ) {
+    if (power.value >= 2000) {
+      return 3
+    } else if (power.value >= 100) {
+      return 2
+    } else {
+      return 1
+    }
   } else {
     return 1
   }

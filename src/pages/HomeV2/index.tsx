@@ -111,6 +111,7 @@ export default function HomeV2() {
   if (
     actualIngredients.length > 0 && actualSeasonings.length > 0
   ) {
+    gtag('event', 'home_sandwich_create', {actualIngredients, actualSeasonings})
     sandwich.push(<Sandwich showDetails={showDetails} {...calculateSandwich(actualIngredients, actualSeasonings) }></Sandwich>)
   }
 

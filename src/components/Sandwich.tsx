@@ -36,7 +36,9 @@ export default function Sandwich(props: {
         <p>Seasonings: {props.seasonings.join(', ')}</p>
       </>}>
       <Box className='sandwich'>
-        <Link to={uri}>
+        <Link to={uri} onClick={() => {
+          gtag('event', 'sandwich_click', {uri: uri})
+        }}>
           <Box className='title' display={"flex"} flexDirection={"row"}>
             <h3>{props.number ? `#${props.number}` : ''} {props.name || 'A Tasty Original'}</h3>
           </Box>

@@ -22,8 +22,8 @@ export default function Layout() {
         <nav>
           <Box>
             <Link to={`/${search}`}>Home</Link> |&nbsp;
-            <Link to={`/explore${search}`}>Explore Ingredients</Link> |&nbsp;
-            <Link to={`/recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
+            <Link to={`/Explore${search}`}>Explore Ingredients</Link> |&nbsp;
+            <Link to={`/Recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
             <Link to={`/FAQ${search}`}>FAQ</Link> |&nbsp;
             <Link to={`/About${search}`}>Help & About</Link>
           </Box>

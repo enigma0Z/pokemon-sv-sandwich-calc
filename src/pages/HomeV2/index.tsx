@@ -111,8 +111,13 @@ export default function HomeV2() {
   if (
     actualIngredients.length > 0 && actualSeasonings.length > 0
   ) {
-    gtag('event', 'home_sandwich_create', {ingredients: actualIngredients.map(x => x.name), seasonings: actualSeasonings.map(x => x.name)})
-    sandwich.push(<Sandwich showDetails={showDetails} {...calculateSandwich(actualIngredients, actualSeasonings) }></Sandwich>)
+    const calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+    gtag('event', 'home_sandwich_create', {
+      ingredients: calculatedSandwich.ingredients.map(x => x.name), 
+      seasonings: calculatedSandwich.seasonings.map(x => x.name),
+      powers: calculatedSandwich.powers
+    })
+    sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
   }
 
   const setUri = (ingredients: string[], seasonings: string[], players?: number) => {

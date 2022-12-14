@@ -20,7 +20,6 @@ export default function Sandwich(props: {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
     Sandwich: {
-      width: '55em',
       [theme.breakpoints.down('md')]: {
         width: 'auto'
       }
@@ -114,8 +113,8 @@ export default function Sandwich(props: {
           </Box>
           {description}
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>
-          <Box display={"flex"} flexDirection={"row"}> {ingredients} </Box>
-          <Box display={"flex"} flexDirection={"row"}> {seasonings} </Box>
+          <Box display={"flex"} flexDirection={"row"} flexWrap={"wrap"}> {ingredients} </Box>
+          <Box display={"flex"} flexDirection={"row"} flexWrap={"wrap"}> {seasonings} </Box>
           <Box display={props.stats !== undefined && props.showDetails ? "flex" : "none"} flexDirection={"row"}>
             <StatBubbles taste={props.stats?.taste} power={props.stats?.power} type={props.stats?.type} />
           </Box>

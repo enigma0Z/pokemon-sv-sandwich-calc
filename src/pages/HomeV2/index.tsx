@@ -1,6 +1,6 @@
 import './index.css';
 import { useState, useEffect } from 'react';
-import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, useTheme } from '@mui/material';
+import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
 import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
 import { calculateSandwich } from '../../data/calc';
@@ -60,6 +60,7 @@ export default function HomeV2() {
 
   let uriIngredients: string[] = []
   let uriSeasonings: string[] = []
+  let uriPlayers = 1
 
   const QueryString = location.search.slice(1)
   for (let entry of QueryString.split('&')) {
@@ -70,6 +71,8 @@ export default function HomeV2() {
         let foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase() === value.toLowerCase())
         if (foundIngredient !== undefined) {
           uriIngredients.push(foundIngredient.name)
+        } else {
+          uriIngredients.push('')
         }
       }
     } else if (name === 'seasonings') {
@@ -77,8 +80,12 @@ export default function HomeV2() {
         let foundSeasoning = Seasonings.find(seasoning => seasoning.name.toLowerCase() === value.toLowerCase())
         if (foundSeasoning !== undefined) {
           uriSeasonings.push(foundSeasoning.name)
+        } else {
+          uriSeasonings.push('')
         }
       }
+    } else if (name === 'players') {
+      uriPlayers = parseInt(values[0])
     }
   }
 
@@ -86,9 +93,7 @@ export default function HomeV2() {
   const [seasonings, setSeasonings]: [string[], any] = useState(uriSeasonings)
 
   const [showDetails, setShowDetails] = useState(false)
-  const [players, setPlayers] = useState(1)
-
-  console.log(setPlayers) // Make typescript linter happy
+  const [players, setPlayers] = useState(uriPlayers)
 
   const actualIngredients: Ingredient[] = []
   for (let ingredient of ingredients) {
@@ -109,25 +114,31 @@ export default function HomeV2() {
     sandwich.push(<Sandwich showDetails={showDetails} {...calculateSandwich(actualIngredients, actualSeasonings) }></Sandwich>)
   }
 
-  const setUri = (ingredients: string[], seasonings: string[]) => {
-    const actualIngredients: Ingredient[] = []
+  const setUri = (ingredients: string[], seasonings: string[], players?: number) => {
+    const actualIngredients: string[] = []
     for (let ingredient of ingredients) {
       const foundIngredient = Ingredients.find(x => x.name === ingredient)
-      if (ingredient !== null && foundIngredient !== undefined) actualIngredients.push(foundIngredient)
+      if (ingredient !== null && foundIngredient !== undefined) actualIngredients.push(foundIngredient.name)
+      else actualIngredients.push('')
     }
 
-    const actualSeasonings: Ingredient[] = []
+    const actualSeasonings: string[] = []
     for (let seasoning of seasonings) {
       const foundSeasoning = Seasonings.find(x => x.name === seasoning)
-      if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning)
+      if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning.name)
+      else actualSeasonings.push('')
     }
 
     let queryString = []
     if (actualIngredients.length > 0) {
-      queryString.push(`ingredients=${actualIngredients.map(x => x.name).join(',')}`)
+      queryString.push(`ingredients=${actualIngredients.join(',')}`)
     }
     if (actualSeasonings.length > 0) {
-      queryString.push(`seasonings=${actualSeasonings.map(x => x.name).join(',')}`)
+      queryString.push(`seasonings=${actualSeasonings.join(',')}`)
+    }
+
+    if (players !== undefined) {
+      queryString.push(`players=${players}`)
     }
 
     let url
@@ -144,6 +155,12 @@ export default function HomeV2() {
   const ingredientSelects: JSX.Element[] = []
   for (let i = 0; i<INGREDIENTS_PER_PLAYER*players; i++) {
     let ingredient = Ingredients.find(x => x.name === ingredients[i])
+    if (
+      i % INGREDIENTS_PER_PLAYER === 0
+      && i+1 < INGREDIENTS_PER_PLAYER*players
+    ) {
+      ingredientSelects.push(<Box flexBasis={'100%'}>Player {i / INGREDIENTS_PER_PLAYER + 1}</Box>)
+    }
     ingredientSelects.push(
       <Box sx={classes.IngredientSelect} >
         <Select
@@ -158,7 +175,7 @@ export default function HomeV2() {
             const newIngredients = [...ingredients]
             newIngredients[i] = event.target.value
             setIngredients(newIngredients)
-            setUri(newIngredients, seasonings)
+            setUri(newIngredients, seasonings, players)
           }}
         >
           {isMobile ? 
@@ -181,10 +198,18 @@ export default function HomeV2() {
         </Box>
       </Box>
     )
+
   }
 
   const seasoningSelects: JSX.Element[] = []
   for (let i = 0; i<SEASONINGS_PER_PLAYER*players; i++) {
+    if (
+      i % SEASONINGS_PER_PLAYER === 0
+      && i+1 < SEASONINGS_PER_PLAYER*players
+    ) {
+      seasoningSelects.push(<Box flexBasis={'100%'}>Player {i / SEASONINGS_PER_PLAYER + 1}</Box>)
+    }
+
     let seasoning = Seasonings.find(x => x.name === seasonings[i])
     seasoningSelects.push(
       <Box sx={classes.IngredientSelect} >
@@ -199,7 +224,7 @@ export default function HomeV2() {
             const newSeasonings = [...seasonings]
             newSeasonings[i] = event.target.value
             setSeasonings(newSeasonings)
-            setUri(ingredients, newSeasonings)
+            setUri(ingredients, newSeasonings, players)
           }}
         >
           {isMobile ? 
@@ -222,10 +247,33 @@ export default function HomeV2() {
         </Box>
       </Box>
     )
+
+    if (
+      (i+1) % SEASONINGS_PER_PLAYER === 0
+      && i+1 < SEASONINGS_PER_PLAYER*players
+    ) {
+      seasoningSelects.push(<Box flexBasis={'100%'}>&nbsp;</Box>)
+    }
   }
 
   return (
     <>
+      <Box><h2>Players</h2></Box>
+      <Box display='flex' flexDirection='row' flexWrap='wrap'>
+        <ToggleButtonGroup value={players} exclusive={true} onChange={(event, value) => {
+          setPlayers(value)
+          const newIngredients = ingredients.slice(0, INGREDIENTS_PER_PLAYER*value) 
+          const newSeasonings = seasonings.slice(0, SEASONINGS_PER_PLAYER*value) 
+          setIngredients(newIngredients)
+          setSeasonings(newSeasonings)
+          setUri(newIngredients, newSeasonings, value)
+        }}>
+          <ToggleButton value={1} key={1}>1</ToggleButton>
+          <ToggleButton value={2} key={2}>2</ToggleButton>
+          <ToggleButton value={3} key={3}>3</ToggleButton>
+          <ToggleButton value={4} key={4}>4</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
       <Box><h2>Ingredients</h2></Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
         {ingredientSelects}
@@ -239,6 +287,7 @@ export default function HomeV2() {
           onClick={() => {
             setIngredients([])
             setSeasonings([])
+            setUri([], [])
           }}
         >
           Reset

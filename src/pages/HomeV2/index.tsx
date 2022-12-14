@@ -4,7 +4,7 @@ import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, 
 import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
 import { calculateSandwich } from '../../data/calc';
-import Sandwich from '../../components/SandwichV2';
+import Sandwich, { powerName } from '../../components/SandwichV2';
 import { useLocation, useOutletContext } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import StatBubbles from '../../components/StatBubbles';
@@ -115,7 +115,7 @@ export default function HomeV2() {
     gtag('event', 'home_sandwich_create', {
       ingredients: calculatedSandwich.ingredients.map(x => x.name), 
       seasonings: calculatedSandwich.seasonings.map(x => x.name),
-      powers: calculatedSandwich.powers
+      powers: calculatedSandwich.powers.map(x => powerName(x))
     })
     sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
   }

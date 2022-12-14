@@ -6,6 +6,13 @@ import { Link } from 'react-router-dom';
 import { Ingredient, SandwichStats } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 
+export function powerName(power: Ingredient['power']): string {
+  let desc = `${power.name} Power`
+  if (power.name.toLowerCase() !== 'egg') desc += `: ${power.type}`
+  desc += `, Lv. ${power.level}`
+  return desc 
+}
+
 export default function Sandwich(props: { 
   name?: string; 
   showDetails?: boolean;
@@ -54,10 +61,7 @@ export default function Sandwich(props: {
   const ingredients = props.ingredients.map((x) => <IngredientElement name={x.name} />)
   const seasonings = props.seasonings.map((x) => <SeasoningElement name={x.name} />)
   const powers = props.powers.map((x) => { 
-    let desc = `${x.name} Power`
-    if (x.name.toLowerCase() !== 'egg') desc += `: ${x.type}`
-    desc += `, Lv. ${x.level}`
-    return (<Box>{desc}</Box>) 
+    return (<Box>{powerName(x)}</Box>) 
   })
 
   if (props.stats !== undefined) {

@@ -57,9 +57,7 @@ export default function Explore() {
       </Box>
       <Box display='flex' flexDirection={'row'} flexWrap='wrap'>
         {Ingredients.map(x => 
-          <Box display={isVisible(x) ? 'inline' : 'none'}>
-            <IngredientDetail kind="ingredient" name={x.name} />
-          </Box>
+          <IngredientDetail visible={isVisible(x)} kind="ingredient" name={x.name} />
         )}
       </Box>
       <Box className="section">
@@ -67,9 +65,7 @@ export default function Explore() {
       </Box>
       <Box display='flex' flexDirection={'row'} flexWrap='wrap'>
         {Seasonings.map(x => 
-          <Box display={isVisible(x) ? 'inline' : 'none'}>
-            <IngredientDetail kind="seasoning" name={x.name} />
-          </Box>
+          <IngredientDetail visible={isVisible(x)} kind="seasoning" name={x.name} />
         )}
       </Box>
     </>

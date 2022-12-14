@@ -11,6 +11,7 @@ import HomeV2 from './pages/HomeV2'
 import './res/theme'
 import About from './pages/About';
 import FAQ from './pages/FAQ';
+import Research from './pages/Research';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +23,7 @@ root.render(
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomeV2 />} />
+            <Route path="research" element={<Research />} />
             <Route path="explore" element={<Explore />} />
             <Route path="recipes" element={<Recipes />} />
             <Route path="faq" element={<FAQ />} />

@@ -4,7 +4,7 @@ import { Ingredients, Seasonings } from '../data/Cookbooks';
 import StatBubbles from './StatBubbles';
 import { Ingredient } from '../data/Cookbook';
 
-export default function IngredientDetail(props: { name: string, kind: "ingredient" | "seasoning" } ) {
+export default function IngredientDetail(props: { visible?: boolean, name: string, kind: "ingredient" | "seasoning" } ) {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
     IngredientBox: {
@@ -14,10 +14,10 @@ export default function IngredientDetail(props: { name: string, kind: "ingredien
       backgroundColor: '#C0FFFF',
       borderRadius: '16px',
       border: 'solid 4px black',
-      width: '20em',
+      width: '22em',
       color: 'black',
       [theme.breakpoints.down('md')]: {
-        width: 'auto'
+        width: '100%'
       }
     },
     IngredientTitle: {
@@ -42,7 +42,7 @@ export default function IngredientDetail(props: { name: string, kind: "ingredien
     ingredient = Seasonings.find(x => imageName(x.name) === imageName(props.name))
   }
 
-  if (ingredient !== undefined) {
+  if ((props.visible === true || props.visible === undefined) && ingredient !== undefined) {
     if (props.kind === 'ingredient') {
       img = <img src={res.img.ingredients[imageName(ingredient.name)]} alt={ingredient.name}/>
     } else if (props.kind === 'seasoning') {

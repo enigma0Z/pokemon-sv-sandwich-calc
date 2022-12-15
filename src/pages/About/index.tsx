@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { useEffect } from 'react'
 
 export default function About() {
@@ -30,6 +31,10 @@ export default function About() {
           Flavor bonuses only occur or get calculated sometimes.  Unknown why / when.
         </li></ul>
       </div>
+      <Box>
+        <h2>Thanks to all the bug reporters!!</h2>
+        
+      </Box>
     </>
   )
 }

@@ -1,6 +1,10 @@
 import SandwichData from './sandwich.json'
 // import RecipeData from './recipe.json'
 
+/**
+ * @deprecated This module has been deprecated in favor of './calc.ts'
+ */
+
 export const PokemonTypes = [
   'Normal',
   'Fighting',

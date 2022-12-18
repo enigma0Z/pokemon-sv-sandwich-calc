@@ -61,6 +61,21 @@ export default function FAQ() {
             </li>)}
           </ol>
           <hr/>
+        </li><li>
+          <h2>What do the colors mean when you are eating a sandwich?</h2>
+          <p>These colors identify the most prominent flavor in your sandwich:</p>
+          <ul><li>
+            Pink and swirly: Sweet
+          </li><li>
+            Blue with electricity: Salty
+          </li><li>
+            Yellow and swirly: Sour
+          </li><li>
+            Flames: Hot
+          </li><li>
+            Brown ripples: Bitter
+          </li></ul>
+          <hr/>
         </li></ul>
       </div>
     </Box>

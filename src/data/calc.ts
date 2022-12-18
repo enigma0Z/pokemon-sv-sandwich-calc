@@ -1,20 +1,35 @@
 import { Ingredient, MealPower, PokemonType, Sandwich, SandwichStats, Taste } from './Cookbook'
 import { MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
 
+/* 
+Note to self regarding these sort functions.
+For a given fn(a, b)
+- A negative value means a is sorted before b
+- A positive value means b is sorted before a
+- Zero means that a and b are equivalent and original sort order is preserved
+
+Typically this is implemented with a function like fn(a, b) { return a - b }
+Reverse sort would simply reverse the operands, { return b - a }
+Because these are a priority sort (value, then something else), and the value has priority, it's multiplied by 10 
+to prevent off-by-one errors where, for instance, numerically, an descending order sort for fn(5, 6) would put 6 first.
+In certain scenarios, (we're starting with 6 - 5, so 1) where the name value of whatever is "5" comes before the name
+value of "6", this would turn the 1 into a zero, preserving the original order which is not the intended result.
+*/ 
+
 export function sortValueName(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (a.name < b.name ? -1 : 1)
+  return (b.value - a.value)*10 + (a.name < b.name ? -1 : 1)
 }
 
 export function sortValueTaste(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (Tastes.indexOf(a.name as Taste) < Tastes.indexOf(b.name as Taste) ? -1 : 1)
+  return (b.value - a.value)*10 + (Tastes.indexOf(a.name as Taste) < Tastes.indexOf(b.name as Taste) ? -1 : 1)
 }
 
 export function sortValueType(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (PokemonTypes.indexOf(a.name as PokemonType) < PokemonTypes.indexOf(b.name as PokemonType) ? -1 : 1)
+  return (b.value - a.value)*10 + (PokemonTypes.indexOf(a.name as PokemonType) < PokemonTypes.indexOf(b.name as PokemonType) ? -1 : 1)
 }
 
 export function sortValuePower(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (MealPowers.indexOf(a.name as MealPower) < MealPowers.indexOf(b.name as MealPower) ? -1 : 1)
+  return (b.value - a.value)*10 + (MealPowers.indexOf(a.name as MealPower) < MealPowers.indexOf(b.name as MealPower) ? -1 : 1)
 }
 
 export function sortAttributes(object: Ingredient['taste'] | Ingredient['power'] | Ingredient['type'], sortFn = sortValueName) {
@@ -81,56 +96,58 @@ export function addFlavorResult(sandwich: SandwichStats) {
 
   let bonus = 100;
 
-  if (
-    (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
-    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')
-  ) {
-    if (sandwich.power['Catching'] === undefined) {
-      sandwich.power['Catching'] = 0
-    } 
+  if (SortedTastes[0].value > 15) {
+    if (
+      (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
+      || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')
+    ) {
+      if (sandwich.power['Catching'] === undefined) {
+        sandwich.power['Catching'] = 0
+      } 
 
-    sandwich.power['Catching'] += bonus
-  } else if (
-    (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
-    || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
-  ) {
-    if (sandwich.power['Exp.'] === undefined) {
-      sandwich.power['Exp.'] = 0
-    } 
-    sandwich.power['Exp.'] += bonus
-  } else if (
-    (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
-    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')
-  ) {
-    if (sandwich.power['Raid'] === undefined) {
-      sandwich.power['Raid'] = 0
-    } 
-    sandwich.power['Raid'] += bonus
-  } else if (SortedTastes[0].name === 'Sweet') {
-    if (sandwich.power['Egg'] === undefined) {
-      sandwich.power['Egg'] = 0
-    } 
-    sandwich.power['Egg'] += bonus
-  } else if (SortedTastes[0].name === 'Hot') {
-    if (sandwich.power['Humungo'] === undefined) {
-      sandwich.power['Humungo'] = 0
-    } 
-    sandwich.power['Humungo'] += bonus
-  } else if (SortedTastes[0].name === 'Bitter') {
-    if (sandwich.power['Item Drop'] === undefined) {
-      sandwich.power['Item Drop'] = 0
-    } 
-    sandwich.power['Item Drop'] += bonus
-  } else if (SortedTastes[0].name === 'Sour') {
-    if (sandwich.power['Teensy'] === undefined) {
-      sandwich.power['Teensy'] = 0
-    } 
-    sandwich.power['Teensy'] += bonus
-  } else if (SortedTastes[0].name === 'Salty') {
-    if (sandwich.power['Encounter'] === undefined) {
-      sandwich.power['Encounter'] = 0
-    } 
-    sandwich.power['Encounter'] += bonus
+      sandwich.power['Catching'] += bonus
+    } else if (
+      (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
+      || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
+    ) {
+      if (sandwich.power['Exp.'] === undefined) {
+        sandwich.power['Exp.'] = 0
+      } 
+      sandwich.power['Exp.'] += bonus
+    } else if (
+      (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
+      || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')
+    ) {
+      if (sandwich.power['Raid'] === undefined) {
+        sandwich.power['Raid'] = 0
+      } 
+      sandwich.power['Raid'] += bonus
+    } else if (SortedTastes[0].name === 'Sweet') {
+      if (sandwich.power['Egg'] === undefined) {
+        sandwich.power['Egg'] = 0
+      } 
+      sandwich.power['Egg'] += bonus
+    } else if (SortedTastes[0].name === 'Hot') {
+      if (sandwich.power['Humungo'] === undefined) {
+        sandwich.power['Humungo'] = 0
+      } 
+      sandwich.power['Humungo'] += bonus
+    } else if (SortedTastes[0].name === 'Bitter') {
+      if (sandwich.power['Item Drop'] === undefined) {
+        sandwich.power['Item Drop'] = 0
+      } 
+      sandwich.power['Item Drop'] += bonus
+    } else if (SortedTastes[0].name === 'Sour') {
+      if (sandwich.power['Teensy'] === undefined) {
+        sandwich.power['Teensy'] = 0
+      } 
+      sandwich.power['Teensy'] += bonus
+    } else if (SortedTastes[0].name === 'Salty') {
+      if (sandwich.power['Encounter'] === undefined) {
+        sandwich.power['Encounter'] = 0
+      } 
+      sandwich.power['Encounter'] += bonus
+    }
   }
 
   return sandwich
@@ -224,14 +241,6 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
 
   const SortedPower = sortAttributes(SandwichSum.power, sortValuePower)
   const SortedType = sortAttributes(SandwichSum.type, sortValueType)
-
-  // const SortedPower = Object.keys(SandwichSum.power)
-  //   .map( (key) => { return {name: key, value: SandwichSum.power[key as MealPower]} })
-  //   .sort(sortValuePower)
-
-  // const SortedType = Object.keys(SandwichSum.type)
-  //   .map( (key) => { return {name: key, value: SandwichSum.type[key]} })
-  //   .sort(sortValueType)
 
   let type = []
 

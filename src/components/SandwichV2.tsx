@@ -3,17 +3,17 @@ import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
 import { Link } from 'react-router-dom';
-import { Ingredient, SandwichStats } from '../data/Cookbook';
+import { Ingredient, MealPower, SandwichPower, SandwichStats } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 
-export function powerName(power: Ingredient['power']): string {
+export function powerName(power: SandwichPower): string {
   let desc = `${power.name} Power`
   if (power.name.toLowerCase() !== 'egg') desc += `: ${power.type}`
   desc += `, Lv. ${power.level}`
   return desc 
 }
 
-export default function Sandwich(props: { 
+export default function Sandwich(props: {
   name?: string; 
   showDetails?: boolean;
   description?: string;
@@ -22,7 +22,7 @@ export default function Sandwich(props: {
   stats?: SandwichStats;
   ingredients: Ingredient[]; 
   seasonings: Ingredient[]; 
-  powers: {name: string; type: string | null; level: number}[];
+  powers: SandwichPower[];
 }) {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
@@ -79,10 +79,10 @@ export default function Sandwich(props: {
         <Box>Power</Box>
         <Box sx={classes.DetailRow}>
           {Object.keys(props.stats.power).map(key => {
-            if (props.stats?.power[key] === 0) {
+            if (props.stats?.power[key as MealPower] === 0) {
               return null
             } else {
-              return <Box sx={classes.DetailItem}>{key}: {props.stats?.power[key]}</Box>
+              return <Box sx={classes.DetailItem}>{key}: {props.stats?.power[key as MealPower]}</Box>
             }
           })}
         </Box>

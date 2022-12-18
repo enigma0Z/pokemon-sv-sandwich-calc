@@ -1,105 +1,20 @@
-import { Ingredient, Sandwich, SandwichStats } from './Cookbook'
-
-export const PokemonTypes = [
-  'Normal',
-  'Fighting',
-  'Flying',
-  'Poison',
-  'Ground',
-  'Rock',
-  'Bug',
-  'Ghost',
-  'Steel',
-  'Fire',
-  'Water',
-  'Grass',
-  'Electric',
-  'Psychic',
-  'Ice',
-  'Dragon',
-  'Dark',
-  'Fairy',
-]
-
-export const MealPowers = [
-  'Egg',
-  'Catching',
-  'Exp.',
-  'Item Drop',
-  'Raid',
-  'Title',
-  'Sparkling',
-  'Humungo',
-  'Teensy',
-  'Encounter',
-]
-
-export const Tastes = [
-  'Sweet',
-  'Salty',
-  'Sour',
-  'Bitter',
-  'Hot',
-]
-
-function templateResult(): SandwichStats {
-  return {
-    taste: {
-      'Sweet': 0,
-      'Salty': 0,
-      'Sour': 0,
-      'Bitter': 0,
-      'Hot': 0,
-    },
-    power: {
-      'Egg': 0,
-      'Catching': 0,
-      'Exp.': 0,
-      'Item Drop': 0,
-      'Raid': 0,
-      'Title': 0,
-      'Sparkling': 0,
-      'Humungo': 0,
-      'Teensy': 0,
-      'Encounter': 0,
-    },
-    type: {
-      'Normal': 0,
-      'Fire': 0,
-      'Water': 0,
-      'Electric': 0,
-      'Grass': 0,
-      'Ice': 0,
-      'Fighting': 0,
-      'Poison': 0,
-      'Ground': 0,
-      'Flying': 0,
-      'Psychic': 0,
-      'Bug': 0,
-      'Rock': 0,
-      'Ghost': 0,
-      'Dragon': 0,
-      'Dark': 0,
-      'Steel': 0,
-      'Fairy': 0,
-    }
-  }
-}
+import { Ingredient, MealPower, PokemonType, Sandwich, SandwichStats, Taste } from './Cookbook'
+import { MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
 
 export function sortValueName(a: {name: string, value: number}, b: {name: string, value: number}) {
   return (b.value - a.value) + (a.name < b.name ? -1 : 1)
 }
 
 export function sortValueTaste(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (Tastes.indexOf(a.name) < Tastes.indexOf(b.name) ? -1 : 1)
+  return (b.value - a.value) + (Tastes.indexOf(a.name as Taste) < Tastes.indexOf(b.name as Taste) ? -1 : 1)
 }
 
 export function sortValueType(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (PokemonTypes.indexOf(a.name) < PokemonTypes.indexOf(b.name) ? -1 : 1)
+  return (b.value - a.value) + (PokemonTypes.indexOf(a.name as PokemonType) < PokemonTypes.indexOf(b.name as PokemonType) ? -1 : 1)
 }
 
 export function sortValuePower(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value) + (MealPowers.indexOf(a.name) < MealPowers.indexOf(b.name) ? -1 : 1)
+  return (b.value - a.value) + (MealPowers.indexOf(a.name as MealPower) < MealPowers.indexOf(b.name as MealPower) ? -1 : 1)
 }
 
 export function sortAttributes(object: Ingredient['taste'] | Ingredient['power'] | Ingredient['type'], sortFn = sortValueName) {
@@ -307,13 +222,16 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     SandwichSum.power.Sparkling = 0
   }
 
-  const SortedPower = Object.keys(SandwichSum.power)
-    .map( (key) => { return {name: key, value: SandwichSum.power[key]} })
-    .sort(sortValuePower)
+  const SortedPower = sortAttributes(SandwichSum.power, sortValuePower)
+  const SortedType = sortAttributes(SandwichSum.type, sortValueType)
 
-  const SortedType = Object.keys(SandwichSum.type)
-    .map( (key) => { return {name: key, value: SandwichSum.type[key]} })
-    .sort(sortValueType)
+  // const SortedPower = Object.keys(SandwichSum.power)
+  //   .map( (key) => { return {name: key, value: SandwichSum.power[key as MealPower]} })
+  //   .sort(sortValuePower)
+
+  // const SortedType = Object.keys(SandwichSum.type)
+  //   .map( (key) => { return {name: key, value: SandwichSum.type[key]} })
+  //   .sort(sortValueType)
 
   let type = []
 

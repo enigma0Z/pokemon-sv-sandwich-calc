@@ -1,8 +1,7 @@
 import { Autocomplete, Box, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 import IngredientDetail from '../../components/IngredientDetail'
-import { Ingredients, Seasonings } from '../../data/Cookbooks'
-import { PokemonTypes, MealPowers, Tastes } from '../../data/calc'
+import { Ingredients, Seasonings, PokemonTypes, MealPowers, Tastes } from '../../data/Cookbooks'
 import { Ingredient } from '../../data/Cookbook'
 
 export default function Explore() {

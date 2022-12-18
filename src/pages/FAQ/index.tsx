@@ -2,6 +2,7 @@ import './index.css'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
+import { TastePowerBonus } from '../../data/Cookbooks';
 
 export default function FAQ() {
   useEffect(() => {
@@ -53,23 +54,12 @@ export default function FAQ() {
           <h2 id='flavor-bonuses'>What are flavor bonuses?</h2>
           <p>
             Every flavor, and some flavor combinations, have an assocated power bonus.  This bonus gives you +100 points to that power when the associated type is 180 points or greater.  The following flavors give bonuses, in this order.
-          </p><ol><li>
-              Sweet & Sour: +100 Catching Power
-            </li><li>
-              Sweet & Hot: +100 Raid Power
-            </li><li>
-              Salty & Bitter: +100 Exp. Power
-            </li><li>
-              Sweet: +100 Egg Power
-            </li><li>
-              Salty: +100 Encounter Power
-            </li><li>
-              Sour: +100 Teensy Power
-            </li><li>
-              Bitter: +100 Item Drop Power
-            </li><li>
-              Hot: +100 Humungo Power
-            </li></ol>
+          </p>
+          <ol>
+            {TastePowerBonus.map(taste => <li>
+              {taste.taste.join(' & ')}: +100 {taste.power} Power
+            </li>)}
+          </ol>
           <hr/>
         </li></ul>
       </div>

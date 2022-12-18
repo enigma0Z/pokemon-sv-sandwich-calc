@@ -1,6 +1,6 @@
-export type Power = {
+export type SandwichPower = {
   name: string,
-  type: string,
+  type?: string,
   level: number
 }
 
@@ -11,7 +11,7 @@ export type Recipe = {
   number: string | null,
   ingredients: string[],
   seasonings: string[],
-  powers: Power[]
+  powers: SandwichPower[]
 }
 
 export type Cookbook = {
@@ -73,7 +73,7 @@ export type Sandwich = {
   stats?: SandwichStats; // Not present if not calculated -- in-game cookbook sandwiches don't care abou this
   ingredients: Ingredient[]; 
   seasonings: Ingredient[]; 
-  powers: Power[];
+  powers: SandwichPower[];
 }
 
 export type SandwichStats = {
@@ -81,3 +81,14 @@ export type SandwichStats = {
   power: Ingredient['power']
   type: Ingredient['type']
 }
+
+export type PokemonType = 
+  'Normal' | 'Fighting' | 'Flying' | 'Poison' | 'Ground' | 'Rock' | 'Bug' | 'Ghost' | 'Steel' |
+  'Fire' | 'Water' | 'Grass' | 'Electric' | 'Psychic' | 'Ice' | 'Dragon' | 'Dark' | 'Fairy'
+
+export type MealPower = 
+  'Egg' | 'Catching' | 'Exp.' | 'Item Drop' | 'Raid' |
+  'Title' | 'Sparkling' | 'Humungo' | 'Teensy' | 'Encounter'
+
+export type Taste =
+  'Sweet' | 'Salty' | 'Sour' | 'Bitter' | 'Hot'

@@ -33,7 +33,6 @@ export default function About() {
       </div>
       <Box>
         <h2>Thanks to all the bug reporters!!</h2>
-        
       </Box>
     </>
   )

@@ -7,15 +7,15 @@ export type SandwichPower = {
 export type Recipe = {
   name?: string; 
   description: string,
-  location: string,
-  number: string | null,
+  location?: string,
+  number?: number,
   ingredients: string[],
   seasonings: string[],
   powers: SandwichPower[]
 }
 
 export type Cookbook = {
-  recipes: Recepie[]
+  recipes: Recipe[]
 }
 
 export type Ingredient = {

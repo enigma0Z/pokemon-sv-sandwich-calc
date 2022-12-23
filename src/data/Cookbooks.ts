@@ -1,4 +1,4 @@
-import { Cookbook, Ingredient, MealPower, PokemonType, SandwichStats, Taste } from './Cookbook'
+import { Cookbook, Ingredient, MealPower, PokemonType, Recipe, SandwichStats, Taste } from './Cookbook'
 import _CustomCookbook from './cookbook.json'
 import _InGameCookbook from './recipe.json'
 import _Sandwich from './sandwich.json'
@@ -123,4 +123,22 @@ export function templateResult(): SandwichStats {
       'Fairy': 0,
     }
   }
+}
+
+export function findRecipe(ingredients: string[], seasonings: string[]): Recipe | void {
+  let ingredientsStr = ingredients.sort().toString()
+  let seasoningsStr = seasonings.sort().toString()
+
+  for (let cookbook of [InGameCookbook, CustomCookbook]) {
+    for (let recipe of cookbook.recipes) {
+      if (
+        recipe.ingredients.sort().toString() === ingredientsStr
+        && recipe.seasonings.sort().toString() === seasoningsStr
+      ) {
+        return recipe
+      }
+    }
+  }
+
+  return undefined
 }

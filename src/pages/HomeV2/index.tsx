@@ -1,7 +1,7 @@
 import './index.css';
 import { useState, useEffect } from 'react';
 import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
-import { Ingredients, Seasonings } from '../../data/Cookbooks';
+import { findRecipe, Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
 import { calculateSandwich } from '../../data/calc';
 import Sandwich, { powerName } from '../../components/SandwichV2';
@@ -111,7 +111,15 @@ export default function HomeV2() {
   if (
     actualIngredients.length > 0 && actualSeasonings.length > 0
   ) {
+    const foundSandwich = findRecipe(actualIngredients.map(x => x.name), actualSeasonings.map(x => x.name))
     const calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+    if (foundSandwich) {
+      calculatedSandwich.name = foundSandwich.name
+      calculatedSandwich.description = foundSandwich.description
+      calculatedSandwich.location = foundSandwich.location
+      calculatedSandwich.number = foundSandwich.number
+      calculatedSandwich.powers = foundSandwich.powers
+    }
     gtag('event', 'home_sandwich_create', {
       ingredients: calculatedSandwich.ingredients.map(x => x.name), 
       seasonings: calculatedSandwich.seasonings.map(x => x.name),

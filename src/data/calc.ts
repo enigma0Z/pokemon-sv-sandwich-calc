@@ -14,22 +14,22 @@ Because these are a priority sort (value, then something else), and the value ha
 to prevent off-by-one errors where, for instance, numerically, an descending order sort for fn(5, 6) would put 6 first.
 In certain scenarios, (we're starting with 6 - 5, so 1) where the name value of whatever is "5" comes before the name
 value of "6", this would turn the 1 into a zero, preserving the original order which is not the intended result.
-*/ 
+*/
 
-export function sortValueName(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value)*10 + (a.name < b.name ? -1 : 1)
+export function sortValueName(a: { name: string, value: number }, b: { name: string, value: number }) {
+  return (b.value - a.value) * 10 + (a.name < b.name ? -1 : 1)
 }
 
-export function sortValueTaste(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value)*10 + (Tastes.indexOf(a.name as Taste) < Tastes.indexOf(b.name as Taste) ? -1 : 1)
+export function sortValueTaste(a: { name: string, value: number }, b: { name: string, value: number }) {
+  return (b.value - a.value) * 10 + (Tastes.indexOf(a.name as Taste) < Tastes.indexOf(b.name as Taste) ? -1 : 1)
 }
 
-export function sortValueType(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value)*10 + (PokemonTypes.indexOf(a.name as PokemonType) < PokemonTypes.indexOf(b.name as PokemonType) ? -1 : 1)
+export function sortValueType(a: { name: string, value: number }, b: { name: string, value: number }) {
+  return (b.value - a.value) * 10 + (PokemonTypes.indexOf(a.name as PokemonType) < PokemonTypes.indexOf(b.name as PokemonType) ? -1 : 1)
 }
 
-export function sortValuePower(a: {name: string, value: number}, b: {name: string, value: number}) {
-  return (b.value - a.value)*10 + (MealPowers.indexOf(a.name as MealPower) < MealPowers.indexOf(b.name as MealPower) ? -1 : 1)
+export function sortValuePower(a: { name: string, value: number }, b: { name: string, value: number }) {
+  return (b.value - a.value) * 10 + (MealPowers.indexOf(a.name as MealPower) < MealPowers.indexOf(b.name as MealPower) ? -1 : 1)
 }
 
 export function sortAttributes(object: Ingredient['taste'] | Ingredient['power'] | Ingredient['type'], sortFn = sortValueName) {
@@ -38,8 +38,8 @@ export function sortAttributes(object: Ingredient['taste'] | Ingredient['power']
     .sort(sortFn)
 }
 
-export function calculateLevel(power: {name: string, value: number}, type: {name: string, value: number}) {
-  if (type.value >= 180 ) {
+export function calculateLevel(power: { name: string, value: number }, type: { name: string, value: number }) {
+  if (type.value >= 180) {
     if (power.value >= 2000) {
       return 3
     } else if (power.value >= 100) {
@@ -96,56 +96,56 @@ export function addFlavorResult(sandwich: SandwichStats) {
 
   let bonus = 100;
 
-  if (SortedTastes[0].value > 15) {
-    if (
-      (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
-      || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')
-    ) {
-      if (sandwich.power['Catching'] === undefined) {
-        sandwich.power['Catching'] = 0
-      } 
+  if (
+    (SortedTastes[0].name === 'Sour' && SortedTastes[1].name === 'Sweet')
+    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Sour')
+  ) {
+    if (sandwich.power['Catching'] === undefined) {
+      sandwich.power['Catching'] = 0
+    }
 
-      sandwich.power['Catching'] += bonus
-    } else if (
-      (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
-      || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
-    ) {
-      if (sandwich.power['Exp.'] === undefined) {
-        sandwich.power['Exp.'] = 0
-      } 
-      sandwich.power['Exp.'] += bonus
-    } else if (
-      (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
-      || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')
-    ) {
-      if (sandwich.power['Raid'] === undefined) {
-        sandwich.power['Raid'] = 0
-      } 
-      sandwich.power['Raid'] += bonus
-    } else if (SortedTastes[0].name === 'Sweet') {
+    sandwich.power['Catching'] += bonus
+  } else if (
+    (SortedTastes[0].name === 'Bitter' && SortedTastes[1].name === 'Salty')
+    || (SortedTastes[0].name === 'Salty' && SortedTastes[1].name === 'Bitter')
+  ) {
+    if (sandwich.power['Exp.'] === undefined) {
+      sandwich.power['Exp.'] = 0
+    }
+    sandwich.power['Exp.'] += bonus
+  } else if (
+    (SortedTastes[0].name === 'Hot' && SortedTastes[1].name === 'Sweet')
+    || (SortedTastes[0].name === 'Sweet' && SortedTastes[1].name === 'Hot')
+  ) {
+    if (sandwich.power['Raid'] === undefined) {
+      sandwich.power['Raid'] = 0
+    }
+    sandwich.power['Raid'] += bonus
+  } else if (SortedTastes[0].value > 15) {
+    if (SortedTastes[0].name === 'Sweet') {
       if (sandwich.power['Egg'] === undefined) {
         sandwich.power['Egg'] = 0
-      } 
+      }
       sandwich.power['Egg'] += bonus
     } else if (SortedTastes[0].name === 'Hot') {
       if (sandwich.power['Humungo'] === undefined) {
         sandwich.power['Humungo'] = 0
-      } 
+      }
       sandwich.power['Humungo'] += bonus
     } else if (SortedTastes[0].name === 'Bitter') {
       if (sandwich.power['Item Drop'] === undefined) {
         sandwich.power['Item Drop'] = 0
-      } 
+      }
       sandwich.power['Item Drop'] += bonus
     } else if (SortedTastes[0].name === 'Sour') {
       if (sandwich.power['Teensy'] === undefined) {
         sandwich.power['Teensy'] = 0
-      } 
+      }
       sandwich.power['Teensy'] += bonus
     } else if (SortedTastes[0].name === 'Salty') {
       if (sandwich.power['Encounter'] === undefined) {
         sandwich.power['Encounter'] = 0
-      } 
+      }
       sandwich.power['Encounter'] += bonus
     }
   }
@@ -262,13 +262,13 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
 
   // Do Herba Mystica overrides for level
   if (herbaMysticaTotal === 1) {
-    if (levels[0] < 2) levels[0] = 2 
-    if (levels[1] < 2) levels[1] = 2 
+    if (levels[0] < 2) levels[0] = 2
+    if (levels[1] < 2) levels[1] = 2
 
   } else if (herbaMysticaTotal > 1) {
-    if (levels[0] < 3) levels[0] = 3 
-    if (levels[1] < 3) levels[1] = 3 
-    if (levels[2] < 3) levels[2] = 3 
+    if (levels[0] < 3) levels[0] = 3
+    if (levels[1] < 3) levels[1] = 3
+    if (levels[2] < 3) levels[2] = 3
   } else if (
     // TODO This is hardcoded for sp, needs a var
     calcSandwich.ingredients.length === 6 // If there's six ingredients
@@ -283,9 +283,9 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
 
   // Types 2 and 3 are switched vs power order
   calcSandwich.powers.push(
-    {name: SortedPower[0].name, type: SortedType[type[0]].name, level: levels[0]},
-    {name: SortedPower[1].name, type: SortedType[type[1]].name, level: levels[1]},
-    {name: SortedPower[2].name, type: SortedType[type[2]].name, level: levels[2]},
+    { name: SortedPower[0].name, type: SortedType[type[0]].name, level: levels[0] },
+    { name: SortedPower[1].name, type: SortedType[type[1]].name, level: levels[1] },
+    { name: SortedPower[2].name, type: SortedType[type[2]].name, level: levels[2] },
   )
 
   return calcSandwich

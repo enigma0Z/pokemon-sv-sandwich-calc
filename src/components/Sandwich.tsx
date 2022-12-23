@@ -3,6 +3,7 @@ import Ingredient from './Ingredient';
 import Seasoning from './Seasoning';
 import './Sandwich.css'
 import { Link } from 'react-router-dom';
+import { SandwichPower } from '../data/Cookbook';
 
 export default function Sandwich(props: { 
   name?: string; 
@@ -11,7 +12,7 @@ export default function Sandwich(props: {
   number?: number;
   ingredients: string[]; 
   seasonings: string[]; 
-  powers: {name: string; type: string | null; level: number}[];
+  powers: SandwichPower[];
 }) {
   const ingredients = props.ingredients.map((x) => <Ingredient name={x} />)
   const seasonings = props.seasonings.map((x) => <Seasoning name={x} />)

@@ -1,5 +1,5 @@
 import { Autocomplete, Box, TextField } from '@mui/material';
-import { Context, useContext, useState } from 'react';
+import { useState } from 'react';
 import { Ingredient } from '../data/Cookbook';
 import { Ingredients } from '../data/Cookbooks';
 

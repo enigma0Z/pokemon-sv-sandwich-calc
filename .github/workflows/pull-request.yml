@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  build and test web:
+  build-web:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

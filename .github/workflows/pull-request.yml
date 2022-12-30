@@ -27,5 +27,5 @@ jobs:
           set -xe
           npm ci
           npm run build
-      - name: Test
-        run: npm run test
+      # - name: Test
+      #   run: npm run test

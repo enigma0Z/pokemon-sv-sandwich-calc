@@ -27,5 +27,10 @@ jobs:
           set -xe
           npm ci
           npm run build
-      # - name: Test
-      #   run: npm run test
+      - name: Nitropay Ads.txt
+        run: |
+          #!/bin/bash
+          set -xe
+          cd build
+          wget https://api.nitropay.com/v1/ads-1347.txt
+          mv ads-1347.txt ads.txt

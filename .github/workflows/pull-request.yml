@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  build:
+  build and test web:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,3 +27,5 @@ jobs:
           set -xe
           npm ci
           npm run build
+      - name: Test
+        run: npm run test

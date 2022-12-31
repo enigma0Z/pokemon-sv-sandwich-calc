@@ -49,7 +49,14 @@ export default function Layout() {
         <div className="section">
           <img className="header" src={res.img.logo} alt="enigma! logo" />
         </div>
-        <Box height="100px"/>
+        <div className="section">
+          <ul><li>
+            <a href="https://enigma0z.com/privacy.html">Privacy Policy</a>
+          <li></li>
+          <span data-ccpa-link="1"></span>
+          </li></ul>
+        </div>
+        <div className="section" style={{height: '100px'}}></div>
       </ThemeProvider>
     </>
   )

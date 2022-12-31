@@ -53,7 +53,7 @@ export default function Layout() {
           <ul><li>
             <a href="https://enigma0z.com/privacy.html">Privacy Policy</a>
           <li></li>
-          <span data-ccpa-link="1"></span>
+            <span data-ccpa-link="1"></span>
           </li></ul>
         </div>
         <div className="section" style={{height: '100px'}}></div>

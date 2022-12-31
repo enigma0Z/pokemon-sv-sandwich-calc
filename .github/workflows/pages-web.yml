@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy react app to GH Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -41,6 +41,13 @@ jobs:
           set -xe
           npm ci
           npm run build
+      - name: Nitropay Ads.txt
+        run: |
+          #!/bin/bash
+          set -xe
+          cd build
+          wget https://api.nitropay.com/v1/ads-1347.txt
+          mv ads-1347.txt ads.txt
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact

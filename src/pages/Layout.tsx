@@ -50,19 +50,13 @@ export default function Layout() {
           <img className="header" src={res.img.logo} alt="enigma! logo" />
         </div>
         <div className="section">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6012158634418176"
-            crossOrigin="anonymous"></script>
-          {/* Bottom Banner Ad */}
-          <ins className="adsbygoogle"
-            style={{ display: 'block' }}
-            data-ad-client="ca-pub-6012158634418176"
-            data-ad-slot="8019985505"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({ });
-          </script>
+          <ul><li>
+            <a href="https://enigma0z.com/privacy.html">Privacy Policy</a>
+          <li></li>
+            <span data-ccpa-link="1"></span>
+          </li></ul>
         </div>
+        <div className="section" style={{height: '100px'}}></div>
       </ThemeProvider>
     </>
   )

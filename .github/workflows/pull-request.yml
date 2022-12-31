@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  build:
+  build-web:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,3 +27,10 @@ jobs:
           set -xe
           npm ci
           npm run build
+      - name: Nitropay Ads.txt
+        run: |
+          #!/bin/bash
+          set -xe
+          cd build
+          wget https://api.nitropay.com/v1/ads-1347.txt
+          mv ads-1347.txt ads.txt

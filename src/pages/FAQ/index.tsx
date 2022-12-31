@@ -53,7 +53,7 @@ export default function FAQ() {
         </li><li>
           <h2 id='flavor-bonuses'>What are flavor bonuses?</h2>
           <p>
-            Every flavor, and some flavor combinations, have an assocated power bonus.  This bonus gives you +100 points to that power when the associated type is 180 points or greater.  The following flavors give bonuses, in this order.
+            Every flavor, and some flavor combinations, have an assocated power bonus.  This bonus gives you +100 points to that power if: you have a flavor combo, you have 15 points of one flavor (but no combo), or if you have more than a certain number of ingredients (TODO, in progress).  The following flavors give bonuses, in this order.
           </p>
           <ol>
             {TastePowerBonus.map(taste => <li>

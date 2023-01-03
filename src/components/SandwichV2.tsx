@@ -5,13 +5,7 @@ import './Sandwich.css'
 import { Link } from 'react-router-dom';
 import { Ingredient, MealPower, SandwichPower, SandwichStats } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
-
-export function powerName(power: SandwichPower): string {
-  let desc = `${power.name} Power`
-  if (power.name.toLowerCase() !== 'egg') desc += `: ${power.type}`
-  desc += `, Lv. ${power.level}`
-  return desc 
-}
+import { powerName } from '../data/calc';
 
 export default function Sandwich(props: {
   name?: string; 

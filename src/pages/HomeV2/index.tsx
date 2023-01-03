@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
 import { findRecipe, Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient } from '../../data/Cookbook';
-import { calculateSandwich } from '../../data/calc';
-import Sandwich, { powerName } from '../../components/SandwichV2';
+import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
+import Sandwich from '../../components/SandwichV2';
 import { useLocation, useOutletContext } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import StatBubbles from '../../components/StatBubbles';
+import PowerSelect from '../../components/PowerSelect';
+import PowerRequirementComponent from '../../components/PowerRequirementComponent';
 
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
@@ -89,6 +91,10 @@ export default function HomeV2() {
     }
   }
 
+  const [guidePower, setGuidePower]: [string | undefined, (value: string | undefined) => void] = useState()
+  const [guideType, setGuideType]: [string | undefined, (value: string | undefined) => void] = useState()
+  const [guideLevel, setGuideLevel]: [number | undefined, (value: number | undefined) => void] = useState()
+
   const [ingredients, setIngredients]: [string[], any] = useState(uriIngredients)
   const [seasonings, setSeasonings]: [string[], any] = useState(uriSeasonings)
 
@@ -107,12 +113,25 @@ export default function HomeV2() {
     if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning)
   }
 
-  const sandwich: JSX.Element[] = []
+  let calculatedSandwich
+  let foundSandwich
   if (
     actualIngredients.length > 0 && actualSeasonings.length > 0
   ) {
-    const foundSandwich = findRecipe(actualIngredients.map(x => x.name), actualSeasonings.map(x => x.name))
-    const calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+    foundSandwich = findRecipe(actualIngredients.map(x => x.name), actualSeasonings.map(x => x.name))
+    calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+
+    gtag('event', 'home_sandwich_create', {
+      ingredients: calculatedSandwich.ingredients.map(x => x.name), 
+      seasonings: calculatedSandwich.seasonings.map(x => x.name),
+      powers: calculatedSandwich.powers.map(x => powerName(x))
+    })
+  }
+
+  const sandwich: JSX.Element[] = []
+  if (
+    calculatedSandwich
+  ) {
     if (foundSandwich) {
       calculatedSandwich.name = foundSandwich.name
       calculatedSandwich.description = foundSandwich.description
@@ -120,11 +139,6 @@ export default function HomeV2() {
       calculatedSandwich.number = foundSandwich.number
       calculatedSandwich.powers = foundSandwich.powers
     }
-    gtag('event', 'home_sandwich_create', {
-      ingredients: calculatedSandwich.ingredients.map(x => x.name), 
-      seasonings: calculatedSandwich.seasonings.map(x => x.name),
-      powers: calculatedSandwich.powers.map(x => powerName(x))
-    })
     sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
   }
 
@@ -270,8 +284,30 @@ export default function HomeV2() {
     }
   }
 
+  let GuideElement: JSX.Element[] = []
+
+  if (guidePower && (guideType || guidePower === 'Egg') && guideLevel) GuideElement = [
+    <PowerRequirementComponent requirements={powerRequirements(
+      [{name: guidePower, type: guideType, level: guideLevel}],
+      calculatedSandwich
+    )} />
+  ]
+
   return (
     <>
+      <Box>
+        <h2>Power Guide</h2>
+      </Box>
+      <Box display='flex' flexDirection='row' flexWrap='wrap'>
+        <PowerSelect 
+          onChange={(power, type, level) => {
+            setGuidePower(power)
+            setGuideType(type)
+            setGuideLevel(level)
+          }}
+        />
+        { GuideElement }
+      </Box>
       <Box><h2>Players</h2></Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
         <ToggleButtonGroup value={players} exclusive={true} onChange={(event, value) => {

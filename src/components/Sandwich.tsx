@@ -4,6 +4,7 @@ import Seasoning from './Seasoning';
 import './Sandwich.css'
 import { Link } from 'react-router-dom';
 import { SandwichPower } from '../data/Cookbook';
+import { powerName } from '../data/calc';
 
 export default function Sandwich(props: { 
   name?: string; 
@@ -17,10 +18,7 @@ export default function Sandwich(props: {
   const ingredients = props.ingredients.map((x) => <Ingredient name={x} />)
   const seasonings = props.seasonings.map((x) => <Seasoning name={x} />)
   const powers = props.powers.map((x) => { 
-    let desc = `${x.name} Power`
-    if (x.name.toLowerCase() !== 'egg') desc += `: ${x.type}`
-    desc += `, Lv. ${x.level}`
-    return (<Box>{desc}</Box>) 
+    return (<Box>{powerName(x)}</Box>) 
   })
 
   const uri = `/?ingredients=${props.ingredients.join(',')}&seasonings=${props.seasonings.join(',')}`

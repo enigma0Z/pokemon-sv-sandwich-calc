@@ -1,4 +1,4 @@
-import { Ingredient, MealPower, PokemonType, Sandwich, SandwichStats, Taste } from './Cookbook'
+import { DisplayRequirement, Ingredient, MealPower, PokemonType, PowerRequirement, Sandwich, SandwichPower, SandwichStats, Taste } from './Cookbook'
 import { MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
 
 /* 
@@ -15,6 +15,21 @@ to prevent off-by-one errors where, for instance, numerically, an descending ord
 In certain scenarios, (we're starting with 6 - 5, so 1) where the name value of whatever is "5" comes before the name
 value of "6", this would turn the 1 into a zero, preserving the original order which is not the intended result.
 */
+
+export const LEVEL_REQUIREMENTS = {
+  1: {
+    type: 1,
+    power: 1
+  },
+  2: {
+    type: 180,
+    power: 100
+  },
+  3: {
+    type: 180,
+    power: 2000
+  }
+}
 
 export function sortValueName(a: { name: string, value: number }, b: { name: string, value: number }) {
   return (b.value - a.value) * 10 + (a.name < b.name ? -1 : 1)
@@ -38,11 +53,23 @@ export function sortAttributes(object: Ingredient['taste'] | Ingredient['power']
     .sort(sortFn)
 }
 
+export function powerName(power: SandwichPower) {
+  let desc = `${power.name} Power`
+  if (power.name.toLowerCase() !== 'egg') desc += `: ${power.type}`
+  desc += `, Lv. ${power.level}`
+  return desc
+}
+
 export function calculateLevel(power: { name: string, value: number }, type: { name: string, value: number }) {
-  if (type.value >= 180) {
-    if (power.value >= 2000) {
+  console.log('calculateLevel', type, power)
+  console.log('Level Reqs', LEVEL_REQUIREMENTS)
+  if (type.value >= LEVEL_REQUIREMENTS[2].type) {
+    console.log('Type check lvl 2', type.value >= LEVEL_REQUIREMENTS[2].type)
+    if (power.value >= LEVEL_REQUIREMENTS[3].power) {
+      console.log('power check lvl 3', power.value >= LEVEL_REQUIREMENTS[3].power)
       return 3
-    } else if (power.value >= 100) {
+    } else if (power.value >= LEVEL_REQUIREMENTS[2].power) {
+      console.log('power check lvl 2', power.value >= LEVEL_REQUIREMENTS[2].power)
       return 2
     } else {
       return 1
@@ -289,4 +316,120 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
   )
 
   return calcSandwich
+}
+
+export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich): DisplayRequirement[] {
+  const requirements: PowerRequirement[] = []
+  for (let power of powers) {
+    const requirement: PowerRequirement = {
+      power: power,
+      powerAmount: 0,
+      typeAmount: 0
+    }
+
+    if (requirement.power.level === 3) {
+      requirement.powerAmount = LEVEL_REQUIREMENTS[3].power
+      requirement.typeAmount = LEVEL_REQUIREMENTS[3].type
+    } else if (requirement.power.level === 2) {
+      requirement.powerAmount = LEVEL_REQUIREMENTS[2].power
+      requirement.typeAmount = LEVEL_REQUIREMENTS[2].type
+    } else if (requirement.power.level === 1) {
+      requirement.powerAmount = LEVEL_REQUIREMENTS[1].power
+      requirement.typeAmount = LEVEL_REQUIREMENTS[1].type
+    }
+
+    requirements.push(requirement)
+  }
+
+  if (sandwich && sandwich.powers.length > 0) {
+    for (let requirement of requirements) {
+      if (requirement.power.name) {
+        requirement.powerAmount -= sandwich.stats?.power[requirement.power.name] as number
+      }
+
+      if (requirement.power.type) {
+        requirement.typeAmount -= sandwich.stats?.type[requirement.power.type] as number
+      }
+    }
+  }
+
+  const displayRequirements: DisplayRequirement[] = []
+  for (let requirement of requirements) {
+    let displayRequirement: DisplayRequirement = {
+      power: requirement.power,
+      components: []
+    }
+
+    // TODO: Cleanup the branches in this logic
+    if (sandwich && sandwich.powers.length > 0) {
+      const powers = sandwich.powers.filter(power => power.type === requirement.power.type)
+      if (powers.length > 0) {
+        if (powers.length > 1) {
+          const power = powers.find(power => power.name === requirement.power.name)
+          if (power) {
+            displayRequirement.components.push({
+              name: 'Power Type',
+              value: power.name,
+              success: power.name === requirement.power.name
+            })
+
+            displayRequirement.components.push({
+              name: requirement.power.name,
+              value: requirement.powerAmount,
+              success: power.level === requirement.power.level || requirement.powerAmount <= 0
+            })
+          } else {
+            displayRequirement.components.push({
+              name: 'Power Type',
+              value: 'MISSING',
+              success: false
+            })
+
+            displayRequirement.components.push({
+              name: requirement.power.name,
+              value: requirement.powerAmount,
+              success: requirement.powerAmount <= 0
+            })
+          }
+        } else {
+          displayRequirement.components.push({
+            name: 'Power Type',
+            value: powers[0].name,
+            success: powers[0].name === requirement.power.name
+          })
+
+          displayRequirement.components.push({
+            name: requirement.power.name,
+            value: requirement.powerAmount,
+            success: requirement.powerAmount <= 0
+          })
+        }
+      } else {
+        displayRequirement.components.push({
+          name: requirement.power.name,
+          value: requirement.powerAmount,
+          success: requirement.powerAmount <= 0
+        })
+      }
+    } else {
+      displayRequirement.components.push({
+        name: requirement.power.name,
+        value: requirement.powerAmount,
+        success: requirement.powerAmount <= 0
+      })
+    }
+
+    if (requirement.power.type) {
+      displayRequirement.components.push({
+        name: requirement.power.type,
+        value: requirement.typeAmount,
+        success: requirement.typeAmount <= 0
+      })
+    }
+
+    displayRequirements.push(displayRequirement)
+  }
+
+  console.log('displayRequirements', displayRequirements)
+  return displayRequirements
 }

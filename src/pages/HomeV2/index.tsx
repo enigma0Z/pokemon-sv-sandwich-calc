@@ -14,6 +14,10 @@ import PowerRequirementComponent from '../../components/PowerRequirementComponen
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
+const LS_HOME_GUIDE_TYPE = 'home_guide_type'
+const LS_HOME_GUIDE_POWER = 'home_guide_power'
+const LS_HOME_GUIDE_LEVEL = 'home_guide_level'
+
 export default function HomeV2() {
 
   const [setSearch] = useOutletContext<[(v: string) => {}]>();
@@ -91,9 +95,13 @@ export default function HomeV2() {
     }
   }
 
-  const [guidePower, setGuidePower]: [string | undefined, (value: string | undefined) => void] = useState()
-  const [guideType, setGuideType]: [string | undefined, (value: string | undefined) => void] = useState()
-  const [guideLevel, setGuideLevel]: [number | undefined, (value: number | undefined) => void] = useState()
+  let localStorageGuidePower = localStorage.getItem(LS_HOME_GUIDE_POWER)
+  let localStorageGuideType = localStorage.getItem(LS_HOME_GUIDE_TYPE)
+  let localStorageGuideLevel = parseInt(localStorage.getItem(LS_HOME_GUIDE_LEVEL) as string)
+
+  const [guidePower, setGuidePower] = useState(localStorageGuidePower)
+  const [guideType, setGuideType] = useState(localStorageGuideType)
+  const [guideLevel, setGuideLevel]: [number | null, (value: number | null) => void] = useState<number | null>(localStorageGuideLevel)
 
   const [ingredients, setIngredients]: [string[], any] = useState(uriIngredients)
   const [seasonings, setSeasonings]: [string[], any] = useState(uriSeasonings)
@@ -300,10 +308,16 @@ export default function HomeV2() {
       </Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
         <PowerSelect 
+          power={guidePower ? guidePower : ''}
+          type={guideType ? guideType : ''}
+          level={guideLevel ? guideLevel.toString() : ''}
           onChange={(power, type, level) => {
             setGuidePower(power)
+            localStorage.setItem(LS_HOME_GUIDE_POWER, power ? power : '')
             setGuideType(type)
+            localStorage.setItem(LS_HOME_GUIDE_TYPE, type ? type : '')
             setGuideLevel(level)
+            localStorage.setItem(LS_HOME_GUIDE_LEVEL, level ? level.toString() : '')
           }}
         />
         { GuideElement }

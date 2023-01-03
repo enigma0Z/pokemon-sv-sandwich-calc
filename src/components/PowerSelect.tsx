@@ -5,12 +5,15 @@ import { useState } from 'react'
 export default function PowerSelect(
   props: {
     visible?: boolean,
-    onChange?: (power: string | undefined, type: string | undefined, level: number | undefined) => void
+    onChange?: (power: string | null, type: string | null, level: number | null) => void
+    power?: string,
+    type?: string,
+    level?: string
   }
 ) {
-  const [filterPower, setFilterPower] = useState('')
-  const [filterType, setFilterType] = useState('')
-  const [filterLevel, setFilterLevel] = useState('')
+  const [filterPower, setFilterPower] = useState(props.power ? props.power : '')
+  const [filterType, setFilterType] = useState(props.type ? props.type : '')
+  const [filterLevel, setFilterLevel] = useState(props.level ? props.level : '')
 
   let visible = props.visible
   if (visible === undefined) visible = true
@@ -27,10 +30,8 @@ export default function PowerSelect(
         onChange={(event: any, value: string | null) => {
           if (value) {
             setFilterPower(value)
-            // setFilterPowerValue(value)
           } else {
             setFilterPower('')
-            // setFilterPowerValue('')
             value = ''
           }
           if (props.onChange) props.onChange(value, filterType, parseInt(filterLevel))
@@ -111,7 +112,7 @@ export default function PowerSelect(
           setFilterType('')
           setFilterLevel('')
 
-          if (props.onChange) props.onChange(undefined, undefined, undefined)
+          if (props.onChange) props.onChange(null, null, null)
         }}
       >
         Reset

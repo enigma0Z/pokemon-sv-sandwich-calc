@@ -8,9 +8,9 @@ export default function Research() {
     document.title = "Sandwich Calculator: Research"
   }, [])
 
-  const [power, setPower]: [string | undefined, (value: string | undefined) => void] = useState()
-  const [type, setType]: [string | undefined, (value: string | undefined) => void] = useState()
-  const [level, setLevel]: [number | undefined, (value: number | undefined) => void] = useState()
+  const [power, setPower]: [string | undefined | null, (value: string | null) => void] = useState()
+  const [type, setType]: [string | undefined | null, (value: string | null) => void] = useState()
+  const [level, setLevel]: [number | undefined | null, (value: number | null) => void] = useState()
 
   console.log(power, type, level)
 

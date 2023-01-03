@@ -16,7 +16,9 @@ export default function PowerRequirementComponent(
   return (
     <Paper
       sx={{
-        width: minimized ? 'fit-content' : '18em',
+        // width: minimized ? 'fit-content' : '18em',
+        width: 'fit-content',
+        maxWidth: '18em',
         padding: '.5em',
         display: props.requirements.length > 0 ? 'block' : 'none',
         position: 'fixed',
@@ -28,7 +30,7 @@ export default function PowerRequirementComponent(
       elevation={4}
     >
       <Box display={'flex'} flexDirection='row'>
-        <Box display={minimized ? 'none' : 'flex'} flexDirection='column'>
+        <Box display={minimized ? 'none' : 'flex'} flexDirection='column' flexBasis={'100%'}>
           {props.requirements.map(requirement => {
             return (
               <>

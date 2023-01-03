@@ -1,6 +1,6 @@
 export type SandwichPower = {
   name: string,
-  type?: string,
+  type?: string | null,
   level: number
 }
 
@@ -80,6 +80,24 @@ export type SandwichStats = {
   taste: Ingredient['taste']
   power: Ingredient['power']
   type: Ingredient['type']
+}
+
+export type PowerRequirement = {
+  power: SandwichPower,
+  powerAmount: number,
+  typeAmount: number,
+  achieved?: boolean
+}
+
+export type DisplayRequirement = {
+  power: SandwichPower,
+  components: DisplayRequirementComponent[]
+}
+
+export type DisplayRequirementComponent = {
+  name: string,
+  value: string | number | boolean,
+  success?: boolean
 }
 
 export type PokemonType = 

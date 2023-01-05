@@ -64,9 +64,6 @@ export const TastePowerBonus: { taste: Taste[], power: MealPower }[] = [
     taste: ['Sweet'],
     power: 'Egg'
   }, {
-    taste: ['Sweet'],
-    power: 'Egg'
-  }, {
     taste: ['Salty'],
     power: 'Encounter'
   }, {

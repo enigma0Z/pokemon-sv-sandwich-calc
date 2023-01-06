@@ -11,7 +11,9 @@ import HomeV2 from './pages/HomeV2'
 import './res/theme'
 import About from './pages/About';
 import FAQ from './pages/FAQ';
-import Research from './pages/Research';
+import { ThemeProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+import { theme } from './res/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,11 +21,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomeV2 />} />
-            <Route path="research" element={<Research />} />
             <Route path="explore" element={<Explore />} />
             <Route path="recipes" element={<Recipes />} />
             <Route path="faq" element={<FAQ />} />
@@ -32,6 +35,7 @@ root.render(
           </Route>
         </Routes>
       </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

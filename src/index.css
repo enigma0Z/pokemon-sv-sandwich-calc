@@ -50,7 +50,28 @@ code {
   display: none;
 }
 
-h1 {
+div.background-color {
+  background: linear-gradient(0deg, #100505FF 0%, #200505FF 100%);
+  z-index: -101;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+div.background-image {
+  background: url(res/img/background.png);
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 5%;
+}
+
+/* h1 {
   color: white;
   justify-content: center;
   font-family: 'Futura';
@@ -79,31 +100,10 @@ body {
   margin: 0;
   position: absolute;
   color: white;
-  background-color: black;
   font-family: 'Futura';
   font-size: 12pt;
 }
 
-div.background-color {
-  background: linear-gradient(0deg, #101010FF 0%, #300000FF 100%);
-  z-index: -101;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-div.background-image {
-  background: url(res/img/background.png);
-  z-index: -100;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 15%;
-}
 
 body div.section {
   text-align: center;
@@ -212,4 +212,4 @@ span.label {
   div#sandwich div#results {
       font-size: 18pt;
   }
-}
+} */

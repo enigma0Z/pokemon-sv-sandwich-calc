@@ -1,9 +1,7 @@
-import { ThemeProvider } from '@emotion/react';
-import { Box } from '@mui/material';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Box, Link, Theme, Typography, useTheme } from '@mui/material';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
-import { theme } from '../res/theme';
 import { useState } from 'react';
 
 
@@ -11,53 +9,60 @@ export default function Layout() {
 
   const [search, setSearch] = useState(useLocation().search)
 
+  const theme = useTheme()
+  const styles = (theme: Theme) => ({
+    section: {
+      textAlign: 'center',
+      marginTop: '12pt',
+      marginBottom: '12pt',
+    },
+    footerImage: {
+      width: '90%'
+    },
+  })
+  const classes = styles(theme)
+
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <div className="background-color"></div>
-        <div className="background-image"></div>
-        <div className="section">
-          <h1>Sandwich Calculator</h1>
-        </div>
-        <nav>
-          <Box>
-            <Link to={`/${search}`}>Home</Link> |&nbsp;
-            <Link to={`/Explore${search}`}>Explore Ingredients</Link> |&nbsp;
-            <Link to={`/Recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
-            <Link to={`/FAQ${search}`}>FAQ</Link> |&nbsp;
-            <Link to={`/About${search}`}>Help & About</Link>
-          </Box>
-        </nav>
-
-        <Box className="App">
-          <Outlet context={[setSearch]}/>
+      <div className="background-color"></div>
+      <div className="background-image"></div>
+      <Typography variant={'h1'} sx={classes.section}>
+        Sandwich Calculator
+      </Typography>
+      <nav>
+        <Box color={'primary'}>
+          <Link component={NavLink} to={`/${search}`}>Home</Link> |&nbsp;
+          <Link component={NavLink} to={`/Explore${search}`}>Explore Ingredients</Link> |&nbsp;
+          <Link component={NavLink} to={`/Recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
+          <Link component={NavLink} to={`/FAQ${search}`}>FAQ</Link> |&nbsp;
+          <Link component={NavLink} to={`/About${search}`}>Help & About</Link>
         </Box>
+      </nav>
 
-        <div className='section' style={{marginBottom: '3em'}}>
-          <h2>Reporting A Bug</h2>
-          If you found a bug or have a suggestion, report it in the <a href="https://www.reddit.com/user/enigma_0Z/comments/zfk3bz/pokemon_scarlet_violet_sandwich_calculator_bug/" target='_blank' rel="noreferrer">official reddit thread</a>
-        </div>
-        <div className="section">
-          <span className="caption">
-            <a href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">YouTube</a> |&nbsp;
-            <a href="https://twitter.com/enigma_0z">Twitter</a> |&nbsp;
-            <a href="https://discord.gg/Wyemk6G28z">Discord</a> |&nbsp;
-            <a href="https://www.patreon.com/enigmaplaysgames">Patreon</a> |&nbsp;
-            <a href="https://enigma-plays-live.myspreadshop.com/">Merch</a>
-          </span>
-        </div>
-        <div className="section">
-          <img className="header" src={res.img.logo} alt="enigma! logo" />
-        </div>
-        <div className="section">
-          <ul><li>
-            <a href="https://enigma0z.com/privacy.html">Privacy Policy</a>
-          <li></li>
-            <span data-ccpa-link="1"></span>
-          </li></ul>
-        </div>
-        <div className="section" style={{height: '100px'}}></div>
-      </ThemeProvider>
+      <Box className="App">
+        <Outlet context={[setSearch]} />
+      </Box>
+
+      <Box sx={classes.section}>
+        <Typography variant={'h2'}>Reporting A Bug</Typography>
+        If you found a bug or have a suggestion, report it in the <Link href="https://www.reddit.com/user/enigma_0Z/comments/zfk3bz/pokemon_scarlet_violet_sandwich_calculator_bug/" target='_blank' rel="noreferrer">official reddit thread</Link>
+      </Box>
+      <Box sx={classes.section}>
+          <Link href="https://www.youtube.com/channel/UCMVAWJUY88YlJlX88B0siDQ">YouTube</Link> |&nbsp;
+          <Link href="https://twitter.com/enigma_0z">Twitter</Link> |&nbsp;
+          <Link href="https://discord.gg/Wyemk6G28z">Discord</Link> |&nbsp;
+          <Link href="https://www.patreon.com/enigmaplaysgames">Patreon</Link> |&nbsp;
+          <Link href="https://enigma-plays-live.myspreadshop.com/">Merch</Link>
+      </Box>
+      <Box sx={classes.section}>
+        <img style={{width: '80%', imageRendering: 'pixelated'}} src={res.img.logo} alt="enigma! logo" />
+      </Box>
+      <Box sx={classes.section}>
+        <Link href="https://enigma0z.com/privacy.html">Privacy Policy</Link>
+        <br/>
+        <Link component='span' data-ccpa-link={1} />
+      </Box>
+      <Box sx={{...classes.section, height: '100px'}}/>
     </>
   )
 }

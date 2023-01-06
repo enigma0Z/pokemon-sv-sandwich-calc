@@ -42,6 +42,25 @@ export const MealPowers: MealPower[] = [
   'Encounter',
 ]
 
+export const MealPowerSynonyms: {[index: string]: string[]} = {
+  'Egg': ['eg'],
+  'Catching': ['catch'],
+  'Exp.': ['exp', 'experience'],
+  'Item Drop': ['item', 'drop', 'itemdrop'],
+  'Raid': [],
+  'Title': ['mark'],
+  'Sparkling': ['shiny', 'sparkle'],
+  'Humungo': ['large', 'huge', 'big'],
+  'Teensy': ['tiny', 'small', 'itsy'],
+  'Encounter': ['enc'],
+}
+
+export const LevelSynonyms: {[index: number]: string[]} = {
+  1: ['one'],
+  2: ['two'],
+  3: ['three'],
+}
+
 export const Tastes: Taste[] = [
   'Sweet',
   'Salty',

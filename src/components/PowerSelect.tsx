@@ -1,122 +1,114 @@
-import { MealPowers, PokemonTypes } from '../data/Cookbooks'
-import { Autocomplete, Box, Button, TextField } from '@mui/material'
+import { LevelSynonyms, MealPowers, MealPowerSynonyms, PokemonTypes } from '../data/Cookbooks'
+import { Autocomplete, Box, Button, createFilterOptions, TextField } from '@mui/material'
 import { useState } from 'react'
+import { powerName } from '../data/calc'
+import { SandwichPower } from '../data/Cookbook'
 
 export default function PowerSelect(
   props: {
     visible?: boolean,
-    onChange?: (power: string | null, type: string | null, level: number | null) => void
-    power?: string,
-    type?: string,
-    level?: string
+    onChange?: (value: SandwichPower[]) => void,
+    powers?: SandwichPower[],
   }
 ) {
-  const [filterPower, setFilterPower] = useState(props.power ? props.power : '')
-  const [filterType, setFilterType] = useState(props.type ? props.type : '')
-  const [filterLevel, setFilterLevel] = useState(props.level ? props.level : '')
+  const [powers, setPowers] = useState<SandwichPower[]>(props.powers ? props.powers : [])
+
+  const options: SandwichPower[] = []
+
+  const filterOptions = createFilterOptions({
+    stringify: (option: SandwichPower) => { 
+      const tokens: (string | number)[] = []
+      tokens.push(powerName(option))
+      tokens.push(option.name)
+      if (option.type) tokens.push(option.type)
+      tokens.push(option.level)
+
+      for (let powerSyn of MealPowerSynonyms[option.name]) {
+        tokens.push(powerSyn)
+        if (option.type) tokens.push(option.type)
+        tokens.push(option.level)
+
+        for (let levelSyn of LevelSynonyms[option.level]) {
+          tokens.push(powerSyn)
+          if (option.type) tokens.push(option.type)
+          tokens.push(levelSyn)
+        }
+      }
+
+      for (let levelSyn of LevelSynonyms[option.level]) {
+        tokens.push(option.name)
+        if (option.type) tokens.push(option.type)
+        tokens.push(levelSyn)
+      }
+      return tokens.join(' ')
+    }
+  })
+
+  for (let power of MealPowers) {
+    if (power !== 'Egg') {
+      for (let type of PokemonTypes) {
+        for (let level of [1, 2, 3]) {
+          options.push({
+            name: power,
+            type: type,
+            level: level
+          })
+        }
+      }
+    } else {
+      for (let level of [1, 2, 3]) {
+        options.push({
+          name: power,
+          type: null,
+          level: level
+        })
+      }
+    }
+  }
 
   let visible = props.visible
   if (visible === undefined) visible = true
 
   return (
-    <Box display={visible ? 'flex' : 'none'} flexDirection='row' flexWrap={'wrap'}>
-      <Autocomplete
-        id="Power"
-        autoHighlight
-        autoSelect
-        options={MealPowers}
-        value={filterPower}
-        sx={{ width: '10em', margin: '.5em' }}
-        onChange={(event: any, value: string | null) => {
-          if (value) {
-            setFilterPower(value)
-          } else {
-            setFilterPower('')
-            value = ''
-          }
-          if (props.onChange) props.onChange(value, filterType, parseInt(filterLevel))
-        }}
-        isOptionEqualToValue={(option, value) => {
-          return value === undefined || value === null || value === '' || value === option
-        }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Power"
-          />
-        )}
-      />
+    <Box display={visible ? 'flex' : 'none'} flexDirection='column' sx={{ width: '100%' }}>
 
-      <Autocomplete
-        autoHighlight
-        id="Type"
-        options={PokemonTypes}
-        value={filterType}
-        sx={{ width: '10em', margin: '.5em' }}
-        disabled={(() => filterPower === '' || filterPower === 'Egg')()}
-        onChange={(event: any, value: string | null) => {
-          if (value) {
-            setFilterType(value)
-          } else {
-            setFilterType('')
-            value = ''
-          }
+      <Box display={'flex'} flexDirection='row' flexWrap={'wrap'} sx={{ width: '100%' }}>
+        <Autocomplete
+          id='Power'
+          autoHighlight
+          multiple
+          fullWidth
+          options={options}
+          value={powers}
+          filterOptions={filterOptions}
+          getOptionLabel={(option) => powerName(option)}
+          isOptionEqualToValue={(option, value) => option.name === value.name && option.type === value.type && option.level === value.level}
+          getOptionDisabled={(option) => { 
+            return powers.length === 3 || powers.map(power => power.name).includes(option.name)
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Sandwich Powers"
+            />
+          )}
+          onChange={(event, value) => {
+            setPowers(value)
+            if (props.onChange) props.onChange(value)
+          }}
+        />
+      </Box>
+      <Box display={'flex'} flexDirection='row' flexWrap={'wrap'}>
+        <Button
+          onClick={(event: any) => {
+            setPowers([])
 
-          if (props.onChange) props.onChange(filterPower, value, parseInt(filterLevel))
-        }}
-        isOptionEqualToValue={(option, value) => {
-          return value === undefined || value === null || value === '' || value === option
-        }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Type"
-          />
-        )}
-      />
-
-      <Autocomplete
-        autoHighlight
-        id="Level"
-        options={['1', '2', '3']}
-        value={filterLevel}
-        sx={{ width: '10em', margin: '.5em' }}
-        disabled={(() =>
-          filterPower === '' || // false
-          (filterPower !== '' && filterPower !== 'Egg' && filterType === '')
-        )()}
-        onChange={(event: any, value: string | null) => {
-          if (value) {
-            setFilterLevel(value)
-          } else {
-            setFilterLevel('')
-            value = ''
-          }
-
-          if (props.onChange) props.onChange(filterPower, filterType, parseInt(value))
-
-        }}
-        isOptionEqualToValue={(option, value) => {
-          return value === undefined || value === null || value === '' || value === option
-        }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Level"
-          />
-        )}
-      />
-      <Button
-        onClick={(event: any) => {
-          setFilterPower('')
-          setFilterType('')
-          setFilterLevel('')
-
-          if (props.onChange) props.onChange(null, null, null)
-        }}
-      >
-        Reset
-      </Button>
+            if (props.onChange) props.onChange([])
+          }}
+        >
+          Reset
+        </Button>
+      </Box>
     </Box>
   )
 }

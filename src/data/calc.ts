@@ -31,6 +31,11 @@ export const LEVEL_REQUIREMENTS = {
   }
 }
 
+export const MULTI_SLOT_TYPE_REQUIREMENTS = {
+  2: 280,
+  3: 480
+}
+
 export function sortValueName(a: { name: string, value: number }, b: { name: string, value: number }) {
   return (b.value - a.value) * 10 + (a.name < b.name ? -1 : 1)
 }
@@ -272,9 +277,9 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
   let type = []
 
   // Do type sorting and check for monotype
-  if (SortedType[0].value < 280) {
+  if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[2] ) {
     type = [0, 2, 1] // Most sandwiches are 0, 2, 1
-  } else if (SortedType[0].value < 480) {
+  } else if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[3] ) {
     type = [0, 0, 2]
   } else {
     type = [0, 0, 0]
@@ -338,6 +343,14 @@ export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich):
       requirement.typeAmount = LEVEL_REQUIREMENTS[1].type
     }
 
+    const numOfType = powers.filter(x => x.type !== null && x.type !== undefined && x.type === power.type).length
+    
+    if (numOfType === 2) {
+      requirement.typeAmount = MULTI_SLOT_TYPE_REQUIREMENTS[2]
+    } else if (numOfType === 3) {
+      requirement.typeAmount = MULTI_SLOT_TYPE_REQUIREMENTS[3]
+    }
+
     requirements.push(requirement)
   }
 
@@ -362,56 +375,38 @@ export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich):
 
     // TODO: Cleanup the branches in this logic
     if (sandwich && sandwich.powers.length > 0) {
-      const powers = sandwich.powers.filter(power => power.type === requirement.power.type)
-      if (powers.length > 0) {
-        if (powers.length > 1) {
-          const power = powers.find(power => power.name === requirement.power.name)
-          if (power) {
-            displayRequirement.components.push({
-              name: 'Power Type',
-              value: power.name,
-              success: power.name === requirement.power.name
-            })
+      // Filter by type
+      // Find the power of the given power name we're looking for
+      const powerByName = sandwich.powers.find(power => power.name === requirement.power.name)
 
-            displayRequirement.components.push({
-              name: requirement.power.name,
-              value: requirement.powerAmount,
-              success: power.level === requirement.power.level || requirement.powerAmount <= 0
-            })
-          } else {
-            displayRequirement.components.push({
-              name: 'Power Type',
-              value: 'MISSING',
-              success: false
-            })
+      displayRequirement.components.push({
+        name: 'Has Power',
+        value: requirement.power.name,
+        success: powerByName !== undefined
+      })
 
-            displayRequirement.components.push({
-              name: requirement.power.name,
-              value: requirement.powerAmount,
-              success: requirement.powerAmount <= 0
-            })
-          }
-        } else {
+      if (powerByName) { // Sandwich has the required power
+        if (requirement.power.type) { // Check for power type
           displayRequirement.components.push({
-            name: 'Power Type',
-            value: powers[0].name,
-            success: powers[0].name === requirement.power.name
-          })
-
-          displayRequirement.components.push({
-            name: requirement.power.name,
-            value: requirement.powerAmount,
-            success: requirement.powerAmount <= 0
+            name: `${requirement.power.name} Power Type`,
+            value: powerByName.type as string,
+            success: powerByName.type === requirement.power.type
           })
         }
       } else {
-        displayRequirement.components.push({
-          name: requirement.power.name,
-          value: requirement.powerAmount,
-          success: requirement.powerAmount <= 0
+        displayRequirement.components.push({ // Sandwich does not have the required power
+          name: `${requirement.power.name} Power Type`,
+          value: 'MISSING',
+          success: false
         })
       }
-    } else {
+
+      displayRequirement.components.push({ // df
+        name: requirement.power.name,
+        value: requirement.powerAmount,
+        success: powerByName?.level === requirement.power.level || requirement.powerAmount <= 0
+      })
+    } else { // Sandwich does not exist yet
       displayRequirement.components.push({
         name: requirement.power.name,
         value: requirement.powerAmount,
@@ -430,6 +425,6 @@ export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich):
     displayRequirements.push(displayRequirement)
   }
 
-  console.log('displayRequirements', displayRequirements)
+  // console.log('displayRequirements', displayRequirements)
   return displayRequirements
 }

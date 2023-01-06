@@ -2,7 +2,7 @@ import './index.css';
 import { useState, useEffect } from 'react';
 import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
 import { findRecipe, Ingredients, Seasonings } from '../../data/Cookbooks';
-import { Ingredient } from '../../data/Cookbook';
+import { Ingredient, SandwichPower } from '../../data/Cookbook';
 import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
 import Sandwich from '../../components/SandwichV2';
 import { useLocation, useOutletContext } from 'react-router-dom';
@@ -14,9 +14,7 @@ import PowerRequirementComponent from '../../components/PowerRequirementComponen
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
-const LS_HOME_GUIDE_TYPE = 'home_guide_type'
-const LS_HOME_GUIDE_POWER = 'home_guide_power'
-const LS_HOME_GUIDE_LEVEL = 'home_guide_level'
+const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
 
 export default function HomeV2() {
 
@@ -95,13 +93,13 @@ export default function HomeV2() {
     }
   }
 
-  let localStorageGuidePower = localStorage.getItem(LS_HOME_GUIDE_POWER)
-  let localStorageGuideType = localStorage.getItem(LS_HOME_GUIDE_TYPE)
-  let localStorageGuideLevel = parseInt(localStorage.getItem(LS_HOME_GUIDE_LEVEL) as string)
+  let localStorageGuidePowers = localStorage.getItem(LS_HOME_GUIDE_POWERS)
+  let loadedGuidePowers: SandwichPower[] = []
+  if (localStorageGuidePowers) {
+    loadedGuidePowers = JSON.parse(localStorageGuidePowers)
+  }
 
-  const [guidePower, setGuidePower] = useState(localStorageGuidePower)
-  const [guideType, setGuideType] = useState(localStorageGuideType)
-  const [guideLevel, setGuideLevel]: [number | null, (value: number | null) => void] = useState<number | null>(localStorageGuideLevel)
+  const [guidePowers, setGuidePowers] = useState(loadedGuidePowers)
 
   const [ingredients, setIngredients]: [string[], any] = useState(uriIngredients)
   const [seasonings, setSeasonings]: [string[], any] = useState(uriSeasonings)
@@ -130,7 +128,7 @@ export default function HomeV2() {
     calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
 
     gtag('event', 'home_sandwich_create', {
-      ingredients: calculatedSandwich.ingredients.map(x => x.name), 
+      ingredients: calculatedSandwich.ingredients.map(x => x.name),
       seasonings: calculatedSandwich.seasonings.map(x => x.name),
       powers: calculatedSandwich.powers.map(x => powerName(x))
     })
@@ -189,11 +187,11 @@ export default function HomeV2() {
   }
 
   const ingredientSelects: JSX.Element[] = []
-  for (let i = 0; i<INGREDIENTS_PER_PLAYER*players; i++) {
+  for (let i = 0; i < INGREDIENTS_PER_PLAYER * players; i++) {
     let ingredient = Ingredients.find(x => x.name === ingredients[i])
     if (
       i % INGREDIENTS_PER_PLAYER === 0
-      && i+1 < INGREDIENTS_PER_PLAYER*players
+      && i + 1 < INGREDIENTS_PER_PLAYER * players
     ) {
       ingredientSelects.push(<Box flexBasis={'100%'}>Player {i / INGREDIENTS_PER_PLAYER + 1}</Box>)
     }
@@ -202,11 +200,10 @@ export default function HomeV2() {
         <Select
           native={isMobile}
           key={i + 'select'}
-          // sx={classes.IngredientSelect}
           sx={{
             width: '100%'
           }}
-          value={ingredients[i] !== undefined ? ingredients[i] : '' }
+          value={ingredients[i] !== undefined ? ingredients[i] : ''}
           onChange={(event: SelectChangeEvent) => {
             const newIngredients = [...ingredients]
             newIngredients[i] = event.target.value
@@ -214,7 +211,7 @@ export default function HomeV2() {
             setUri(newIngredients, seasonings, players)
           }}
         >
-          {isMobile ? 
+          {isMobile ?
             <option key='empty' value={''}></option> :
             <MenuItem key='empty' value={''}>–––</MenuItem>
           }
@@ -226,7 +223,7 @@ export default function HomeV2() {
             }
           })}
         </Select>
-        <Box 
+        <Box
           key={i + 'detail'}
           display={ingredients[i] !== null && showDetails ? 'flex' : 'none'}
         >
@@ -238,10 +235,10 @@ export default function HomeV2() {
   }
 
   const seasoningSelects: JSX.Element[] = []
-  for (let i = 0; i<SEASONINGS_PER_PLAYER*players; i++) {
+  for (let i = 0; i < SEASONINGS_PER_PLAYER * players; i++) {
     if (
       i % SEASONINGS_PER_PLAYER === 0
-      && i+1 < SEASONINGS_PER_PLAYER*players
+      && i + 1 < SEASONINGS_PER_PLAYER * players
     ) {
       seasoningSelects.push(<Box flexBasis={'100%'}>Player {i / SEASONINGS_PER_PLAYER + 1}</Box>)
     }
@@ -255,7 +252,7 @@ export default function HomeV2() {
           sx={{
             width: '100%'
           }}
-          value={seasonings[i] !== undefined ? seasonings[i] : '' }
+          value={seasonings[i] !== undefined ? seasonings[i] : ''}
           onChange={(event: SelectChangeEvent) => {
             const newSeasonings = [...seasonings]
             newSeasonings[i] = event.target.value
@@ -263,7 +260,7 @@ export default function HomeV2() {
             setUri(ingredients, newSeasonings, players)
           }}
         >
-          {isMobile ? 
+          {isMobile ?
             <option key='empty' value={''}></option> :
             <MenuItem key='empty' value={''}>–––</MenuItem>
           }
@@ -275,7 +272,7 @@ export default function HomeV2() {
             }
           })}
         </Select>
-        <Box 
+        <Box
           key={i + 'detail'}
           display={seasoning !== undefined && showDetails ? 'flex' : 'none'}
         >
@@ -285,21 +282,24 @@ export default function HomeV2() {
     )
 
     if (
-      (i+1) % SEASONINGS_PER_PLAYER === 0
-      && i+1 < SEASONINGS_PER_PLAYER*players
+      (i + 1) % SEASONINGS_PER_PLAYER === 0
+      && i + 1 < SEASONINGS_PER_PLAYER * players
     ) {
       seasoningSelects.push(<Box flexBasis={'100%'}>&nbsp;</Box>)
     }
   }
 
-  let GuideElement: JSX.Element[] = []
+  console.log('guidePowers', guidePowers)
 
-  if (guidePower && (guideType || guidePower === 'Egg') && guideLevel) GuideElement = [
-    <PowerRequirementComponent requirements={powerRequirements(
-      [{name: guidePower, type: guideType, level: guideLevel}],
-      calculatedSandwich
-    )} />
-  ]
+  let GuideElement: JSX.Element[] = []
+  if (guidePowers.length > 0) {
+    GuideElement.push(
+      <PowerRequirementComponent requirements={powerRequirements(
+        guidePowers,
+        calculatedSandwich
+      )} />
+    )
+  }
 
   return (
     <>
@@ -307,27 +307,22 @@ export default function HomeV2() {
         <h2>Power Guide</h2>
       </Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
-        <PowerSelect 
-          power={guidePower ? guidePower : ''}
-          type={guideType ? guideType : ''}
-          level={guideLevel ? guideLevel.toString() : ''}
-          onChange={(power, type, level) => {
-            setGuidePower(power)
-            localStorage.setItem(LS_HOME_GUIDE_POWER, power ? power : '')
-            setGuideType(type)
-            localStorage.setItem(LS_HOME_GUIDE_TYPE, type ? type : '')
-            setGuideLevel(level)
-            localStorage.setItem(LS_HOME_GUIDE_LEVEL, level ? level.toString() : '')
+        <PowerSelect
+          powers={guidePowers}
+          onChange={(value) => {
+            console.log(`<PowerSelect/>.onChange(${JSON.stringify(value)})`)
+            setGuidePowers([...value])
+            localStorage.setItem(LS_HOME_GUIDE_POWERS, value.length > 0 ? JSON.stringify(value) : '')
           }}
         />
-        { GuideElement }
+        {GuideElement}
       </Box>
       <Box><h2>Players</h2></Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
         <ToggleButtonGroup value={players} exclusive={true} onChange={(event, value) => {
           setPlayers(value)
-          const newIngredients = ingredients.slice(0, INGREDIENTS_PER_PLAYER*value) 
-          const newSeasonings = seasonings.slice(0, SEASONINGS_PER_PLAYER*value) 
+          const newIngredients = ingredients.slice(0, INGREDIENTS_PER_PLAYER * value)
+          const newSeasonings = seasonings.slice(0, SEASONINGS_PER_PLAYER * value)
           setIngredients(newIngredients)
           setSeasonings(newSeasonings)
           setUri(newIngredients, newSeasonings, value)

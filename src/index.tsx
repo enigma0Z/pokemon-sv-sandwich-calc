@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './pages/Home';
 import Layout from './pages/Layout';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -31,7 +30,6 @@ root.render(
             <Route path="recipes" element={<Recipes />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="about" element={<About />} />
-            <Route path="old" element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -66,15 +66,10 @@ export function powerName(power: SandwichPower) {
 }
 
 export function calculateLevel(power: { name: string, value: number }, type: { name: string, value: number }) {
-  console.log('calculateLevel', type, power)
-  console.log('Level Reqs', LEVEL_REQUIREMENTS)
   if (type.value >= LEVEL_REQUIREMENTS[2].type) {
-    console.log('Type check lvl 2', type.value >= LEVEL_REQUIREMENTS[2].type)
     if (power.value >= LEVEL_REQUIREMENTS[3].power) {
-      console.log('power check lvl 3', power.value >= LEVEL_REQUIREMENTS[3].power)
       return 3
     } else if (power.value >= LEVEL_REQUIREMENTS[2].power) {
-      console.log('power check lvl 2', power.value >= LEVEL_REQUIREMENTS[2].power)
       return 2
     } else {
       return 1
@@ -89,7 +84,7 @@ function sumComponents(ingredients: Ingredient[]): SandwichStats {
 
   // Add everything together
   for (let ingredient of ingredients) {
-    const Multiplier = ingredient.max !== undefined ? ingredient.max : 1
+    const Multiplier = ingredient.numPieces !== undefined ? ingredient.numPieces : ingredient.maxPieces
     for (let key of Object.keys(ingredient.taste)) {
       Result.taste[key] += ingredient.taste[key] * Multiplier
     }
@@ -305,7 +300,7 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     // TODO This is hardcoded for sp, needs a var
     calcSandwich.ingredients.length === 6 // If there's six ingredients
     && calcSandwich.ingredients.filter((ingredient) => ingredient.name !== ingredients[0].name).length === 0 // And they're all the same
-    && calcSandwich.ingredients[0].max === 1 // And each one is a big ingredient
+    && calcSandwich.ingredients[0].maxPieces === 1 // And each one is a big ingredient
     && levels[0] > 1 // And there's enough  to have made the first power lv. 2
   ) { // ... Then elevate poer 2 by one level
     if (levels[1] === 1) {
@@ -425,6 +420,5 @@ export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich):
     displayRequirements.push(displayRequirement)
   }
 
-  // console.log('displayRequirements', displayRequirements)
   return displayRequirements
 }

@@ -1,7 +1,7 @@
 {
   "ingredients": [
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Apple",
       "power": {
         "Catching": -1,
@@ -21,7 +21,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Avocado",
       "power": {
         "Catching": 4,
@@ -37,7 +37,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Bacon",
       "power": {
         "Catching": 4,
@@ -55,7 +55,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Banana",
       "power": {
         "Catching": -1,
@@ -74,7 +74,7 @@
       }
     },
     {
-      "max": 4,
+      "maxPieces": 4,
       "name": "Basil",
       "power": {
         "Egg": 2,
@@ -99,7 +99,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Cheese",
       "power": {
         "Catching": 2,
@@ -133,7 +133,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Cherry Tomatoes",
       "power": {
         "Catching": 4,
@@ -150,7 +150,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Chorizo",
       "power": {
         "Encounter": 4,
@@ -172,7 +172,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Cucumber",
       "power": {
         "Catching": 4,
@@ -188,7 +188,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Egg",
       "power": {
         "Encounter": 4,
@@ -210,7 +210,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Fried Fillet",
       "power": {
         "Catching": 21,
@@ -235,7 +235,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Green Bell Pepper",
       "power": {
         "Catching": 4,
@@ -252,7 +252,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Ham",
       "power": {
         "Catching": 4,
@@ -268,7 +268,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Hamburger",
       "power": {
         "Catching": 12,
@@ -285,7 +285,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Herbed Sausage",
       "power": {
         "Encounter": 4,
@@ -307,7 +307,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Jalapeno",
       "power": {
         "Catching": -1,
@@ -326,7 +326,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Kiwi",
       "power": {
         "Catching": -1,
@@ -346,7 +346,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Klawf Stick",
       "power": {
         "Catching": 4,
@@ -362,7 +362,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Lettuce",
       "power": {
         "Catching": 4,
@@ -378,7 +378,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Noodles",
       "power": {
         "Encounter": 12,
@@ -398,7 +398,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Onion",
       "power": {
         "Catching": 4,
@@ -415,7 +415,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Pickle",
       "power": {
         "Catching": 4,
@@ -432,7 +432,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Pineapple",
       "power": {
         "Catching": -1,
@@ -452,7 +452,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Potato Salad",
       "power": {
         "Encounter": 12,
@@ -475,7 +475,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Potato Tortilla",
       "power": {
         "Catching": 21,
@@ -502,7 +502,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Prosciutto",
       "power": {
         "Catching": 4,
@@ -519,7 +519,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Red Bell Pepper",
       "power": {
         "Catching": 4,
@@ -536,7 +536,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Red Onion",
       "power": {
         "Catching": 4,
@@ -552,7 +552,7 @@
       }
     },
     {
-      "max": 1,
+      "maxPieces": 1,
       "name": "Rice",
       "power": {
         "Encounter": 12,
@@ -573,7 +573,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Smoked Fillet",
       "power": {
         "Catching": 4,
@@ -591,7 +591,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Strawberry",
       "power": {
         "Catching": -1,
@@ -610,7 +610,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Tofu",
       "power": {
         "Catching": 4,
@@ -625,7 +625,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Tomato",
       "power": {
         "Catching": 4,
@@ -642,7 +642,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Watercress",
       "power": {
         "Egg": 2,
@@ -668,7 +668,7 @@
       }
     },
     {
-      "max": 3,
+      "maxPieces": 3,
       "name": "Yellow Bell Pepper",
       "power": {
         "Catching": 4,
@@ -688,6 +688,7 @@
   "seasonings": [
     {
       "name": "Butter",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -704,6 +705,7 @@
     },
     {
       "name": "Chili Sauce",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -722,6 +724,7 @@
     },
     {
       "name": "Cream Cheese",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -741,6 +744,7 @@
     },
     {
       "name": "Curry Powder",
+      "maxPieces": 1,
       "power": {
         "Encounter": 12,
         "Humungo": -3,
@@ -764,6 +768,7 @@
     },
     {
       "name": "Horseradish",
+      "maxPieces": 1,
       "power": {
         "Encounter": 12,
         "Humungo": -3,
@@ -784,6 +789,7 @@
     },
     {
       "name": "Jam",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -803,6 +809,7 @@
     },
     {
       "name": "Ketchup",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -820,6 +827,7 @@
     },
     {
       "name": "Marmalade",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -840,6 +848,7 @@
     },
     {
       "name": "Mayonnaise",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -856,6 +865,7 @@
     },
     {
       "name": "Mustard",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -875,6 +885,7 @@
     },
     {
       "name": "Olive Oil",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -893,6 +904,7 @@
     },
     {
       "name": "Peanut Butter",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -909,6 +921,7 @@
     },
     {
       "name": "Pepper",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -926,6 +939,7 @@
     },
     {
       "name": "Salt",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -942,6 +956,7 @@
     },
     {
       "name": "Vinegar",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -961,6 +976,7 @@
     },
     {
       "name": "Wasabi",
+      "maxPieces": 1,
       "power": {
         "Encounter": 12,
         "Humungo": -3,
@@ -982,6 +998,7 @@
     },
     {
       "name": "Whipped Cream",
+      "maxPieces": 1,
       "power": {
         "Egg": 5,
         "Exp.": -3,
@@ -999,6 +1016,7 @@
     },
     {
       "name": "Yogurt",
+      "maxPieces": 1,
       "power": {
         "Egg": -3,
         "Exp.": 12,
@@ -1015,6 +1033,7 @@
     },
     {
       "name": "Bitter Herba Mystica",
+      "maxPieces": 1,
       "power": {
         "Sparkling": 1000,
         "Title": 1000
@@ -1045,6 +1064,7 @@
     },
     {
       "name": "Spicy Herba Mystica",
+      "maxPieces": 1,
       "power": {
         "Sparkling": 1000,
         "Title": 1000
@@ -1075,6 +1095,7 @@
     },
     {
       "name": "Salty Herba Mystica",
+      "maxPieces": 1,
       "power": {
         "Sparkling": 1000,
         "Title": 1000
@@ -1105,6 +1126,7 @@
     },
     {
       "name": "Sour Herba Mystica",
+      "maxPieces": 1,
       "power": {
         "Sparkling": 1000,
         "Title": 1000
@@ -1135,6 +1157,7 @@
     },
     {
       "name": "Sweet Herba Mystica",
+      "maxPieces": 1,
       "power": {
         "Sparkling": 1000,
         "Title": 1000

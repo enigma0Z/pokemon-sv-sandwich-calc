@@ -53,7 +53,7 @@ export default function IngredientDetail(props: { visible?: boolean, name: strin
         <Box sx={classes.IngredientTitle}>
           {img} {ingredient.name}
         </Box>
-        <StatBubbles taste={ingredient.taste} power={ingredient.power} type={ingredient.type} amount={ingredient.max} />
+        <StatBubbles taste={ingredient.taste} power={ingredient.power} type={ingredient.type} amount={ingredient.numPieces} />
       </Box>
     )
   }

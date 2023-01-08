@@ -45,8 +45,8 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
 
   const amount = props.amount ? props.amount : 1
 
-  if (props.amount !== undefined) {
-    elements.push(<Box>Amount: {amount}</Box>)
+  if (props.amount !== undefined && props.amount > 1) {
+    elements.push(<Box>Max Pieces: {amount}</Box>)
   }
 
   if (props.taste !== undefined) {

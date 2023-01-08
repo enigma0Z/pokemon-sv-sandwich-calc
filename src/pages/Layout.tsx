@@ -19,6 +19,13 @@ export default function Layout() {
     footerImage: {
       width: '90%'
     },
+    app: {
+      textAlign: 'left',
+      padding: '.5em',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: '90em',
+    }
   })
   const classes = styles(theme)
 
@@ -39,7 +46,7 @@ export default function Layout() {
         </Box>
       </nav>
 
-      <Box className="App">
+      <Box sx={classes.app}> 
         <Outlet context={[setSearch]} />
       </Box>
 

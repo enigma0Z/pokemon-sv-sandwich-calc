@@ -19,7 +19,8 @@ export type Cookbook = {
 }
 
 export type Ingredient = {
-  max?: number,
+  readonly maxPieces: number,
+  numPieces?: number,
   name: string,
   power: {
     [index: string],

@@ -114,11 +114,11 @@ export function sortAttributes(object, sortFn = sortValueName) {
 }
 
 export function lookupIngredientByName(name) {
-  return SandwichData.ingredients.find((ingredient) => ingredient.name.toLowerCase() === name.toLowerCase())
+  return SandwichData.ingredients.find((ingredient) => ingredient.name.toLowerCase() === name?.toLowerCase())
 }
 
 export function lookupSeasoningByName(name) {
-  return SandwichData.seasonings.find((seasoning) => seasoning.name.toLowerCase() === name.toLowerCase())
+  return SandwichData.seasonings.find((seasoning) => seasoning.name.toLowerCase() === name?.toLowerCase())
 }
 
 export function calculateLevel(power, type) {

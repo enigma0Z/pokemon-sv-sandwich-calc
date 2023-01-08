@@ -1,15 +1,15 @@
 import './index.css';
 import { useState, useEffect } from 'react';
-import { Box, Button, MenuItem, Select, SelectChangeEvent, Theme, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
+import { Box, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { findRecipe, Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient, SandwichPower } from '../../data/Cookbook';
 import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
 import Sandwich from '../../components/SandwichV2';
 import { useLocation, useOutletContext } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
-import StatBubbles from '../../components/StatBubbles';
 import PowerSelect from '../../components/PowerSelect';
 import PowerRequirementComponent from '../../components/PowerRequirementComponent';
+import IngredientSelect from '../../components/IngredientSelect';
+import QueryStringProps from '../../util/QueryStringProps';
 
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
@@ -25,73 +25,6 @@ export default function HomeV2() {
   }, [])
 
   const location = useLocation()
-  const theme = useTheme()
-  const styles = (theme: Theme) => ({
-    IngredientSelect: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '15em',
-      margin: '.25em',
-      [theme.breakpoints.down('md')]: {
-        flexBasis: '47%',
-      }
-    },
-    DetailBox: {
-      marginTop: '.25em',
-      fontSize: '8pt',
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column'
-    },
-    DetailRow: {
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap"
-    },
-    DetailItem: {
-      margin: '.25em',
-      paddingLeft: '.5em',
-      paddingRight: '.5em',
-      paddingTop: '.1em',
-      paddingBottom: '.1em',
-      backgroundColor: 'black',
-      borderRadius: '.5em',
-      border: 'solid 1px darkgrey'
-    }
-  })
-
-  const classes = styles(theme)
-
-  let uriIngredients: string[] = []
-  let uriSeasonings: string[] = []
-  let uriPlayers = 1
-
-  const QueryString = location.search.slice(1)
-  for (let entry of QueryString.split('&')) {
-    let [name, valuesStr] = entry.split('=')
-    let values = decodeURIComponent(valuesStr).split(',')
-    if (name === 'ingredients') {
-      for (let value of values) {
-        let foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase() === value.toLowerCase())
-        if (foundIngredient !== undefined) {
-          uriIngredients.push(foundIngredient.name)
-        } else {
-          uriIngredients.push('')
-        }
-      }
-    } else if (name === 'seasonings') {
-      for (let value of values) {
-        let foundSeasoning = Seasonings.find(seasoning => seasoning.name.toLowerCase() === value.toLowerCase())
-        if (foundSeasoning !== undefined) {
-          uriSeasonings.push(foundSeasoning.name)
-        } else {
-          uriSeasonings.push('')
-        }
-      }
-    } else if (name === 'players') {
-      uriPlayers = parseInt(values[0])
-    }
-  }
 
   let localStorageGuidePowers = localStorage.getItem(LS_HOME_GUIDE_POWERS)
   let loadedGuidePowers: SandwichPower[] = []
@@ -99,23 +32,27 @@ export default function HomeV2() {
     loadedGuidePowers = JSON.parse(localStorageGuidePowers)
   }
 
+  const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
+
+  console.log(queryStringProps)
+
   const [guidePowers, setGuidePowers] = useState(loadedGuidePowers)
 
-  const [ingredients, setIngredients]: [string[], any] = useState(uriIngredients)
-  const [seasonings, setSeasonings]: [string[], any] = useState(uriSeasonings)
+  const [ingredients, setIngredients]: [(Ingredient | null)[], any] = useState(queryStringProps.ingredients)
+  const [seasonings, setSeasonings]: [(Ingredient | null)[], any] = useState(queryStringProps.seasonings)
 
   const [showDetails, setShowDetails] = useState(false)
-  const [players, setPlayers] = useState(uriPlayers)
+  const [players, setPlayers] = useState(queryStringProps.players)
 
   const actualIngredients: Ingredient[] = []
   for (let ingredient of ingredients) {
-    const foundIngredient = Ingredients.find(x => x.name === ingredient)
+    const foundIngredient = Ingredients.find(x => x.name === ingredient?.name)
     if (ingredient !== null && foundIngredient !== undefined) actualIngredients.push(foundIngredient)
   }
 
   const actualSeasonings: Ingredient[] = []
   for (let seasoning of seasonings) {
-    const foundSeasoning = Seasonings.find(x => x.name === seasoning)
+    const foundSeasoning = Seasonings.find(x => x.name === seasoning?.name)
     if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning)
   }
 
@@ -148,17 +85,17 @@ export default function HomeV2() {
     sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
   }
 
-  const setUri = (ingredients: string[], seasonings: string[], players?: number) => {
+  const setUri = (ingredients: (Ingredient | null)[], seasonings: (Ingredient | null)[], players?: number) => {
     const actualIngredients: string[] = []
     for (let ingredient of ingredients) {
-      const foundIngredient = Ingredients.find(x => x.name === ingredient)
+      const foundIngredient = Ingredients.find(x => x.name === ingredient?.name)
       if (ingredient !== null && foundIngredient !== undefined) actualIngredients.push(foundIngredient.name)
       else actualIngredients.push('')
     }
 
     const actualSeasonings: string[] = []
     for (let seasoning of seasonings) {
-      const foundSeasoning = Seasonings.find(x => x.name === seasoning)
+      const foundSeasoning = Seasonings.find(x => x.name === seasoning?.name)
       if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning.name)
       else actualSeasonings.push('')
     }
@@ -188,50 +125,27 @@ export default function HomeV2() {
 
   const ingredientSelects: JSX.Element[] = []
   for (let i = 0; i < INGREDIENTS_PER_PLAYER * players; i++) {
-    let ingredient = Ingredients.find(x => x.name === ingredients[i])
     if (
       i % INGREDIENTS_PER_PLAYER === 0
       && i + 1 < INGREDIENTS_PER_PLAYER * players
     ) {
       ingredientSelects.push(<Box flexBasis={'100%'}>Player {i / INGREDIENTS_PER_PLAYER + 1}</Box>)
     }
-    ingredientSelects.push(
-      <Box sx={classes.IngredientSelect} >
-        <Select
-          native={isMobile}
-          key={i + 'select'}
-          sx={{
-            width: '100%'
-          }}
-          value={ingredients[i] !== undefined ? ingredients[i] : ''}
-          onChange={(event: SelectChangeEvent) => {
-            const newIngredients = [...ingredients]
-            newIngredients[i] = event.target.value
-            setIngredients(newIngredients)
-            setUri(newIngredients, seasonings, players)
-          }}
-        >
-          {isMobile ?
-            <option key='empty' value={''}></option> :
-            <MenuItem key='empty' value={''}>–––</MenuItem>
-          }
-          {Ingredients.map(ingredient => {
-            if (isMobile) {
-              return <option key={ingredient.name} value={ingredient.name}>{ingredient.name}</option>
-            } else {
-              return <MenuItem key={ingredient.name} value={ingredient.name}>{ingredient.name}</MenuItem>
-            }
-          })}
-        </Select>
-        <Box
-          key={i + 'detail'}
-          display={ingredients[i] !== null && showDetails ? 'flex' : 'none'}
-        >
-          <StatBubbles taste={ingredient?.taste} power={ingredient?.power} type={ingredient?.type} amount={ingredient?.max} />
-        </Box>
-      </Box>
-    )
 
+    ingredientSelects.push(
+      <IngredientSelect
+        key={i}
+        value={ingredients[i]}
+        showDetails={showDetails}
+        options={Ingredients}
+        onChange={(value) => {
+          const newIngredients = [...ingredients]
+          newIngredients[i] = value
+          setIngredients(newIngredients)
+          setUri(newIngredients, seasonings, players)
+        }}
+      />
+    )
   }
 
   const seasoningSelects: JSX.Element[] = []
@@ -243,61 +157,32 @@ export default function HomeV2() {
       seasoningSelects.push(<Box flexBasis={'100%'}>Player {i / SEASONINGS_PER_PLAYER + 1}</Box>)
     }
 
-    let seasoning = Seasonings.find(x => x.name === seasonings[i])
     seasoningSelects.push(
-      <Box sx={classes.IngredientSelect} >
-        <Select
-          native={isMobile}
-          key={i + 'select'}
-          sx={{
-            width: '100%'
-          }}
-          value={seasonings[i] !== undefined ? seasonings[i] : ''}
-          onChange={(event: SelectChangeEvent) => {
-            const newSeasonings = [...seasonings]
-            newSeasonings[i] = event.target.value
-            setSeasonings(newSeasonings)
-            setUri(ingredients, newSeasonings, players)
-          }}
-        >
-          {isMobile ?
-            <option key='empty' value={''}></option> :
-            <MenuItem key='empty' value={''}>–––</MenuItem>
-          }
-          {Seasonings.map(seasoning => {
-            if (isMobile) {
-              return <option key={seasoning.name} value={seasoning.name}>{seasoning.name}</option>
-            } else {
-              return <MenuItem key={seasoning.name} value={seasoning.name}>{seasoning.name}</MenuItem>
-            }
-          })}
-        </Select>
-        <Box
-          key={i + 'detail'}
-          display={seasoning !== undefined && showDetails ? 'flex' : 'none'}
-        >
-          <StatBubbles taste={seasoning?.taste} power={seasoning?.power} type={seasoning?.type} />
-        </Box>
-      </Box>
+      <IngredientSelect
+        key={i}
+        value={seasonings[i]}
+        showDetails={showDetails}
+        options={Seasonings}
+        onChange={(value) => {
+          const newSeasonings = [...seasonings]
+          newSeasonings[i] = value
+          setSeasonings(newSeasonings)
+          setUri(ingredients, newSeasonings, players)
+        }}
+      />
     )
-
-    if (
-      (i + 1) % SEASONINGS_PER_PLAYER === 0
-      && i + 1 < SEASONINGS_PER_PLAYER * players
-    ) {
-      seasoningSelects.push(<Box flexBasis={'100%'}>&nbsp;</Box>)
-    }
   }
-
-  console.log('guidePowers', guidePowers)
 
   let GuideElement: JSX.Element[] = []
   if (guidePowers.length > 0) {
     GuideElement.push(
-      <PowerRequirementComponent requirements={powerRequirements(
-        guidePowers,
-        calculatedSandwich
-      )} />
+      <PowerRequirementComponent
+        key={guidePowers.toString()}
+        requirements={powerRequirements(
+          guidePowers,
+          calculatedSandwich
+        )}
+      />
     )
   }
 
@@ -310,7 +195,6 @@ export default function HomeV2() {
         <PowerSelect
           powers={guidePowers}
           onChange={(value) => {
-            console.log(`<PowerSelect/>.onChange(${JSON.stringify(value)})`)
             setGuidePowers([...value])
             localStorage.setItem(LS_HOME_GUIDE_POWERS, value.length > 0 ? JSON.stringify(value) : '')
           }}

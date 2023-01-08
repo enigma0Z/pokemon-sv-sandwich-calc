@@ -10,7 +10,7 @@ export default class QueryStringProps {
   constructor(props?: string) {
     this.ingredients = []
     this.seasonings = []
-    this.players = 0
+    this.players = 1
 
     if (props) {
       for (let entry of props.split('&')) {

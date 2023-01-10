@@ -35,12 +35,18 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
-      - name: npm build
+      - name: Build
         run: |
           #!/bin/bash
           set -xe
           npm ci
           npm run build
+      - name: Test
+        run: |
+          #!/bin/bash
+          set -xe
+          npm ci
+          npm run test
       - name: Nitropay Ads.txt
         run: |
           #!/bin/bash

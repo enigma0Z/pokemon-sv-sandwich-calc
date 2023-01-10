@@ -141,7 +141,7 @@ export function templateResult(): SandwichStats {
   }
 }
 
-export function findRecipe(ingredients: string[], seasonings: string[]): Recipe | void {
+export function findRecipe(ingredients: (string | undefined)[], seasonings: (string | undefined)[]): Recipe | void {
   let ingredientsStr = ingredients.sort().toString()
   let seasoningsStr = seasonings.sort().toString()
 

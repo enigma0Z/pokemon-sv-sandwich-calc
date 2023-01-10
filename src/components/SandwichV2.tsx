@@ -2,7 +2,7 @@ import { Box, Chip, Link, Theme, Tooltip, useTheme } from '@mui/material';
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
-import { Ingredient, MealPower, SandwichPower, SandwichStats } from '../data/Cookbook';
+import { MealPower } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
 import { Sandwich as SandwichType } from '../data/Cookbook';

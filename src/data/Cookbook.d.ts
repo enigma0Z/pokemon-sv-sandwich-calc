@@ -75,6 +75,8 @@ export type Sandwich = {
   ingredients: Ingredient[]; 
   seasonings: Ingredient[]; 
   powers: SandwichPower[];
+  stars?: number;
+  warning?: boolean;
 }
 
 export type SandwichStats = {

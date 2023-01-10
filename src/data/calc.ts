@@ -246,7 +246,8 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     stats: undefined,
     ingredients: ingredients.filter(x => x !== null && x !== undefined),
     seasonings: seasonings.filter(x => x !== null && x !== undefined),
-    powers: []
+    powers: [],
+    stars: 3
   }
 
   const foundSandwich = findRecipe(ingredients.map(x => x.name), seasonings.map(x => x.name))
@@ -324,6 +325,32 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     { name: SortedPower[1].name, type: SortedType[type[1]].name, level: levels[1] },
     { name: SortedPower[2].name, type: SortedType[type[2]].name, level: levels[2] },
   )
+
+  // Check for too many ingredients. Current working theory: too many
+  // ingredients results in reduced levels but not altered poweres
+  const ingredientCheck: {ingredient: Ingredient, totalPieces: number}[] = []
+
+  for (let ingredient of ingredients) {
+    if (ingredientCheck.map(x => x.ingredient.name).includes(ingredient.name))
+      continue
+
+    const newCheck = {ingredient: ingredient, totalPieces: 0}
+
+    for (let foundIngredient of ingredients.filter(x => x.name === ingredient.name)) {
+      if (foundIngredient.numPieces) 
+        newCheck.totalPieces += foundIngredient.numPieces
+      else
+        newCheck.totalPieces += foundIngredient.maxPieces
+    }
+
+    ingredientCheck.push(newCheck)
+  }
+
+  for (let check of ingredientCheck) {
+    if (check.totalPieces > 13) {
+      calcSandwich.warning = true
+    }
+  }
 
   return calcSandwich
 }

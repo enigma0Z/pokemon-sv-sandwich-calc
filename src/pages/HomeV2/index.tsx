@@ -73,7 +73,7 @@ export default function HomeV2() {
   if (
     calculatedSandwich
   ) {
-    sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
+    sandwich.push(<Sandwich showDetails={showDetails} sandwich={calculatedSandwich}></Sandwich>)
   }
 
   const setUri = (ingredients: (Ingredient | null)[], seasonings: (Ingredient | null)[], players?: number) => {

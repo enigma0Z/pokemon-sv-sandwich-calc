@@ -1,29 +1,44 @@
-import { Box, Theme, Tooltip, useTheme } from '@mui/material';
+import { Box, Chip, Link, Theme, Tooltip, useTheme } from '@mui/material';
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
-import { Link } from 'react-router-dom';
-import { Ingredient, MealPower, SandwichPower, SandwichStats } from '../data/Cookbook';
+import { MealPower } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
+import { Sandwich as SandwichType } from '../data/Cookbook';
+import { Warning } from '@mui/icons-material';
 
-export default function Sandwich(props: {
-  name?: string; 
-  showDetails?: boolean;
-  description?: string;
-  location?: string;
-  number?: number;
-  stats?: SandwichStats;
-  ingredients: Ingredient[]; 
-  seasonings: Ingredient[]; 
-  powers: SandwichPower[];
+export default function Sandwich(props: { 
+  sandwich: SandwichType, 
+  showDetails?: boolean 
 }) {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
     Sandwich: {
+      display: 'inline',
+      flexDirection: 'column',
+      padding: '.5em',
+      backgroundColor: '#FFFFC0',
+      borderRadius: '16px',
+      border: 'solid 4px black',
+      width: '30em',
       [theme.breakpoints.down('md')]: {
         width: 'auto'
       }
+    },
+    SandwichLink: {
+      textDecoration: 'none',
+      color: 'black',
+      fontFamily: 'monospace'
+    },
+    SandwichTitle: {
+      backgroundColor: 'white',
+      borderRadius: '16px',
+      padding: '.5em',
+      border: 'solid 1px black',
+      fontFamily: 'futura',
+      fontSize: '13pt',
+      fontWeight: 'bold',
     },
     DetailBox: {
       marginTop: '.25em',
@@ -52,70 +67,71 @@ export default function Sandwich(props: {
 
   const classes = styles(theme)
 
-  const ingredients = props.ingredients.map((x) => <IngredientElement name={x.name} />)
-  const seasonings = props.seasonings.map((x) => <SeasoningElement name={x.name} />)
-  const powers = props.powers.map((x) => { 
-    return (<Box>{powerName(x)}</Box>) 
+  const ingredients = props.sandwich.ingredients.map((x) => <IngredientElement name={x.name} />)
+  const seasonings = props.sandwich.seasonings.map((x) => <SeasoningElement name={x.name} />)
+  const powers = props.sandwich.powers.map((x) => {
+    return (<Box>{powerName(x)}</Box>)
   })
 
-  if (props.stats !== undefined) {
-      <Box sx={classes.DetailBox}>
-        <Box>Taste</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(props.stats.taste).map(key => {
-            if (props.stats?.taste[key] === 0) {
-              return null
-            } else {
-              return <Box sx={classes.DetailItem}>{key}: {props.stats?.taste[key]}</Box>
-            }
-          })}
-        </Box>
-        <Box>Power</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(props.stats.power).map(key => {
-            if (props.stats?.power[key as MealPower] === 0) {
-              return null
-            } else {
-              return <Box sx={classes.DetailItem}>{key}: {props.stats?.power[key as MealPower]}</Box>
-            }
-          })}
-        </Box>
-        <Box>Type</Box>
-        <Box sx={classes.DetailRow}>
-          {Object.keys(props.stats.type).map(key => {
-            if (props.stats?.type[key] === 0) {
-              return null
-            } else {
-              return <Box sx={classes.DetailItem}>{key}: {props.stats?.type[key]}</Box>
-            }
-          })}
-        </Box>
+  if (props.sandwich.stats !== undefined) {
+    <Box sx={classes.DetailBox}>
+      <Box>Taste</Box>
+      <Box sx={classes.DetailRow}>
+        {Object.keys(props.sandwich.stats.taste).map(key => {
+          if (props.sandwich.stats?.taste[key] === 0) {
+            return null
+          } else {
+            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.taste[key]}</Box>
+          }
+        })}
       </Box>
+      <Box>Power</Box>
+      <Box sx={classes.DetailRow}>
+        {Object.keys(props.sandwich.stats.power).map(key => {
+          if (props.sandwich.stats?.power[key as MealPower] === 0) {
+            return null
+          } else {
+            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.power[key as MealPower]}</Box>
+          }
+        })}
+      </Box>
+      <Box>Type</Box>
+      <Box sx={classes.DetailRow}>
+        {Object.keys(props.sandwich.stats.type).map(key => {
+          if (props.sandwich.stats?.type[key] === 0) {
+            return null
+          } else {
+            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.type[key]}</Box>
+          }
+        })}
+      </Box>
+    </Box>
   }
 
 
-  const uri = `/?ingredients=${props.ingredients.map(x => x.name).join(',')}&seasonings=${props.seasonings.map(x => x.name).join(',')}`
+  const uri = `/?ingredients=${props.sandwich.ingredients.map(x => x.name).join(',')}&seasonings=${props.sandwich.seasonings.map(x => x.name).join(',')}`
 
-  const description = <Box><p>{props.description ? props.description : ''}</p></Box>
+  const description = <Box><p>{props.sandwich.description ? props.sandwich.description : ''}</p></Box>
 
   return (
     <Tooltip title={
       <>
-        <p>Ingredients: {props.ingredients.map(x => x.name).join(', ')}</p>
-        <p>Seasonings: {props.seasonings.map(x => x.name).join(', ')}</p>
+        <p>Ingredients: {props.sandwich.ingredients.map(x => x.name).join(', ')}</p>
+        <p>Seasonings: {props.sandwich.seasonings.map(x => x.name).join(', ')}</p>
       </>}>
-      <Box className='sandwich' sx={classes.Sandwich}> 
-        <Link to={uri}>
-          <Box className='title' display={"flex"} flexDirection={"row"}>
-            <h3>{props.number ? `#${props.number}` : ''} {props.name || 'A Tasty Original'}</h3>
+      <Box sx={classes.Sandwich}>
+        <Link href={uri} sx={classes.SandwichLink}>
+          <Box sx={classes.SandwichTitle} display={"flex"} flexDirection={"row"}>
+            {props.sandwich.number ? `#${props.sandwich.number}` : ''} {props.sandwich.name || 'A Tasty Original'}
           </Box>
           {description}
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>
           <Box display={"flex"} flexDirection={"row"} flexWrap={"wrap"}> {ingredients} </Box>
           <Box display={"flex"} flexDirection={"row"} flexWrap={"wrap"}> {seasonings} </Box>
-          <Box display={props.stats !== undefined && props.showDetails ? "flex" : "none"} flexDirection={"row"}>
-            <StatBubbles taste={props.stats?.taste} power={props.stats?.power} type={props.stats?.type} />
+          <Box display={props.sandwich.stats !== undefined && props.showDetails ? "flex" : "none"} flexDirection={"row"}>
+            <StatBubbles taste={props.sandwich.stats?.taste} power={props.sandwich.stats?.power} type={props.sandwich.stats?.type} />
           </Box>
+          {props.sandwich.warning ? <Chip color='error' icon={<Warning/>} label='This sandwich may fail'/> : '' }
         </Link>
       </Box>
     </Tooltip>

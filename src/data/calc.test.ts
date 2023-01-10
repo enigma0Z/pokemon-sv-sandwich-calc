@@ -170,6 +170,14 @@ test.each([
         level: 1
       }]
     }
+  ], [ // Too many pieces
+    [
+      'banana', 'banana', 'banana', 'banana', 'banana', 'banana'
+    ], [
+      'butter'
+    ], {
+      warning: true
+    }
   ]
 ])(
   'sandwich calculations (ingredients: %p, seasonings: %p)',
@@ -178,7 +186,8 @@ test.each([
     seasonings: string[],
     expected: {
       name?: string,
-      powers: SandwichPower[]
+      powers?: SandwichPower[],
+      warning?: boolean
     }
   ) => {
     const actualIngredients: Ingredient[] = []
@@ -204,7 +213,14 @@ test.each([
 
     const actual = calc.calculateSandwich(actualIngredients, actualSeasonings)
 
-    expect(actual.powers).toStrictEqual(expected.powers)
-    expect(actual.name).toBe(expected.name)
+    if (expected.powers !== undefined) {
+      expect(actual.powers).toStrictEqual(expected.powers)
+    }
+    if (expected.name !== undefined) {
+      expect(actual.name).toBe(expected.name)
+    }
+    if (expected.warning !== undefined) {
+      expect(actual.warning).toEqual(expected.warning)
+    }
   }
 )

@@ -1,7 +1,7 @@
 import './index.css';
 import { useState, useEffect } from 'react';
 import { Box, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { findRecipe, Ingredients, Seasonings } from '../../data/Cookbooks';
+import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient, SandwichPower } from '../../data/Cookbook';
 import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
 import Sandwich from '../../components/SandwichV2';
@@ -57,11 +57,9 @@ export default function HomeV2() {
   }
 
   let calculatedSandwich
-  let foundSandwich
   if (
     actualIngredients.length > 0 && actualSeasonings.length > 0
   ) {
-    foundSandwich = findRecipe(actualIngredients.map(x => x.name), actualSeasonings.map(x => x.name))
     calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
 
     gtag('event', 'home_sandwich_create', {
@@ -75,13 +73,6 @@ export default function HomeV2() {
   if (
     calculatedSandwich
   ) {
-    if (foundSandwich) {
-      calculatedSandwich.name = foundSandwich.name
-      calculatedSandwich.description = foundSandwich.description
-      calculatedSandwich.location = foundSandwich.location
-      calculatedSandwich.number = foundSandwich.number
-      calculatedSandwich.powers = foundSandwich.powers
-    }
     sandwich.push(<Sandwich showDetails={showDetails} {...calculatedSandwich}></Sandwich>)
   }
 

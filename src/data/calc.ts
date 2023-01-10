@@ -1,5 +1,5 @@
 import { DisplayRequirement, Ingredient, MealPower, PokemonType, PowerRequirement, Sandwich, SandwichPower, SandwichStats, Taste } from './Cookbook'
-import { MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
+import { findRecipe, MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
 
 /* 
 Note to self regarding these sort functions.
@@ -16,7 +16,7 @@ In certain scenarios, (we're starting with 6 - 5, so 1) where the name value of 
 value of "6", this would turn the 1 into a zero, preserving the original order which is not the intended result.
 */
 
-export const LEVEL_REQUIREMENTS = {
+export const LEVEL_REQUIREMENTS: {[index: number]: {type: number, power: number}} = {
   1: {
     type: 1,
     power: 1
@@ -247,6 +247,16 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     ingredients: ingredients.filter(x => x !== null && x !== undefined),
     seasonings: seasonings.filter(x => x !== null && x !== undefined),
     powers: []
+  }
+
+  const foundSandwich = findRecipe(ingredients.map(x => x.name), seasonings.map(x => x.name))
+  if (foundSandwich) {
+      calcSandwich.name = foundSandwich.name
+      calcSandwich.description = foundSandwich.description
+      calcSandwich.location = foundSandwich.location
+      calcSandwich.number = foundSandwich.number
+      calcSandwich.powers = foundSandwich.powers
+      return calcSandwich
   }
 
   const IngredientSum: SandwichStats = sumComponents(calcSandwich.ingredients)

@@ -24,7 +24,7 @@ export default function Layout() {
       padding: '.5em',
       marginLeft: 'auto',
       marginRight: 'auto',
-      maxWidth: '91em',
+      maxWidth: '94em',
     }
   })
   const classes = styles(theme)

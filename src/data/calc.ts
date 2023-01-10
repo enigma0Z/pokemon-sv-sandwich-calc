@@ -249,6 +249,16 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
     powers: []
   }
 
+  const foundSandwich = findRecipe(ingredients.map(x => x.name), seasonings.map(x => x.name))
+  if (foundSandwich) {
+      calcSandwich.name = foundSandwich.name
+      calcSandwich.description = foundSandwich.description
+      calcSandwich.location = foundSandwich.location
+      calcSandwich.number = foundSandwich.number
+      calcSandwich.powers = foundSandwich.powers
+      return calcSandwich
+  }
+
   const IngredientSum: SandwichStats = sumComponents(calcSandwich.ingredients)
   const SeasoningSum: SandwichStats = sumComponents(calcSandwich.seasonings)
   const SandwichSum: SandwichStats = combineComponents(IngredientSum, SeasoningSum)

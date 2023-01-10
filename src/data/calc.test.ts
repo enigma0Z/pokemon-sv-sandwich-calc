@@ -170,7 +170,7 @@ test.each([
         level: 1
       }]
     }
-  ], [ // Too many pieces
+  ], [ // Too many pieces (sp)
     [
       'banana', 'banana', 'banana', 'banana', 'banana', 'banana'
     ], [
@@ -178,36 +178,54 @@ test.each([
     ], {
       warning: true
     }
+  ], [ // Not too many pieces (mp)
+    [
+      'banana', 'banana', 'banana', 'banana', undefined, undefined,
+      'banana', 'banana'
+    ], [
+      'butter', undefined, undefined, undefined,
+      'butter'
+    ], {
+      warning: undefined
+    }
   ]
 ])(
   'sandwich calculations (ingredients: %p, seasonings: %p)',
   (
-    ingredients: string[],
-    seasonings: string[],
+    ingredients: (string | undefined)[],
+    seasonings: (string | undefined)[],
     expected: {
       name?: string,
       powers?: SandwichPower[],
       warning?: boolean
     }
   ) => {
-    const actualIngredients: Ingredient[] = []
-    const actualSeasonings: Ingredient[] = []
+    const actualIngredients: (Ingredient | undefined)[] = []
+    const actualSeasonings: (Ingredient | undefined)[] = []
 
     for (let ingredient of ingredients) {
-      const foundIngredient = lookupIngredientByName(ingredient)
-      if (foundIngredient) {
-        actualIngredients.push(foundIngredient)
+      if (ingredient !== undefined) {
+        const foundIngredient = lookupIngredientByName(ingredient)
+        if (foundIngredient) {
+          actualIngredients.push(foundIngredient)
+        } else {
+          throw new Error(`Invalid ingredient ${ingredient}`)
+        }
       } else {
-        throw new Error(`Invalid ingredient ${ingredient}`)
+        actualIngredients.push(undefined)
       }
     }
 
     for (let seasoning of seasonings) {
-      const foundSeasoning = lookupSeasoningByName(seasoning)
-      if (foundSeasoning) {
-        actualSeasonings.push(foundSeasoning)
+      if (seasoning !== undefined) {
+        const foundSeasoning = lookupSeasoningByName(seasoning)
+        if (foundSeasoning) {
+          actualSeasonings.push(foundSeasoning)
+        } else {
+          throw new Error(`Invalid seasoning ${seasoning}`)
+        }
       } else {
-        throw new Error(`Invalid seasoning ${seasoning}`)
+        actualSeasonings.push(undefined)
       }
     }
 

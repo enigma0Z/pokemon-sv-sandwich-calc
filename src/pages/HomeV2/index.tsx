@@ -44,16 +44,16 @@ export default function HomeV2() {
   const [showDetails, setShowDetails] = useState(false)
   const [players, setPlayers] = useState(queryStringProps.players)
 
-  const actualIngredients: Ingredient[] = []
+  const actualIngredients: (Ingredient | undefined)[] = []
   for (let ingredient of ingredients) {
     const foundIngredient = Ingredients.find(x => x.name === ingredient?.name)
-    if (ingredient !== null && foundIngredient !== undefined) actualIngredients.push(foundIngredient)
+    actualIngredients.push(foundIngredient)
   }
 
-  const actualSeasonings: Ingredient[] = []
+  const actualSeasonings: (Ingredient | undefined)[] = []
   for (let seasoning of seasonings) {
     const foundSeasoning = Seasonings.find(x => x.name === seasoning?.name)
-    if (seasoning !== null && foundSeasoning !== undefined) actualSeasonings.push(foundSeasoning)
+    actualSeasonings.push(foundSeasoning)
   }
 
   let calculatedSandwich

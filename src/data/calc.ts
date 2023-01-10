@@ -16,7 +16,7 @@ In certain scenarios, (we're starting with 6 - 5, so 1) where the name value of 
 value of "6", this would turn the 1 into a zero, preserving the original order which is not the intended result.
 */
 
-export const LEVEL_REQUIREMENTS: {[index: number]: {type: number, power: number}} = {
+export const LEVEL_REQUIREMENTS: { [index: number]: { type: number, power: number } } = {
   1: {
     type: 1,
     power: 1
@@ -237,27 +237,29 @@ export function combineComponents(ingredients: SandwichStats, seasonings: Sandwi
   return Result
 }
 
-export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredient[]): Sandwich {
+export function calculateSandwich(ingredients: (Ingredient | undefined)[], seasonings: (Ingredient | undefined)[]): Sandwich {
   const calcSandwich: Sandwich = {
     name: undefined,
     description: undefined,
     location: undefined,
     number: undefined,
     stats: undefined,
-    ingredients: ingredients.filter(x => x !== null && x !== undefined),
-    seasonings: seasonings.filter(x => x !== null && x !== undefined),
+    ingredients: ingredients.filter(x => x !== null && x !== undefined) as Ingredient[],
+    seasonings: seasonings.filter(x => x !== null && x !== undefined) as Ingredient[],
     powers: [],
     stars: 3
   }
 
-  const foundSandwich = findRecipe(ingredients.map(x => x.name), seasonings.map(x => x.name))
+  console.log('calculateSandwich()', ingredients)
+
+  const foundSandwich = findRecipe(ingredients.map(x => x?.name), seasonings.map(x => x?.name))
   if (foundSandwich) {
-      calcSandwich.name = foundSandwich.name
-      calcSandwich.description = foundSandwich.description
-      calcSandwich.location = foundSandwich.location
-      calcSandwich.number = foundSandwich.number
-      calcSandwich.powers = foundSandwich.powers
-      return calcSandwich
+    calcSandwich.name = foundSandwich.name
+    calcSandwich.description = foundSandwich.description
+    calcSandwich.location = foundSandwich.location
+    calcSandwich.number = foundSandwich.number
+    calcSandwich.powers = foundSandwich.powers
+    return calcSandwich
   }
 
   const IngredientSum: SandwichStats = sumComponents(calcSandwich.ingredients)
@@ -283,9 +285,9 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
   let type = []
 
   // Do type sorting and check for monotype
-  if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[2] ) {
+  if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[2]) {
     type = [0, 2, 1] // Most sandwiches are 0, 2, 1
-  } else if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[3] ) {
+  } else if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[3]) {
     type = [0, 0, 2]
   } else {
     type = [0, 0, 0]
@@ -310,7 +312,7 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
   } else if (
     // TODO This is hardcoded for sp, needs a var
     calcSandwich.ingredients.length === 6 // If there's six ingredients
-    && calcSandwich.ingredients.filter((ingredient) => ingredient.name !== ingredients[0].name).length === 0 // And they're all the same
+    && calcSandwich.ingredients.filter((ingredient) => ingredient.name !== ingredients[0]?.name).length === 0 // And they're all the same
     && calcSandwich.ingredients[0].maxPieces === 1 // And each one is a big ingredient
     && levels[0] > 1 // And there's enough  to have made the first power lv. 2
   ) { // ... Then elevate poer 2 by one level
@@ -328,27 +330,42 @@ export function calculateSandwich(ingredients: Ingredient[], seasonings: Ingredi
 
   // Check for too many ingredients. Current working theory: too many
   // ingredients results in reduced levels but not altered poweres
-  const ingredientCheck: {ingredient: Ingredient, totalPieces: number}[] = []
+  const ingredientCheck: { ingredient: Ingredient, totalPieces: number }[][] = []
 
+  let runningTotal = -1 
+  let player = -1 
   for (let ingredient of ingredients) {
-    if (ingredientCheck.map(x => x.ingredient.name).includes(ingredient.name))
-      continue
-
-    const newCheck = {ingredient: ingredient, totalPieces: 0}
-
-    for (let foundIngredient of ingredients.filter(x => x.name === ingredient.name)) {
-      if (foundIngredient.numPieces) 
-        newCheck.totalPieces += foundIngredient.numPieces
-      else
-        newCheck.totalPieces += foundIngredient.maxPieces
+    runningTotal += 1
+    runningTotal %= 6
+    if (runningTotal === 0) {
+      player += 1
+      ingredientCheck.push([])
     }
 
-    ingredientCheck.push(newCheck)
+    if (ingredient === undefined) continue
+
+    if (ingredientCheck[player].map(x => x.ingredient.name).includes(ingredient.name as string))
+      continue
+
+    const newCheck = { ingredient: ingredient, totalPieces: 0 }
+
+    for (let foundIngredient of ingredients.slice(player*6, (player+1)*6).filter(x => x !== undefined && x.name === ingredient?.name)) {
+      if (foundIngredient) {
+        if (foundIngredient?.numPieces)
+          newCheck.totalPieces += foundIngredient.numPieces
+        else
+          newCheck.totalPieces += foundIngredient.maxPieces
+      }
+    }
+
+    ingredientCheck[player].push(newCheck)
   }
 
-  for (let check of ingredientCheck) {
-    if (check.totalPieces > 13) {
-      calcSandwich.warning = true
+  for (let player of ingredientCheck) {
+    for (let check of player) {
+      if (check.totalPieces > 13) {
+        calcSandwich.warning = true
+      }
     }
   }
 
@@ -376,7 +393,7 @@ export function powerRequirements(powers: SandwichPower[], sandwich?: Sandwich):
     }
 
     const numOfType = powers.filter(x => x.type !== null && x.type !== undefined && x.type === power.type).length
-    
+
     if (numOfType === 2) {
       requirement.typeAmount = MULTI_SLOT_TYPE_REQUIREMENTS[2]
     } else if (numOfType === 3) {

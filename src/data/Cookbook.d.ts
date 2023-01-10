@@ -4,16 +4,6 @@ export type SandwichPower = {
   level: number
 }
 
-export type Recipe = {
-  name?: string; 
-  description: string,
-  location?: string,
-  number?: number,
-  ingredients: string[],
-  seasonings: string[],
-  powers: SandwichPower[]
-}
-
 export type Cookbook = {
   recipes: Recipe[]
 }
@@ -66,12 +56,22 @@ export type Ingredient = {
   }
 }
 
+export type Recipe = {
+  name?: string; 
+  description: string,
+  location?: string,
+  number?: number,
+  ingredients: string[],
+  seasonings: string[],
+  powers: SandwichPower[]
+}
+
 export type Sandwich = {
   name?: string;
   description?: string;
   location?: string;
   number?: number;
-  stats?: SandwichStats; // Not present if not calculated -- in-game cookbook sandwiches don't care abou this
+  stats?: SandwichStats; // Not present if not calculated -- in-game cookbook sandwiches don't care about this
   ingredients: Ingredient[]; 
   seasonings: Ingredient[]; 
   powers: SandwichPower[];

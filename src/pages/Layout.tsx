@@ -5,8 +5,6 @@ import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPayConfig';
 
-let gutterAd: any
-
 export default function Layout() {
 
   const [search, setSearch] = useState(useLocation().search)

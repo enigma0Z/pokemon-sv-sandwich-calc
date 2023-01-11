@@ -14,9 +14,9 @@ export default function IngredientDetail(props: { visible?: boolean, name: strin
       backgroundColor: '#C0FFFF',
       borderRadius: '16px',
       border: 'solid 4px black',
-      width: '22em',
+      width: '275px',
       color: 'black',
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '100%'
       }
     },

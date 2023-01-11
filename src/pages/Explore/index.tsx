@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import IngredientDetail from '../../components/IngredientDetail'
 import { Ingredients, Seasonings, PokemonTypes, MealPowers, Tastes } from '../../data/Cookbooks'
 import { Ingredient } from '../../data/Cookbook'
+import { NitroPayConfig } from '../../util/NitroPayConfig'
 
 export default function Explore() {
   useEffect(() => {
@@ -27,6 +28,37 @@ export default function Explore() {
       return true
     }
   }
+
+  useEffect(() => {
+    
+    //@ts-ignore
+    window['nitroAds'].createAd('explore-mid-content-dynamic-1', {
+      ...NitroPayConfig,
+      "renderVisibleOnly": true,
+      "refreshVisibleOnly": true,
+      "delayLoading": true,
+      "report": {
+        "enabled": true,
+        "icon": true,
+        "wording": "Report Ad",
+        "position": "bottom-right"
+      }
+    });
+
+    //@ts-ignore
+    window['nitroAds'].createAd('explore-mid-content-dynamic-2', {
+      ...NitroPayConfig,
+      "renderVisibleOnly": true,
+      "refreshVisibleOnly": true,
+      "delayLoading": true,
+      "report": {
+        "enabled": true,
+        "icon": true,
+        "wording": "Report Ad",
+        "position": "bottom-right"
+      }
+    });
+  }, [])
 
   return (
     <>
@@ -59,6 +91,7 @@ export default function Explore() {
           <IngredientDetail visible={isVisible(x)} kind="ingredient" name={x.name} />
         )}
       </Box>
+      <Box id='explore-mid-content-dynamic-1' />
       <Box className="section">
         <h2>Seasonings</h2>
       </Box>
@@ -67,6 +100,7 @@ export default function Explore() {
           <IngredientDetail visible={isVisible(x)} kind="seasoning" name={x.name} />
         )}
       </Box>
+      <Box id='explore-mid-content-dynamic-2' />
     </>
   )
 }

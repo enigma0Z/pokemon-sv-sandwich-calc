@@ -1,6 +1,17 @@
-import { Box, Theme, useTheme } from "@mui/material"
+import { Box, Chip, colors, Theme, useTheme } from "@mui/material"
 import { sortAttributes, sortValuePower, sortValueTaste, sortValueType } from "../data/calc"
 import { Ingredient } from "../data/Cookbook"
+
+declare module '@mui/material/Chip' {
+  interface ChipPropsColorOverrides {
+    black: true;
+    sweet: true;
+    hot: true;
+    sour: true;
+    bitter: true;
+    salty: true;
+  }
+}
 
 export default function StatBubbles(props: {taste?: Ingredient['taste'], power?: Ingredient['power'], type?: Ingredient['type'], amount?: number}) {
   const theme = useTheme()
@@ -13,6 +24,17 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
       [theme.breakpoints.down('md')]: {
         flexBasis: '47%',
       }
+    },
+    DetailChip: {
+      margin: '.25em', 
+      height: '1.75em', 
+      fontSize: '8pt',
+    },
+    ChipLightBorder: {
+      border: '1px solid lightgrey'
+    },
+    ChipDarkBorder: {
+      border: '1px solid darkgrey'
     },
     DetailBox: {
       marginTop: '.25em',
@@ -53,7 +75,13 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Taste</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.taste, sortValueTaste)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
+      bubbles.push(<Chip 
+        sx={{...classes.DetailChip, ...classes.ChipLightBorder}}
+        //@ts-ignore
+        color={obj.name.toLowerCase()}
+        size={'small'}
+        label={`${obj.name}: ${obj.value * amount}`}
+      />)
     }
     elements.push(
       <Box sx={classes.DetailRow}>
@@ -66,7 +94,11 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Power</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.power, sortValuePower)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
+      bubbles.push(<Chip 
+        sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
+        color={'black'}
+        label={`${obj.name}: ${obj.value * amount}`}
+      />)
     }
     elements.push(
       <Box sx={classes.DetailRow}>
@@ -79,7 +111,13 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Type</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.type, sortValueType)) {
-      bubbles.push(<Box sx={classes.DetailItem}>{obj.name}: {obj.value * amount}</Box>)
+      bubbles.push(<Chip 
+        sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
+        //@ts-ignore
+        color={obj.name.toLowerCase()}
+        // color={'black'}
+        label={`${obj.name}: ${obj.value * amount}`}
+      />)
     }
     elements.push(
       <Box sx={classes.DetailRow}>

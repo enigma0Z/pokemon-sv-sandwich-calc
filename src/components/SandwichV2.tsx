@@ -28,7 +28,7 @@ export default function Sandwich(props: {
     },
     SandwichLink: {
       textDecoration: 'none',
-      color: 'black',
+      color: '#000000',
       fontFamily: 'monospace'
     },
     SandwichTitle: {

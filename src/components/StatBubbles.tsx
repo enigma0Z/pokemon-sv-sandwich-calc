@@ -1,4 +1,4 @@
-import { Box, Chip, colors, Theme, useTheme } from "@mui/material"
+import { Box, Chip, Theme, useTheme } from "@mui/material"
 import { sortAttributes, sortValuePower, sortValueTaste, sortValueType } from "../data/calc"
 import { Ingredient } from "../data/Cookbook"
 

@@ -1,5 +1,5 @@
 export const NitroPayConfig = {
-  "demo": true,
+  // "demo": true,
   "refreshLimit": 20,
   "refreshTime": 60,
 }

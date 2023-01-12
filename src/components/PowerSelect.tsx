@@ -1,14 +1,18 @@
-import { LevelSynonyms, MealPowers, MealPowerSynonyms, PokemonTypes } from '../data/Cookbooks'
-import { Autocomplete, Box, Button, createFilterOptions, TextField } from '@mui/material'
+import { CustomCookbook, InGameCookbook, LevelSynonyms, MealPowers, MealPowerSynonyms, PokemonTypes } from '../data/Cookbooks'
+import { Autocomplete, Box, Button, Chip, createFilterOptions, TextField } from '@mui/material'
+import { Link as DomLink } from 'react-router-dom'
 import { useState } from 'react'
 import { powerName } from '../data/calc'
 import { SandwichPower } from '../data/Cookbook'
+import { recipeUri } from './SandwichV2'
+import { LunchDining } from '@mui/icons-material'
 
 export default function PowerSelect(
   props: {
     visible?: boolean,
     onChange?: (value: SandwichPower[]) => void,
     powers?: SandwichPower[],
+    showRecipes?: boolean
   }
 ) {
   const [powers, setPowers] = useState<SandwichPower[]>(props.powers ? props.powers : [])
@@ -16,7 +20,7 @@ export default function PowerSelect(
   const options: SandwichPower[] = []
 
   const filterOptions = createFilterOptions({
-    stringify: (option: SandwichPower) => { 
+    stringify: (option: SandwichPower) => {
       const tokens: (string | number)[] = []
       tokens.push(powerName(option))
       tokens.push(option.name)
@@ -69,6 +73,39 @@ export default function PowerSelect(
   let visible = props.visible
   if (visible === undefined) visible = true
 
+  const foundRecipes: JSX.Element[] = []
+  let workingRecipes = [...InGameCookbook.recipes, ...CustomCookbook.recipes]
+
+  if (props.showRecipes) {
+    if (powers.length > 0) {
+      for (let power of powers) {
+        workingRecipes = workingRecipes.filter(recipe => {
+          return recipe.powers.map(recipePower => (
+            power.name === recipePower.name
+            && power.level === recipePower.level
+            && (power.name === 'Egg' || power.type === recipePower.type)
+          )).includes(true)
+        })
+      }
+
+      for (let recipe of workingRecipes) {
+        foundRecipes.push(<Chip 
+          clickable
+          component={DomLink}
+          size={'small'} 
+          sx={{ margin: '.25em' }} 
+          label={recipe.name} 
+          to={recipeUri(recipe)}
+          icon={<LunchDining />}
+          // onClick={() => {
+          //   const url = `${window.location.protocol}//${window.location.host}${recipeUri(recipe)}`
+          //   window.history.pushState('', '', url)
+          // }}
+        />)
+      }
+    }
+  }
+
   return (
     <Box display={visible ? 'flex' : 'none'} flexDirection='column' sx={{ width: '100%' }}>
 
@@ -83,7 +120,7 @@ export default function PowerSelect(
           filterOptions={filterOptions}
           getOptionLabel={(option) => powerName(option)}
           isOptionEqualToValue={(option, value) => option.name === value.name && option.type === value.type && option.level === value.level}
-          getOptionDisabled={(option) => { 
+          getOptionDisabled={(option) => {
             return powers.length === 3 || powers.map(power => power.name).includes(option.name)
           }}
           renderInput={(params) => (
@@ -98,7 +135,7 @@ export default function PowerSelect(
           }}
         />
       </Box>
-      <Box display={'flex'} flexDirection='row' flexWrap={'wrap'}>
+      <Box display={'flex'} flexDirection='row' flexWrap={'wrap'} alignItems='center'>
         <Button
           onClick={(event: any) => {
             setPowers([])
@@ -108,6 +145,9 @@ export default function PowerSelect(
         >
           Reset
         </Button>
+      </Box>
+      <Box display={'flex'} flexDirection='row' flexWrap={'wrap'} alignItems='center'>
+        {foundRecipes}
       </Box>
     </Box>
   )

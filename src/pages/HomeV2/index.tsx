@@ -17,10 +17,6 @@ const SEASONINGS_PER_PLAYER = 4
 const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
 
 export default function HomeV2() {
-
-  // Remove me later
-  console.log('possible sandwich combinations', Ingredients.length**6 * Seasonings.length**4)
-
   const [setSearch] = useOutletContext<[(v: string) => {}]>();
 
   useEffect(() => {
@@ -34,6 +30,12 @@ export default function HomeV2() {
   if (localStorageGuidePowers) {
     loadedGuidePowers = JSON.parse(localStorageGuidePowers)
   }
+
+  useEffect(() => {
+    const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
+    setIngredients(queryStringProps.ingredients)
+    setSeasonings(queryStringProps.seasonings)
+  }, [location])
 
   const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
 
@@ -192,6 +194,7 @@ export default function HomeV2() {
             setGuidePowers([...value])
             localStorage.setItem(LS_HOME_GUIDE_POWERS, value.length > 0 ? JSON.stringify(value) : '')
           }}
+          showRecipes={true}
         />
         {GuideElement}
       </Box>

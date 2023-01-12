@@ -4,7 +4,7 @@ import { Link as DomLink } from 'react-router-dom'
 import { useState } from 'react'
 import { powerName } from '../data/calc'
 import { SandwichPower } from '../data/Cookbook'
-import { recipeUri, sandwichUri } from './SandwichV2'
+import { recipeUri } from './SandwichV2'
 import { LunchDining } from '@mui/icons-material'
 
 export default function PowerSelect(

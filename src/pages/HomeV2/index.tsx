@@ -18,6 +18,9 @@ const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
 
 export default function HomeV2() {
 
+  // Remove me later
+  console.log('possible sandwich combinations', Ingredients.length**6 * Seasonings.length**4)
+
   const [setSearch] = useOutletContext<[(v: string) => {}]>();
 
   useEffect(() => {

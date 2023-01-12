@@ -5,6 +5,91 @@ import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPayConfig';
 
+const GUTTER_BREAKPOINT = 1536
+const ANCHOR_BREAKPOINT = 900
+const RIGHT_GUTTER_ID = 'sandwich-right-gutter-sticky-stack'
+const BOTTOM_ANCHOR_ID = 'sandwich-bottom-anchor'
+let previousWidth: number = NaN
+
+function createBottomAnchorAd() {
+  //@ts-ignore
+  window['nitroAds'].createAd(BOTTOM_ANCHOR_ID, {
+    ...NitroPayConfig,
+    "format": "anchor",
+    "anchor": "bottom",
+    "anchorPersistClose": false,
+    "report": {
+      "enabled": true,
+      "icon": true,
+      "wording": "Report Ad",
+      "position": "top-left"
+    },
+    "mediaQuery": "(min-width: 320px)"
+  });
+}
+
+function createStickyStackAd() {
+  const stickyStackElement = document.getElementById(RIGHT_GUTTER_ID)
+  if (stickyStackElement) {
+    if (stickyStackElement.innerHTML !== '') {
+      stickyStackElement.innerHTML = ''
+    }
+  }
+
+  const sizes = []
+
+  if (window.innerWidth >= 1536) {
+    sizes.push(['300', '600'], ['300', '250'])
+  }
+
+  sizes.push(['160', '600'])
+
+  //@ts-ignore
+  window['nitroAds'].createAd(RIGHT_GUTTER_ID, {
+    ...NitroPayConfig,
+    "format": "sticky-stack",
+    "stickyStackLimit": 15,
+    "stickyStackSpace": 1.25,
+    "stickyStackOffset": 200,
+    "sizes": sizes,
+    "report": {
+      "enabled": true,
+      "icon": true,
+      "wording": "Report Ad",
+      "position": "top-right"
+    },
+    "mediaQuery": "(min-width: 900px)"
+  })
+}
+
+function resizeListener(event: UIEvent) {
+  const currentWidth = window.innerWidth
+  if (!Number.isNaN(previousWidth)) {
+    if (
+      (previousWidth > currentWidth && currentWidth < GUTTER_BREAKPOINT && previousWidth >= GUTTER_BREAKPOINT) // Shrinking, passed breakpoint
+      || (previousWidth < currentWidth && currentWidth >= GUTTER_BREAKPOINT && previousWidth < GUTTER_BREAKPOINT) // Growing, passed breakpoint
+    ) { 
+      console.log('createStickyStackAD()', previousWidth, currentWidth)
+      createStickyStackAd()
+    } else if (
+      (previousWidth > currentWidth && currentWidth < ANCHOR_BREAKPOINT && previousWidth >= ANCHOR_BREAKPOINT) // shrinking
+    ) {
+      const rightGutterElement = document.getElementById(RIGHT_GUTTER_ID)
+      if (rightGutterElement) rightGutterElement.innerHTML = ''
+
+      // createBottomAnchorAd()
+    } else if (
+      (previousWidth < currentWidth && currentWidth >= ANCHOR_BREAKPOINT && previousWidth < ANCHOR_BREAKPOINT) // growing
+    ) {
+      createStickyStackAd()
+      // const bottomAnchorElement = document.getElementById(BOTTOM_ANCHOR_ID)
+      // if (bottomAnchorElement) bottomAnchorElement.remove()
+    }
+  }
+
+  previousWidth = currentWidth
+}
+
 export default function Layout() {
 
   const [search, setSearch] = useState(useLocation().search)
@@ -20,11 +105,11 @@ export default function Layout() {
       width: '90%'
     },
     gutter: {
-      [theme.breakpoints.up('lg')]: {
-        minWidth: '300px',
+      [theme.breakpoints.up('xl')]: {
+        minWidth: '340px',
       },
-      [theme.breakpoints.only('md')]: {
-        minWidth: '160px',
+      [theme.breakpoints.between('lg', 'md')]: {
+        minWidth: '240px',
       },
       [theme.breakpoints.down('md')]: {
         minWidth: '0px',
@@ -42,17 +127,21 @@ export default function Layout() {
       marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
-      [theme.breakpoints.only('xl')]: { // 1536
-        width: '1150px'
+      width: '100%',
+      [theme.breakpoints.up('xl')]: {
+        marginLeft: '50px',
+        marginRight: '50px'
       },
-      [theme.breakpoints.only('lg')]: { // 1200
-        width: '850px'
+      [theme.breakpoints.only('lg')]: {
+        marginLeft: '25px',
+        marginRight: '25px'
       },
-      [theme.breakpoints.only('md')]: { // 900
-        width: '850px'
+      [theme.breakpoints.only('md')]: {
+        marginLeft: '5px',
+        marginRight: '5px'
       },
-      [theme.breakpoints.down('md')]: { // 900
-        width: '100%'
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: '0px'
       },
     }
   })
@@ -60,52 +149,13 @@ export default function Layout() {
   const classes = styles(theme)
 
   useEffect(() => {
-    //@ts-ignore
-    window['nitroAds'].createAd('sandwich-bottom-anchor', {
-      ...NitroPayConfig,
-      "format": "anchor",
-      "anchor": "bottom",
-      "anchorPersistClose": false,
-      "report": {
-        "enabled": true,
-        "icon": true,
-        "wording": "Report Ad",
-        "position": "top-left"
-      },
-      "mediaQuery": "(min-width: 320px) and (max-width: 899px)"
-    });
-
+    console.log('useEffect() once')
+    createBottomAnchorAd()
+    window.addEventListener('resize', resizeListener)
   }, [])
 
   useEffect(() => {
-    const stickyStackElement = document.getElementById('sandwich-right-gutter-sticky-stack')
-    if (stickyStackElement) {
-      if (stickyStackElement.innerHTML !== '') {
-        stickyStackElement.innerHTML = ''
-      }
-
-      //@ts-ignore
-      window['nitroAds'].createAd('sandwich-right-gutter-sticky-stack', {
-        ...NitroPayConfig,
-        "format": "sticky-stack",
-        "stickyStackLimit": 15,
-        "stickyStackSpace": 1.25,
-        "stickyStackOffset": 200,
-        "sizes": [
-          [
-            "160",
-            "600"
-          ]
-        ],
-        "report": {
-          "enabled": true,
-          "icon": true,
-          "wording": "Report Ad",
-          "position": "top-right"
-        },
-        "mediaQuery": "(min-width: 900px)"
-      })
-    }
+    createStickyStackAd()
   })
 
   return (
@@ -130,7 +180,7 @@ export default function Layout() {
         <Box sx={classes.app}>
           <Outlet context={[setSearch]} />
         </Box>
-        <Box id={'sandwich-right-gutter-sticky-stack'} sx={classes.gutter} />
+        <Box id={RIGHT_GUTTER_ID} sx={classes.gutter} />
       </Box>
 
       <Box sx={classes.section}>

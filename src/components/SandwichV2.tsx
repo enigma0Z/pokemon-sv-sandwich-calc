@@ -2,11 +2,19 @@ import { Box, Chip, Link, Theme, Tooltip, useTheme } from '@mui/material';
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
-import { MealPower } from '../data/Cookbook';
+import { MealPower, Recipe } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
 import { Sandwich as SandwichType } from '../data/Cookbook';
 import { Warning } from '@mui/icons-material';
+
+export function sandwichUri(sandwich: SandwichType) {
+  return `/?ingredients=${sandwich.ingredients.map(x => x.name).join(',')}&seasonings=${sandwich.seasonings.map(x => x.name).join(',')}`
+}
+
+export function recipeUri(recipe: Recipe) {
+  return `/?ingredients=${recipe.ingredients.join(',')}&seasonings=${recipe.seasonings.join(',')}`
+}
 
 export default function Sandwich(props: { 
   sandwich: SandwichType, 
@@ -109,8 +117,6 @@ export default function Sandwich(props: {
   }
 
 
-  const uri = `/?ingredients=${props.sandwich.ingredients.map(x => x.name).join(',')}&seasonings=${props.sandwich.seasonings.map(x => x.name).join(',')}`
-
   const description = <Box><p>{props.sandwich.description ? props.sandwich.description : ''}</p></Box>
 
   return (
@@ -120,7 +126,7 @@ export default function Sandwich(props: {
         <p>Seasonings: {props.sandwich.seasonings.map(x => x.name).join(', ')}</p>
       </>}>
       <Box sx={classes.Sandwich}>
-        <Link href={uri} sx={classes.SandwichLink}>
+        <Link href={sandwichUri(props.sandwich)} sx={classes.SandwichLink}>
           <Box sx={classes.SandwichTitle} display={"flex"} flexDirection={"row"}>
             {props.sandwich.number ? `#${props.sandwich.number}` : ''} {props.sandwich.name || 'A Tasty Original'}
           </Box>

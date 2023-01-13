@@ -1,4 +1,4 @@
-import { Alert, AlertColor, autocompleteClasses, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme, Tooltip, Typography, useTheme } from '@mui/material';
+import { Alert, AlertColor, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme, Tooltip, Typography, useTheme } from '@mui/material';
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'

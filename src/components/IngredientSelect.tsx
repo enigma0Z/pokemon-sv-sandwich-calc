@@ -1,4 +1,5 @@
-import { Box, MenuItem, Select, SelectChangeEvent, Theme, useTheme } from '@mui/material';
+import { AddCircle, RemoveCircle } from '@mui/icons-material';
+import { Box, IconButton, MenuItem, Select, SelectChangeEvent, Theme, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { Ingredient } from '../data/Cookbook';
@@ -63,19 +64,71 @@ export default function IngredientSelect(props: {
           }
         })}
       </Select>
-      <Box display={
-        value !== null 
-        && value !== undefined 
-        && value.maxPieces > 1 
-        ? 'flex' 
-        : 'none'}
+      <Box
+        display={
+          value !== null
+            && value !== undefined
+            && value.maxPieces > 1
+            ? 'flex'
+            : 'none'}
+        sx={{
+          alignItems: 'center',
+          fontSize: '14pt',
+          fontWeight: 300
+        }}
       >
-        Pieces: {value?.numPieces}
+        <Box >
+          <IconButton
+            size={'small'}
+            disabled={
+              value === null
+              || value === undefined
+              || value.numPieces === undefined 
+              || value.maxPieces === undefined 
+              || value.numPieces <= 1
+            }
+            onClick={() => {
+              console.log('minus button')
+              if (
+                value?.numPieces !== undefined
+                && value.numPieces !== 1
+              ) {
+                value.numPieces -= 1
+                setValue({...value})
+                if (props.onChange) props.onChange({...value})
+              }
+            }}
+          ><RemoveCircle /></IconButton>
+          <IconButton
+            size={'small'}
+            disabled={
+              value === null
+              || value === undefined
+              || value.numPieces === undefined 
+              || value.maxPieces === undefined 
+              || value.numPieces >= value.maxPieces
+            }
+            onClick={() => {
+              console.log('add button')
+              if (
+                value?.numPieces !== undefined
+                && value.numPieces < value.maxPieces
+              ) {
+                value.numPieces += 1
+                setValue({...value})
+                if (props.onChange) props.onChange({...value})
+              }
+            }}
+          ><AddCircle /></IconButton>
+        </Box>
+        <Box flexGrow={1} marginLeft={'.5em'}> 
+          {value?.numPieces} pieces
+        </Box>
       </Box>
       <Box
         display={value !== null && showDetails ? 'flex' : 'none'}
       >
-        <StatBubbles taste={value?.taste} power={value?.power} type={value?.type} amount={value?.maxPieces} />
+        <StatBubbles taste={value?.taste} power={value?.power} type={value?.type} amount={value?.numPieces ? value?.numPieces : value?.maxPieces } />
       </Box>
     </Box>
   );

@@ -4,8 +4,8 @@ import { Box, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient, SandwichPower } from '../../data/Cookbook';
 import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
-import Sandwich from '../../components/SandwichV2';
-import { useLocation, useOutletContext } from 'react-router-dom';
+import Sandwich, { ingredientsUri } from '../../components/SandwichV2';
+import { useLocation } from 'react-router-dom';
 import PowerSelect from '../../components/PowerSelect';
 import PowerRequirementComponent from '../../components/PowerRequirementComponent';
 import IngredientSelect from '../../components/IngredientSelect';
@@ -17,7 +17,6 @@ const SEASONINGS_PER_PLAYER = 4
 const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
 
 export default function HomeV2() {
-  const [setSearch] = useOutletContext<[(v: string) => {}]>();
 
   useEffect(() => {
     document.title = "Sandwich Calculator: Home"
@@ -63,9 +62,11 @@ export default function HomeV2() {
 
   let calculatedSandwich
   if (
-    actualIngredients.length > 0 && actualSeasonings.length > 0
+    ingredients.filter(x => x !== null && x !== undefined).length > 0
+    && seasonings.filter(x => x !== null && x !== undefined).length > 0
   ) {
-    calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+    console.log('Calculating sandwich', ingredients, seasonings)
+    calculatedSandwich = calculateSandwich(ingredients.map(x => x === null ? undefined : x), seasonings)
 
     gtag('event', 'home_sandwich_create', {
       ingredients: calculatedSandwich.ingredients.map(x => x.name),
@@ -110,11 +111,9 @@ export default function HomeV2() {
 
     let url
     if (queryString.length > 0) {
-      url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${queryString.join('&')}`
-      setSearch(`?${queryString.join('&')}`)
+      url = `${window.location.protocol}//${window.location.host}${ingredientsUri(ingredients, seasonings)}`
     } else {
       url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-      setSearch(``)
     }
     window.history.pushState('', '', url)
   }
@@ -135,6 +134,7 @@ export default function HomeV2() {
         showDetails={showDetails}
         options={Ingredients}
         onChange={(value) => {
+          console.log('Ingredient onChange()', value)
           const newIngredients = [...ingredients]
           newIngredients[i] = value
           setIngredients(newIngredients)
@@ -200,14 +200,18 @@ export default function HomeV2() {
       </Box>
       <Box><h2>Players</h2></Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap'>
-        <ToggleButtonGroup value={players} exclusive={true} onChange={(event, value) => {
-          setPlayers(value)
-          const newIngredients = ingredients.slice(0, INGREDIENTS_PER_PLAYER * value)
-          const newSeasonings = seasonings.slice(0, SEASONINGS_PER_PLAYER * value)
-          setIngredients(newIngredients)
-          setSeasonings(newSeasonings)
-          setUri(newIngredients, newSeasonings, value)
-        }}>
+        <ToggleButtonGroup
+          value={players}
+          exclusive={true}
+          onChange={(event, value) => {
+            setPlayers(value)
+            const newIngredients = ingredients.slice(0, INGREDIENTS_PER_PLAYER * value)
+            const newSeasonings = seasonings.slice(0, SEASONINGS_PER_PLAYER * value)
+            setIngredients(newIngredients)
+            setSeasonings(newSeasonings)
+            setUri(newIngredients, newSeasonings, value)
+          }}
+        >
           <ToggleButton value={1} key={1}>1</ToggleButton>
           <ToggleButton value={2} key={2}>2</ToggleButton>
           <ToggleButton value={3} key={3}>3</ToggleButton>

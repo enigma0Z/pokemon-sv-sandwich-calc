@@ -1,8 +1,8 @@
-import { Alert, AlertColor, autocompleteClasses, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme, Tooltip, Typography, useTheme } from '@mui/material';
+import { Alert, AlertColor, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme, Tooltip, Typography, useTheme } from '@mui/material';
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
-import { MealPower, Recipe } from '../data/Cookbook';
+import { Ingredient, MealPower, Recipe } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
 import { Sandwich as SandwichType } from '../data/Cookbook';
@@ -16,7 +16,31 @@ type SnackbarState = {
 }
 
 export function sandwichUri(sandwich: SandwichType) {
-  return `/?ingredients=${sandwich.ingredients.map(x => x.name).join(',')}&seasonings=${sandwich.seasonings.map(x => x.name).join(',')}`
+  return ingredientsUri(sandwich.ingredients, sandwich.seasonings)
+}
+
+export function ingredientsUri(ingredients: (Ingredient | null)[], seasonings: (Ingredient | null)[]) {
+  return `/${ingredientsQueryString(ingredients, seasonings)}`
+}
+
+export function ingredientsQueryString(ingredients: (Ingredient | null)[], seasonings: (Ingredient | null)[]) {
+  for (let i = ingredients.length-1; i >= 0; i--) { 
+    if (ingredients[i] === null) ingredients = ingredients.slice(0, i)
+    else break 
+  }
+
+  for (let i = seasonings.length-1; i >= 0; i--) { 
+    if (seasonings[i] === null) seasonings = seasonings.slice(0, i)
+    else break 
+  }
+
+  const playersByIngredient = Math.ceil(ingredients.length / 6)
+  const playersBySeasoning = Math.ceil(seasonings.length / 4)
+  let players = playersByIngredient > playersBySeasoning ? playersByIngredient : playersBySeasoning // Take the larger of the two
+  if (players === 0) players = 1
+
+  console.log('ingredientsUri()', playersByIngredient, ingredients, playersBySeasoning, seasonings, players)
+  return `?ingredients=${ingredients.map(x => x !== null && x !== undefined ? `${x.name}:${x.numPieces}` : '').join(',')}&seasonings=${seasonings.map(x => x !== null && x !== undefined ? x.name : '').join(',')}&players=${players}`
 }
 
 export function recipeUri(recipe: Recipe) {

@@ -18,10 +18,16 @@ export default class QueryStringProps {
         let values = decodeURIComponent(valuesStr).split(',')
         if (name === 'ingredients') {
           for (let value of values) {
-            let foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase() === value.toLowerCase())
+            const [name, piecesStr] = value.split(':')
+            const pieces = parseInt(piecesStr)
+            let foundIngredient = Ingredients.find(ingredient => ingredient.name.toLowerCase() === name.toLowerCase())
             if (foundIngredient !== undefined) {
               let appliedIngredient = { ...foundIngredient }
-              appliedIngredient.numPieces = foundIngredient.maxPieces
+              if (pieces && pieces > 0 && pieces <= foundIngredient.maxPieces) {
+                appliedIngredient.numPieces = pieces
+              } else {
+                appliedIngredient.numPieces = foundIngredient.maxPieces
+              }
               this.ingredients.push(appliedIngredient)
             } else {
               this.ingredients.push(null)

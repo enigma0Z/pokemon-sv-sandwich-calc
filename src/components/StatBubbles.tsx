@@ -13,7 +13,13 @@ declare module '@mui/material/Chip' {
   }
 }
 
-export default function StatBubbles(props: {taste?: Ingredient['taste'], power?: Ingredient['power'], type?: Ingredient['type'], amount?: number}) {
+export default function StatBubbles(props: {
+  taste?: Ingredient['taste'], 
+  power?: Ingredient['power'], 
+  type?: Ingredient['type'], 
+  amount?: number,
+  showZero?: boolean,
+}) {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
     IngredientSelect: {
@@ -75,6 +81,7 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Taste</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.taste, sortValueTaste)) {
+      if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
         sx={{...classes.DetailChip, ...classes.ChipLightBorder}}
         //@ts-ignore
@@ -94,6 +101,7 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Power</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.power, sortValuePower)) {
+      if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
         sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
         color={'black'}
@@ -111,11 +119,11 @@ export default function StatBubbles(props: {taste?: Ingredient['taste'], power?:
     elements.push(<Box>Type</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.type, sortValueType)) {
+      if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
         sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
         //@ts-ignore
         color={obj.name.toLowerCase()}
-        // color={'black'}
         label={`${obj.name}: ${obj.value * amount}`}
       />)
     }

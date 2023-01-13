@@ -9,7 +9,7 @@ import { Sandwich as SandwichType } from '../data/Cookbook';
 import { Warning } from '@mui/icons-material';
 
 export function sandwichUri(sandwich: SandwichType) {
-  return `/?ingredients=${sandwich.ingredients.map(x => x.name).join(',')}&seasonings=${sandwich.seasonings.map(x => x.name).join(',')}`
+  return `/?ingredients=${sandwich.ingredients.map(x => `${x.name}:${x.numPieces}`).join(',')}&seasonings=${sandwich.seasonings.map(x => x.name).join(',')}`
 }
 
 export function recipeUri(recipe: Recipe) {

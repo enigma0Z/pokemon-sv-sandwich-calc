@@ -237,7 +237,7 @@ export function combineComponents(ingredients: SandwichStats, seasonings: Sandwi
   return Result
 }
 
-export function calculateSandwich(ingredients: (Ingredient | undefined)[], seasonings: (Ingredient | undefined)[]): Sandwich {
+export function calculateSandwich(ingredients: (Ingredient | undefined | null)[], seasonings: (Ingredient | undefined | null)[]): Sandwich {
   const calcSandwich: Sandwich = {
     name: undefined,
     description: undefined,
@@ -343,13 +343,16 @@ export function calculateSandwich(ingredients: (Ingredient | undefined)[], seaso
     }
 
     if (ingredient === undefined) continue
+    if (ingredient === null) continue
 
     if (ingredientCheck[player].map(x => x.ingredient.name).includes(ingredient.name as string))
       continue
 
     const newCheck = { ingredient: ingredient, totalPieces: 0 }
 
-    for (let foundIngredient of ingredients.slice(player*6, (player+1)*6).filter(x => x !== undefined && x.name === ingredient?.name)) {
+    for (let foundIngredient of ingredients.slice(player*6, (player+1)*6).filter(
+      x => x !== null && x !== undefined && x.name === ingredient?.name
+    )) {
       if (foundIngredient) {
         if (foundIngredient?.numPieces)
           newCheck.totalPieces += foundIngredient.numPieces

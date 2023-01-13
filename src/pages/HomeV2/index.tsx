@@ -63,9 +63,11 @@ export default function HomeV2() {
 
   let calculatedSandwich
   if (
-    actualIngredients.length > 0 && actualSeasonings.length > 0
+    ingredients.filter(x => x !== null && x !== undefined).length > 0 
+    && seasonings.filter(x => x !== null && x !== undefined).length > 0
   ) {
-    calculatedSandwich = calculateSandwich(actualIngredients, actualSeasonings)
+    console.log('Calculating sandwich', ingredients, seasonings)
+    calculatedSandwich = calculateSandwich(ingredients.map(x => x === null ? undefined : x), seasonings)
 
     gtag('event', 'home_sandwich_create', {
       ingredients: calculatedSandwich.ingredients.map(x => x.name),
@@ -135,6 +137,7 @@ export default function HomeV2() {
         showDetails={showDetails}
         options={Ingredients}
         onChange={(value) => {
+          console.log('Ingredient onChange()', value)
           const newIngredients = [...ingredients]
           newIngredients[i] = value
           setIngredients(newIngredients)

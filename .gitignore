@@ -25,3 +25,7 @@ yarn-error.log*
 # vscode
 .vscode/settings.json
 .vscode/tasks.json
+
+# Local SSL certs for testing https
+server.crt
+server.key

@@ -160,6 +160,454 @@
           "level": 3
         }
       ]
+    },
+    {
+      "name": "What The Rock is cooking",
+      "description": "A sandwich for shiny hunters.  If Salty Herba Mystica weren't enough, bacon adds an additional smokey-salty-savoury note to this sandwich.",
+      "ingredients": [
+        "Bacon:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Rock",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Rock",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Rock",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Sparkling Garden Party",
+      "description": "A sandwich for shiny hunters.  Tomato adds a mild, magical, and mystical flavor to this sandwich that fairy-types everywhere love.",
+      "ingredients": [
+        "Tomato:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Fairy",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Fairy",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Fairy",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Cucumber Sammy",
+      "description": "A sandwich for shiny hunters.  Cucumber's bright & fresh flavors are enhanced by the herba mystica in this sandwich",
+      "ingredients": [
+        "Cucumber:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Water",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Water",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Water",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "The \"Poison\" Sandwich",
+      "description": "A sandwich for shiny hunters.  Someone who isn't particularly fond of green bell peppers named this sandwich, and while it's not poisonous, it does bring all the poison types to the yard.",
+      "ingredients": [
+        "Green Bell Pepper:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Poison",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Poison",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Poison",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Deli Dirt Special",
+      "description": "A sandwich for shiny hunters.  Ham's slightly sweet flavor is brought out in contrast to salty & spicy herba mystica on this sandwich.",
+      "ingredients": [
+        "Ham:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Ground",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Ground",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Ground",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "The Iron Stomach",
+      "description": "A sandwich for shiny hunters.  This sandwich's iron content is off the charts!  Salty & spicy combine to help flavor the lone burger patty on this sandwich.",
+      "ingredients": [
+        "Hamburger:1"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Steel",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Steel",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Steel",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Snow Klawf Roll",
+      "description": "A sandwich for shiny hunters.  Klawf don't actually live in the cold mountains.  Despite that, this sandwich seems to evoke feelings of icyness.",
+      "ingredients": [
+        "Klawf Stick:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Ice",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Ice",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Ice",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Bulba Baguette",
+      "description": "A sandwich for shiny hunters.  Any bulbasaur would be proud of the use of lettuce in this sandwich made to attract grass types.",
+      "ingredients": [
+        "Lettuce:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Grass",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Grass",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Grass",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Pungent Patisserie",
+      "description": "A sandwich for shiny hunters.  Popular psychics preen peering at pungent pieces of onion on this sandwich.  IDK why.",
+      "ingredients": [
+        "Onion:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Psychic",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Psychic",
+          "level": 3
+        },
+        {
+          "name": "Humungo",
+          "type": "Psychic",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Pucker-up Punch",
+      "description": "A sandwich for shiny hunters.  \"Have a pickle, that'll put some fight in 'ya!\" ~ Bruno, 1996",
+      "ingredients": [
+        "Pickle:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Fighting",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Fighting",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Fighting",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "When Pigs Fly",
+      "description": "A sandwich for shiny hunters.  Large bombirdiers have been known to capture young lechonk and bring them back to their nest, mistaking them for eggs.",
+      "ingredients": [
+        "Prosciutto:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Flying",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Flying",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Flying",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Firehouse Eighty-five",
+      "description": "A sandwich for shiny hunters.  Fuecoco inspired this sandwich, and wouldn't ya know it, it's got some heat!",
+      "ingredients": [
+        "Red Bell Pepper:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Fire",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Fire",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Fire",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Pungent-er Gastro-sammie",
+      "description": "A sandwich for shiny hunters.  The bold flavor of red onion stands as a counterpoint to the salty and spicy flavors inherent to this sandwich.",
+      "ingredients": [
+        "Red Onion:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Ghost",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Ghost",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Ghost",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Smokey & Sparkly",
+      "description": "A sandwich for shiny hunters.  Smokey flavors dominate this sandwich and conjure images of wood paneled rooms and old leather furniture. ... or a sushi joint.",
+      "ingredients": [
+        "Smoked Fillet:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Dark",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Dark",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Dark",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Fleeting Fancy",
+      "description": "A sandwich for shiny hunters.  Bugs-types, tiny faries in their own right, appreciate the small tomatoes on sandwich much like fairy types enjoy larger tomatoes.",
+      "ingredients": [
+        "Cherry Tomatoes:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Bug",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Bug",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Bug",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Vivacious Volts",
+      "description": "A sandwich for shiny hunters.  Halfway between herbal green peppers and sweet red peppers, yellow bell peppers in this sandwich balance the salty and spicy herba mystica in a way only a pawmot could describe.",
+      "ingredients": [
+        "Yellow Bell Pepper:3"
+      ],
+      "seasonings": [
+        "Salty Herba Mystica",
+        "Spicy Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Electric",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Electric",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Electric",
+          "level": 3
+        }
+      ]
     }
   ]
 }

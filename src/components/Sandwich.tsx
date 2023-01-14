@@ -15,8 +15,8 @@ export default function Sandwich(props: {
   seasonings: string[]; 
   powers: SandwichPower[];
 }) {
-  const ingredients = props.ingredients.map((x) => <Ingredient name={x} />)
-  const seasonings = props.seasonings.map((x) => <Seasoning name={x} />)
+  const ingredients = props.ingredients.map((x) => <Ingredient name={x.split(':')[0]} />)
+  const seasonings = props.seasonings.map((x) => <Seasoning name={x.split(':')[0]} />)
   const powers = props.powers.map((x) => { 
     return (<Box>{powerName(x)}</Box>) 
   })

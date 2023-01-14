@@ -3,61 +3,161 @@
     {
       "name": "The original abomination",
       "description": "This abomination was the original reason the sandwich calculator was made.  You wouldn't think that whipped cream and horseradish would work so well together, but, somehow, it gets the job done.",
-      "ingredients": ["Rice", "Rice", "Rice", "Herbed Sausage", "Herbed Sausage", "Herbed Sausage"],
-      "seasonings": ["Whipped Cream", "Horseradish", "Horseradish", "Chili Sauce"],
+      "ingredients": [
+        "Rice",
+        "Rice",
+        "Rice",
+        "Herbed Sausage",
+        "Herbed Sausage",
+        "Herbed Sausage"
+      ],
+      "seasonings": [
+        "Whipped Cream",
+        "Horseradish",
+        "Horseradish",
+        "Chili Sauce"
+      ],
       "powers": [
         {
           "name": "Raid",
           "type": "Fighting",
           "level": 2
-        }, {
+        },
+        {
           "name": "Encounter",
           "type": "Ground",
           "level": 1
-        }, {
+        },
+        {
           "name": "Exp.",
           "type": "Water",
           "level": 1
         }
       ]
-    }, {
+    },
+    {
       "name": "Potato Salad Sausage Roll",
       "description": "Savory potato salad and spicy chorizo come together in this sandwich surprisingly well.  Whipped cream adds a note of sweetness and authentic wasabi gives it a spicy-sweet kick.",
-      "ingredients": ["Potato Salad", "Potato Salad", "Potato Salad", "Chorizo", "Chorizo", "Chorizo"],
-      "seasonings": ["Whipped Cream", "Whipped Cream", "Wasabi", "Wasabi"],
+      "ingredients": [
+        "Potato Salad",
+        "Potato Salad",
+        "Potato Salad",
+        "Chorizo",
+        "Chorizo",
+        "Chorizo"
+      ],
+      "seasonings": [
+        "Whipped Cream",
+        "Whipped Cream",
+        "Wasabi",
+        "Wasabi"
+      ],
       "powers": [
         {
           "name": "Raid",
           "type": "Dragon",
           "level": 2
-        }, {
+        },
+        {
           "name": "Encounter",
           "type": "Normal",
           "level": 1
-        }, {
+        },
+        {
           "name": "Exp.",
           "type": "Bug",
           "level": 1
         }
       ]
-    }, {
+    },
+    {
       "name": "Salad-on-a-bun With Rice",
       "description": "Rice, boiled eggs, and lettuce.  These were the ingredients chosen to make this ... well, I don't know if you could call it a sandwich.  It tastes a lot like a very rice-laden salad on a bun.  Horseradish and chili sauce give it a spicy kick.",
-      "ingredients": ["Rice", "Rice", "Rice", "Egg", "Egg", "Lettuce"],
-      "seasonings": ["Chili Sauce", "Horseradish", "", ""],
+      "ingredients": [
+        "Rice",
+        "Rice",
+        "Rice",
+        "Egg",
+        "Egg",
+        "Lettuce"
+      ],
+      "seasonings": [
+        "Chili Sauce",
+        "Horseradish",
+        "",
+        ""
+      ],
       "powers": [
         {
           "name": "Raid",
           "type": "Grass",
           "level": 2
-        }, {
+        },
+        {
           "name": "Encounter",
           "type": "Normal",
           "level": 1
-        }, {
+        },
+        {
           "name": "Humungo",
           "type": "Flying",
           "level": 1
+        }
+      ]
+    },
+    {
+      "name": "A Thousand Shining Dragons",
+      "description": "A sandwich for shiny hunters.  Avocado adds a mild flavor, balancing the salty and spicy herba mystica.",
+      "ingredients": [
+        "Avocado:3"
+      ],
+      "seasonings": [
+        "Spicy Herba Mystica",
+        "Salty Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Dragon",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Dragon",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Dragon",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "The Larry Special",
+      "description": "A sandwich for shiny hunters.  Tofu adds a gentle sweet and savoury note to this salty sandwich.",
+      "ingredients": [
+        "Tofu:3"
+      ],
+      "seasonings": [
+        "Spicy Herba Mystica",
+        "Salty Herba Mystica"
+      ],
+      "powers": [
+        {
+          "name": "Title",
+          "type": "Normal",
+          "level": 3
+        },
+        {
+          "name": "Sparkling",
+          "type": "Normal",
+          "level": 3
+        },
+        {
+          "name": "Encounter",
+          "type": "Normal",
+          "level": 3
         }
       ]
     }

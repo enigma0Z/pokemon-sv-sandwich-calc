@@ -37,7 +37,7 @@ export default function HomeV2() {
     setIngredients(queryStringProps.ingredients)
     setSeasonings(queryStringProps.seasonings)
     setSearch(location.search)
-  }, [location])
+  }, [location, setSearch])
 
   const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
 

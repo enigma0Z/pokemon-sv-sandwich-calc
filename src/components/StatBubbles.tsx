@@ -78,11 +78,12 @@ export default function StatBubbles(props: {
   }
 
   if (props.taste !== undefined) {
-    elements.push(<Box>Taste</Box>)
+    elements.push(<Box key='taste-header'>Taste</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.taste, sortValueTaste)) {
       if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
+        key={obj.name.toLowerCase()}
         sx={{...classes.DetailChip, ...classes.ChipLightBorder}}
         //@ts-ignore
         color={obj.name.toLowerCase()}
@@ -91,36 +92,38 @@ export default function StatBubbles(props: {
       />)
     }
     elements.push(
-      <Box sx={classes.DetailRow}>
+      <Box key='taste-bubbles' sx={classes.DetailRow}>
         {bubbles}
       </Box>
     )
   }
 
   if (props.power !== undefined) {
-    elements.push(<Box>Power</Box>)
+    elements.push(<Box key='power-header'>Power</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.power, sortValuePower)) {
       if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
+        key={`${obj.name}`}
         sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
         color={'black'}
         label={`${obj.name}: ${obj.value * amount}`}
       />)
     }
     elements.push(
-      <Box sx={classes.DetailRow}>
+      <Box key='power-bubbles' sx={classes.DetailRow}>
         {bubbles}
       </Box>
     )
   }
 
   if (props.type !== undefined) {
-    elements.push(<Box>Type</Box>)
+    elements.push(<Box key='type-header'>Type</Box>)
     const bubbles = []
     for (let obj of sortAttributes(props.type, sortValueType)) {
       if (obj.value === 0 && !props.showZero) continue
       bubbles.push(<Chip 
+        key={obj.name.toLowerCase()}
         sx={{...classes.DetailChip, ...classes.ChipDarkBorder}}
         //@ts-ignore
         color={obj.name.toLowerCase()}
@@ -128,7 +131,7 @@ export default function StatBubbles(props: {
       />)
     }
     elements.push(
-      <Box sx={classes.DetailRow}>
+      <Box key='type-bubbles' sx={classes.DetailRow}>
         {bubbles}
       </Box>
     )

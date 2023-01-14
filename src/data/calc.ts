@@ -65,6 +65,44 @@ export function powerName(power: SandwichPower) {
   return desc
 }
 
+export function calculateLevels(
+  attributes: {
+    power: { name: string, value: number },
+    type: { name: string, value: number }
+  }[]
+): number[] {
+  let levels = []
+  console.log(calculateLevels, attributes)
+  for (let i = 0; i < attributes.length; i++) {
+    const attribute = attributes[i]
+    if (attribute.type.value < 180 || attribute.power.value < 100) {
+      levels.push(1)
+    } else if (attribute.power.value >= 100) {
+      if (i < 2) { // First 2 powers
+        if (attribute.type.value < 480) {
+          levels.push(2)
+        } else {
+          levels.push(3)
+        }
+      } else { // Third power
+        if (attributes[0].type.value < 280) {
+          levels.push(1)
+        } else if (attributes[0].type.value < 480) {
+          levels.push(2)
+        } else { // type 0 is >= 480
+          if (attribute.type.value < 480) {
+            levels.push(2)
+          } else {
+            levels.push(3)
+          }
+        }
+      }
+    } 
+  }
+
+  return levels
+}
+
 export function calculateLevel(power: { name: string, value: number }, type: { name: string, value: number }) {
   if (type.value >= LEVEL_REQUIREMENTS[2].type) {
     if (power.value >= LEVEL_REQUIREMENTS[3].power) {
@@ -250,8 +288,6 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
     stars: 3
   }
 
-  console.log('calculateSandwich()', ingredients)
-
   const foundSandwich = findRecipe(ingredients.map(x => x?.name), seasonings.map(x => x?.name))
   if (foundSandwich) {
     calcSandwich.name = foundSandwich.name
@@ -282,7 +318,7 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
   const SortedPower = sortAttributes(SandwichSum.power, sortValuePower)
   const SortedType = sortAttributes(SandwichSum.type, sortValueType)
 
-  let type = []
+  let type: number[] = []
 
   // Do type sorting and check for monotype
   if (SortedType[0].value < MULTI_SLOT_TYPE_REQUIREMENTS[2]) {
@@ -294,11 +330,17 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
   }
 
   // Calculate initial levels
-  let levels = [
-    calculateLevel(SortedPower[0], SortedType[type[0]]),
-    calculateLevel(SortedPower[1], SortedType[type[1]]),
-    calculateLevel(SortedPower[2], SortedType[type[2]]),
-  ]
+  let levels = calculateLevels([0, 1, 2].map(i => {
+    return {
+      power: SortedPower[i],
+      type: SortedType[type[i]]
+    }
+  }))
+  // [
+  //   calculateLevel(SortedPower[0], SortedType[type[0]]),
+  //   calculateLevel(SortedPower[1], SortedType[type[1]]),
+  //   calculateLevel(SortedPower[2], SortedType[type[2]]),
+  // ]
 
   // Do Herba Mystica overrides for level
   if (herbaMysticaTotal === 1) {
@@ -332,8 +374,8 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
   // ingredients results in reduced levels but not altered poweres
   const ingredientCheck: { ingredient: Ingredient, totalPieces: number }[][] = []
 
-  let runningTotal = -1 
-  let player = -1 
+  let runningTotal = -1
+  let player = -1
   for (let ingredient of ingredients) {
     runningTotal += 1
     runningTotal %= 6
@@ -350,7 +392,7 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
 
     const newCheck = { ingredient: ingredient, totalPieces: 0 }
 
-    for (let foundIngredient of ingredients.slice(player*6, (player+1)*6).filter(
+    for (let foundIngredient of ingredients.slice(player * 6, (player + 1) * 6).filter(
       x => x !== null && x !== undefined && x.name === ingredient?.name
     )) {
       if (foundIngredient) {

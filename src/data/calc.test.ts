@@ -130,7 +130,7 @@ test.each([
         level: 1
       }]
     }
-  ], [ // 2HM sandwich
+  ], [ // 1HM sandwich
     [
       'avocado'
     ], [
@@ -187,6 +187,26 @@ test.each([
       'butter'
     ], {
       warning: undefined
+    }
+  ], [ // Too many pieces (sp)
+    [
+      'rice', 'rice', 'rice', 'rice', 'rice', 'rice'
+    ], [
+      'wasabi', 'wasabi', 'wasabi', 'ketchup'
+    ], {
+      powers: [{
+        name: 'Raid',
+        type: 'Flying',
+        level: 2
+      }, {
+        name: 'Humungo',
+        type: 'Fighting',
+        level: 2
+      }, {
+        name: 'Encounter',
+        type: 'Normal',
+        level: 1
+      }]
     }
   ]
 ])(

@@ -187,5 +187,8 @@ export const theme = createTheme({
       fontWeight: 'bold',
       fontSize: '18pt',
     },
+    h3: {
+      fontSize: '18pt',
+    },
   }
 });

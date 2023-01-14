@@ -1,9 +1,10 @@
-import { Box, Link, Theme, Typography, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Container, Grid, IconButton, Link, Theme, Toolbar, Typography, useTheme } from '@mui/material';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPayConfig';
+import { Menu } from '@mui/icons-material';
 
 const GUTTER_BREAKPOINT = 1536
 const ANCHOR_BREAKPOINT = 900
@@ -68,7 +69,7 @@ function resizeListener(event: UIEvent) {
     if (
       (previousWidth > currentWidth && currentWidth < GUTTER_BREAKPOINT && previousWidth >= GUTTER_BREAKPOINT) // Shrinking, passed breakpoint
       || (previousWidth < currentWidth && currentWidth >= GUTTER_BREAKPOINT && previousWidth < GUTTER_BREAKPOINT) // Growing, passed breakpoint
-    ) { 
+    ) {
       console.log('createStickyStackAD()', previousWidth, currentWidth)
       createStickyStackAd()
     } else if (
@@ -163,18 +164,25 @@ export default function Layout() {
       <div className="background-color"></div>
       <div className="background-image"></div>
 
-      <Typography variant={'h1'} sx={classes.section}>
-        Sandwich Calculator
-      </Typography>
-      <nav>
-        <Box color={'primary'}>
-          <Link component={NavLink} to={`/${search}`}>Home</Link> |&nbsp;
-          <Link component={NavLink} to={`/Explore${search}`}>Explore Ingredients</Link> |&nbsp;
-          <Link component={NavLink} to={`/Recipes${search}`}>Recipes & Cookbook</Link> |&nbsp;
-          <Link component={NavLink} to={`/FAQ${search}`}>FAQ</Link> |&nbsp;
-          <Link component={NavLink} to={`/About${search}`}>Help & About</Link>
-        </Box>
-      </nav>
+      {/* <AppBar position='absolute'> */}
+        <Toolbar>
+          <img style={{ imageRendering: 'pixelated' }} src={res.img.logo} alt="enigma! logo" />
+          <Typography variant="h3" component="div" marginLeft={'.5em'}>
+            Sandwich Calculator
+          </Typography>
+          <Box marginLeft={'1em'}>
+            <nav>
+              <Button component={NavLink} to={`/${search}`}>Home</Button>
+              <Button component={NavLink} to={`/Explore${search}`}>Ingredients</Button>
+              <Button component={NavLink} to={`/Recipes${search}`}>Recipes</Button>
+              <Button component={NavLink} to={`/FAQ${search}`}>FAQ</Button>
+              <Button component={NavLink} to={`/About${search}`}>About</Button>
+            </nav>
+          </Box>
+          <Box flexGrow={1} />
+          {/* <Button color="inherit">Login</Button> */}
+        </Toolbar>
+      {/* </AppBar> */}
 
       <Box sx={classes.layout}>
         <Box sx={classes.app}>

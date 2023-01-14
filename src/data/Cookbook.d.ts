@@ -54,6 +54,7 @@ export type Ingredient = {
     'Dark'?: number,
     'Fairy'?: number,
   }
+  tags?: string[]
 }
 
 export type Recipe = {

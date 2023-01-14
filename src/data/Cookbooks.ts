@@ -8,6 +8,34 @@ export const InGameCookbook: Cookbook = _InGameCookbook
 export const Ingredients: Ingredient[] = _Sandwich.ingredients
 export const Seasonings: Ingredient[] = _Sandwich.seasonings
 
+const sizeMap: {
+  [index: number]: string
+} = {
+  36: 'Large Three Piece',
+  30: 'Big One-Piecers',
+  21: 'Medium Three Piece',
+  20: 'Medium One-Piecers'
+}
+
+export function ingredientTags(ingredient: Ingredient): string[] {
+  const tags: string[] = []
+
+  const keys = Object.keys(ingredient.type)
+
+  if (keys.length === 1) {
+    tags.push('Mono-type')
+  } else if (keys.length === 18) {
+    tags.push('All Types')
+  }
+
+  const size = ingredient.type[keys[0]] * ingredient.maxPieces
+  if (size in sizeMap) {
+    tags.push(sizeMap[size])
+  }
+
+  return tags 
+}
+
 export const PokemonTypes: PokemonType[] = [
   'Normal',
   'Fighting',
@@ -42,7 +70,7 @@ export const MealPowers: MealPower[] = [
   'Encounter',
 ]
 
-export const MealPowerSynonyms: {[index: string]: string[]} = {
+export const MealPowerSynonyms: { [index: string]: string[] } = {
   'Egg': ['eg'],
   'Catching': ['catch'],
   'Exp.': ['exp', 'experience'],
@@ -55,7 +83,7 @@ export const MealPowerSynonyms: {[index: string]: string[]} = {
   'Encounter': ['enc'],
 }
 
-export const LevelSynonyms: {[index: number]: string[]} = {
+export const LevelSynonyms: { [index: number]: string[] } = {
   1: ['one'],
   2: ['two'],
   3: ['three'],
@@ -150,7 +178,7 @@ export function findRecipe(ingredients: (Ingredient | null | undefined)[], seaso
   for (let cookbook of [InGameCookbook, CustomCookbook]) {
     for (let recipe of cookbook.recipes) {
       if (
-        ( recipe.ingredients.sort().toString() === ingredientsStr
+        (recipe.ingredients.sort().toString() === ingredientsStr
           || recipe.ingredients.sort().toString() === ingredientsQtyStr
         ) && recipe.seasonings.sort().toString() === seasoningsStr
       ) {

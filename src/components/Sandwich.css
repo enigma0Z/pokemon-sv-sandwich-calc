@@ -5,13 +5,14 @@ div.sandwich {
   background-color: #FFFFC0;
   border-radius: 16px;
   border: solid 4px black;
-  width: 30em;
+  width: 25em;
 }
 
 div.sandwich a {
   text-decoration: none;
   color: black;
   font-family: monospace;
+  font-size: 10pt;
 }
 
 div.sandwich div.title {
@@ -23,5 +24,5 @@ div.sandwich div.title {
 
 div.sandwich div.title h3 {
   margin: 0px;
-  font-family: 'Futura'
+  font-family: 'Futura';
 }

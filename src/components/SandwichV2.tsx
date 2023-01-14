@@ -63,6 +63,7 @@ export default function Sandwich(props: {
       width: '30em',
       color: '#000000',
       fontFamily: 'monospace',
+      fontSize: '10pt',
       [theme.breakpoints.down('sm')]: {
         width: '95%',
         marginLeft: 'auto',
@@ -81,29 +82,6 @@ export default function Sandwich(props: {
       fontSize: '13pt',
       fontWeight: 'bold',
     },
-    DetailBox: {
-      marginTop: '.25em',
-      fontSize: '8pt',
-      display: 'flex',
-      flexDirection: 'column'
-    },
-    DetailRow: {
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap"
-    },
-    DetailItem: {
-      margin: '.1em',
-      paddingLeft: '.5em',
-      paddingRight: '.5em',
-      paddingTop: '.2em',
-      paddingBottom: '.2em',
-      backgroundColor: 'black',
-      borderRadius: '.5em',
-      border: 'solid 1px darkgrey',
-      color: 'white',
-      fontFamily: 'sans-serif'
-    }
   })
 
   const classes = styles(theme)
@@ -117,40 +95,40 @@ export default function Sandwich(props: {
     return (<Box>{powerName(x)}</Box>)
   })
 
-  if (props.sandwich.stats !== undefined) {
-    <Box sx={classes.DetailBox}>
-      <Box>Taste</Box>
-      <Box sx={classes.DetailRow}>
-        {Object.keys(props.sandwich.stats.taste).map(key => {
-          if (props.sandwich.stats?.taste[key] === 0) {
-            return null
-          } else {
-            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.taste[key]}</Box>
-          }
-        })}
-      </Box>
-      <Box>Power</Box>
-      <Box sx={classes.DetailRow}>
-        {Object.keys(props.sandwich.stats.power).map(key => {
-          if (props.sandwich.stats?.power[key as MealPower] === 0) {
-            return null
-          } else {
-            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.power[key as MealPower]}</Box>
-          }
-        })}
-      </Box>
-      <Box>Type</Box>
-      <Box sx={classes.DetailRow}>
-        {Object.keys(props.sandwich.stats.type).map(key => {
-          if (props.sandwich.stats?.type[key] === 0) {
-            return null
-          } else {
-            return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.type[key]}</Box>
-          }
-        })}
-      </Box>
-    </Box>
-  }
+  // if (props.sandwich.stats !== undefined) {
+  //   <Box sx={classes.DetailBox}>
+  //     <Box>Taste</Box>
+  //     <Box sx={classes.DetailRow}>
+  //       {Object.keys(props.sandwich.stats.taste).map(key => {
+  //         if (props.sandwich.stats?.taste[key] === 0) {
+  //           return null
+  //         } else {
+  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.taste[key]}</Box>
+  //         }
+  //       })}
+  //     </Box>
+  //     <Box>Power</Box>
+  //     <Box sx={classes.DetailRow}>
+  //       {Object.keys(props.sandwich.stats.power).map(key => {
+  //         if (props.sandwich.stats?.power[key as MealPower] === 0) {
+  //           return null
+  //         } else {
+  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.power[key as MealPower]}</Box>
+  //         }
+  //       })}
+  //     </Box>
+  //     <Box>Type</Box>
+  //     <Box sx={classes.DetailRow}>
+  //       {Object.keys(props.sandwich.stats.type).map(key => {
+  //         if (props.sandwich.stats?.type[key] === 0) {
+  //           return null
+  //         } else {
+  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.type[key]}</Box>
+  //         }
+  //       })}
+  //     </Box>
+  //   </Box>
+  // }
 
   const description = <Box><p>{props.sandwich.description ? props.sandwich.description : ''}</p></Box>
 

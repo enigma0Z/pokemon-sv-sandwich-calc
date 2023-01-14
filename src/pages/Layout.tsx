@@ -1,10 +1,9 @@
-import { AppBar, Box, Button, Container, Grid, IconButton, Link, Theme, Toolbar, Typography, useTheme } from '@mui/material';
+import { Box, Button, Link, Theme, Toolbar, Typography, useTheme } from '@mui/material';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPayConfig';
-import { Menu } from '@mui/icons-material';
 
 const GUTTER_BREAKPOINT = 1536
 const ANCHOR_BREAKPOINT = 900

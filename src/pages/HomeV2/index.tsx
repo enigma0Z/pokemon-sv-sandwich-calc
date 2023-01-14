@@ -4,8 +4,8 @@ import { Box, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Ingredients, Seasonings } from '../../data/Cookbooks';
 import { Ingredient, SandwichPower } from '../../data/Cookbook';
 import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
-import Sandwich, { ingredientsUri } from '../../components/SandwichV2';
-import { useLocation } from 'react-router-dom';
+import Sandwich, { ingredientsQueryString, ingredientsUri } from '../../components/SandwichV2';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import PowerSelect from '../../components/PowerSelect';
 import PowerRequirementComponent from '../../components/PowerRequirementComponent';
 import IngredientSelect from '../../components/IngredientSelect';
@@ -17,6 +17,8 @@ const SEASONINGS_PER_PLAYER = 4
 const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
 
 export default function HomeV2() {
+  // This sends search URI to Layout
+  const [setSearch] = useOutletContext<[(v: string) => {}]>();
 
   useEffect(() => {
     document.title = "Sandwich Calculator: Home"
@@ -34,6 +36,7 @@ export default function HomeV2() {
     const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
     setIngredients(queryStringProps.ingredients)
     setSeasonings(queryStringProps.seasonings)
+    setSearch(location.search)
   }, [location])
 
   const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
@@ -112,8 +115,10 @@ export default function HomeV2() {
     let url
     if (queryString.length > 0) {
       url = `${window.location.protocol}//${window.location.host}${ingredientsUri(ingredients, seasonings)}`
+      setSearch(ingredientsQueryString(ingredients, seasonings))
     } else {
       url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+      setSearch('')
     }
     window.history.pushState('', '', url)
   }

@@ -2,7 +2,7 @@ import { Alert, AlertColor, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme
 import IngredientElement from './Ingredient';
 import SeasoningElement from './Seasoning';
 import './Sandwich.css'
-import { Ingredient, MealPower, Recipe } from '../data/Cookbook';
+import { Ingredient, Recipe } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
 import { Sandwich as SandwichType } from '../data/Cookbook';

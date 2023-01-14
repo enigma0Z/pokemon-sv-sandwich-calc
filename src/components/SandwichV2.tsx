@@ -248,12 +248,28 @@ export default function Sandwich(props: {
                     label="Copy"
                     size='small'
                     sx={{ justifySelf: 'right' }}
-                    onClick={async () => {
+                    onClick={async (event) => {
+                      console.log(event)
+                      let copyText = ''
+                      let copyType = ''
+                      if (event.shiftKey && event.metaKey) {
+                        copyText = JSON.stringify({
+                          name: "",
+                          description: "",
+                          ingredients: props.sandwich.ingredients.map(x => `${x.name}:${x.numPieces}`),
+                          seasonings: props.sandwich.seasonings.map(x => x.name),
+                          powers: props.sandwich.powers
+                        })
+                        copyType = 'JSON'
+                      } else {
+                        copyText = `${window.location.protocol}//${window.location.host}${sandwichUri(props.sandwich)}`
+                        copyType = 'URL'
+                      }
                       try {
-                        await navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}${sandwichUri(props.sandwich)}`)
-                        setSnackbar({ open: true, severity: 'success', message: 'URL copied to clipboard!' })
+                        await navigator.clipboard.writeText(copyText)
+                        setSnackbar({ open: true, severity: 'success', message: `${copyType} copied to clipboard!` })
                       } catch (err) {
-                        setSnackbar({ open: true, severity: 'error', message: 'Could not copy URL to clipboard.' })
+                        setSnackbar({ open: true, severity: 'error', message: `Could not copy ${copyType} to clipboard.` })
                       }
                     }}
                   />

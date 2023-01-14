@@ -141,15 +141,18 @@ export function templateResult(): SandwichStats {
   }
 }
 
-export function findRecipe(ingredients: (string | undefined)[], seasonings: (string | undefined)[]): Recipe | void {
-  let ingredientsStr = ingredients.sort().toString()
-  let seasoningsStr = seasonings.sort().toString()
+export function findRecipe(ingredients: (Ingredient | null | undefined)[], seasonings: (Ingredient | null | undefined)[]): Recipe | void {
+  let ingredientsStr = ingredients.map(x => x ? x.name : '').sort().toString()
+  let seasoningsStr = seasonings.map(x => x ? x.name : '').sort().toString()
+
+  let ingredientsQtyStr = ingredients.map(x => x ? `${x.name}:${x.numPieces}` : '').sort().toString()
 
   for (let cookbook of [InGameCookbook, CustomCookbook]) {
     for (let recipe of cookbook.recipes) {
       if (
-        recipe.ingredients.sort().toString() === ingredientsStr
-        && recipe.seasonings.sort().toString() === seasoningsStr
+        ( recipe.ingredients.sort().toString() === ingredientsStr
+          || recipe.ingredients.sort().toString() === ingredientsQtyStr
+        ) && recipe.seasonings.sort().toString() === seasoningsStr
       ) {
         return recipe
       }

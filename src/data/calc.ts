@@ -1,4 +1,4 @@
-import { DisplayRequirement, Ingredient, MealPower, PokemonType, PowerRequirement, Sandwich, SandwichPower, SandwichStats, Taste } from './Cookbook'
+import { DisplayRequirement, Ingredient, MealPower, PokemonType, PowerRequirement, Recipe, Sandwich, SandwichPower, SandwichStats, Taste } from './Cookbook'
 import { findRecipe, MealPowers, PokemonTypes, Tastes, templateResult } from './Cookbooks'
 
 /* 
@@ -288,7 +288,16 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
     stars: 3
   }
 
-  const foundSandwich = findRecipe(ingredients.map(x => x?.name), seasonings.map(x => x?.name))
+  const IngredientSum: SandwichStats = sumComponents(calcSandwich.ingredients)
+  const SeasoningSum: SandwichStats = sumComponents(calcSandwich.seasonings)
+  const SandwichSum: SandwichStats = combineComponents(IngredientSum, SeasoningSum)
+
+  addFlavorResult(SandwichSum)
+
+  calcSandwich.stats = SandwichSum
+
+  let foundSandwich: Recipe | void
+  foundSandwich = findRecipe(ingredients, seasonings)
   if (foundSandwich) {
     calcSandwich.name = foundSandwich.name
     calcSandwich.description = foundSandwich.description
@@ -297,14 +306,6 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
     calcSandwich.powers = foundSandwich.powers
     return calcSandwich
   }
-
-  const IngredientSum: SandwichStats = sumComponents(calcSandwich.ingredients)
-  const SeasoningSum: SandwichStats = sumComponents(calcSandwich.seasonings)
-  const SandwichSum: SandwichStats = combineComponents(IngredientSum, SeasoningSum)
-
-  addFlavorResult(SandwichSum)
-
-  calcSandwich.stats = SandwichSum
 
   let herbaMysticaTotal = 0;
   for (let seasoning of calcSandwich.seasonings) {
@@ -336,11 +337,6 @@ export function calculateSandwich(ingredients: (Ingredient | undefined | null)[]
       type: SortedType[type[i]]
     }
   }))
-  // [
-  //   calculateLevel(SortedPower[0], SortedType[type[0]]),
-  //   calculateLevel(SortedPower[1], SortedType[type[1]]),
-  //   calculateLevel(SortedPower[2], SortedType[type[2]]),
-  // ]
 
   // Do Herba Mystica overrides for level
   if (herbaMysticaTotal === 1) {

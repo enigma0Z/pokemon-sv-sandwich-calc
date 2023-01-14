@@ -72,7 +72,6 @@ export function calculateLevels(
   }[]
 ): number[] {
   let levels = []
-  console.log(calculateLevels, attributes)
   for (let i = 0; i < attributes.length; i++) {
     const attribute = attributes[i]
     if (attribute.type.value < 180 || attribute.power.value < 100) {

@@ -22,10 +22,10 @@ export default function PowerRequirementComponent(
         padding: '.5em',
         display: props.requirements.length > 0 ? 'block' : 'none',
         position: 'fixed',
-        top: '.25em',
+        top: '5em',
         right: '.25em',
         zIndex: 1000,
-        borderRadius: '1em',
+        borderRadius: minimized ? '4em' : '1em',
       }}
       elevation={4}
     >

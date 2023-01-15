@@ -1,9 +1,10 @@
-import { Box, Button, Link, Theme, Toolbar, Typography, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, Grid, IconButton, Link, List, ListItemButton, ListItemText, Theme, Toolbar, Typography, useTheme } from '@mui/material';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPayConfig';
+import { Menu } from '@mui/icons-material';
 
 const GUTTER_BREAKPOINT = 1536
 const ANCHOR_BREAKPOINT = 900
@@ -49,8 +50,7 @@ function createStickyStackAd() {
     ...NitroPayConfig,
     "format": "sticky-stack",
     "stickyStackLimit": 15,
-    "stickyStackSpace": 1.25,
-    "stickyStackOffset": 200,
+    "stickyStackSpace": 1.5,
     "sizes": sizes,
     "report": {
       "enabled": true,
@@ -82,8 +82,6 @@ function resizeListener(event: UIEvent) {
       (previousWidth < currentWidth && currentWidth >= ANCHOR_BREAKPOINT && previousWidth < ANCHOR_BREAKPOINT) // growing
     ) {
       createStickyStackAd()
-      // const bottomAnchorElement = document.getElementById(BOTTOM_ANCHOR_ID)
-      // if (bottomAnchorElement) bottomAnchorElement.remove()
     }
   }
 
@@ -91,8 +89,6 @@ function resizeListener(event: UIEvent) {
 }
 
 export default function Layout() {
-
-  const [search, setSearch] = useState(useLocation().search)
 
   const theme = useTheme()
   const styles = (theme: Theme) => ({
@@ -105,6 +101,7 @@ export default function Layout() {
       width: '90%'
     },
     gutter: {
+      paddingTop: '6em',
       [theme.breakpoints.up('xl')]: {
         minWidth: '340px',
       },
@@ -118,7 +115,7 @@ export default function Layout() {
     },
     layout: {
       display: 'flex',
-      flexDirection: 'row'
+      flexDirection: 'row',
     },
     app: {
       textAlign: 'left',
@@ -158,30 +155,93 @@ export default function Layout() {
     createStickyStackAd()
   })
 
+  const [search, setSearch] = useState(useLocation().search)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
   return (
     <>
       <div className="background-color"></div>
       <div className="background-image"></div>
 
-      {/* <AppBar position='absolute'> */}
+      <AppBar position="relative" >
         <Toolbar>
-          <img style={{ imageRendering: 'pixelated' }} src={res.img.logo} alt="enigma! logo" />
-          <Typography variant="h3" component="div" marginLeft={'.5em'}>
-            Sandwich Calculator
-          </Typography>
-          <Box marginLeft={'1em'}>
+          <Box margin={'.5em'}>
+            <Typography variant="h3" textAlign={'center'}>
+              Sandwich Calculator
+            </Typography>
+          </Box>
+          <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
             <nav>
-              <Button component={NavLink} to={`/${search}`}>Home</Button>
-              <Button component={NavLink} to={`/Explore${search}`}>Ingredients</Button>
-              <Button component={NavLink} to={`/Recipes${search}`}>Recipes</Button>
-              <Button component={NavLink} to={`/FAQ${search}`}>FAQ</Button>
-              <Button component={NavLink} to={`/About${search}`}>About</Button>
+              <Button size='small' component={NavLink} to={`/${search}`}>Home</Button>
+              <Button size='small' component={NavLink} to={`/Explore${search}`}>Ingredients</Button>
+              <Button size='small' component={NavLink} to={`/Recipes${search}`}>Recipes</Button>
+              <Button size='small' component={NavLink} to={`/FAQ${search}`}>FAQ</Button>
+              <Button size='small' component={NavLink} to={`/About${search}`}>About</Button>
             </nav>
           </Box>
-          <Box flexGrow={1} />
-          {/* <Button color="inherit">Login</Button> */}
+          <Box flex={1} />
+          <Button
+            color="inherit"
+            aria-label="open drawer"
+            onClick={() => { setDrawerOpen(true) }}
+            sx={{ display: { md: 'none' } }}
+          >
+            Menu &nbsp;
+            <Menu />
+          </Button>
+          <Button
+            size='small'
+            component={NavLink}
+            disabled
+            to={`/Login`}
+            sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}
+          >
+            Login
+          </Button>
         </Toolbar>
-      {/* </AppBar> */}
+      </AppBar>
+      <Drawer
+        variant="temporary"
+        anchor='right'
+        open={drawerOpen}
+        onClose={() => { setDrawerOpen(false) }}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+      >
+        <List>
+          {
+            [
+              { label: 'Home', path: '/' },
+              { label: 'Ingredients', path: '/Explore' },
+              { label: 'Recipes', path: '/Recipes' },
+              { label: 'FAQ', path: '/FAQ' },
+              { label: 'About', path: 'About' }
+            ].map(v => (
+              <ListItemButton
+                component={NavLink}
+                to={v.path + search}
+                key={JSON.stringify(v)}
+                onClick={() => { setDrawerOpen(false) }}
+              >
+                <ListItemText>
+                  <Typography variant='button'>
+                    {v.label}
+                  </Typography>
+                </ListItemText>
+              </ListItemButton>
+            ))
+          }
+          <Divider />
+          <ListItemButton disabled >
+            <ListItemText>
+              <Typography variant='button'>
+                Login
+              </Typography>
+            </ListItemText>
+          </ListItemButton>
+        </List>
+      </Drawer>
 
       <Box sx={classes.layout}>
         <Box sx={classes.app}>

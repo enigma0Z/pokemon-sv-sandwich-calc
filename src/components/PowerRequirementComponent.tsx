@@ -4,7 +4,7 @@ import { DisplayRequirement } from '../data/Cookbook'
 import { powerName } from '../data/calc'
 import { AddCircle, CheckCircle, Error, RemoveCircle } from '@mui/icons-material'
 import { Box } from '@mui/system'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function PowerRequirementComponent(
   props: {
@@ -12,6 +12,24 @@ export default function PowerRequirementComponent(
   }
 ) {
   const [minimized, setMinimized]: [boolean, (value: boolean) => void] = useState(false)
+  const [sticky, setSticky] = useState(false)
+
+  const scrollListener = () => {
+    if (window.pageYOffset > 64) {
+      setSticky(true)
+    } else {
+      setSticky(false)
+    }
+  }
+
+  useEffect(() => {
+    console.log('<PowerRequirementComponent> Add scroll event listener', window.addEventListener('scroll', scrollListener))
+
+    return () => {
+      console.log('<PowerRequirementComponent> Remove scroll event listener', window.removeEventListener('scroll', scrollListener))
+    }
+  }, [])
+
 
   return (
     <Paper
@@ -21,9 +39,10 @@ export default function PowerRequirementComponent(
         maxWidth: '18em',
         padding: '.5em',
         display: props.requirements.length > 0 ? 'block' : 'none',
-        position: 'fixed',
-        top: '5em',
-        right: '.25em',
+        position: sticky ? 'fixed' : 'absolute',
+        top: sticky ? '16px' : '80px',
+        right: '16px',
+        // right: '1em',
         zIndex: 1000,
         borderRadius: minimized ? '4em' : '1em',
       }}

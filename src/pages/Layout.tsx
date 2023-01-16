@@ -1,16 +1,30 @@
-import { AppBar, Box, Button, Divider, Drawer, Link, List, ListItemButton, ListItemText, Theme, Toolbar, Typography, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, Link, List, ListItemButton, ListItemText, Modal, Paper, Theme, Toolbar, Typography, useTheme } from '@mui/material';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { useEffect, useState } from 'react';
 import { NitroPayConfig } from '../util/NitroPay/Config';
 import { Menu } from '@mui/icons-material';
+import { Amplify } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
+import { LoginModal } from '../components/modal/LoginModal';
+import { subscribeAuthEvent } from '../auth/AWSEventListener';
+import FeatureFlags from '../util/FeatureFlags';
 
 const GUTTER_BREAKPOINT = 1536
 const ANCHOR_BREAKPOINT = 900
 const RIGHT_GUTTER_ID = 'sandwich-right-gutter-sticky-stack'
 const BOTTOM_ANCHOR_ID = 'sandwich-bottom-anchor'
 let previousWidth: number = NaN
+
+Amplify.configure({
+  Auth: {
+    region: 'us-east-1',
+    userPoolId: 'us-east-1_WGVEKdijj',
+    userPoolWebClientId: '49p7d8fiat39thb876s0o7cnht',
+    signUpVerificationMethod: 'link',
+  }
+})
 
 function createBottomAnchorAd() {
   //@ts-ignore
@@ -89,6 +103,25 @@ function resizeListener(event: UIEvent) {
 }
 
 export default function Layout() {
+  const [search, setSearch] = useState(useLocation().search)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [loginModalOpen, setLoginModalOpen] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    console.log('useEffect() once')
+    createBottomAnchorAd()
+    window.addEventListener('resize', resizeListener)
+  }, [])
+
+  useEffect(() => {
+    createStickyStackAd()
+  })
+
+  subscribeAuthEvent('Layout.tsx', ['configured', 'signIn', 'signOut', 'autoSignIn'], (user) => {
+    if (user !== null && user !== undefined) setLoggedIn(true)
+    else setLoggedIn(false)
+  })
 
   const theme = useTheme()
   const styles = (theme: Theme) => ({
@@ -145,19 +178,6 @@ export default function Layout() {
 
   const classes = styles(theme)
 
-  useEffect(() => {
-    console.log('useEffect() once')
-    createBottomAnchorAd()
-    window.addEventListener('resize', resizeListener)
-  }, [])
-
-  useEffect(() => {
-    createStickyStackAd()
-  })
-
-  const [search, setSearch] = useState(useLocation().search)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-
   return (
     <>
       <div className="background-color"></div>
@@ -190,13 +210,12 @@ export default function Layout() {
             <Menu />
           </Button>
           <Button
+            disabled={FeatureFlags.login === false}
             size='small'
-            component={NavLink}
-            disabled
-            to={`/Login`}
             sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}
+            onClick={() => setLoginModalOpen(true)}
           >
-            Login
+            { loggedIn ? 'Log out' : 'Log in' }
           </Button>
         </Toolbar>
       </AppBar>
@@ -233,15 +252,19 @@ export default function Layout() {
             ))
           }
           <Divider />
-          <ListItemButton disabled >
+          <ListItemButton disabled={FeatureFlags.login === false} onClick={() => setLoginModalOpen(true)}>
             <ListItemText>
               <Typography variant='button'>
-                Login
+                { loggedIn ? 'Log out' : 'Log in' }
               </Typography>
             </ListItemText>
           </ListItemButton>
         </List>
       </Drawer>
+      <LoginModal
+        open={loginModalOpen}
+        onClose={() => {setLoginModalOpen(false)}}
+      />
 
       <Box sx={classes.layout}>
         <Box sx={classes.app}>

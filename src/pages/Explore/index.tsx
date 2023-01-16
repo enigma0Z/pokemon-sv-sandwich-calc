@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import IngredientDetail from '../../components/IngredientDetail'
 import { Ingredients, Seasonings, PokemonTypes, MealPowers, Tastes, ingredientTags } from '../../data/Cookbooks'
 import { Ingredient } from '../../data/Cookbook'
-import { NitroPayConfig } from '../../util/NitroPayConfig'
+import { NitroPayConfig } from '../../util/NitroPay/Config'
 
 function onlyUnique(value: any, index: any, self: any) {
   return self.indexOf(value) === index;

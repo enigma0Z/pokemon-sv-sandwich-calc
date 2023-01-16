@@ -3,7 +3,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import res from '../res';
 import './Layout.css';
 import { useEffect, useState } from 'react';
-import { NitroPayConfig } from '../util/NitroPayConfig';
+import { NitroPayConfig } from '../util/NitroPay/Config';
 import { Menu } from '@mui/icons-material';
 
 const GUTTER_BREAKPOINT = 1536

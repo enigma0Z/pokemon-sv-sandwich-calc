@@ -163,8 +163,8 @@ export default function Layout() {
       <div className="background-color"></div>
       <div className="background-image"></div>
 
-      <AppBar position="relative" >
-        <Toolbar>
+      <AppBar position="relative">
+        <Toolbar sx={{ background: res.palette.gradients.bar }}>
           <Box margin={'.5em'}>
             <Typography variant="h3" textAlign={'center'}>
               Sandwich Calculator

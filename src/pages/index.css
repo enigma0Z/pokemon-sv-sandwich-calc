@@ -55,7 +55,7 @@ div.background-color {
 }
 
 div.background-image {
-  background: url(/img/background.png);
+  background: url(../res/img/background.png);
   z-index: -100;
   position: fixed;
   top: 0;

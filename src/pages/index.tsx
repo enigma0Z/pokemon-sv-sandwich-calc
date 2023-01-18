@@ -13,32 +13,38 @@ const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
 const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
+const LS_HOME_STATE_QUERY_STRING = 'home_state_qs'
 
 export default function Home() {
-  // TODO: Fix this - Migration to next.js
-  // This sends search URI to Layout
-  // const [setSearch] = useOutletContext<[(v: string) => {}]>();
-
   useEffect(() => {
-    let localStorageGuidePowers = localStorage.getItem(LS_HOME_GUIDE_POWERS)
+    let localStorageGuidePowers = window.localStorage.getItem(LS_HOME_GUIDE_POWERS)
     let loadedGuidePowers: SandwichPower[] = []
     if (localStorageGuidePowers) {
       loadedGuidePowers = JSON.parse(localStorageGuidePowers)
+      console.log('loaded guide powers', loadedGuidePowers)
       setGuidePowers(loadedGuidePowers)
     }
+    if (window.location.search.slice(1).length > 0) {
+      console.log('home qs parse')
+      const queryStringProps: QueryStringProps = new QueryStringProps(window.location.search.slice(1))
+      setIngredients(queryStringProps.ingredients)
+      setSeasonings(queryStringProps.seasonings)
+      setPlayers(queryStringProps.players)
+      window.localStorage.setItem(LS_HOME_STATE_QUERY_STRING, ingredientsUri(queryStringProps.ingredients, queryStringProps.seasonings))
+    } else {
+      console.log('home local storage parse')
+      let localStorageQueryString = window.localStorage.getItem(LS_HOME_STATE_QUERY_STRING)
+      if (localStorageQueryString) {
+        const queryStringProps: QueryStringProps = new QueryStringProps(localStorageQueryString)
+        console.log('home local storage parse', localStorageQueryString, queryStringProps)
+        console.log(setIngredients(queryStringProps.ingredients))
+        console.log(setSeasonings(queryStringProps.seasonings))
+        console.log(setPlayers(queryStringProps.players) )
+        setUri(queryStringProps.ingredients, queryStringProps.seasonings)
+      }
+    }
+
     document.title = "Sandwich Calculator: Home"
-  }, [])
-
-  // TODO: Fix this - migration to next.js
-  // const location = useLocation()
-  const location = ''
-
-
-  useEffect(() => {
-    const queryStringProps: QueryStringProps = new QueryStringProps(window.location.search.slice(1))
-    setIngredients(queryStringProps.ingredients)
-    setSeasonings(queryStringProps.seasonings)
-    setPlayers(queryStringProps.players)
   }, [])
 
   const [guidePowers, setGuidePowers]: [SandwichPower[], (powers: SandwichPower[]) => void] = useState([] as SandwichPower[])
@@ -111,12 +117,9 @@ export default function Home() {
       queryString.push(`players=${players}`)
     }
 
-    let url
-    if (queryString.length > 0) {
-      url = `${window.location.protocol}//${window.location.host}${ingredientsUri(ingredients, seasonings)}`
-    } else {
-      url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-    }
+    const qs = ingredientsUri(ingredients, seasonings)
+    const url = `${window.location.protocol}//${window.location.host}${qs}`
+    localStorage.setItem(LS_HOME_STATE_QUERY_STRING, qs)
     window.history.pushState('', '', url)
   }
 

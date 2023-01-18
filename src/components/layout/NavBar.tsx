@@ -11,9 +11,6 @@ import FeatureFlags from '../../util/FeatureFlags'
 import { LoginModal } from '../modal/LoginModal'
 
 export default function NavBar() {
-  // TODO: Get this from window location + useState or useEffect
-  const search=''
-
   useEffect(() => {
     console.log('featureFlags', FeatureFlags)
   })
@@ -38,11 +35,11 @@ export default function NavBar() {
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
             <nav>
-              <Button size='small' component={NextLink} href={`/${search}`}>Home</Button>
-              <Button size='small' component={NextLink} href={`/Explore${search}`}>Ingredients</Button>
-              <Button size='small' component={NextLink} href={`/Recipes${search}`}>Recipes</Button>
-              <Button size='small' component={NextLink} href={`/FAQ${search}`}>FAQ</Button>
-              <Button size='small' component={NextLink} href={`/About${search}`}>About</Button>
+              <Button size='small' component={NextLink} href={`/`}>Home</Button>
+              <Button size='small' component={NextLink} href={`/Explore`}>Ingredients</Button>
+              <Button size='small' component={NextLink} href={`/Recipes`}>Recipes</Button>
+              <Button size='small' component={NextLink} href={`/FAQ`}>FAQ</Button>
+              <Button size='small' component={NextLink} href={`/About`}>About</Button>
             </nav>
           </Box>
           <Box flex={1} />
@@ -85,7 +82,7 @@ export default function NavBar() {
             ].map(v => (
               <ListItemButton
                 component={NextLink}
-                href={v.path + search}
+                href={v.path}
                 key={JSON.stringify(v)}
                 onClick={() => { setDrawerOpen(false) }}
               >

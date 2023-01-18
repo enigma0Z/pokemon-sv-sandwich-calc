@@ -91,10 +91,6 @@ function resizeListener(w: Window, event: UIEvent) {
 }
 
 export default function PageLayout({ children }: { children: React.ReactNode }) {
-  // TODO: Handle search
-  // const [search, setSearch] = useState(useLocation().search)
-  const search = ''
-
   useEffect(() => {
     createBottomAnchorAd(window)
     window.addEventListener('resize', (event: UIEvent) => { resizeListener(window, event) })
@@ -184,7 +180,7 @@ export default function PageLayout({ children }: { children: React.ReactNode }) 
         <DomLink href="https://enigma-plays-live.myspreadshop.com/">Merch</DomLink>
       </Box>
       <Box sx={classes.section}>
-        <Image style={{ width: '80%', imageRendering: 'pixelated' }} src={res.img.logo } alt="enigma! logo" />
+        <Image style={{ width: '80%', height: 'auto', imageRendering: 'pixelated' }} src={res.img.logo } alt="enigma! logo" />
       </Box>
       <Box sx={classes.section}>
         <Link href="https://enigma0z.com/privacy.html">Privacy Policy</Link>

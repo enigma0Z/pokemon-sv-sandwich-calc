@@ -2,7 +2,6 @@ import { Authenticator, ThemeProvider, Theme } from '@aws-amplify/ui-react';
 import { Box, Button, Modal, Paper, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { subscribeAuthEvent } from '../../auth/AWSEventListener';
-import './LoginModal.css'
 
 export function LoginModal(props: {open: boolean, onClose: () => void}) {
   const [open, setOpen] = useState(props.open)

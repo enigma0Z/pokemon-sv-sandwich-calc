@@ -275,6 +275,7 @@ export function combineComponents(ingredients: SandwichStats, seasonings: Sandwi
 }
 
 export function calculateSandwich(ingredients: (Ingredient | undefined | null)[], seasonings: (Ingredient | undefined | null)[]): Sandwich {
+  // TODO: Calculate for dropped ingredients, stars, penalties
   const calcSandwich: Sandwich = {
     name: undefined,
     description: undefined,

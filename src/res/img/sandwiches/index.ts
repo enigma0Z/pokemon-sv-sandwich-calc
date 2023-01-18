@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image'
 import _1 from './1.jpg'
 import _10 from './10.jpg'
 import _100 from './100.jpg'
@@ -148,7 +149,7 @@ import _96 from './96.jpg'
 import _97 from './97.jpg'
 import _98 from './98.jpg'
 import _99 from './99.jpg'
-const images: {[index: string]: string} = {
+const sandwiches: {[index: string]: StaticImageData} = {
   1: _1,
   10: _10,
   100: _100,
@@ -300,4 +301,4 @@ const images: {[index: string]: string} = {
   98: _98,
   99: _99,
 }
-export default images
+export default sandwiches

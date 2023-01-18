@@ -1,4 +1,3 @@
-
 import { Chip, IconButton, Paper, Typography } from '@mui/material'
 import { DisplayRequirement } from '../data/Cookbook'
 import { powerName } from '../data/calc'
@@ -63,6 +62,7 @@ export default function PowerRequirementComponent(
                   {requirement.components.map(component => {
                     return (
                       <Chip 
+                        key={component.name}
                         sx={{ width: 'fit-content', margin: '.25em' }} 
                         size='small' 
                         label={`${component.name}: ${component.value}`} 

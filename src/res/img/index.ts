@@ -1,7 +1,8 @@
+import { StaticImageData } from 'next/image'
 import _background from './background.png'
 import _logo from './logo.png'
-const images: {[index: string]: string} = {
+const img: {[index: string]: StaticImageData} = {
   background: _background,
   logo: _logo,
 }
-export default images
+export default img

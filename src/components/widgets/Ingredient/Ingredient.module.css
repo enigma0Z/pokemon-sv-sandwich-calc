@@ -1,0 +1,22 @@
+.IngredientBox {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  background-color: #C0FFFF;
+  border-radius: 16px;
+  border: solid 4px black;
+  width: 275px;
+  color: black;
+}
+.IngredientTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: .5em;
+  padding-right: .5em;
+  border: solid 1px black;
+  font-weight: bold;
+  font-family: 'Futura';
+}

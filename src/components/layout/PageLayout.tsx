@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import NitroPayConfig from "@/util/NitroPay/Config";
 import NavBar from "./NavBar";
 import { DomLink } from "../DomLink";
+import Image from "next/image";
 
 const GUTTER_BREAKPOINT = 1536
 const ANCHOR_BREAKPOINT = 900
@@ -182,7 +183,7 @@ export default function PageLayout({ children }: { children: React.ReactNode }) 
         <DomLink href="https://enigma-plays-live.myspreadshop.com/">Merch</DomLink>
       </Box>
       <Box sx={classes.section}>
-        <img style={{ width: '80%', imageRendering: 'pixelated' }} src='/img/logo.png' alt="enigma! logo" />
+        <Image style={{ width: '80%', imageRendering: 'pixelated' }} src='/img/logo.png' alt="enigma! logo" />
       </Box>
       <Box sx={classes.section}>
         <Link href="https://enigma0z.com/privacy.html">Privacy Policy</Link>

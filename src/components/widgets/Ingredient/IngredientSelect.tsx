@@ -1,7 +1,7 @@
-import { AddCircle, RemoveCircle } from '@mui/icons-material';
+import { AddCircle, RemoveCircle, SettingsInputAntennaTwoTone } from '@mui/icons-material';
 import { Box, IconButton, MenuItem, Select, SelectChangeEvent, Theme, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
+import { isMobile as isMobileDetect } from 'react-device-detect';
 import { Ingredient } from '@/data/Cookbook';
 import StatBubbles from '@/components/StatBubbles';
 
@@ -29,9 +29,14 @@ export default function IngredientSelect(props: {
     setValue(props.value ? props.value : null)
   }, [props.value])
 
+  useEffect(() => {
+    setIsMobile(isMobileDetect)
+  }, [])
+
   const classes = styles(theme)
   const showDetails = props.showDetails === true
   const [value, setValue] = useState<Ingredient | null>(props.value ? props.value : null)
+  const [isMobile, setIsMobile] = useState(false)
 
   return (
     <Box sx={classes.IngredientSelect} >

@@ -1,9 +1,8 @@
 'use client';
 
 import { CustomCookbook, InGameCookbook, LevelSynonyms, MealPowers, MealPowerSynonyms, PokemonTypes } from '../data/Cookbooks'
-import { Autocomplete, Box, Button, Chip, createFilterOptions, TextField } from '@mui/material'
-import NextLink from 'next/link';
-import { useState } from 'react'
+import { Autocomplete, Box, Button, Chip, createFilterOptions, Link, TextField } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { powerName } from '../data/calc'
 import { SandwichPower } from '../data/Cookbook'
 import { recipeUri } from './SandwichV2'
@@ -13,11 +12,15 @@ export default function PowerSelect(
   props: {
     visible?: boolean,
     onChange?: (value: SandwichPower[]) => void,
-    powers?: SandwichPower[],
+    powers: SandwichPower[],
     showRecipes?: boolean
   }
 ) {
-  const [powers, setPowers] = useState<SandwichPower[]>(props.powers ? props.powers : [])
+  const [powers, setPowers] = useState<SandwichPower[]>(props.powers)
+
+  useEffect(() => {
+    setPowers(props.powers)
+  }, [props.powers])
 
   const options: SandwichPower[] = []
 
@@ -91,9 +94,10 @@ export default function PowerSelect(
       }
 
       for (let recipe of workingRecipes) {
+        // TODO: Make this better by passing information back through a callback instead of a link object, which reloads the whole page
         foundRecipes.push(<Chip 
           clickable
-          component={NextLink}
+          component={Link}
           size={'small'} 
           sx={{ margin: '.25em' }} 
           label={recipe.name} 

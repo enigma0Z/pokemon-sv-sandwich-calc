@@ -2,7 +2,7 @@ import './index.css';
 import './layout.css';
 import '@/components/modal/LoginModal.css';
 import '@/components/Sandwich.css';
-import './recipes/index.css'
+import './Recipes/index.css'
 
 import themeOptions from '@/res/theme'
 

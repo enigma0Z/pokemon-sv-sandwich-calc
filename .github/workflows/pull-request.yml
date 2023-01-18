@@ -21,15 +21,11 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
+      - name: CI
+        run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Build
-        run: |
-          #!/bin/bash
-          set -xe
-          npm ci
-          npm run build
+        run: npm run build
       - name: Test
-        run: |
-          #!/bin/bash
-          set -xe
-          npm ci
-          npm run test
+        run: npm run test

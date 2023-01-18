@@ -1,6 +1,8 @@
+'use client';
+
 import { CustomCookbook, InGameCookbook, LevelSynonyms, MealPowers, MealPowerSynonyms, PokemonTypes } from '../data/Cookbooks'
 import { Autocomplete, Box, Button, Chip, createFilterOptions, TextField } from '@mui/material'
-import { Link as DomLink } from 'react-router-dom'
+import NextLink from 'next/link';
 import { useState } from 'react'
 import { powerName } from '../data/calc'
 import { SandwichPower } from '../data/Cookbook'
@@ -91,11 +93,11 @@ export default function PowerSelect(
       for (let recipe of workingRecipes) {
         foundRecipes.push(<Chip 
           clickable
-          component={DomLink}
+          component={NextLink}
           size={'small'} 
           sx={{ margin: '.25em' }} 
           label={recipe.name} 
-          to={recipeUri(recipe)}
+          href={recipeUri(recipe)}
           icon={<LunchDining />}
           // onClick={() => {
           //   const url = `${window.location.protocol}//${window.location.host}${recipeUri(recipe)}`

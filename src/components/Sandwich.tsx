@@ -1,10 +1,8 @@
 import { Box, Tooltip } from '@mui/material';
-import Ingredient from './Ingredient';
-import Seasoning from './Seasoning';
-import './Sandwich.css'
-import { Link } from 'react-router-dom';
 import { SandwichPower } from '../data/Cookbook';
 import { powerName } from '../data/calc';
+import IngredientImage from './widgets/Ingredient/Image';
+import { DomLink } from './DomLink';
 
 export default function Sandwich(props: { 
   name?: string; 
@@ -15,10 +13,13 @@ export default function Sandwich(props: {
   seasonings: string[]; 
   powers: SandwichPower[];
 }) {
-  const ingredients = props.ingredients.map((x) => <Ingredient name={x.split(':')[0]} />)
-  const seasonings = props.seasonings.map((x) => <Seasoning name={x.split(':')[0]} />)
+  const ingredients = props.ingredients.map((x) => <IngredientImage key={x} kind='ingredient' name={x.split(':')[0]} />)
+  const seasonings = props.seasonings.map((x) => <IngredientImage key={x} kind='seasoning' name={x.split(':')[0]} />)
   const powers = props.powers.map((x) => { 
-    return (<Box>{powerName(x)}</Box>) 
+    return (
+      <Box key={x.toString()}>
+        {powerName(x)}
+      </Box>) 
   })
 
   const uri = `/?ingredients=${props.ingredients.join(',')}&seasonings=${props.seasonings.join(',')}`
@@ -35,7 +36,8 @@ export default function Sandwich(props: {
         <p>Seasonings: {props.seasonings.join(', ')}</p>
       </>}>
       <Box className='sandwich'>
-        <Link to={uri} onClick={() => {
+        <DomLink href={uri} onClick={() => {
+          //@ts-ignore
           gtag('event', 'sandwich_click', {uri: uri})
         }}>
           <Box className='title' display={"flex"} flexDirection={"row"}>
@@ -45,7 +47,7 @@ export default function Sandwich(props: {
           <Box display={"flex"} flexDirection={"column"}> {powers} </Box>
           <Box display={"flex"} flexDirection={"row"}> {ingredients} </Box>
           <Box display={"flex"} flexDirection={"row"}> {seasonings} </Box>
-        </Link>
+        </DomLink>
       </Box>
     </Tooltip>
   )

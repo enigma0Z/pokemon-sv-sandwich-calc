@@ -1,7 +1,6 @@
 import { Autocomplete, Box, Button, TextField } from '@mui/material'
 import { useState, useEffect } from 'react'
 import Sandwich from '../../components/Sandwich'
-import './index.css'
 
 import { PokemonTypes, MealPowers } from '../../data'
 import { CustomCookbook, InGameCookbook } from '../../data/Cookbooks'

@@ -1,7 +1,7 @@
 'use client';
 
 const FeatureFlags: {[index: string]: boolean} = {
-  login: true
+  login: false
 }
 
 export default FeatureFlags

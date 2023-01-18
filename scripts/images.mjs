@@ -18,7 +18,11 @@ const imageFileNames = (dir) => {
 const generate = () => {
   for (let dir of directories) {
 
-    const lines = []
+    const name = dir.split('/').slice(-1)
+
+    const lines = [
+      "import { StaticImageData } from 'next/image'"
+    ]
 
     const imports = imageFileNames(dir).map((name) => {
       return `import _${name.split('.')[0]} from './${name}'`
@@ -27,7 +31,7 @@ const generate = () => {
     lines.push(...imports)
 
     lines.push(
-      'const images: {[index: string]: string} = {'
+      `const ${name}: {[index: string]: StaticImageData} = {`
     )
 
     const declarations = imageFileNames(dir).map((name) => {
@@ -38,7 +42,7 @@ const generate = () => {
 
     lines.push(
       '}',
-      'export default images'
+      `export default ${name}`
     )
 
     writeFileSync([basedir, dir, 'index.ts'].join('/'), lines.join('\n'), 'utf8')

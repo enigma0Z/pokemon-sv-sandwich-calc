@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { AppBar, Box, Button, Divider, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material"
 import res from "../../res"
 import { subscribeAuthEvent } from '../../auth/AWSEventListener'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Menu } from '@mui/icons-material';
 import FeatureFlags from '../../util/FeatureFlags'
@@ -13,6 +13,10 @@ import { LoginModal } from '../modal/LoginModal'
 export default function NavBar() {
   // TODO: Get this from window location + useState or useEffect
   const search=''
+
+  useEffect(() => {
+    console.log('featureFlags', FeatureFlags)
+  })
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [loginModalOpen, setLoginModalOpen] = useState(false)

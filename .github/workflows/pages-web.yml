@@ -35,23 +35,19 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
+      - name: CI
+        run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Build
-        run: |
-          #!/bin/bash
-          set -xe
-          npm ci
-          npm run build
+        run: npm run build
       - name: Test
-        run: |
-          #!/bin/bash
-          set -xe
-          npm ci
-          npm run test
+        run: npm run test:ci
       - name: Nitropay Ads.txt
         run: |
           #!/bin/bash
           set -xe
-          cd build
+          cd out
           wget https://api.nitropay.com/v1/ads-1347.txt
           mv ads-1347.txt ads.txt
       - name: Setup Pages
@@ -60,7 +56,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload build directory
-          path: './build'
+          path: './out'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1

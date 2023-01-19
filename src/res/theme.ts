@@ -1,4 +1,4 @@
-import createTheme from "@mui/material/styles/createTheme";
+import createTheme, { ThemeOptions } from "@mui/material/styles/createTheme";
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -58,7 +58,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const theme = createTheme({
+const themeOptions: ThemeOptions = {
   palette: {
     mode: 'dark',
     primary: {
@@ -191,4 +191,6 @@ export const theme = createTheme({
       fontSize: '18pt',
     },
   },
-});
+}
+
+export default themeOptions

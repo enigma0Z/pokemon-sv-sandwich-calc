@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image'
 import _apple from './apple.png'
 import _avocado from './avocado.png'
 import _bacon from './bacon.png'
@@ -33,7 +34,7 @@ import _tofu from './tofu.png'
 import _tomato from './tomato.png'
 import _watercress from './watercress.png'
 import _yellowbellpepper from './yellowbellpepper.png'
-const images: {[index: string]: string} = {
+const ingredients: {[index: string]: StaticImageData} = {
   apple: _apple,
   avocado: _avocado,
   bacon: _bacon,
@@ -70,4 +71,4 @@ const images: {[index: string]: string} = {
   watercress: _watercress,
   yellowbellpepper: _yellowbellpepper,
 }
-export default images
+export default ingredients

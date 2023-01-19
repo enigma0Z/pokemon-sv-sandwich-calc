@@ -110,7 +110,7 @@ const listener = (data: any) => {
   }
   Auth.currentUserInfo().then(currentUserInfo => {
     for (let key of Object.keys(subscriptions[data.payload.event as AuthEvent])) {
-      console.info('Executing subscription', data.payload.event, key)
+      console.debug('Executing subscription', data.payload.event, key)
       subscriptions[data.payload.event as AuthEvent][key](currentUserInfo, data.payload)
     }
   })

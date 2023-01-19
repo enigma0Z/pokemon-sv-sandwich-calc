@@ -14,7 +14,7 @@ export default function About() {
           </li><li>
             Show if a built recipe matches a known one (in game or on this site)
           </li><li>
-            Multiplayer mode -- I don't know if the recipe values get calculated differently here, need to experiment
+            Multiplayer mode -- I don&apos;t know if the recipe values get calculated differently here, need to experiment
           </li><li>
             Reverse mode -- Specify powers & types and generate a sandwich that partially or fully fulfils this condition
           </li><li>
@@ -26,7 +26,7 @@ export default function About() {
       <div id="known issues" className="content">
         <h2>Known Issues & Quirks</h2>
         <ul><li>
-          In-game recipes get different bonuses than the "technically correct" calculated result
+          In-game recipes get different bonuses than the &quot;technically correct&quot; calculated result
         </li><li>
           Flavor bonuses only occur or get calculated sometimes.  Unknown why / when.
         </li></ul>

@@ -1,21 +1,16 @@
-import res, { imageName } from '../res'
-import { Box, Theme, useTheme } from '@mui/material';
-import { Ingredients, Seasonings } from '../data/Cookbooks';
-import StatBubbles from './StatBubbles';
-import { Ingredient } from '../data/Cookbook';
+import css from './Ingredient.module.css'
+
+import res, { imageName } from '@/res'
+import { Box, Theme, Typography, useTheme } from '@mui/material';
+import { Ingredients, Seasonings } from '@/data/Cookbooks';
+import StatBubbles from '@/components/StatBubbles';
+import { Ingredient } from '@/data/Cookbook';
+import IngredientImage from './Image';
 
 export default function IngredientDetail(props: { visible?: boolean, name: string, kind: "ingredient" | "seasoning" } ) {
   const theme = useTheme()
   const styles = (theme: Theme) => ({
     IngredientBox: {
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '.5em',
-      backgroundColor: '#C0FFFF',
-      borderRadius: '16px',
-      border: 'solid 4px black',
-      width: '275px',
-      color: 'black',
       [theme.breakpoints.down('sm')]: {
         width: '100%'
       }
@@ -43,15 +38,12 @@ export default function IngredientDetail(props: { visible?: boolean, name: strin
   }
 
   if ((props.visible === true || props.visible === undefined) && ingredient !== undefined) {
-    if (props.kind === 'ingredient') {
-      img = <img src={res.img.ingredients[imageName(ingredient.name)]} alt={ingredient.name}/>
-    } else if (props.kind === 'seasoning') {
-      img = <img src={res.img.seasonings[imageName(ingredient.name)]} alt={ingredient.name}/>
-    }
+    
     return (
-      <Box sx={classes.IngredientBox}>
-        <Box sx={classes.IngredientTitle}>
-          {img} {ingredient.name}
+      <Box sx={classes.IngredientBox} className={css.IngredientBox}>
+        <Box className={css.IngredientTitle}>
+          <IngredientImage kind={props.kind} name={ingredient.name} />
+          {ingredient.name}
         </Box>
         <StatBubbles taste={ingredient.taste} power={ingredient.power} type={ingredient.type} amount={ingredient.numPieces} />
       </Box>

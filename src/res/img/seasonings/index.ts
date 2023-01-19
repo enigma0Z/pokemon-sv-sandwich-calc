@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image'
 import _bitterherbamystica from './bitterherbamystica.png'
 import _butter from './butter.png'
 import _chilisauce from './chilisauce.png'
@@ -21,7 +22,7 @@ import _vinegar from './vinegar.png'
 import _wasabi from './wasabi.png'
 import _whippedcream from './whippedcream.png'
 import _yogurt from './yogurt.png'
-const images: {[index: string]: string} = {
+const seasonings: {[index: string]: StaticImageData} = {
   bitterherbamystica: _bitterherbamystica,
   butter: _butter,
   chilisauce: _chilisauce,
@@ -46,4 +47,4 @@ const images: {[index: string]: string} = {
   whippedcream: _whippedcream,
   yogurt: _yogurt,
 }
-export default images
+export default seasonings

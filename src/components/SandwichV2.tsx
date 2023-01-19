@@ -1,13 +1,12 @@
 import { Alert, AlertColor, Box, Chip, IconButton, Modal, Paper, Snackbar, Theme, Tooltip, Typography, useTheme } from '@mui/material';
-import IngredientElement from './Ingredient';
-import SeasoningElement from './Seasoning';
-import './Sandwich.css'
+import IngredientElement from './widgets/Ingredient/Image';
 import { Ingredient, Recipe } from '../data/Cookbook';
 import StatBubbles from './StatBubbles';
 import { powerName } from '../data/calc';
 import { Sandwich as SandwichType } from '../data/Cookbook';
 import { ContentCopy, IosShare, Warning } from '@mui/icons-material';
 import { useState } from 'react';
+import IngredientImage from './widgets/Ingredient/Image';
 
 type SnackbarState = {
   open: boolean,
@@ -89,46 +88,11 @@ export default function Sandwich(props: {
   const [snackbar, setSnackbar]: [SnackbarState | undefined, (state: SnackbarState | undefined) => void] = useState()
   const [modalOpen, setModalOpen] = useState(false)
 
-  const ingredients = props.sandwich.ingredients.map((x) => <IngredientElement name={x.name} />)
-  const seasonings = props.sandwich.seasonings.map((x) => <SeasoningElement name={x.name} />)
+  const ingredients = props.sandwich.ingredients.map((x) => <IngredientImage key={x.name} kind='ingredient' name={x.name} />)
+  const seasonings = props.sandwich.seasonings.map((x) => <IngredientImage key={x.name} kind='seasoning' name={x.name} />)
   const powers = props.sandwich.powers.map((x) => {
-    return (<Box>{powerName(x)}</Box>)
+    return (<Box key={x.toString()}>{powerName(x)}</Box>)
   })
-
-  // if (props.sandwich.stats !== undefined) {
-  //   <Box sx={classes.DetailBox}>
-  //     <Box>Taste</Box>
-  //     <Box sx={classes.DetailRow}>
-  //       {Object.keys(props.sandwich.stats.taste).map(key => {
-  //         if (props.sandwich.stats?.taste[key] === 0) {
-  //           return null
-  //         } else {
-  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.taste[key]}</Box>
-  //         }
-  //       })}
-  //     </Box>
-  //     <Box>Power</Box>
-  //     <Box sx={classes.DetailRow}>
-  //       {Object.keys(props.sandwich.stats.power).map(key => {
-  //         if (props.sandwich.stats?.power[key as MealPower] === 0) {
-  //           return null
-  //         } else {
-  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.power[key as MealPower]}</Box>
-  //         }
-  //       })}
-  //     </Box>
-  //     <Box>Type</Box>
-  //     <Box sx={classes.DetailRow}>
-  //       {Object.keys(props.sandwich.stats.type).map(key => {
-  //         if (props.sandwich.stats?.type[key] === 0) {
-  //           return null
-  //         } else {
-  //           return <Box sx={classes.DetailItem}>{key}: {props.sandwich.stats?.type[key]}</Box>
-  //         }
-  //       })}
-  //     </Box>
-  //   </Box>
-  // }
 
   const description = <Box><p>{props.sandwich.description ? props.sandwich.description : ''}</p></Box>
 

@@ -1,16 +1,17 @@
-import img from './img'
-import _sandwiches from './img/sandwiches'
-import _ingredients from './img/ingredients'
-import _seasonings from './img/seasonings'
 import { palette } from './palette'
+import img from './img'
+import ingredients from './img/ingredients'
+import seasonings from './img/seasonings'
+import sandwiches from './img/sandwiches'
+
 
 const resources = {
   img: {
-    background: img.background,
     logo: img.logo,
-    sandwiches: _sandwiches,
-    ingredients: _ingredients,
-    seasonings: _seasonings,
+    badckground: img.background,
+    ingredient: { ...ingredients },
+    seasoning: { ...seasonings },
+    sandwich: {...sandwiches },
   },
   palette: { ...palette } 
 } 

@@ -1,55 +1,59 @@
-import './index.css';
 import { useState, useEffect } from 'react';
 import { Box, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { Ingredients, Seasonings } from '../../data/Cookbooks';
-import { Ingredient, SandwichPower } from '../../data/Cookbook';
-import { calculateSandwich, powerName, powerRequirements } from '../../data/calc';
-import Sandwich, { ingredientsQueryString, ingredientsUri } from '../../components/SandwichV2';
-import { useLocation, useOutletContext } from 'react-router-dom';
-import PowerSelect from '../../components/PowerSelect';
-import PowerRequirementComponent from '../../components/PowerRequirementComponent';
-import IngredientSelect from '../../components/IngredientSelect';
-import QueryStringProps from '../../util/QueryStringProps';
+import { Ingredients, Seasonings } from '../data/Cookbooks';
+import { Ingredient, SandwichPower } from '../data/Cookbook';
+import { calculateSandwich, powerName, powerRequirements } from '../data/calc';
+import Sandwich, { ingredientsUri } from '../components/SandwichV2';
+import PowerSelect from '../components/PowerSelect';
+import PowerRequirementComponent from '../components/PowerRequirementComponent';
+import QueryStringProps from '../util/QueryStringProps';
+import IngredientSelect from '@/components/widgets/Ingredient/IngredientSelect';
 
 const INGREDIENTS_PER_PLAYER = 6
 const SEASONINGS_PER_PLAYER = 4
 
 const LS_HOME_GUIDE_POWERS = 'home_guide_powers'
+const LS_HOME_STATE_QUERY_STRING = 'home_state_qs'
 
-export default function HomeV2() {
-  // This sends search URI to Layout
-  const [setSearch] = useOutletContext<[(v: string) => {}]>();
-
+export default function Home() {
   useEffect(() => {
+    let localStorageGuidePowers = window.localStorage.getItem(LS_HOME_GUIDE_POWERS)
+    let loadedGuidePowers: SandwichPower[] = []
+    if (localStorageGuidePowers) {
+      loadedGuidePowers = JSON.parse(localStorageGuidePowers)
+      console.log('loaded guide powers', loadedGuidePowers)
+      setGuidePowers(loadedGuidePowers)
+    }
+    if (window.location.search.slice(1).length > 0) {
+      console.log('home qs parse')
+      const queryStringProps: QueryStringProps = new QueryStringProps(window.location.search.slice(1))
+      setIngredients(queryStringProps.ingredients)
+      setSeasonings(queryStringProps.seasonings)
+      setPlayers(queryStringProps.players)
+      window.localStorage.setItem(LS_HOME_STATE_QUERY_STRING, ingredientsUri(queryStringProps.ingredients, queryStringProps.seasonings))
+    } else {
+      console.log('home local storage parse')
+      let localStorageQueryString = window.localStorage.getItem(LS_HOME_STATE_QUERY_STRING)
+      if (localStorageQueryString) {
+        const queryStringProps: QueryStringProps = new QueryStringProps(localStorageQueryString)
+        console.log('home local storage parse', localStorageQueryString, queryStringProps)
+        console.log(setIngredients(queryStringProps.ingredients))
+        console.log(setSeasonings(queryStringProps.seasonings))
+        console.log(setPlayers(queryStringProps.players) )
+        setUri(queryStringProps.ingredients, queryStringProps.seasonings)
+      }
+    }
+
     document.title = "Sandwich Calculator: Home"
   }, [])
 
-  const location = useLocation()
+  const [guidePowers, setGuidePowers]: [SandwichPower[], (powers: SandwichPower[]) => void] = useState([] as SandwichPower[])
 
-  let localStorageGuidePowers = localStorage.getItem(LS_HOME_GUIDE_POWERS)
-  let loadedGuidePowers: SandwichPower[] = []
-  if (localStorageGuidePowers) {
-    loadedGuidePowers = JSON.parse(localStorageGuidePowers)
-  }
-
-  useEffect(() => {
-    const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
-    setIngredients(queryStringProps.ingredients)
-    setSeasonings(queryStringProps.seasonings)
-    setSearch(location.search)
-  }, [location, setSearch])
-
-  const queryStringProps: QueryStringProps = new QueryStringProps(location.search.slice(1))
-
-  console.log(queryStringProps)
-
-  const [guidePowers, setGuidePowers] = useState(loadedGuidePowers)
-
-  const [ingredients, setIngredients]: [(Ingredient | null)[], any] = useState(queryStringProps.ingredients)
-  const [seasonings, setSeasonings]: [(Ingredient | null)[], any] = useState(queryStringProps.seasonings)
+  const [ingredients, setIngredients]: [(Ingredient | null)[], any] = useState([])
+  const [seasonings, setSeasonings]: [(Ingredient | null)[], any] = useState([])
 
   const [showDetails, setShowDetails] = useState(false)
-  const [players, setPlayers] = useState(queryStringProps.players)
+  const [players, setPlayers] = useState(1)
 
   const actualIngredients: (Ingredient | undefined)[] = []
   for (let ingredient of ingredients) {
@@ -71,6 +75,7 @@ export default function HomeV2() {
     console.log('Calculating sandwich', ingredients, seasonings)
     calculatedSandwich = calculateSandwich(ingredients.map(x => x === null ? undefined : x), seasonings)
 
+    //@ts-ignore
     gtag('event', 'home_sandwich_create', {
       ingredients: calculatedSandwich.ingredients.map(x => x.name),
       seasonings: calculatedSandwich.seasonings.map(x => x.name),
@@ -82,7 +87,7 @@ export default function HomeV2() {
   if (
     calculatedSandwich
   ) {
-    sandwich.push(<Sandwich showDetails={showDetails} sandwich={calculatedSandwich}></Sandwich>)
+    sandwich.push(<Sandwich key='sandwich' showDetails={showDetails} sandwich={calculatedSandwich}></Sandwich>)
   }
 
   const setUri = (ingredients: (Ingredient | null)[], seasonings: (Ingredient | null)[], players?: number) => {
@@ -112,14 +117,9 @@ export default function HomeV2() {
       queryString.push(`players=${players}`)
     }
 
-    let url
-    if (queryString.length > 0) {
-      url = `${window.location.protocol}//${window.location.host}${ingredientsUri(ingredients, seasonings)}`
-      setSearch(ingredientsQueryString(ingredients, seasonings))
-    } else {
-      url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-      setSearch('')
-    }
+    const qs = ingredientsUri(ingredients, seasonings)
+    const url = `${window.location.protocol}//${window.location.host}${qs}`
+    localStorage.setItem(LS_HOME_STATE_QUERY_STRING, qs)
     window.history.pushState('', '', url)
   }
 
@@ -129,7 +129,7 @@ export default function HomeV2() {
       i % INGREDIENTS_PER_PLAYER === 0
       && i + 1 < INGREDIENTS_PER_PLAYER * players
     ) {
-      ingredientSelects.push(<Box flexBasis={'100%'}>Player {i / INGREDIENTS_PER_PLAYER + 1}</Box>)
+      ingredientSelects.push(<Box key='Ingredients' flexBasis={'100%'}>Player {i / INGREDIENTS_PER_PLAYER + 1}</Box>)
     }
 
     ingredientSelects.push(
@@ -155,7 +155,7 @@ export default function HomeV2() {
       i % SEASONINGS_PER_PLAYER === 0
       && i + 1 < SEASONINGS_PER_PLAYER * players
     ) {
-      seasoningSelects.push(<Box flexBasis={'100%'}>Player {i / SEASONINGS_PER_PLAYER + 1}</Box>)
+      seasoningSelects.push(<Box key='Seasonings' flexBasis={'100%'}>Player {i / SEASONINGS_PER_PLAYER + 1}</Box>)
     }
 
     seasoningSelects.push(

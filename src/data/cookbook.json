@@ -106,6 +106,283 @@
       ]
     },
     {
+      "name": "The whole picnic",
+      "description": "It's got your protein, your carbs, and it even comes with dessert! ... but it's all on the same bun. (by u/sjf60780)",
+      "category": "Raid Power",
+      "ingredients": [
+        "Chorizo:3",
+        "Chorizo:3",
+        "Potato Salad:1",
+        "Potato Salad:1",
+        "Banana:3",
+        "Banana:3"
+      ],
+      "seasonings": [
+        "Cream Cheese",
+        "Jam",
+        "Curry Powder",
+        "Wasabi"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Bug",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Electric",
+          "level": 1
+        },
+        {
+          "name": "Item Drop",
+          "type": "Dragon",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Pixie Jalapeno Popper",
+      "description": "This spicy-sweet sandwich's diverse flavors are held together by the inclusion of savory eggs and potato salad. (by u/sjf60780)",
+      "ingredients": [
+        "Egg:3",
+        "Egg:3",
+        "Potato Salad:1",
+        "Potato Salad:1",
+        "Jalapeno:3",
+        "Jalapeno:3"
+      ],
+      "seasonings": [
+        "Whipped Cream",
+        "Whipped Cream",
+        "Vinegar",
+        "Wasabi"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Fairy",
+          "level": 2
+        },
+        {
+          "name": "Item Drop",
+          "type": "Rock",
+          "level": 1
+        },
+        {
+          "name": "Encounter",
+          "type": "Steel",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Spicy apple-egg",
+      "description": "Eggs & horseradish work together, apples and horseradish do too, why not combine all three? (by u/sjf60780)",
+      "ingredients": [
+        "Egg:3",
+        "Egg:3",
+        "Rice:1",
+        "Rice:1",
+        "Apple:3",
+        "Apple:3"
+      ],
+      "seasonings": [
+        "Horseradish",
+        "Horseradish",
+        "Horseradish"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Flying",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Steel",
+          "level": 1
+        },
+        {
+          "name": "Teensy",
+          "type": "Grass",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Fruit & Sausage Salad",
+      "description": "Pineapple offers a sweet counterpoint to the spicy herbed sausage in this sandwich. (by u/sjf60780)",
+      "ingredients": [
+        "Herbed Sausage:3",
+        "Herbed Sausage:3",
+        "Noodles:1",
+        "Noodles:1",
+        "Pineapple:3",
+        "Pineapple:3"
+      ],
+      "seasonings": [
+        "Mustard",
+        "Whipped Cream",
+        "Horseradish",
+        "Horseradish"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Ground",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Water",
+          "level": 1
+        },
+        {
+          "name": "Exp.",
+          "type": "Psychic",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Egg & Apple Ramen-wich",
+      "description": "Ice pokemon in raid dens all seem to really love the combination of apples, eggs, and pepper on this sandwich. (by u/sjf60780)",
+      "ingredients": [
+        "Egg:3",
+        "Egg:3",
+        "Noodles:1",
+        "Noodles:1",
+        "Apple:3",
+        "Apple:3"
+      ],
+      "seasonings": [
+        "Pepper",
+        "Jam",
+        "Wasabi"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Ice",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Flying",
+          "level": 1
+        },
+        {
+          "name": "Exp.",
+          "type": "Rock",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Jellyfish Jumble",
+      "description": "Noodles, like the tentacles of a tentacruel, literally bind this sandwich's ingredients together adding both salt and carbs. (by u/sjf60780)",
+      "ingredients": [
+        "Chorizo:3",
+        "Chorizo:3",
+        "Noodles:1",
+        "Noodles:1",
+        "Kiwi:3",
+        "Kiwi:3"
+      ],
+      "seasonings": [
+        "Whipped Cream",
+        "Marmalade",
+        "Horseradish",
+        "Horseradish"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Poison",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Fire",
+          "level": 1
+        },
+        {
+          "name": "Item Drop",
+          "type": "Electric",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Dwayne's one-of-everything",
+      "description": "This sandwich eats like a well balanced microwave. Spicy and full of radiation. (by u/sjf60780)",
+      "ingredients": [
+        "Egg:3",
+        "Egg:3",
+        "Noodles:1",
+        "Noodles:1",
+        "Jalapeno:3",
+        "Jalapeno:3"
+      ],
+      "seasonings": [
+        "Whipped Cream",
+        "Marmalade",
+        "Horseradish"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Rock",
+          "level": 2
+        },
+        {
+          "name": "Item Drop",
+          "type": "Grass",
+          "level": 1
+        },
+        {
+          "name": "Encounter",
+          "type": "Ice",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "name": "Eggs of Steel",
+      "description": "Honestly, of all of the spicy-sweet raid sandwiches, this one is the only one that actually sounds edible. (by u/sjf60780)",
+      "ingredients": [
+        "Egg:3",
+        "Egg:3",
+        "Potato Salad:1",
+        "Potato Salad:1",
+        "Apple:3",
+        "Apple:3"
+      ],
+      "seasonings": [
+        "Cream Cheese",
+        "Curry Powder",
+        "Curry Powder"
+      ],
+      "powers": [
+        {
+          "name": "Raid",
+          "type": "Steel",
+          "level": 2
+        },
+        {
+          "name": "Encounter",
+          "type": "Flying",
+          "level": 1
+        },
+        {
+          "name": "Item Drop",
+          "type": "Fairy",
+          "level": 1
+        }
+      ]
+    },
+    {
       "name": "A Thousand Shining Dragons",
       "description": "A sandwich for shiny hunters.  Avocado adds a mild flavor, balancing the salty and spicy herba mystica.",
       "ingredients": [
